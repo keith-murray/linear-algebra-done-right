@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 7.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\epigraph{Algebra is but written geometry and geometry is but figured algebra.}{\textit{Sophie Germain}}
+
+\section{Adjoint of the forward shift operator}
+\subsection*{Problem statement}
+Suppose $n$ is a positive integer. Define $T\in\mathcal{L}(\mathbf{F}^{n})$ by
+\[T(z_1,\ldots,z_n)=(0,z_1,\ldots,z_{n-1}).\]
+Find a formula for $T^*(z_1,\ldots,z_n)$.
+
+\subsection*{Solution}
+Following Examples 7.3 and 7.4, we can write
+\begin{align*} 
+\langle(x_1,\ldots,x_n),T^*(z_1,\ldots,z_n)\rangle &= \langle T(x_1,\ldots,x_n),(z_1,\ldots,z_n)\rangle \\ 
+ &= \langle (0,x_1,\ldots,x_{n-1}),(z_1,\ldots,z_n)\rangle \\
+ &= 0(z_1) + x_1(z_2) + \cdots + x_{n-1}(z_n) \\
+ &= 0(z_1) + x_1(z_2) + \cdots + x_{n-1}(z_n) + x_n(0) \\
+ &= \langle (x_1,\ldots,x_n),(z_2,\ldots,z_n,0)\rangle.
+\end{align*}
+Thus,
+\[T^*(z_1,\ldots,z_n)=(z_2,\ldots,z_n,0)\].
+
+\clearpage
+
+\section{Complex conjugates of eigenvalues for adjoints}
+
+\end{document}
