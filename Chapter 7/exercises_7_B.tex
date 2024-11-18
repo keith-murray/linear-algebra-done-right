@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 7.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\epigraph{Algebra is but written geometry and geometry is but figured algebra.}{\textit{Sophie Germain}}
+
+\section{$T$ is not self-adjoint, yet eigenvectors span $\mathbf{R^3}$}
+\subsection*{Problem statement}
+True or false (and give a proof of your answer): There exists $T\in\mathbf{R}^3$ such that $T$ is not self-adjoint (with respect to the usual inner product) and such that there is a basis of $\mathbf{R}^3$ consisting of eigenvectors of $T$.
+
+\subsection*{Solution}
+\textbf{True:} Consider the following matrix:
+\[T = \begin{pmatrix}1 & 1 & 0 \\0 & 2 & 0 \\0 & 0 & 3\end{pmatrix}\]
+Clearly $T\in\mathbf{R}$ with respect to the standard basis. Following Theorem 5.44 (`Enough eigenvalues implies diagonalizability') and Theorem 5.41 (`Conditions equivalent to diagonalizability'), $T$ has three distinct eigenvalues, thus it is diagonalizable\footnote{Note that while $T$ is diagonalizable, it is not necessarily diagonalizable with respect to some orthonormal basis of $\mathbf{R}^3$. If it were, it would be self-adjoint following The Real Spectral Theorem.} and $\mathbf{R}^3$ has a basis consisting of eigenvectors of $T$. However, $T$ is not self-adjoint because, via Theorem 7.10 (`The matrix of $T^*$'), it doesn't equal it's transpose.
+
+\clearpage
+
+\section{$T$ is self-adjoint. Prove that $T^2-5T+6I=0$}
+\subsection*{Problem statement}
+Suppose that $T$ is a self-adjoint operator on a finite-dimensional inner product space and the $2$ and $3$ are the only eigenvalues of T. Prove that $T^2-5T+6I=0$.
+
+\subsection*{Solution}
+Let's call this finite-dimensional inner product space $V$. Given $T$ is self-adjoint, the Spectral Theorem allows us to state that $V$ has an orthonormal basis consisting of eigenvectors of $T$. However, given that $2$ and $3$ are the only eigenvalues of T, these orthonormal eigenvectors must have either $2$ or $3$ as their corresponding eigenvalue.
+
+Let $e_1,\ldots,e_n,f_1,\ldots,f_m$ be the eigenvectors of $T$ that form an orthonormal basis of $V$. Also let $2$ be the corresponding eigenvalue of $e_j$ and $3$ be the corresponding eigenvalue of $f_k$. It follows from Theorem 6.30 (`Writing a vector as linear combination of orthonormal basis'), that for $v\in V$, we can write
+\[v=\langle v,e_1\rangle e_1 + \cdots \langle v,e_n\rangle e_n + \langle v,f_1\rangle f_1 + \cdots \langle v,f_m\rangle f_m \]
+
+Now let's pause for a moment to examine $T^2-5T+6I$. It follows that 
+\[(T-2I)(T-3I)=T^2-5T+6I=(T-3I)(T-2I)\]
+Are you ready? Now for $v\in V$, we can write
+\begin{align*}
+    (T^2-5T+6I)(v) = &\langle v,e_1\rangle(T^2-5T+6I) (e_1) + \cdots + \langle v,e_n\rangle (T^2-5T+6I)(e_n)\\
+    + &\langle v,f_1\rangle(T^2-5T+6I) (f_1) + \cdots + \langle v,f_m\rangle(T^2-5T+6I) (f_m) \\
+    = &\langle v,e_1\rangle(T-3I)(T-2I)(e_1) + \cdots + \langle v,e_n\rangle (T-3I)(T-2I)(e_n)\\
+    + &\langle v,f_1\rangle(T-2I)(T-3I)(f_1) + \cdots + \langle v,f_m\rangle(T-2I)(T-3I)(f_m)
+\end{align*}
+Given that $2$ is the eigenvalue of $e_j$ and $3$ is the eigenvalue of $f_k$, it follows that $(T-2I)(e_j)=0$ and $(T-3I)(f_k)=0$. Hence, we have
+\begin{align*}
+    (T^2-5T+6I)(v) = &\langle v,e_1\rangle(T-3I)(0) + \cdots + \langle v,e_n\rangle (T-3I)(0)\\
+    + &\langle v,f_1\rangle(T-2I)(0) + \cdots + \langle v,f_m\rangle(T-2I)(0) \\
+    = &\, 0
+\end{align*}
+
+\clearpage
+
+\section{$T$ isn't self-adjoint. Now $T^2-5T+6I\neq 0$}
+\subsection*{Problem statement}
+Given an example of an operator $T\in\mathcal{L}(\mathbf{C}^3)$ such that $2$ and $3$ are the only eigenvalues of $T$ and $T^2-5T+6I\neq 0$.
+
+\subsection*{Solution}
+I suppose the idea is to find an operator $T\in\mathcal{L}(\mathbf{C}^3)$ such that there are only 2 eigenvectors, with $2$ and $3$ as the corresponding eigenvalues. This implies that the eigenvectors of $T$ don't span $\mathbf{C}^3$, allowing one to expand on the list of eigenvectors to be a basis of $\mathbf{C}^3$. This vector used to expand the list, let's say $v\in \mathbf{C}^3$, could be used to show $(T^2-5T+6I)(v)\neq 0$
+
+
+\end{document}
