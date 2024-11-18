@@ -35,5 +35,145 @@ Thus,
 \clearpage
 
 \section{Complex conjugates of eigenvalues for adjoints}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $\lambda\in\mathbf{F}$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\bar{\lambda}$ is an eigenvalue of $T^*$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $\lambda$ is an eigenvalue of $T$ with $v\in V$ being the corresponding eigenvector. It follows that  
+\begin{align*}
+    \langle v, T^* w\rangle &= \langle Tv, w\rangle = \langle \lambda v, w\rangle = \lambda \langle v, w\rangle = \langle v, \bar{\lambda}w\rangle
+\end{align*}
+for some $w\in V$ such that $\langle v,w\rangle\neq 0$. Hence, $\bar{\lambda}$ is an eigenvalue of $T^*$.
+
+\subsubsection*{Second Direction}
+Suppose $\bar{\lambda}$ is an eigenvalue of $T^*$ with $w\in V$ being the corresponding eigenvector. It follows that  
+\begin{align*}
+    \langle w, T v\rangle &= \langle T^*w, v\rangle = \langle \bar{\lambda} w, v\rangle = \bar{\lambda} \langle w, v\rangle = \langle w, \lambda v\rangle
+\end{align*}
+for some $w\in V$ such that $\langle v,w\rangle\neq 0$. Hence, $\lambda$ is an eigenvalue of $T$.
+
+\clearpage
+
+\section{$U$ invariant under $T$ iff $U^\bot$ invariant under $T^*$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $U$ is a subspace of $V$. Prove that $U$ is invariant under $T$ if and only if $U^\bot$ is invariant under $T^*$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $U$ is invariant under $T$. It follows that for all $v\in U$ and $w\in U^\bot$, we can write $\langle Tv,w\rangle=0$ since $Tv\in U$. Given the definition of the adjoint, we can write $0=\langle Tv,w\rangle=\langle v,T^*w\rangle$ for all $v\in U$ and $w\in U^\bot$. Hence this implies $U^\bot$ is invariant under $T^*$.
+
+\subsubsection*{Second Direction}
+Suppose $U^\bot$ is invariant under $T^*$. It follows that for all $v\in U$ and $w\in U^\bot$, we can write $\langle T^* w,v\rangle=0$ since $T^* w\in U^\bot$. Given the definition of the adjoint, we can write $0=\langle T^* w,v\rangle=\langle w,Tv\rangle$ for all $v\in U$ and $w\in U^\bot$. Hence this implies $U$ is invariant under $T$.
+
+\clearpage
+
+\section{$T$ is injective/surjective iff $T^*$ is surjective/injective}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V,W)$. Prove that
+\begin{enumerate}
+  \item[(a)] $T$ is injective if and only if $T^*$ is surjective;
+  \item[(b)] $T$ is surjective if and only if $T^*$ is injective
+\end{enumerate}
+\textbf{Note:} For Chapter 7, we can assume $V$ and $W$ are finite-dimensional.
+
+\subsection*{Solution for (a)}
+\subsubsection*{First Direction}
+Suppose $T$ is injective. Then $\operatorname{null}T=\{0\}$. Via Theorem 7.7(c) (`Null space and range of $T^*$'), 
+\[\{0\}=\operatorname{null}T=(\operatorname{range}T^*)^\bot.\]
+Following Theorem 6.51 (`The orthogonal complement of the orthogonal complement') and Theorem 6.46(b) (`Basic properties of orthogonal complement'), 
+\[\operatorname{range}T^*=((\operatorname{range}T^*)^\bot)^\bot=\{0\}^\bot=V.\]
+Hence, given $T^*\in\mathcal{L}(W,V)$, it follows that $T^*$ is surjective.
+
+\subsubsection*{Second Direction}
+Suppose $T^*$ is surjective. Then $\operatorname{range}T^*=V$. Via Theorem 7.7(b) (`Null space and range of $T^*$'), 
+\[V=\operatorname{range}T^*=(\operatorname{null}T)^\bot.\]
+Following Theorem 6.51 (`The orthogonal complement of the orthogonal complement') and Theorem 6.46(c) (`Basic properties of orthogonal complement'), 
+\[\operatorname{null}T=((\operatorname{null}T)^\bot)^\bot=V^\bot=\{0\}.\]
+Hence, it follows that $T$ is injective.
+
+\subsection*{Solution for (b)}
+\textbf{Solution for (b)} follows a similar pattern as \textbf{solution for (a)}, except for changing injective to surjective and surjective to injective, and reasoning over $W$ instead of $V$.
+
+\clearpage
+
+\section{$\operatorname{dim}\operatorname{range}T^*=\operatorname{dim}\operatorname{range}T$}
+\subsection*{Problem statement}
+Prove that
+\[\operatorname{dim}\operatorname{null}T^*=\operatorname{dim}\operatorname{null}T+\operatorname{dim}W-\operatorname{dim}V\]
+and
+\[\operatorname{dim}\operatorname{range}T^*=\operatorname{dim}\operatorname{range}T\]
+for every $T\in\mathcal{L}(V,W)$.
+
+\subsection*{Solution for (a)}
+Let's first prove $\operatorname{dim}\operatorname{range}T^*=\operatorname{dim}\operatorname{range}T$ and the other proof will easily follow from the Fundamental Theorem of Linear Maps.
+
+Via Theorem 7.7(d) (`Null space and range of $T^*$'), we can write
+\[\operatorname{dim}\operatorname{range}T=\operatorname{dim}(\operatorname{null}T^*)^\bot\]
+and via Theorem 6.50 (`Dimension of the orthogonal complement'), we can expand on our previous statement to write
+\begin{equation}\label{eq:five}
+    \operatorname{dim}\operatorname{range}T=\operatorname{dim}W-\operatorname{dim}\operatorname{null}T^*.
+\end{equation}
+Via the Fundamental Theorem of Linear Maps, we have
+\[\operatorname{dim}W=\operatorname{dim}\operatorname{null}T^*+\operatorname{dim}\operatorname{range}T^*\]
+and thus we can expand on (\ref{eq:five}) to write
+\[\operatorname{dim}\operatorname{range}T=\operatorname{dim}W-\operatorname{dim}W+\operatorname{dim}\operatorname{range}T^*=\operatorname{dim}\operatorname{range}T^*.\]
+
+Wonderful. Now via a simple application of the Fundamental Theorem of Linear Maps, we have
+\[\operatorname{dim}V-\operatorname{dim}\operatorname{null}T=\operatorname{dim}W-\operatorname{dim}\operatorname{null}T^*\]
+which is only a couple of rearrangements away from 
+\[\operatorname{dim}\operatorname{null}T^*=\operatorname{dim}\operatorname{null}T+\operatorname{dim}W-\operatorname{dim}V.\]
+
+\clearpage
+
+\renewcommand{\thesection}{7}
+\section{$ST$ is self-adjoint iff $ST=TS$}
+\subsection*{Problem statement}
+Suppose $S,\,T\in\mathcal{L}(V)$ are self-adjoint. Prove that $ST$ is self-adjoint if and only if $ST=TS$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $ST$ is self-adjoint. Following Theorem 7.6(e) (`Properties of the adjoint'), we have $ST=(ST)^*=T^*S^*$. However, since $S$ and $T$ are self-adjoint, it follows that $ST=S^*T^*$. \href{https://www.youtube.com/watch?v=TCm9788Tb5g}{Now watch this drive}
+\[ST=(ST)^*=(S^*T^*)^*=(T^*)^*(S^*)^*=TS\]
+
+\subsubsection*{Second Direction}
+Suppose $ST=TS$ (remember that $S$ and $T$ are self-adjoint). For all $v,\,w\in V$, we can write
+\[\langle STv,w\rangle=\langle v, T^*S^*w\rangle=\langle v,TSw\rangle=\langle v,STw\rangle\]
+where the second equality comes from $S=S^*$ and $T=T^*$, and the third equality comes from $ST=TS$.
+
+\clearpage
+
+\renewcommand{\thesection}{8}
+\section{Over $\mathbf{R}$, self-adjoint operators make subspace}
+\subsection*{Problem statement}
+Suppose $V$ is a real inner product space. Show that the set of self-adjoint operators on $V$ is a subspace of $\mathcal{L}(V)$.
+
+\subsection*{Solution}
+Let's call $\mathcal{A}(V)$ the set of self-adjoint operators on $V$. To show that it's a subspace, we need to show it contains the \textbf{additive identity}, is \textbf{closed under addition}, and is \textbf{closed under scalar multiplication}.
+
+\subsubsection*{Additive Identity}
+Suppose $T=0$. It follows that for all $v,\,w\in V$ we have $\langle Tv,w\rangle=0=\langle v, T^*w\rangle$, implying that $T^*=0$. Hence, $0$ is self-adjoint and $0\in\mathcal{A}(V)$.
+
+\subsubsection*{Closed under addition}
+Suppose $S,\,T$ are self-adjoint ($S,\,T\in\mathcal{A}(V)$). For all $v,\,w\in V$, we can write
+\[\langle (S+T)(v),w\rangle=\langle Sv,w\rangle+\langle Tv,w\rangle=\langle v,Sw\rangle+\langle v,Tw\rangle=\langle v,(S+T)(w)\rangle\]
+Hence, $S+T$ is self-adjoint and $S+T\in\mathcal{A}(V)$.
+
+\subsubsection*{Closed under scalar multiplication}
+Suppose $T$ is self-adjoint and $\lambda\in\mathbf{R}$ (since $V$ is a real inner product space). It follows that for all $v,\,w\in V$, we can write
+\[\langle (\lambda T)(v),w\rangle=\lambda\langle Tv,w\rangle=\lambda\langle v,Tw\rangle=\langle v,(\bar{\lambda}\,T)(w)\rangle\]
+Given $\lambda=\bar{\lambda}$, we have
+\[\langle (\lambda T)(v),w\rangle=\langle v,(\bar{\lambda}\,T)(w)\rangle=\langle v,(\lambda\,T)(w)\rangle\]
+and $\lambda\,T$ is self-adjoint and $\lambda\,T\in\mathcal{A}(V)$.
+
+\clearpage
+
+\renewcommand{\thesection}{9}
+\section{Over $\mathbf{C}$, self-adjoint operators isn't subspace}
+\subsection*{Problem statement}
+Suppose $V$ is a complex inner product space with $V\neq\{0\}$. Show that the set of self-adjoint operators on $V$ is not a subspace of $\mathcal{L}(V)$.
+
+\subsection*{Solution}
+Refer to our answer for the previous exercise, exercise 7.A(8). The set of self-adjoint operators on $V$ was a subspace because for $\lambda\in\mathbf{R}$ we could write $\lambda=\bar{\lambda}$. Sadly, we cannot write such things for complex innder product spaces. Therefore the set of self-adjoints operators is not closed under scalar multiplication.
 
 \end{document}
