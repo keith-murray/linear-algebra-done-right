@@ -16,18 +16,18 @@
 
 \section{$T$ is not self-adjoint, yet eigenvectors span $\mathbf{R^3}$}
 \subsection*{Problem statement}
-True or false (and give a proof of your answer): There exists $T\in\mathbf{R}^3$ such that $T$ is not self-adjoint (with respect to the usual inner product) and such that there is a basis of $\mathbf{R}^3$ consisting of eigenvectors of $T$.
+True or false (and give a proof of your answer): There exists $T\in\mathcal{L}(\mathbf{R}^3)$ such that $T$ is not self-adjoint (with respect to the usual inner product) and such that there is a basis of $\mathbf{R}^3$ consisting of eigenvectors of $T$.
 
 \subsection*{Solution}
 \textbf{True:} Consider the following matrix:
-\[T = \begin{pmatrix}1 & 1 & 0 \\0 & 2 & 0 \\0 & 0 & 3\end{pmatrix}\]
-Clearly $T\in\mathbf{R}$ with respect to the standard basis. Following Theorem 5.44 (`Enough eigenvalues implies diagonalizability') and Theorem 5.41 (`Conditions equivalent to diagonalizability'), $T$ has three distinct eigenvalues, thus it is diagonalizable\footnote{Note that while $T$ is diagonalizable, it is not necessarily diagonalizable with respect to some orthonormal basis of $\mathbf{R}^3$. If it were, it would be self-adjoint following The Real Spectral Theorem.} and $\mathbf{R}^3$ has a basis consisting of eigenvectors of $T$. However, $T$ is not self-adjoint because, via Theorem 7.10 (`The matrix of $T^*$'), it doesn't equal it's transpose.
+\[\mathcal{M}(T) = \begin{pmatrix}1 & 1 & 0 \\0 & 2 & 0 \\0 & 0 & 3\end{pmatrix}\]
+Clearly $T\in\mathcal{L}(\mathbf{R})$ with respect to the standard basis. Following Theorem 5.44 (`Enough eigenvalues implies diagonalizability') and Theorem 5.41 (`Conditions equivalent to diagonalizability'), $T$ has three distinct eigenvalues, thus it is diagonalizable\footnote{Note that while $T$ is diagonalizable, it is not necessarily diagonalizable with respect to some orthonormal basis of $\mathbf{R}^3$. If it were, it would be self-adjoint following The Real Spectral Theorem.} and $\mathbf{R}^3$ has a basis consisting of eigenvectors of $T$. However, $T$ is not self-adjoint because, via Theorem 7.10 (`The matrix of $T^*$'), it doesn't equal it's transpose.
 
 \clearpage
 
 \section{$T$ is self-adjoint. Prove that $T^2-5T+6I=0$}
 \subsection*{Problem statement}
-Suppose that $T$ is a self-adjoint operator on a finite-dimensional inner product space and the $2$ and $3$ are the only eigenvalues of T. Prove that $T^2-5T+6I=0$.
+Suppose that $T$ is a self-adjoint operator on a finite-dimensional inner product space and that $2$ and $3$ are the only eigenvalues of T. Prove that $T^2-5T+6I=0$.
 
 \subsection*{Solution}
 Let's call this finite-dimensional inner product space $V$. Given $T$ is self-adjoint, the Spectral Theorem allows us to state that $V$ has an orthonormal basis consisting of eigenvectors of $T$. However, given that $2$ and $3$ are the only eigenvalues of T, these orthonormal eigenvectors must have either $2$ or $3$ as their corresponding eigenvalue.
@@ -50,6 +50,7 @@ Given that $2$ is the eigenvalue of $e_j$ and $3$ is the eigenvalue of $f_k$, it
     + &\langle v,f_1\rangle(T-2I)(0) + \cdots + \langle v,f_m\rangle(T-2I)(0) \\
     = &\, 0
 \end{align*}
+for all $v\in V$. Therefore $T^2-5T+6I=0$.
 
 \clearpage
 
@@ -58,7 +59,75 @@ Given that $2$ is the eigenvalue of $e_j$ and $3$ is the eigenvalue of $f_k$, it
 Given an example of an operator $T\in\mathcal{L}(\mathbf{C}^3)$ such that $2$ and $3$ are the only eigenvalues of $T$ and $T^2-5T+6I\neq 0$.
 
 \subsection*{Solution}
-I suppose the idea is to find an operator $T\in\mathcal{L}(\mathbf{C}^3)$ such that there are only 2 eigenvectors, with $2$ and $3$ as the corresponding eigenvalues. This implies that the eigenvectors of $T$ don't span $\mathbf{C}^3$, allowing one to expand on the list of eigenvectors to be a basis of $\mathbf{C}^3$. This vector used to expand the list, let's say $v\in \mathbf{C}^3$, could be used to show $(T^2-5T+6I)(v)\neq 0$
+I suppose the idea is to find an operator $T\in\mathcal{L}(\mathbf{C}^3)$ such that there are only 2 eigenvectors, with $2$ and $3$ as the corresponding eigenvalues. This implies that the eigenvectors of $T$ don't span $\mathbf{C}^3$, allowing one to expand on the list of eigenvectors to be a basis of $\mathbf{C}^3$. This vector used to expand the list, let's say $v\in \mathbf{C}^3$, could be used to show $(T^2-5T+6I)(v)\neq 0$.
 
+Let such the matrix of such an operator be 
+\[\mathcal{M}(T) = \begin{pmatrix}2 & 1 & 0 \\0 & 2 & 0 \\0 & 0 & 3\end{pmatrix}\]
+where Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix') tells us that the eigenvalues of $T$ are precisely 2 and 3. Let $e_1,e_2,e_3$ be the standard basis of $\mathbf{C}^3$. Clearly $e_1$ and $e_3$ are eigenvectors with corresponding eigenvalues of $2$ and $3$, respectively. It's also clear that $e_2$ is not an eigenvector. To show that $T^2-5T+6I\neq 0$, let's compute $(T^2-5T+6I)(e_2)$
+\begin{align*}
+    (T^2-5T+6I)(e_2)&=T^2e_2-5Te_2+6Ie_2 \\
+    &=T(e_1+2e_2)-5(e_1+2e_2)+6e_2 \\
+    &=2e_1 + 2e_1+4e_2-5e_1-10e_2+6e_2\\
+    &=-e_1
+\end{align*}
+Hence, our $\mathcal{M}(T)$ was an example of $T^2-5T+6I\neq 0$.
+
+\clearpage
+
+\section{For $\mathbf{F}=\mathbf{C}$, more conditions for normal $T$}
+\subsection*{Problem statement}
+Suppose $\mathbf{F}=\mathbf{C}$ and $T\in\mathcal{L}(V)$. Prove that $T$ is normal if and only if all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal and
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+where $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $T$ is normal. Following the Complex Spectral Theorem (Theorem 7.24), $T$ has a diagonal matrix with respect to some orthonormal basis of $V$. This implies that $T$ is diagonalizable. Following Theorem 5.41(d) (`Conditions equivalent to diagonalizability'), for $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$, we can write 
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+
+\subsubsection*{Second Direction}
+Suppose all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal and
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+where $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$. We will show that we can form an orthonormal basis of V from eigenvectors of $T$, which, via the Complex Spectral Theorem, is equivalent to $T$ being normal.
+
+Theorem 6.34 (`Existence of orthonormal basis') allows us to state that each eigenspace $E(\lambda_j,T)$ has an orthonormal basis. These orthonormal bases are also eigenvectors of $T$. Since ``all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal'', the list, $e_1,\ldots,e_n$, formed by these orthonormal bases is also orthonormal. Via Theorem 6.26 (`An orthonormal list is linearly independent'), we know that $e_1,\ldots,e_n$ is linearly independent. It follows that $e_1,\ldots,e_n$ spans $E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)$, and hence, the list is an orthonormal basis of $V$.
+
+Given that we can form an orthonormal basis of V from eigenvectors of $T$, the Complex Spectral Theorem allows us to state $T$ is normal.
+
+\clearpage
+
+\section{For $\mathbf{F}=\mathbf{R}$, more conditions for self-adjoint $T$}
+\subsection*{Problem statement}
+Suppose $\mathbf{F}=\mathbf{R}$ and $T\in\mathcal{L}(V)$. Prove that $T$ is self-adjoint if and only if all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal and
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+where $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$.
+
+\subsection*{Solution}
+This solution is identical to the solution to the previous exercise (7.B(4)).
+\subsubsection*{First Direction}
+Suppose $T$ is self-adjoint. Following the Real Spectral Theorem (Theorem 7.29), $T$ has a diagonal matrix with respect to some orthonormal basis of $V$. This implies that $T$ is diagonalizable. Following Theorem 5.41(d) (`Conditions equivalent to diagonalizability'), for $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$, we can write 
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+
+\subsubsection*{Second Direction}
+Suppose all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal and
+\[V=E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)\]
+where $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$. We will show that we can form an orthonormal basis of V from eigenvectors of $T$, which, via the Real Spectral Theorem, is equivalent to $T$ being self-adjoint.
+
+Theorem 6.34 (`Existence of orthonormal basis') allows us to state that each eigenspace $E(\lambda_j,T)$ has an orthonormal basis. These orthonormal bases are also eigenvectors of $T$. Since ``all pairs of eigenvectors corresponding to distinct eigenvalues of T are orthogonal'', the list, $e_1,\ldots,e_n$, formed by these orthonormal bases is also orthonormal. Via Theorem 6.26 (`An orthonormal list is linearly independent'), we know that $e_1,\ldots,e_n$ is linearly independent. It follows that $e_1,\ldots,e_n$ spans $E(\lambda_1,T)\,\oplus\,\cdots\,\oplus\,E(\lambda_m,T)$, and hence, the list is an orthonormal basis of $V$.
+
+Given that we can form an orthonormal basis of V from eigenvectors of $T$, the Real Spectral Theorem allows us to state $T$ is normal.
+
+\clearpage
+
+\section{Normal $T$ is self-adjoint iff real eigenvalues}
+\subsection*{Problem statement}
+Prove that a normal operator on a complex inner product space is self-adjoint if and only if all its eigenvalues are real.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $T\in\mathcal{L}(V)$ (where $\mathbf{F}=\mathbf{C}$) and $T$ is self-adjoint. It follows immediately from Theorem 7.13 (`Eigenvalues of self-adjoint operators are real') that all the eigenvalues of $T$ are real.
+
+\subsubsection*{Second Direction}
+Suppose $T\in\mathcal{L}(V)$ (where $\mathbf{F}=\mathbf{C}$), $T$ is normal, and all eigenvalues of $T$ are real. Via the Complex Spectral Theorem (Theorem 7.24), $T$ has a diagonal matrix with respect to some orthonormal basis of V. Following Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), the entries along the diagonal matrix of $T$ are the eigenvalues of $T$. Since all the eigenvalues of $T$ are real, all the entries in the diagonal matrix of $T$ are real. It then follows that the diagonal matrix of $T$ equals its conjugate transpose. Hence, $T$ is self-adjoint.
 
 \end{document}
