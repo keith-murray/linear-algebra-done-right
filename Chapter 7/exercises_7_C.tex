@@ -2,7 +2,8 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{hyperref}
-\usepackage{epigraph} 
+\usepackage{epigraph}
+\usepackage{csquotes}
 
 \title{Linear Algebra Done Right\\Solutions to Exercises 7.C}
 \author{}
@@ -66,12 +67,97 @@ Hence $a_j=b_j$ and $v=w$.
 Suppose $T$ is a positive operator on $V$ and $U$ is a subspace of $V$ invariant under $T$. Prove that $T|_U\in\mathcal{L}(U)$ is a positive operator on $U$.
 
 \subsection*{Solution}
-Following Theorem 7.28 (`Self-adjoint operators and invariant subspaces'), it follows immediately that $T|_U\in\mathcal{L}(U)$ is self-adjoint. To finish the proof, we can write for $u\in U$
+Via Theorem 7.28(b) (`Self-adjoint operators and invariant subspaces'), it follows immediately that $T|_U\in\mathcal{L}(U)$ is self-adjoint. To finish the proof, we can write for $u\in U$
 \[\langle (T|_U)u,u\rangle=\langle Tu,u\rangle\geq 0\]
 where the equality follows from the definition of the \textbf{restriction operator} (Definition 5.14) and the inequality follows from $T$ being positive.
 
 \clearpage
 
+\section{For $T\in\mathcal{L}(V,W)$, $T^*T$ and $TT^*$ are positive}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V,W)$. Prove that $T^*T$ is a positive operator on $V$ and $TT^*$ is a positive operator on $W$.
 
+\subsection*{Solution}
+Clearly $T^*T$ is an operator on $V$ and $TT^*$ is an operator on $W$. To show that they are self-adjoint, we can write for $v,u\in V$ and $w,x\in W$
+\[\langle T^*Tv,u\rangle=\langle v,(T^*T)^*u\rangle=\langle v,T^*(T^*)^*u\rangle=\langle v,T^*Tu\rangle\]
+and
+\[\langle TT^*w,x\rangle=\langle w,(TT^*)^*x\rangle=\langle w,(T^*)^*T^*x\rangle=\langle w,TT^*x\rangle.\]
+To show that they are positive, we can write for $v\in V$ and $w\in W$
+\[\langle T^*Tv,v\rangle=\langle Tv,Tv\rangle\geq 0\]
+and
+\[\langle TT^*w,w\rangle=\langle T^*v,T^*v\rangle\geq 0\]
+where the last inequalities follow from the \textbf{positivity} condition in the definition of an inner product (Definition 6.3).
+
+\clearpage
+
+\section{Sum of two positive operators is positive}
+\subsection*{Problem statement}
+Prove that the sum of two positive operators on $V$ is positive.
+
+\subsection*{Solution}
+Suppose $S,T\in\mathcal{L}(V)$ are positive. We will first prove $S+T$ is self-adjoint and then is positive. For $v,u\in V$, we can write
+\begin{align*}
+    \langle (S+T)(v),u\rangle&=\langle v,(S+T)^*(u)\rangle=\langle v,S^*u+T^*u\rangle\\
+    &=\langle v,Su+Tu\rangle=\langle v,(S+T)(u)\rangle
+\end{align*}
+where the second equality follows from Theorem 7.6(a) (`Properties of the adjoint') and the third equality comes from the $S$ and $T$ being self-adjoint. Hence $S+T$ is self-adjoint.
+
+To show positivity, for $v\in V$ we can write
+\begin{align*}
+    \langle (S+T)(v),v\rangle = \langle Sv,v\rangle+\langle Tv,v\rangle\geq 0
+\end{align*}
+where the inequality follows from the positivity of $S$ and $T$.
+
+\clearpage
+
+\renewcommand{\thesection}{7}
+\section{For positive $T$, $T$ invertible iff $\langle Tv,v\rangle > 0$}
+\subsection*{Problem statement}
+Suppose $T$ is a positive operator on $V$. Prove that $T$ is invertible if and only if
+\[\langle Tv,v\rangle > 0\]
+for every $v\in V$ with $v\neq 0$.
+
+\subsection*{Solution}
+This solution relies on Theorem 7.35(a,e), which essentially states 
+\begin{displayquote}
+$T$ is positive if and only if there exists an operator $R\in\mathcal{L}(V)$ such that $T=R^*R$.
+\end{displayquote}
+\subsubsection*{First Direction}
+Suppose $T$ is a positive operator and invertible. Following Theorem 7.35(a,e), there exists an operator $R\in\mathcal{L}(V)$ such that $T=R^*R$. Following Exercise 3.D(9)\footnote{Exercise 3.D(9) states that $ST$ is invertible if and only if both $S$ and $T$ are invertible.}, given that $T$ is invertible, then both $R^*$ and $R$ are invertible. Thus we can write for $v\in V$ with $v\neq 0$
+\[\langle Tv,v\rangle=\langle R^*Rv,v\rangle=\langle Rv,Rv\rangle >0.\]
+To understand the last inequality, since $R$ is invertible, it follows that $\operatorname{null}R=\{0\}$. Hence, for $v\neq 0$ we have $Rv\neq 0$. Invoking the \textbf{positivity} and \textbf{definiteness} properties of inner products, $\langle Rv,Rv\rangle \geq0$ and $\langle Rv,Rv\rangle =0$ if and only if $Rv=0$. Hence it follows that $\langle Rv,Rv\rangle >0$ for $v\in V$ with $v\neq 0$.
+
+\subsubsection*{Second Direction}
+Suppose $T$ is a positive operator and $\langle Tv,v\rangle > 0$ for every $v\in V$ with $v\neq 0$. Following Theorem 7.35(a,e), there exists an operator $R\in\mathcal{L}(V)$ such that $T=R^*R$. Thus, for $v\in V$ with $v\neq 0$, we can write
+\[0<\langle Tv,v\rangle=\langle R^*Rv,v\rangle=\langle Rv,Rv\rangle\]
+implying that $R$ is invertible using the logic of the \textbf{First Direction}.
+
+If we can prove that $R^*$ is also invertible, then Exercise 3.D(9) implies that $T$ is invertible. As a quick \textbf{proof by contradiction}, suppose $R^*$ is not injective. It follows that there exists $u\in\operatorname{range}R=V$ such that $R^*u =0$. Since $R$ is invertible, there exists $w\in V$ such that $Rw=u$. Hence we have
+\[\langle Tw,w\rangle=\langle R^*Rw,w\rangle=\langle R^*u,w\rangle=\langle 0,w\rangle=0.\]
+Thus it follows that $R^*$ is injective and $R^*$ is invertible.
+
+\clearpage
+
+\renewcommand{\thesection}{10}
+\section{More characterization of isometries}
+\subsection*{Problem statement}
+Suppose $S\in\mathcal{L}(V)$. Prove that the following are equivalent:
+\begin{enumerate}
+    \item[(a)] $S$ is an isometry;
+    \item[(b)] $\langle S^*u,S^*v\rangle=\langle u,v\rangle$ for all $u,v\in V$;
+    \item[(c)] $S^*e_1,\ldots,S^*e_m$ is an orthonormal list for every orthonormal list of vectors $e_1,\ldots,e_m$ in $V$;
+    \item[(d)] $S^*e_1,\ldots,S^*e_n$ is an orthonormal basis for some orthonormal basis\\$e_1,\ldots,e_n$ in $V$.
+\end{enumerate}
+
+\subsection*{Solution}
+These statements are essentially just statements in Theorem 7.42 (`Characterization of isometries') with $S^*$ in place of $S$. But let's explicitly show them anyways.
+
+Suppose (a) holds. Via Theorem 7.42(a,g), (a) implies that $S^*$ is an isometry. Via Theorem 7.42(a,b), $S^*$ being an isometry implies that $\langle S^*u,S^*v\rangle=\langle u,v\rangle$ for all $u,v\in V$, and hence (b) holds. 
+
+Now suppose (b) holds. Suppose that $e_1,\ldots,e_m$ is an orthonormal list of vectors in $V$. Then we see that the list $S^*e_1,\ldots,S^*e_m$ is orthonormal because $\langle S^*e_j,S^*e_k\rangle=\langle e_j,e_k\rangle$. Thus (c) holds.
+
+Clearly (c) implies (d). In fact, we could go further by saying $S^*e_1,\ldots,S^*e_n$ is an orthonormal basis for all orthonormal bases $e_1,\ldots,e_n$ in $V$ because (c) is so general.
+
+Now suppose (d) holds. Via Theorem 7.42(d,g), (d) implies that $(S^*)^*$ is an isometry. Via Theorem 7.6(c) (`Properties of the adjoint'), $(S^*)^*=S$ and $S$ is an isometry. Hence, (a) holds.
 
 \end{document}
