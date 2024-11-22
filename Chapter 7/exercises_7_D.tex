@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 7.D}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\section{For $Tv=\langle v,u\rangle x$, prove $\sqrt{T^*T}v=\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u$}
+\subsection*{Problem statement}
+Fix $u,x\in V$ with $u\neq 0$. Define $T\in\mathcal{L}(V)$ by
+\[Tv=\langle v,u\rangle x\]
+for every $v\in V$. Prove that
+\[\sqrt{T^*T}v=\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u\]
+fore every $v\in V$.
+
+\subsection*{Solution}
+First, let's show that $T$ is a linear map. For additivity, suppose $v,w\in V$. It follows that
+\[T(v+w)=\langle v+w,u\rangle x=(\langle v,u\rangle+\langle w,u\rangle) x=\langle v,u\rangle x+\langle w,u\rangle x=Tv+Tw\]
+For homogeneity, suppose $v\in V$ and $\lambda\in \mathbf{F}$. It follows that
+\[T(\lambda v)=\langle \lambda v,u\rangle x=\lambda\langle v,u\rangle x=\lambda (Tv)\]
+
+
+
+\end{document}
