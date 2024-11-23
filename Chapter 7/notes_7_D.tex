@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{tablefootnote}
+
+\title{Linear Algebra Done Right\\Notes of Section 7.D}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclarePairedDelimiter{\innerprod}\langle\rangle
+\newcommand\conjinnerp[2][]{\:\overline{\mkern-4mu\innerprod[#1]{#2}\mkern-4mu}\:}
+
+\begin{document}
+
+\maketitle
+
+\epigraph{Good mathematicians see analogies between theorems; great mathematicians see analogies between analogies.}{\textit{Stefan Banach}}
+
+\section{Motivation}
+
+Axler motivates the polar decomposition by continuing his analogy between the complex numbers, $\mathbf{C}$, and the space of operators, $\mathcal{L}(V)$. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{$\mathbf{C}$ concept} & \textbf{notation} & \textbf{$\mathcal{L}(V)$ concept} & \textbf{notation} \\ \hline
+        Number                  & $z$                     & Operator                & $T$                     \\ \hline
+        Complex conjugate       & $\bar{z}$               & Adjoint                 & $T^*$                   \\ \hline
+        Real numbers            & $z=\bar{z}$             & Self-adjoint            & $T=T^*$                 \\ \hline
+        Nonnegative numbers\tablefootnote{Note that $z$ is real} & $z\geq 0$ & Positive operators\tablefootnote{Note that $T$ is self-adjoint} & $\langle Tv, v \rangle \geq 0$ \\ \hline
+        Unit circle             & $\bar{z}z=\abs{z}^2=1$ & Isometry\tablefootnote{Note that the definition is $\|Sv\| = \|v\|$} & $T^*T=I$ \\ \hline
+    \end{tabular}
+    \caption{An analogy between complex numbers and operators.}
+    \label{tab:complex_operator_comparison}
+\end{table}
+
+From this analogy, it follows that each complex number $z$ (with the exception of $0$) can be written as
+\[z=(\frac{z}{\norm{z}})\norm{z}=(\frac{z}{\norm{z}})\sqrt{\bar{z}z}\]
+where $\frac{z}{\norm{z}}$ is an element of the unit circle and $\sqrt{\bar{z}z}$ is nonnegative. Following this decomposition of a complex number, we write each operator $T$ as 
+\begin{equation}\label{eq:polar_decomposition}
+    T=S\sqrt{T^*T}
+\end{equation}
+where $S$ is an isometry and $\sqrt{T^*T}$ is a positive operator.
+
+\section{Polar Decomposition}
+We call (\ref{eq:polar_decomposition}) the polar decomposition, and while Axler's analogy motivates it well, we still need to prove that it exists. Note in the decomposition of the complex number, our element of the unit circle was easy to find ($\frac{z}{\norm{z}}$). For operators, our proof will be an existence proof that an isometry $S$ exists.
+
+\subsection{Proof}
+Let's begin by deriving a useful relationship between the norm of $T$ and the norm of $\sqrt{T^*T}$. Note that Exercise 7.C(4) allows us to state $T^*T$ is a positive operator, and following Theorem 7.36 (`Each positive operator has only one positive square root'), $\sqrt{T^*T}$ is the unique positive operator of $T^*T$; therefore, $T^*T=\sqrt{T^*T}\sqrt{T^*T}$. Thus, if $v\in V$, then
+\begin{align*}
+    \norm{Tv}^2=\innerprod{Tv,TV}&=\innerprod{T^*Tv,v} \\
+    &= \innerprod{\sqrt{T^*T}\sqrt{T^*T}v,v} \\
+    &= \innerprod{\sqrt{T^*T}v,\sqrt{T^*T}v} \\
+    &= \norm{\sqrt{T^*T}v}^2
+\end{align*}
+Hence,
+\begin{equation}\label{eq:norm_relationship}
+    \norm{Tv}=\norm{\sqrt{T^*T}v}
+\end{equation}
+for all $v\in V$.
+
+Now we can start to construct our isometry $S$. Define a linear map $S_1\in\mathcal{L}(\operatorname{range}\sqrt{T^*T},\operatorname{range}T)$ by
+\begin{equation}\label{eq:s_one}
+    S_1(\sqrt{T^*T}v)=Tv.
+\end{equation}
+The linear map $S_1$ can be a bit tricky to dissect at first, so we can think about it as follows:
+\begin{enumerate}
+    \item Write $S_1(u)$
+    \item This implies $u\in\operatorname{range}\sqrt{T^*T}$
+    \item Therefore, there exists $v$ such that $v = \sqrt{T^*T}u$
+    \item Thus $S_1(u)=S_1(\sqrt{T^*T}u)$
+    \item Following from (\ref{eq:s_one}), $S_1(\sqrt{T^*T}u)=Tv$ and $S_1(u)=Tv$
+\end{enumerate}
+We eventually want to show that $S_1$ is an isometry and can be extended to an isometry on $V$. But first, we must understand if $S_1$ is well-defined. By well-defined, we want $\sqrt{T^*T}v_1=\sqrt{T^*T}v_2$ to imply that $Tv_1=Tv_2$. In other words, the same input should lead to the same output. We can use (\ref{eq:norm_relationship}) to write
+\begin{align*}
+    \norm{Tv_1-Tv_2}&=\norm{T(v_1-v_2)}\\
+    &=\norm{\sqrt{T^*T}(v_1-v_2)} \\
+    &=\norm{\sqrt{T^*T}v_1-\sqrt{T^*T}v_2}\\
+    &=0.
+\end{align*}
+Hence, the same inputs imply the same outputs, so $S_1$ is well-defined. But even if $S_1$ is well-defined, is it a linear map? Let's test of additivity and homogeneity.
+
+\textbf{Additivity:} Suppose $u,w\in\operatorname{range}\sqrt{T^*T}$. This implies there exist $u_0,w_o\in V$ such that $u=\sqrt{T^*T}u_0$ and $w=\sqrt{T^*T}w_0$. Hence we can write
+\begin{align*}
+    S_1(u)+S_1(w)&=S_1(\sqrt{T^*T}u_0) + S_1(\sqrt{T^*T}w_0)\\
+    &= Tu_0+Tw_0 \\
+    &= T(u_0+w_0) \\
+    &= S_1((\sqrt{T^*T})(u_0+w_0))\\
+    &=S_1(\sqrt{T^*T}u_0+\sqrt{T^*T}u_0w_0)=S_1(u+w)
+\end{align*}
+
+\textbf{Homogeneity:} Suppose $v\in\operatorname{range}\sqrt{T^*T}$ and $\lambda\in\mathbf{F}$. This implies there exist $v_0\in V$ such that $v=\sqrt{T^*T}v_0$. Hence we can write
+\begin{align*}
+    S_1(\lambda v)&=S_1(\lambda (\sqrt{T^*T})(v_0))=S_1((\sqrt{T^*T})(\lambda v_0))\\
+    &=(T)(\lambda v_0)=\lambda(Tv_0)\\
+    &=\lambda(S_1(\sqrt{T^*T}v_0))=\lambda(Sv)
+\end{align*}
+Cool. Now we know $S_1$ is a well-defined, linear map.
+
+Before we expand $S_1$ to an isometry on $S$, note that (\ref{eq:norm_relationship}) and (\ref{eq:s_one}) imply
+\[\norm{S_1 u}=\norm{S_1(\sqrt{T^*T}u_0)}=\norm{Tu_0}=\norm{\sqrt{T^*T}u_0}=\norm{u}\]
+for all $u\in\operatorname{range}\sqrt{T^*T}$ where $u=\sqrt{T^*T}u_0$. Just for clarity, we have
+\begin{equation}\label{eq:norm_relation_s_one}
+    \norm{S_1 u}=\norm{u}
+\end{equation}
+
+
+\end{document}
