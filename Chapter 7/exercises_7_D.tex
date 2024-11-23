@@ -4,12 +4,15 @@
 \usepackage{hyperref}
 \usepackage{epigraph}
 \usepackage{csquotes}
+\usepackage{mathtools}
 
 \title{Linear Algebra Done Right\\Solutions to Exercises 7.D}
 \author{}
 \date{}
 
 \providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclarePairedDelimiter{\innerprod}\langle\rangle
+\newcommand\conjinnerp[2][]{\:\overline{\mkern-4mu\innerprod[#1]{#2}\mkern-4mu}\:}
 
 \begin{document}
 
@@ -21,14 +24,119 @@ Fix $u,x\in V$ with $u\neq 0$. Define $T\in\mathcal{L}(V)$ by
 \[Tv=\langle v,u\rangle x\]
 for every $v\in V$. Prove that
 \[\sqrt{T^*T}v=\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u\]
-fore every $v\in V$.
+for every $v\in V$.
 
 \subsection*{Solution}
 First, let's show that $T$ is a linear map. For additivity, suppose $v,w\in V$. It follows that
 \[T(v+w)=\langle v+w,u\rangle x=(\langle v,u\rangle+\langle w,u\rangle) x=\langle v,u\rangle x+\langle w,u\rangle x=Tv+Tw\]
 For homogeneity, suppose $v\in V$ and $\lambda\in \mathbf{F}$. It follows that
 \[T(\lambda v)=\langle \lambda v,u\rangle x=\lambda\langle v,u\rangle x=\lambda (Tv)\]
+Nice. Now let's derive the adjoint of $T$. This derivation is actually just Example 7.4. For a fixed $w\in V$ and every $v\in V$ we have
+\begin{align*}
+    \langle v,T^*w\rangle&=\langle Tv,w\rangle\\
+    &=\langle \langle v,u\rangle x,w\rangle\\
+    &=\langle v,u\rangle\langle x,w\rangle\\
+    &=\langle x,w\rangle\langle v,u\rangle=\langle v,\conjinnerp{x,w} u\rangle\\
+    &=\innerprod{v,\innerprod{w,x}u}
+\end{align*}
+Okay. Now let's derive $T^*T$. For every $v\in V$ we have
+\begin{align*}
+    T^*Tv&=T^*\innerprod{v,u}x=\innerprod{v,u}T^*x\\
+    &=\innerprod{v,u}\innerprod{x,x}u=\norm{x}^2\innerprod{v,u}u
+\end{align*}
 
+Excellent. Now all that's left is to show $\sqrt{T^*T}\sqrt{T^*T}v=T^*Tv$, and given Theorem 7.36 (`Each positive operator has only one positive square root'), it'll follow that $\sqrt{T^*T}$ can only be $\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u$.
 
+For every $v\in V$ we have
+\begin{align*}
+    \sqrt{T^*T}\sqrt{T^*T}v &= (\sqrt{T^*T})(\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u)= (\frac{\norm{x}}{\norm{u}}\langle v,u\rangle)(\sqrt{T^*T}u)\\
+    &= (\frac{\norm{x}}{\norm{u}}\langle v,u\rangle)(\frac{\norm{x}}{\norm{u}}\langle u,u\rangle u)=\frac{\norm{x}^2}{\norm{u}^2}\norm{u}^2\innerprod{v,u}u\\
+    &= \norm{x}^2\innerprod{v,u}u=T^*Tv
+\end{align*}
+Hence it follows that $\sqrt{T^*T}v=\frac{\norm{x}}{\norm{u}}\langle v,u\rangle u$.
+
+\section{$T\in\mathcal{L}(\mathbf{C}^2)$ of $0$ eigenvalue and $5,0$ singular vals}
+\subsection*{Problem statement}
+Give and example of $T\in\mathcal{L}(\mathbf{C}^2)$ such that $0$ is the only eigenvalue of $T$ and the singular values of $T$ are $5,0$.
+
+\subsection*{Solution}
+Define $T\in\mathcal{L}(\mathbf{C}^2)$ by
+\[T(x_1,x_2)=(5x_2,0)\]
+where 0 is clearly the only eigenvalue. To find the adjoint of $T$, we can write
+\begin{align*}
+    \innerprod{(x_1,x_2),T^*(y_1,y_2)}&=\innerprod{T(x_1,x_2),(y_1,y_2)}\\
+    &= \innerprod{(5x_2,0),(y_1,y_2)}\\
+    &= 5x_2y_1+0(x_1y_2)\\
+    &=\innerprod{(x_1,x_2),(0,5y_1)}
+\end{align*}
+Now it follows that $T^*T(x_1,x_2)=(0,25x_2)$ with $0$ and $25$ being the eigenvalues. Via Theorem 7.52 (`Singular values without taking square root of an operator'), it follows that $0$ and $5$ are the singular values of $T$.
+
+\clearpage
+
+\section{The $T=\sqrt{TT^*}S$ decomposition}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$. Prove that there exists an isometry $S\in\mathcal{L}(V)$ such that 
+\[T=\sqrt{TT^*}S.\]
+
+\subsection*{Solution}
+Let's apply the Polar Decomposition on the adjoint of $T$
+\[T^*=S\sqrt{(T^*)^*T^*}=S\sqrt{TT^*}\]
+Taking the adjoint of $T^*=S\sqrt{TT^*}$, we have
+\[T=(S\sqrt{TT^*})^*=\sqrt{TT^*}S^*\]
+where $(\sqrt{TT^*})^*=\sqrt{TT^*}$ because $\sqrt{TT^*}$ is positive, and thus self-adjoint. Note that Theorem 7.42 (`Characterization of isometries') states that since $S$ is isometric (given the Polar Decomposition), then so is $S^*$. Hence there exists an isometry such that $T=\sqrt{TT^*}S$.
+
+\subsection*{Thoughts}
+This decomposition is interesting. We can infer that $\operatorname{range}T=\operatorname{range}\sqrt{TT^*}$ because
+\[TT^*=\sqrt{TT^*}\sqrt{TT^*}.\]
+Following Exercise 3.D(5), we know for $T_1,T_2\in\mathcal{L}(V,W)$ that $\operatorname{range}T_1=\operatorname{range}T_2$ if and only if there exists an invertible operator $S\in\mathcal{L}(V)$ such that $T_1=T_2S$. In the context of this problem, if $T_2$ is positive, it seems that $S$ can be an isometry.
+
+\clearpage
+
+\section{Singular values as scalars of norms}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $s$ is a singular value of $T$. Prove that there exists a vector $v\in V$ such that $\norm{v}=1$ and $\norm{Tv}=s$.
+
+\subsection*{Solution}
+Via the Singular Value Decomposition (Theorem 7.51), there exist orthonormal bases $e_1,\ldots,e_n$ and $f_1,\ldots,f_n$ of $V$ such that
+\[Tv=s_1\langle v,e_1\rangle f_1+\cdots +s_n\langle v,e_n\rangle f_n\]
+for every $v\in V$. Without loss of generality, $s$ must be one of $s_j$. Suppose we set $v$ to be $e_j$. It follows that $\norm{e_j}=1$ and 
+\[Te_j=s_1\langle e_j,e_1\rangle f_1+\cdots +s_n\langle e_j,e_n\rangle f_n=s_j\langle e_j,e_j\rangle f_j=s_jf_j\]
+where $\innerprod{e_j,e_k}=0$ where $j\neq k$. Hence $\norm{Te_j}^2=\norm{s_jf_j}^2=s_j^2$ and $\norm{Te_j}=s_j$. Note that we need not worry about the absolute value that normally accompanies $\norm{s_jf_j}^2=\abs{s_j}^2$ since $s_j$ is nonnegative.
+
+\clearpage
+
+\section{Find singular values of $T(x,y)=(-4y,x)$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{C}^2)$ is defined by $T(x,y)=(-4y,x)$. Find the singular values of $T$.
+
+\subsection*{Solution}
+First, let's find the adjoint.
+\begin{align*}
+    \innerprod{(x_1,x_2),T^*(y_1,y_2)}&=\innerprod{T(x_1,x_2),(y_1,y_2)}\\
+    &= \innerprod{(-4x_2,x_1),(y_1,y_2)}\\
+    &= -4x_2y_1+x_1y_2\\
+    &=\innerprod{(x_1,x_2),(y_2,-4y_1)}
+\end{align*}
+Now let's find $T^*T$.
+\[T^*T(x,y)=T^*(-4y,x)=(x,16y)\]
+It's clear that the eigenvalues of $T^*T$ are $1$ and $16$. Following Theorem 7.52 (`Singular values without taking square root of an operator'), it follows that the singular values of $T$ are $1$ and $4$.
+
+\clearpage
+
+\renewcommand{\thesection}{8}
+\section{Uniqueness of positive $R$ in Polar Decomp}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$, $S\in\mathcal{L}(V)$ is an isometry, and $R\in\mathcal{L}(V)$ is a positive operator such that $T=SR$. Prove that $R=\sqrt{T^*T}$.
+
+\subsection*{Solution}
+Okay, let's start with finding $T^*$.
+\[T^*=(SR)^*=R^*S^*\]
+Now we can write
+\[T^*T=R^*S^*SR=R^*R\]
+since Theorem 7.42(e) (`Characterization of isometries') tells us that for isometries $S$, then $S^*S=I$. 
+
+Now (are you ready for this?), since $R$ is positive, it is self-adjoint and $R^*=R$. Hence $R^*R=R^2$ and
+\[R^2=T^*T.\]
+Thus it follows that $R=\sqrt{T^*T}$.
 
 \end{document}
