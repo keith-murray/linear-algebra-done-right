@@ -41,20 +41,20 @@ Axler motivates the polar decomposition by continuing his analogy between the co
 \end{table}
 
 From this analogy, it follows that each complex number $z$ (with the exception of $0$) can be written as
-\[z=(\frac{z}{\norm{z}})\norm{z}=(\frac{z}{\norm{z}})\sqrt{\bar{z}z}\]
-where $\frac{z}{\norm{z}}$ is an element of the unit circle and $\sqrt{\bar{z}z}$ is nonnegative. Following this decomposition of a complex number, we write each operator $T$ as 
+\[z=(\frac{z}{\abs{z}})\abs{z}=(\frac{z}{\abs{z}})\sqrt{\bar{z}z}\]
+where $\frac{z}{\abs{z}}$ is an element of the unit circle and $\sqrt{\bar{z}z}$ is nonnegative. Following this decomposition of a complex number, we write each operator $T$ as 
 \begin{equation}\label{eq:polar_decomposition}
     T=S\sqrt{T^*T}
 \end{equation}
 where $S$ is an isometry and $\sqrt{T^*T}$ is a positive operator.
 
 \section{Polar Decomposition}
-We call (\ref{eq:polar_decomposition}) the polar decomposition, and while Axler's analogy motivates it well, we still need to prove that it exists. Note in the decomposition of the complex number, our element of the unit circle was easy to find ($\frac{z}{\norm{z}}$). For operators, our proof will be an existence proof that an isometry $S$ exists.
+We call (\ref{eq:polar_decomposition}) the polar decomposition, and while Axler's analogy motivates it well, we still need to prove that it exists. Note in the decomposition of the complex number, our element of the unit circle was easy to find ($\frac{z}{\abs{z}}$). For operators, our proof will be an existence proof that an isometry $S$ exists.
 
 \subsection{Proof}
 Let's begin by deriving a useful relationship between the norm of $T$ and the norm of $\sqrt{T^*T}$. Note that Exercise 7.C(4) allows us to state $T^*T$ is a positive operator, and following Theorem 7.36 (`Each positive operator has only one positive square root'), $\sqrt{T^*T}$ is the unique positive operator of $T^*T$; therefore, $T^*T=\sqrt{T^*T}\sqrt{T^*T}$. Thus, if $v\in V$, then
 \begin{align*}
-    \norm{Tv}^2=\innerprod{Tv,TV}&=\innerprod{T^*Tv,v} \\
+    \norm{Tv}^2=\innerprod{Tv,Tv}&=\innerprod{T^*Tv,v} \\
     &= \innerprod{\sqrt{T^*T}\sqrt{T^*T}v,v} \\
     &= \innerprod{\sqrt{T^*T}v,\sqrt{T^*T}v} \\
     &= \norm{\sqrt{T^*T}v}^2
@@ -84,7 +84,7 @@ We eventually want to show that $S_1$ is an isometry and can be extended to an i
     &=\norm{\sqrt{T^*T}v_1-\sqrt{T^*T}v_2}\\
     &=0.
 \end{align*}
-Hence, the same inputs imply the same outputs, so $S_1$ is well-defined. But even if $S_1$ is well-defined, is it a linear map? Let's test of additivity and homogeneity.
+Hence, the same inputs imply the same outputs, so $S_1$ is well-defined. But even if $S_1$ is well-defined, is it a linear map? Let's test for additivity and homogeneity.
 
 \textbf{Additivity:} Suppose $u,w\in\operatorname{range}\sqrt{T^*T}$. This implies there exist $u_0,w_o\in V$ such that $u=\sqrt{T^*T}u_0$ and $w=\sqrt{T^*T}w_0$. Hence we can write
 \begin{align*}
@@ -103,12 +103,63 @@ Hence, the same inputs imply the same outputs, so $S_1$ is well-defined. But eve
 \end{align*}
 Cool. Now we know $S_1$ is a well-defined, linear map.
 
-Before we expand $S_1$ to an isometry on $S$, note that (\ref{eq:norm_relationship}) and (\ref{eq:s_one}) imply
-\[\norm{S_1 u}=\norm{S_1(\sqrt{T^*T}u_0)}=\norm{Tu_0}=\norm{\sqrt{T^*T}u_0}=\norm{u}\]
-for all $u\in\operatorname{range}\sqrt{T^*T}$ where $u=\sqrt{T^*T}u_0$. Just for clarity, we have
+To show that $S_1$ is an isometry, note that (\ref{eq:norm_relationship}) and (\ref{eq:s_one}) imply
 \begin{equation}\label{eq:norm_relation_s_one}
-    \norm{S_1 u}=\norm{u}
+\norm{S_1 u}=\norm{S_1(\sqrt{T^*T}u_0)}=\norm{Tu_0}=\norm{\sqrt{T^*T}u_0}=\norm{u}
+\end{equation}
+for all $u\in\operatorname{range}\sqrt{T^*T}$ where $u=\sqrt{T^*T}u_0$. Hence $S_1$ is an isometry.
+
+At this point, we know $S_1$ is a well-defined funciton, a linear map, and an isometry. Now let's show that $S_1$ is an isomorphism from $\operatorname{range}\sqrt{T^*T}$ onto $\operatorname{range}T$. Clearly (\ref{eq:s_one}) implies that $\operatorname{range}S_1=\operatorname{range}T$ and $S_1$ is surjective. 
+
+To show that $S_1$ is injective, suppose there exists $u\in \operatorname{range}\sqrt{T^*T}$ such that $S_1(u)=0$. This implies there exists $v\in V$ such that $\sqrt{T^*T}v=u$ and $S_1(\sqrt{T^*T}v)=0$. Hence, it follows that $Tv=0$. Via (\ref{eq:norm_relationship}), we can write
+\[0=\norm{Tv}=\norm{\sqrt{T^*T}v}=\norm{u}.\]
+Via the \textbf{definiteness} property of inner products, $u=0$. Therefore, it follows that $\operatorname{nul}S_1=\{0\}$ and $S_1$ is injective.
+
+Hence, $\operatorname{range}\sqrt{T^*T}$ and $\operatorname{range}T$ isomorphic, and via Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic'), we can write
+\begin{equation}\label{eq:dim_relationship}
+    \operatorname{dim}\operatorname{range}\sqrt{T^*T}=\operatorname{dim}\operatorname{range}T.
+\end{equation}
+Now let's think back to Theorem 6.50 (`Dimension of the orthogonal complement') that states $\operatorname{dim}U=\operatorname{dim}V-\operatorname{dim}U^\bot$. Thus, following (\ref{eq:dim_relationship}), we can write
+\begin{align*}
+    \operatorname{dim}V-\operatorname{dim}(\operatorname{range}\sqrt{T^*T})^\bot&=\operatorname{dim}V-\operatorname{dim}(\operatorname{range}T)^\bot\\
+    \operatorname{dim}(\operatorname{range}\sqrt{T^*T})^\bot&=\operatorname{dim}(\operatorname{range}T)^\bot
+\end{align*}
+
+Now we can start to construct an isometry $S$ on $V$ by extending $S_1$ to $(\operatorname{range}\sqrt{T^*T})^\bot$. Let's start by Theorem 6.34 (`Existence of orthonormal basis') to choose orthonormal bases $e_1\ldots,e_m$ on $(\operatorname{range}\sqrt{T^*T})^\bot$ and $f_1,\ldots,f_m$ on $(\operatorname{range}T)^\bot$. Via our best friend and colleague Theorem 3.5 (`Linear maps and basis of domain'), we can define a linear map $S_2\in\mathcal{L}((\operatorname{range}\sqrt{T^*T})^\bot,(\operatorname{range}T)^\bot)$ by
+\begin{equation}\label{eq:s_two}
+    S_2(a_1e_1+\cdots+a_me_m)=a_1f_1+\cdots+a_mf_m.
+\end{equation}
+Via Theorem 6.25 (`The norm of an orthonormal linear combination'), for $w\in((\operatorname{range}\sqrt{T^*T})^\bot)$ we can write
+\begin{equation*}
+    \norm{w}^2=\norm{a_1e_1+\cdots+a_me_m}^2=\abs{a_1}^2+\cdots+\abs{a_m}^2
+\end{equation*}
+and with (\ref{eq:s_two}), it follows that
+\begin{equation}\label{eq:isometry_s_two}
+    \norm{S_2w}^2=\norm{a_1f_1+\cdots+a_mf_m}^2=\abs{a_1}^2+\cdots+\abs{a_m}^2=\norm{w}^2.
+\end{equation}
+Hence $S_2$ is an isometry.
+
+Are you ready? Let's now construct $S\in\mathcal{L}(V)$ such that $S$ equals $S_1$ on $\operatorname{range}\sqrt{T^*T}$ and equals $S_2$ on $(\operatorname{range}\sqrt{T^*T})^\bot$. More precisely, via Theorem 6.47 (`Direct sum of a subspace and its orthogonal complement'), we know that $V=\operatorname{range}\sqrt{T^*T}\,\oplus\,(\operatorname{range}\sqrt{T^*T})^\bot$; thus, we can uniquely write every $v\in V$ as
+\begin{equation}\label{eq:decomposition_T_T_star}
+    v=u+w
+\end{equation}
+where $u\in\operatorname{range}\sqrt{T^*T}$ and $w\in(\operatorname{range}\sqrt{T^*T})^\bot$. Following our orthogonal decomposition of $v\in V$, let's define $Sv$ by
+\begin{equation}\label{eq:definition_S}
+    Sv=S_1u+S_2w
 \end{equation}
 
+Alright. You can probably guess that $S$ is an isometry from (\ref{eq:norm_relation_s_one}) and (\ref{eq:isometry_s_two}), but let's be explicit. Following (\ref{eq:decomposition_T_T_star}), we know that $u$ and $w$ are orthogonal; hence we can use the Pythagorean Theorem to write $\norm{v}^2=\norm{u}^2+\norm{w}^2$. With a similar logic, we know that $S_1u\in\operatorname{range}T$ and $S_2w\in(\operatorname{range}T)^\bot)$; hence it follows that $\norm{Sv}^2=\norm{S_1u}^2+\norm{S_2w}^2$. Putting it all together, following from (\ref{eq:norm_relation_s_one}) and (\ref{eq:isometry_s_two}), we can write
+\begin{equation*}
+    \norm{Sv}^2=\norm{S_1u}^2+\norm{S_2w}^2=\norm{u}^2+\norm{w}^2=\norm{v}^2
+\end{equation*}
+and $S$ is an isometry.
+
+To end this proof, let's show that $T=S(\sqrt{T^*T})$. For every $v\in V$, it follows that
+\[S(\sqrt{T^*T}v)=S_1(\sqrt{T^*T}v)=Tv.\]
+This can be initially confusing because we didn't include $S_2$. However, let's think about the vector $\sqrt{T^*T}v$. Clearly $\sqrt{T^*T}v\in\operatorname{range}\sqrt{T^*T}$; hence our decomposition (\ref{eq:decomposition_T_T_star}) becomes
+\[\sqrt{T^*T}v=\sqrt{T^*T}v+0.\]
+Thus, we can more explicitly use (\ref{eq:definition_S}) to write the following
+\[S(\sqrt{T^*T}v)=S_1(\sqrt{T^*T}v)+S_2(0)=Tv+0=Tv\]
+for all $v\in V$, which was to be shown.
 
 \end{document}
