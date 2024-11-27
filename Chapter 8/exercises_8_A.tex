@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 8.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Generalized eigenvectors of $T(w,z)=(z,0)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathbf{C}^2)$ by
+\[T(w,z)=(z,0).\]
+Find all generalized eigenvectors of $T$.
+
+\subsection*{Solution}
+First, let's find the eigenvalues. We have
+\begin{align*}
+    (z,0)&=T(w,z)\\
+    &=\lambda (w,z)
+\end{align*}
+implying $z=0$ and $\lambda=0$. Hence our only eigenvalue is $\lambda=0$.
+
+To find the generalized eigenvectors, we can use Theorem 8.11 (`Description of generalized eigenspaces') and find a basis of $\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}$. We have
+\[(T-0I)^2(w,z)=T^2(w,z)=(0,0).\]
+Hence $(1,0),(0,1)\in\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}=G(\lambda,T)$ where $\lambda=0$. Therefore $(1,0),(0,1)$ are all the generalized eigenvetors of $T$.
+
+If we want to be pedantic, we could use Theorem 8.23 (`A basis of generalized eigenvectors') to say that $T$ has exactly two generalized eigenvectors. Since we found two eigenvectors, then we know that we've found all of them.
+
+\clearpage
+
+\section{Generalized eigenspaces of $T(w,z)=(-z,w)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathbf{C}^2)$ by
+\[T(w,z)=(-z,w).\]
+Find the generalized eigenspaces corresponding to the distinct eigenvalues of $T$.
+
+\subsection*{Solution}
+First, let's find the eigenvalues of $T$. Note that $T$ is the same operator in Example 5.8. But for the sake of completeness, we have
+\begin{align*}
+    (-z,w)&=T(w,z)\\
+    &=\lambda (w,z)
+\end{align*}
+with $-z=\lambda w$ and $w=\lambda z$. Hence it follows that $-z=\lambda^2z$ and $-1=\lambda^2$. Therefore the eigenvalues of $T$ are $\lambda=i$ and $\lambda=-i$.
+
+To find the generalized eigenspaces of $T$, we can use Theorem 8.11 (`Description of generalized eigenspaces') to find $G(\lambda,T)=\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}$.
+
+$\lambda=i$: To compute $\operatorname{null}(T-i I)^{2}$, we have
+\begin{align*}
+    (T-i I)^{2}(w,z)&=(T^2-2iT-I)(w,z)\\
+    &=(-w,-z)+(2iz,-2iw)+(-w,-z)\\
+    &=(-2(w-iz),-2(z+iw)).
+\end{align*}
+It follows that $(x,-ix)\in\operatorname{null}(T-i I)^{2}$ for $x\in\mathbf{C}$ since 
+\[(T-i I)^{2}(x,-ix)=(-2(x-i(-ix)),-2(-ix+ix))=(0,0)\]
+Hence, we have $G(i,T)=\{(x,-ix):x\in\mathbf{C}\}$.
+
+$\lambda=-i$: To compute $\operatorname{null}(T+i I)^{2}$, we have
+\begin{align*}
+    (T+i I)^{2}(w,z)&=(T^2+2iT-I)(w,z)\\
+    &=(-w,-z)+(-2iz,2iw)+(-w,-z)\\
+    &=(-2(w+iz),-2(z-iw)).
+\end{align*}
+It follows that $(x,ix)\in\operatorname{null}(T+i I)^{2}$ for $x\in\mathbf{C}$ since 
+\[(T+i I)^{2}(x,ix)=(-2(x+i^2x),-2(ix-ix))=(0,0)\]
+Hence, we have $G(-i,T)=\{(x,ix):x\in\mathbf{C}\}$.
+
+
+\end{document}
