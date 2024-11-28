@@ -72,5 +72,74 @@ It follows that $(x,ix)\in\operatorname{null}(T+i I)^{2}$ for $x\in\mathbf{C}$ s
 \[(T+i I)^{2}(x,ix)=(-2(x+i^2x),-2(ix-ix))=(0,0)\]
 Hence, we have $G(-i,T)=\{(x,ix):x\in\mathbf{C}\}$.
 
+\clearpage
 
-\end{document}
+\section{$T$ is invertible. Prove $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$.}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ is invertible. Prove that $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$.
+
+\subsection*{Solution}
+Let's consider two separate cases: $\lambda$ is an eigenvalue and $\lambda$ is not an eigenvalue.\footnote{My proof for ``$\lambda$ is an eigenvalue'' also applies to ``$\lambda$ is not an eigenvalue'', but I'm including it to use in Exercise 5.C(4).}
+
+\subsubsection*{$\lambda$ is not an eigenvalue}
+If $\lambda$ is not an eigenvalue, then via Theorem 5.6 (`Equivalent conditions to be an eigenvalue'), $T-\lambda I$ is in injective. Hence, we have
+\[\{0\}=\operatorname{null}(T-\lambda I)^0=\operatorname{null}(T-\lambda I)^1\]
+and via Theorem 8.3 (`Equality in the sequence of null spaces') and Theorem 8.11 (`Description of generalized eigenspaces'), we also have
+\[\{0\}=\operatorname{null}(T-\lambda I)^1=\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}=G(\lambda,T).\]
+
+Note that Exercise 5.C(9) allows us to state that if $T$ is invertible, then $E(\lambda,T)=E(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$. It now follows that 
+\[\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^0=\{0\}=\operatorname{null}(T-\lambda I)^1=\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^1\]
+and, like before, Theorem 8.3 and Theorem 8.11, we have
+\[\{0\}=\operatorname{null}(T^{-1}-\lambda I)^1=\operatorname{null}(T^{-1}-\lambda I)^{\operatorname{dim}V}=G(\frac{1}{\lambda},T^{-1}).\]
+Hence, when $\lambda$ is not an eigenvalue, then $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$.
+
+\subsubsection*{$\lambda$ is an eigenvalue}
+Suppose $\lambda$ is an eigenvalue and $v\in G(\lambda,T)$. Thus there is a positive integer $j$ such that $v\in\operatorname{null}(T-\lambda I)^j$ and we can write 
+\[(T-\lambda I)^jv=0.\]
+Applying $(-\frac{T^{-1}}{\lambda})^{j}$ to both sides, we have
+\begin{align*}
+    (-\frac{T^{-1}}{\lambda})^{j}(T-\lambda I)^jv&=(-\frac{T^{-1}}{\lambda})^{j}0 \\
+    (-\frac{T^{-1}}{\lambda}T+\lambda\frac{T^{-1}}{\lambda}I)^jv&=0\\
+    (T^{-1}-\frac{1}{\lambda}I)^jv&=0
+\end{align*}
+where $T^{-1}T=I$ via the definition of invertible operators. Hence, $v\in\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^j$ and $v\in G(\frac{1}{\lambda},T^{-1})$. It follows that $G(\lambda,T)\subset G(\frac{1}{\lambda},T^{-1})$.
+
+To complete the equality and show $G(\frac{1}{\lambda},T^{-1})\subset G(\lambda,T)$, we can repeat the process above and instead apply $(-\lambda T)^j$ to both sides.
+
+\section{Suppose $\alpha\neq\beta$. Prove $G(\alpha,T)\cap G(\beta,T)=\{0\}$.}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $\alpha,\beta\in\mathbf{F}$ with $\alpha\neq\beta$. Prove that
+\[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
+
+\subsection*{Solution}
+Following our proof for \textbf{$\lambda$ is not an eigenvalue} in Exercise 8.A(3), if $\lambda$ is not an eigenvalue of $T$, then $G(\lambda,T)=\{0\}$. Hence, if either $\alpha$ or $\beta$ is not an eigenvalue, then
+\[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
+
+Things only get interesting if both $\alpha$ and $\beta$ are eigenvalues. 
+
+Suppose $\alpha$ and $\beta$ are distinct eigenvalues of $T$ and $v\in G(\alpha,T)\cap G(\beta,T)$. Now let's do a simple proof by contradiction. Suppose $v\neq 0$. It follows that $v$ is a generalized eigenvector corresponding to both $\alpha$ and $\beta$. Hence, the list $v,v$ of generalized eigenvectors corresponding to the list $\alpha,\beta$ of eigenvalues of $T$ is linearly dependent. This is a contradiction of Theorem 8.13 (`Linearly independent generalized eigenvectors'); thus, $v=0$. Therefore, we have
+\[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
+
+\clearpage
+
+\section{If $v\in\operatorname{null}T^m$, then $v,Tv,T^2v,\ldots,T^{m-1}v$ is l.i.}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$, $m$ is a positive integer, and $v\in V$ is such that $T^{m-1}v\neq 0$ but $T^mv=0$. Prove that
+\[v,Tv,T^2v,\ldots,T^{m-1}v\]
+is linearly independent.
+
+\subsection*{Solution}
+Suppose $a_0,a_1,\ldots,a_{m-1}\in\mathbf{F}$ are such that 
+\[0=a_0v+a_1Tv+a_2T^2v+\cdots+a_{m-1}T^{m-1}v.\]
+Now apply $T^{m-1}$ to both sides to get
+\begin{align*}
+    T^{m-1}(0)&=a_0T^{m-1}v+a_1T^mv+a_2T(T^mv)+\cdots+a_{m-1}T^{m-1}(T^mv)\\
+    0&=a_0T^{m-1}v+a_1(0)+a_2T(0)+\cdots+a_{m-1}T^{m-1}(0)\\
+    0&=a_0T^{m-1}v+a_1(0)+a_2(0)+\cdots+a_{m-1}(0)\\
+    0&=a_0T^{m-1}v
+\end{align*}
+Since $T^{m-1}v\neq 0$, it follows that $a_0=0$.
+
+Applying $T^{m-2}$ to both sides, the logic above, and our conclusion that $a_0=0$, allows us to deduce $a_1=0$. Continuing in this fashion, $a_j=0$ for each $j\in\{0,1,\ldots,m-1\}$, which implies $v,Tv,T^2v,\ldots,T^{m-1}v$ is linearly independent.
+
+\end{document}$\be$
