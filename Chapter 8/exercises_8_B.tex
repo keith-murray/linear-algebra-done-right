@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 8.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{If $0$ is only eigenvalue, $N$ is nilpotent}
+\subsection*{Problem statement}
+Suppose $V$ is a complex vector space, $N\in\mathcal{L}(V)$, and $0$ is the only eigenvalue of $N$. Prove that $N$ is nilpotent.
+
+\subsection*{Solution}
+Following Theorem 5.27 (`Over $\mathbf{C}$, every operator has an upper-triangular matrix') and Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), we can infer that $N$ has an upper-triangular matrix $\mathcal{M}(N)$ such that the only entries on the diagonal are zeros. Now we must prove that such a matrix is nilpotent.
+
+Let $v_1,\ldots,v_n$ be the basis associated with $\mathcal{M}(N)$. Clearly $N^1v_1=0$. To prove that $N^j(v_j)=0$ for $j\in\{2,\ldots,n\}$, let's use induction and suppose $N^k(v_k)=0$ for $k<j$. Since $\mathcal{M}(N)$ is upper-triangular and diagonal entries are $0$'s, then it follows that 
+\[N^j(v_j)=N^{j-1}(a_1v_1+\cdots+a_{j-1}v_{j-1})=a_1N^{j-2}(N^1v_1)+\cdots+a_{j-1}N^{j-1}v_{j-1}.\]
+Via our induction hypothesis, it follows that $N^j(v_j)=0$.
+
+To show that $N^{\operatorname{dim}V}=0$, suppose $v\in V$. Given $v_1,\ldots,v_n$ is a basis of $V$, we can write
+\[v=a_1v_1+\cdots+a_nv_n\]
+and applying $N^n$ to both sides (where $N^n=N^{\operatorname{dim}V}$), we have
+\[N^n(v)=a_1N^n(v_1)+\cdots+a_nN^n(v_n)=a_1N^{n-1}(N^1v_1)+\cdots+a_nN^n(v_n)=0\]
+via our reasoning above. Hence, $N^{\operatorname{dim}V}=0$ and $N$ is nilpotent.
+
+\subsection*{Notes}
+This exercise and Exercise 8.A(7) imply that for a complex vector space $V$, $N\in\mathcal{L}(V)$ is nilpotent if and only if $0$ is the only eigenvalue of $N$.
+
+\end{document}
