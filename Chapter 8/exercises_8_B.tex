@@ -21,7 +21,7 @@ Suppose $V$ is a complex vector space, $N\in\mathcal{L}(V)$, and $0$ is the only
 \subsection*{Solution}
 Following Theorem 5.27 (`Over $\mathbf{C}$, every operator has an upper-triangular matrix') and Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), we can infer that $N$ has an upper-triangular matrix $\mathcal{M}(N)$ such that the only entries on the diagonal are zeros. Now we must prove that such a matrix is nilpotent.
 
-Let $v_1,\ldots,v_n$ be the basis associated with $\mathcal{M}(N)$. Clearly $N^1v_1=0$. To prove that $N^j(v_j)=0$ for $j\in\{2,\ldots,n\}$, let's use induction and suppose $N^k(v_k)=0$ for $k<j$. Since $\mathcal{M}(N)$ is upper-triangular and diagonal entries are $0$'s, then it follows that 
+Let $v_1,\ldots,v_n$ be the basis associated with $\mathcal{M}(N)$. Clearly $N^1v_1=0$. To prove that $N^j(v_j)=0$ for $j\in\{2,\ldots,n\}$, let's use induction and suppose $N^k(v_k)=0$ for $k<j$. Since $\mathcal{M}(N)$ is upper-triangular and diagonal entries are $0$'s, it follows that 
 \[N^j(v_j)=N^{j-1}(a_1v_1+\cdots+a_{j-1}v_{j-1})=a_1N^{j-2}(N^1v_1)+\cdots+a_{j-1}N^{j-1}v_{j-1}.\]
 Via our induction hypothesis, it follows that $N^j(v_j)=0$.
 
@@ -33,5 +33,78 @@ via our reasoning above. Hence, $N^{\operatorname{dim}V}=0$ and $N$ is nilpotent
 
 \subsection*{Notes}
 This exercise and Exercise 8.A(7) imply that for a complex vector space $V$, $N\in\mathcal{L}(V)$ is nilpotent if and only if $0$ is the only eigenvalue of $N$.
+
+\clearpage
+
+\section{Eigenvalue $0$ doesn't entail nilpotent over $\mathbf{R}$}
+\subsection*{Problem statement}
+Give an example of an operator $T$ on a finite-dimensional real vector pace such tht $0$ is the only eigenvalue of $T$ but $T$ is not nilpotent.
+
+\subsection*{Solution}
+Suppose $T\in\mathcal{L}(\mathbf{R}^3)$ is defined by
+\[T(z_1,z_2,z_3)=(-z_2,z_1,0).\]
+Clearly $0$ is an eigenvalue since $T(0,0,1)=(0,0,0)$; however, there are no other eigenvalues since the operator is otherwise a rotation in the first and second coordinates. More specifically, for the subspace 
+\[U=\{(z_1,z_2,0)\in\mathbf{R}^3:z_1,z_2\in\mathbf{R}\},\] 
+$T$ is a counterclockwise rotation in $U$.
+
+To show that $T$ is not nilpotent, we need only compute $T^3$ via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is $0$'). Hence, we write
+\begin{align*}
+    T^3(z_1,z_2,z_3)&=T^2(-z_2,z_1,0)\\
+    &=T(-z_1,-z_2,0)\\
+    &=(z_2,-z_1,0).
+\end{align*}
+
+\subsection*{Notes}
+We previously noted that Exercise 8.B(1) and Exercise 8.A(7) imply that for a complex vector space $V$, $N\in\mathcal{L}(V)$ is nilpotent if and only if $0$ is the only eigenvalue of $N$. This exercise shows us that for a real vector space $V$, we can only state that if $N\in\mathcal{L}(V)$ is nilpotent, then $0$ is the only eigenvalue of $N$. This exercise is a counterexample against the other direction.
+
+This result is another implication of the failure of the Fundamental Theorem of Algebra for $\mathbf{R}$.
+
+\clearpage
+
+\section{Multiplicity of eigenvalues for $T$ and $S^{-1}TS$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$. Suppose $S\in\mathcal{L}(V)$ is invertible. Prove that $T$ and $S^{-1}TS$ have the same eigenvalues with the same multiplicities.
+
+\subsection*{Solution}
+This exercise bears a strong resemblance to Exercise 5.A(15) whereby we proved that $T$ and $S^{-1}TS$ have the same eigenvalues and that $v\in V$ is an eigenvector of $S^{-1}TS$ if and only if $Sv$ is an eigenvector of $T$. To show that $T$ and $S^{-1}TS$ have the same multiplicities, we must show 
+\[\operatorname{dim}G(\lambda,T)=\operatorname{dim}G(\lambda,S^{-1}TS)\]
+for all eigenvalues $\lambda$.
+
+Suppose $v\in V$ is a generalized eigenvector of $T$ corresponding to the eigenvalue $\lambda$. Hence, we have $(T-\lambda I)^jv=0$ for some positive integer $j$. Given $S$ is invertible, it follows that $S^{j}$ is invertible\footnote{If one must be convinced of this, note that $\operatorname{range}S$ and $\operatorname{range}S^j$ are equivalent. Since $S$ is surjective, $S^j$ must be as well and is thus invertible.}. If follows that $v\in\operatorname{range}S^j$ and there exists $u\in V$ such that $S^ju=v$ and $S^{-j}v=u$. Now we can write
+\begin{align*}
+    0=S^{-j}(0)&=S^{-j}(T-\lambda I)^jv\\
+    &=S^{-j}(T-\lambda I)^jS^ju\\
+    &=(S^{-1}TS-\lambda S^{-1}IS)u\\
+    &=(S^{-1}TS-\lambda I)u.
+\end{align*}
+Hence $u=S^{-j}v$ is a generalized eigenvector of $S^{-1}TS$.
+
+Suppose $v\in V$ is a generalized eigenvector of $S^{-1}TS$ corresponding to the eigenvalue $\lambda$. Hence, we have $(S^{-1}TS-\lambda I)^jv=0$ for some positive integer $j$. Using similar logic as before, there exists $u\in V$ such that $S^{-j}u=v$. Now we can write
+\begin{align*}
+    0=S^{j}(0)&=S^{j}(S^{-1}TS-\lambda I)^jv\\
+    &=S^{j}(S^{-1}TS-\lambda I)^jS^{-j}u\\
+    &=(SS^{-1}TSS^{-1}-\lambda SIS^{-j})u\\
+    &=(T-\lambda I)u.
+\end{align*}
+Hence $u=S^{j}v$ is a generalized eigenvector of $T$.
+
+To complete the proof, suppose $v_1,\ldots,v_n$ are a basis of $G(\lambda,T)$. Via our work above, it follows that $S^{-j}v_1,\ldots,S^{-j}v_n$ is linearly independent and $S^{-j}v_1,\ldots,S^{-j}v_n\in G(\lambda,S^{-1}TS)$. To show $S^{-j}v_1,\ldots,S^{-j}v_n$ spans $G(\lambda,S^{-1}TS)$, suppose $u\in G(\lambda,S^{-1}TS)$. Via our work above, $S^ju\in G(\lambda,T)$ and there exist $a_1,\ldots a_n$ such that 
+\[S^ju=a_1v_1+\cdots +a_nv_n.\]
+Applying $S^{-j}$ to both sides, we have
+\[u=a_1S^{-j}v_1+\cdots +a_nS^{-j}v_n\]
+and it follows that $u\in\operatorname{span}(S^{-j}v_1,\ldots,S^{-j}v_n)$. Hence $S^{-j}v_1,\ldots,S^{-j}v_n$ is a basis of $G(\lambda,S^{-1}TS)$ and it follows that 
+\[\operatorname{dim}G(\lambda,T)=n=\operatorname{dim}G(\lambda,S^{-1}TS).\]
+Therefore, $T$ and $S^{-1}TS$ have the same eigenvalues with the same multiplicities.
+
+\clearpage
+
+\section{Distinct eigenvalues when $\operatorname{null}T^{n-2}\neq\operatorname{null}T^{n-1}$}
+\subsection*{Problem statement}
+Suppose $V$ is an $n$-dimensional complex vector space and $T$ is an operator on $V$ such that $\operatorname{null}T^{n-2}\neq\operatorname{null}T^{n-1}$. Prove that $T$ has at most two distinct eigenvalues.
+
+\subsection*{Solution}
+
+
+
 
 \end{document}
