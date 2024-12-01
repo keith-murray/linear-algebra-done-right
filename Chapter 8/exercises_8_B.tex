@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{epigraph}
 \usepackage{csquotes}
@@ -96,15 +97,60 @@ and it follows that $u\in\operatorname{span}(S^{-j}v_1,\ldots,S^{-j}v_n)$. Hence
 \[\operatorname{dim}G(\lambda,T)=n=\operatorname{dim}G(\lambda,S^{-1}TS).\]
 Therefore, $T$ and $S^{-1}TS$ have the same eigenvalues with the same multiplicities.
 
-\clearpage
-
 \section{Distinct eigenvalues when $\operatorname{null}T^{n-2}\neq\operatorname{null}T^{n-1}$}
 \subsection*{Problem statement}
-Suppose $V$ is an $n$-dimensional complex vector space and $T$ is an operator on $V$ such that $\operatorname{null}T^{n-2}\neq\operatorname{null}T^{n-1}$. Prove that $T$ has at most two distinct eigenvalues.
+Suppose $V$ is an $n$-dimensional complex vector space and $T$ is an operator on $V$ such that $\operatorname{null}T^{n-2}\neq\operatorname{null}T^{n-1}$. 
+Prove that $T$ has at most two distinct eigenvalues.
 
 \subsection*{Solution}
+Let's first note that $T$ is not injective and $0$ is an eigenvalue. 
+If $T$ were injective, then $\{0\}=\operatorname{null}T^0=\operatorname{null}T^1$, and via Theorem 8.3 (`Equality in the sequence of null spaces'), it would follow that $\operatorname{null}T^{n-2}=\operatorname{null}T^{n-1}$ which is a contradiction.
 
+Let's now think about $\operatorname{dim}\operatorname{null}T^{n-1}$. 
+Following from the proof of Theorem 8.4 (`Null spaces stop growing'), we have
+\[\{0\}=\operatorname{null}T^0\subsetneq\operatorname{null}T^1\subsetneq\cdots\operatorname{null}T^{n-2}\subsetneq\operatorname{null}T^{n-1}\]
+where at each of the strict inclusions in the chain above, the dimension increases by at least 1. Hence, we have
+\[n-1\leq\operatorname{dim}\operatorname{null}T^{n-1}\leq\operatorname{dim}\operatorname{null}(T-0I)^{n}=\operatorname{dim}G(0,T).\]
+Thus, the multiplicity of $0$ is either $n-1$ or $n$.
 
+If the multiplicity of $0$ is $n-1$, then Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$') implies another distinct eigenvalue exists with a multiplicity of $1$ and $T$ has two distinct eigenvalues. 
+If the multiplicity of $0$ is $n$, then Theorem 8.26 implies $0$ is the only eigenvalue and $T$ has one distinct eigenvalues. 
+Therefore, $T$ has at most two distinct eigenvalues.
+
+\clearpage
+
+\section{Basis of eigenvectors iff they are generalized}
+\subsection*{Problem statement}
+Suppose $V$ is a complex vector space and $T\in\mathcal{L}(V)$. 
+Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if every generalized eigenvector of $T$ is an eigenvector of $T$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $V$ has a basis consisting of eigenvectors of $T$. Via Theorem 5.41 (`Conditions equivalent to diagonalizability'), it follows that 
+\begin{equation}\label{eq:eigenspace_direct_sum}
+    V=E(\lambda_1,T)\oplus\cdots\oplus E(\lambda_m,T).
+\end{equation}
+The definition of generalized eigenspace (Definition 8.10) implies 
+\newline
+$E(\lambda_j,T)\subset G(\lambda_j,T)$, hence we have $\operatorname{dim}E(\lambda_j,T)\leq \operatorname{dim}G(\lambda_j,T)$. 
+
+To show that the inequality is an equality, let's first note that from Theorem 8.21 (`Description of operators on complex vector spaces') we can write
+\begin{equation}\label{eq:g_eigenspace_direct_sum}
+    V=G(\lambda_1,T)\oplus\cdots\oplus G(\lambda_m,T).
+\end{equation}
+Suppose $\operatorname{dim}E(\lambda_j,T)< \operatorname{dim}G(\lambda_j,T)$. 
+It follows that there exists $v\in V$ such that $v\notin E(\lambda_j,T)$ and $v\in G(\lambda_j,T)$. 
+Our direct sum (\ref{eq:eigenspace_direct_sum}) implies that 
+\[v=a_1v_1+\cdots+a_{j-1}v_{j-1}+0(v_j)+a_{j+1}v_{j+1}+\cdots+a_mv_m\]
+where $v_k\in E(\lambda_k,T)$. Given $E(\lambda_j,T)\subset G(\lambda_j,T)$, that decomposition is also a valid decomposition in (\ref{eq:g_eigenspace_direct_sum}).
+However, since $v\in G(\lambda_j,T)$, direct sum (\ref{eq:g_eigenspace_direct_sum}) implies that
+\[v=0(v_1)+\cdots+0(v_{j-1})+a_jv_j+0(v_{j+1})+\cdots+0(v_m)\]
+where $a_j\neq 0$ and $v_j\neq 0$\footnote{Note that $v\notin E(\lambda_j,T)$ implies that $v\neq 0$.}. Hence we have two different representations of $v$ and (\ref{eq:g_eigenspace_direct_sum}) is not a direct sum, leading to a contradiction. 
+
+Thus, $\operatorname{dim}E(\lambda_j,T)=\operatorname{dim}G(\lambda_j,T)$, and since $E(\lambda_j,T)\subset G(\lambda_j,T)$, it follows that $E(\lambda_j,T)=G(\lambda_j,T)$. Therefore, every generalized eigenvector of $T$ is an eigenvector of $T$.
+
+\subsubsection*{Second Direction}
+Suppose every generalized eigenvector of $T$ is an eigenvector of $T$. Unlike the complexity of the \textbf{First Direction}, it clearly follows from Theorem 8.23 (`A basis of generalized eigenvectors') that $V$ has a basis consisting of eigenvectors of $T$.
 
 
 \end{document}
