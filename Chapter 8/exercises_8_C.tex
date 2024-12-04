@@ -85,7 +85,7 @@ Give an example of an operator on $\mathbf{C}^4$ whose characteristic polynomial
 \subsection*{Solution}
 Consider the operator $T\in\mathcal{L}(\mathbf{C}^4)$ defined by
 \begin{equation*}
-T(z_1,z_2,z_3,z_4)=(z_1,5z_2+z_3,5z_3,z5_4).
+T(z_1,z_2,z_3,z_4)=(z_1,5z_2+z_3,5z_3,5z_4).
 \end{equation*}
 The matrix of $T$ with respect to the standard basis is
 \begin{equation*}
@@ -96,6 +96,136 @@ The matrix of $T$ with respect to the standard basis is
 0 & 0 & 0 & 5
 \end{pmatrix}.
 \end{equation*}
-Via Theorem 5.32
+Via Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), the eigenvalues of $T$ are $1$ and $5$. 
+To assess their multiplicities, let's note that $(1,0,0,0)$ is an eigenvector corresponding to $1$ and $(0,1,0,0),(0,0,0,1)$ are eigenvectors corresponding to $5$. 
+
+To show that the multiplicity of the eigenvalue $1$ is $1$ and $5$ is $3$, we can show that $(0,0,1,0)$ is a generalized eigenvector via
+\[(T-5I)^2(0,0,1,0)=(T-5I)(0,1,0,0)=(0,5,0,0)-(0,5,0,0)=0.\]
+Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(1,T)=1$ and $\operatorname{dim}G(5,T)=3$. Thus, by the definition of characteristic polynomials (Definition 8.34), $(z-1)(z-5)^3$ is the characteristic polynomial of $T$.
+
+To show that the minimal polynomial of $T$ equals $(z-1)(z-5)^2$, we can use a similar method as used in Example 8.50 and Example 8.51 to compute both $(T-I)(T-5I)$ and $(T-1)(T-5)^2$. Focusing on $(T-I)(T-5I)$ first, for $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
+\begin{align*}
+    (T-I)(T-5I)(z_1,z_2,z_3,z_4)=(T-I)(-4z_1,z_3,0,0)=(0,4z_3,0,0)
+\end{align*}
+and hence, $(T-I)(T-5I)\neq 0$. 
+Shifting our attention to $(T-1)(T-5)^2$, for $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
+\begin{align*}
+    (T-I)(T-5I)^2(z_1,z_2,z_3,z_4)&=(T-I)(T-5I)(-4z_1,z_3,0,0)\\
+    &=(T-I)(16z_1,0,0,0)\\
+    &=(0,0,0,0)
+\end{align*}
+and hence, $(T-1)(T-5)^2 =0$. Therefore, the minimal polynomial of $T$ equals $(z-1)(z-5)^2$.
+
+\clearpage
+
+\section{Same characteristic and minimal polynomials}
+\subsection*{Problem statement}
+Give an example of an operator on $\mathbf{C}^4$ whose characteristic polynomial and minimal polynomial equals $z(z-1)^2(z-3)$.
+
+\subsection*{Solution}
+Consider the operator $T\in\mathcal{L}(\mathbf{C}^4)$ defined by
+\begin{equation*}
+T(z_1,z_2,z_3,z_4)=(0,z_2+z_3,z_3,3z_4).
+\end{equation*}
+The matrix of $T$ with respect to the standard basis is
+\begin{equation*}
+\begin{pmatrix}
+0 & 0 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 3
+\end{pmatrix}.
+\end{equation*}
+Via Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), the eigenvalues of $T$ are $0,1,3$. 
+To assess their multiplicities, let's note that $(1,0,0,0)$ is an eigenvector corresponding to $0$, $(0,1,0,0)$ is an eigenvector corresponding to $1$, and $(0,0,0,1)$ is an eigenvector corresponding to $3$. 
+
+To show that the multiplicity of the eigenvalue $1$ is $2$, we can show that $(0,0,1,0)$ is a generalized eigenvector via
+\[(T-I)^2(0,0,1,0)=(T-I)(0,1,0,0)=(0,1,0,0)-(0,1,0,0)=0.\]
+Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(0,T)=1$, $\operatorname{dim}G(1,T)=2$, and $\operatorname{dim}G(1,T)=1$. Thus, by the definition of characteristic polynomials (Definition 8.34), $z(z-1)^2(z-3)$ is the characteristic polynomial of $T$.
+
+To show that $z(z-1)^2(z-3)$ is also the minimal polynomial, we need only show that $T(T-I)(T-3I)\neq 0$, since it is the only polynomial with degree less than the characteristic polynomial and with only zeros of the eigenvalues of $T$ (following from Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial')). 
+For $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
+\begin{align*}
+    T(T-I)(T-3I)(z_1,z_2,z_3,z_4)&=T(T-I)(-3z_1,-2z_2+z_3,-2z_3,0)\\
+    &=T(3z_1,-2z_3,0,0)\\
+    &=(0,-2z_3,0,0)
+\end{align*}
+and hence, $T(T-I)(T-3I)\neq 0$. 
+
+\clearpage
+
+\section{Tweak on Exercise 8.C(5)}
+\subsection*{Problem statement}
+Give an example of an operator on $\mathbf{C}^4$ whose characteristic polynomial equals $z(z-1)^2(z-3)$ and minimal polynomial equals $z(z-1)(z-3)$.
+
+\subsection*{Solution}
+We can slightly tweak our solution for Exercise 8.C(5). 
+Consider the operator $T\in\mathcal{L}(\mathbf{C}^4)$ defined by
+\begin{equation*}
+T(z_1,z_2,z_3,z_4)=(0,z_2,z_3,3z_4).
+\end{equation*}
+The matrix of $T$ with respect to the standard basis is
+\begin{equation*}
+\begin{pmatrix}
+0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 3
+\end{pmatrix}.
+\end{equation*}
+The eigenvalues of $T$ are clearly $0,1,3$, where $0$ has eigenvector $(1,0,0,0)$, $1$ has eigenvectors $(0,1,0,0),(0,0,1,0)$, and $3$ has eigenvectors $(0,0,0,1)$. 
+
+These eigenvectors form a basis of $\mathbf{C}^4$, therefore, by Exercise 8.B(5), every generalized eigenvector of $T$ is an eigenvector of $T$. 
+It follows that the multiplicities of the eigenvalues $0,1,3$ are $1,2,1$ respectively. Hence, the characteristic polynomial of $T$ is $z(z-1)^2(z-3)$.
+
+Unlike Exercise 8.C(5), we can show that $T(T-I)(T-3I)=0$. 
+For $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
+\begin{align*}
+    T(T-I)(T-3I)(z_1,z_2,z_3,z_4)&=T(T-I)(-3z_1,-2z_2,-2z_3,0)\\
+    &=T(3z_1,0,0,0)\\
+    &=(0,0,0,0).
+\end{align*}
+Hence, the minimal polynomial of $T$ equals $z(z-1)(z-3)$.
+
+\clearpage
+
+\section{Characteristic polynomial of $P^2=P$}
+\subsection*{Problem statement}
+Suppose $V$ is a complex vector space. Suppose $T\in\mathcal{L}(V)$ is such that \newline
+$P^2=P$. 
+Prove that the characteristic polynomial of $P$ is $z^m(z-1)^n$, where \newline
+$m=\operatorname{dim}\operatorname{null}P$ and $n=\operatorname{dim}\operatorname{range}P$.
+
+\subsection*{Solution}
+First, let's show that $0$ and $1$ are the only possible eigenvalues. Suppose $\lambda$ is an eigenvalue of $P$. It follows that there exists an eigenvector $v\in V$ such that $P=\lambda v$. Given that $P^2=P$, we can write
+\begin{equation}
+    \lambda v=Pv=P^2v=\lambda^2v
+\end{equation}
+implying that $\lambda=0$ or $\lambda=1$.
+
+If we can prove that the multiplicity of $\lambda=0$ is $\operatorname{dim}\operatorname{null}P$, then Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$') implies that the multiplicity of $\lambda=1$ is $\operatorname{dim}V-\operatorname{dim}\operatorname{null}P$, which equals $\operatorname{dim}\operatorname{range}P$ via our best friend, the Fundamental Theorem of Linear Maps.
+
+We know that $\operatorname{dim}G(0,P)\geq \operatorname{dim}E(0,P)=\operatorname{dim}\operatorname{null}P$, so suppose that \newline $\operatorname{dim}G(0,P)> \operatorname{dim}\operatorname{null}P$. 
+This implies $\operatorname{null}P^2\neq\operatorname{null}P$, hence there exists a vector $v\in\operatorname{range}P$ such that $Pv=0$ and $v\neq 0$. 
+However, since $v\in\operatorname{range}P$, there must exists $u\in V$ such that $Pu=v$ and we obtain a contradiction since $Pu=v$ and $P^2u=0$. 
+Thus, it follows that $\operatorname{dim}G(0,P)=\operatorname{dim}\operatorname{null}P$.
+
+Therefore, the multiplicity of $\lambda=0$ is $m=\operatorname{dim}\operatorname{null}P$ and the multiplicity of $\lambda=1$ is $n=\operatorname{dim}\operatorname{range}P$. Hence the characteristic polynomial of $P$ is $z^m(z-1)^n$.
+
+\clearpage
+
+\section{Nonzero constant term in minimal polynomial}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L(V)}$. Prove that $T$ is invertible if an only if the constant term in the minimal polynomial of $T$ is nonzero.
+
+\subsection*{Solution}
+Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial') implies that $0$ is an eigenvalue if and only if $z$ is a factor of the minimal polynomial.
+
+\subsubsection{First Direction}
+Suppose $T$ is invertible. It follows that $0$ is not an eigenvalue because $Tv=0(v)$ only for $v=0$. Hence $z$ is not a factor of the minimal polynomial and the constant term of the minimal polynomial is nonzero.
+
+\subsubsection{Second Direction}
+Suppose the constant term in the minimal polynomial of $T$ is nonzero. It follows that $z$ is not a factor of the minimal polynomial. Hence $0$ is not an eigenvalue and $\operatorname{null}T=E(0,T)=\{0\}$. Thus $T$ is invertible.
+
 
 \end{document}
