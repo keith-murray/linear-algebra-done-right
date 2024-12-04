@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 8.C}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Prove $(T-3I)^2(T-5I)^2(T-8I)^2=0$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{C}^4)$ is such that the eigenvalues of $T$ are $3,5,8$. 
+Prove that $(T-3I)^2(T-5I)^2(T-8I)^2=0$.
+
+\subsection*{Solution}
+Given $3,5,8$ are the only eigenvalues of $T$ and $\operatorname{dim}\mathbf{C}^4=4$, Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$') implies that the multiplicity of one of the eigenvalues must be $2$ and the other multiplicities are $1$. 
+Hence, the characteristic polynomial must be one of
+\begin{align*}
+    q(z)&=(z-3)^2(z-5)(z-8),\\
+    q(z)&=(z-3)(z-5)^2(z-8),\\
+    q(z)&=(z-3)(z-5)(z-8)^2.
+\end{align*}
+
+Since the characteristic polynomial is a multiple of the minimal polynomial (Theorem 8.48) and $(z-3)^2(z-5)^2(z-8)^2$ is a polynomial multiple of all three possible characteristic polynomials, it follows that 
+\newline
+$(z-3)^2(z-5)^2(z-8)^2$ is a polynomial multiple of the minimal polynomial. 
+Thus, Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomial') implies that $(T-3I)^2(T-5I)^2(T-8I)^2=0$.
+
+\clearpage
+
+\section{Prove $(T-5I)^{n-1}(T-6I)^{n-1}=0$}
+\subsection*{Problem statement}
+Suppose $V$ is a complex vector space. 
+Suppose $T\in\mathcal{L}(V)$ is such that $5$ and $6$ are eigenvalues of $T$ and that $T$ has no other eigenvalues. Prove that 
+\newline
+$(T-5I)^{n-1}(T-6I)^{n-1}=0$, where $n=\operatorname{dim}V$.
+
+\subsection*{Solution}
+This proof will resemble our proof for Exercise 8.C(1). 
+
+Given $5$ and $6$ are the only eigenvalues of $T$ and $\operatorname{dim}V=n$, Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$') implies that the multiplicities of eigenvalues $5$ and $6$ must add up to $n$. 
+Hence, the characteristic polynomial must be one of 
+\begin{gather*} 
+    q(z)=(z-5)^{n-1}(z-6)^1,\\
+    q(z)=(z-5)^{n-2}(z-6)^2,\\
+    \vdots\\
+    q(z)=(z-5)^{2}(z-6)^{n-2},\\
+    q(z)=(z-5)^{1}(z-6)^{n-1}.
+\end{gather*}
+
+Since the characteristic polynomial is a multiple of the minimal polynomial (Theorem 8.48) and $(z-5)^{n-1}(z-6)^{n-1}$ is a polynomial multiple of all possible characteristic polynomials, it follows that $(z-5)^{n-1}(z-6)^{n-1}$ is a polynomial multiple of the minimal polynomial. 
+Thus, Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomial') implies that $(T-5I)^{n-1}(T-6I)^{n-1}=0$.
+
+\clearpage
+
+\section{Characteristic polynomial $(z-7)^2(z-8)^2$}
+\subsection*{Problem statement}
+Give an example of an operator on $\mathbf{C}^4$ whose characteristic polynomial equals $(z-7)^2(z-8)^2$.
+
+\subsection*{Solution}
+An operator whose characteristic polynomial equals $(z-7)^2(z-8)^2$ implies that the operator has eigenvalues $7$ and $8$ each with multiplicities of 2. 
+Consider the operator $T\in\mathcal{L}(\mathbf{C}^4)$ defined by
+\[T(z_1,z_2,z_3,z_4)=(7z_1,7z_2,8z_3,8z_4).\]
+The eigenvalues of $T$ are clearly $7$ and $8$, where $7$ has eigenvectors $(1,0,0,0),(0,1,0,0)$ and $8$ has eigenvectors $(0,0,1,0),(0,0,0,1)$. 
+
+These eigenvectors form a basis of $\mathbf{C}^4$, therefore, by Exercise 8.B(5), every generalized eigenvector of $T$ is an eigenvector of $T$. 
+It follows that
+\[\operatorname{dim}G(7,T)=\operatorname{dim}G (8, T) = 2\]
+and the multiplicities of the eigenvalues $7$ and $8$ are 2. Hence, the characteristic polynomial of $T$ is $(z-7)^2(z-8)^2$.
+
+\clearpage
+
+\section{Minimal polynomial $(z-1)(z-5)^2$}
+\subsection*{Problem statement}
+Give an example of an operator on $\mathbf{C}^4$ whose characteristic polynomial equals $(z-1)(z-5)^3$ and whose minimal polynomial equals $(z-1)(z-5)^2$.
+
+\subsection*{Solution}
+Consider the operator $T\in\mathcal{L}(\mathbf{C}^4)$ defined by
+\begin{equation*}
+T(z_1,z_2,z_3,z_4)=(z_1,5z_2+z_3,5z_3,z5_4).
+\end{equation*}
+The matrix of $T$ with respect to the standard basis is
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 5 & 1 & 0\\
+0 & 0 & 5 & 0\\
+0 & 0 & 0 & 5
+\end{pmatrix}.
+\end{equation*}
+Via Theorem 5.32
+
+\end{document}
