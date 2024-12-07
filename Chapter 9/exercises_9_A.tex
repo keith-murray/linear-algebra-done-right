@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{mathdots}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 9.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Prove $V_{\mathbf{C}}$ is a complex vector space}
+\subsection*{Problem statement}
+Prove 9.3.
+
+\subsection*{Solution}
+All we need to do is use Definition 9.3 (`Complexification of $V$, $V_{\mathbf{C}}$') to show that $V_{\mathbf{C}}$ satisfies the condition of a vector space in Definition 1.19 (`vector space').
+
+\subsubsection*{commutativity}
+For $u_1,v_1,u_2,v_2\in V$, we can write
+\begin{multline*}
+(u_1+iv_1)+(u_2+iv_2)=(u_1+u_2)+i(v_1+v_2)\\
+=(u_2+u_1)+i(v_2+v_1)=(u_2+iv_2)+(u_1+iv_1)
+\end{multline*}
+where the first and third equalities come from the definition of addition on $V_{\mathbf{C}}$, and the second equality comes from \textbf{commutativity} on $V$.
+
+\subsubsection*{associativity}
+For $u_1,v_1,u_2,v_2,u_3,v_3\in V$, we can show additive \textbf{associativity} by writing
+\begin{align*}
+    ((u_1+iv_1)+(u_2+iv_2))+(u_3+iv_3)&=((u_1+u_2)+i(v_1+v_2))+(u_3+iv_3)\\
+    &=((u_1+u_2)+u_3)+i((v_1+v_2)+v_3)\\
+    &=(u_1+(u_2+u_3))+i(v_1+(v_2+v_3))\\
+    &=(u_1+iv_1)+((u_2+u_3)+i(v_2+v_3))\\
+    &=(u_1+iv_1)+((u_2+iv_2)+(u_3+iv_3))
+\end{align*}
+where the first, second, fourth, and fifth equalities come from the definition of addition on $V_{\mathbf{C}}$, and the third equality comes from \textbf{associativity} on $V$.
+
+For $a_1,b_1,a_2,b_2\in\mathbf{R}$ and $u,v\in V$, we can show multiplicative \textbf{associativity} by writing
+\begin{align*}
+    ((a_1+b_1i)(a_2+b_2i))(u+iv)&=((a_1a_2-b_1b_2)+(a_1b_2+b_1a_2)i)(u+iv)\\
+    &=((a_1a_2-b_1b_2)u-(a_1b_2+b_1a_2)v)\\
+    &\qquad+i((a_1a_2-b_1b_2)v+(a_1b_2+b_1a_2)u)\\
+    &=(a_1a_2u-b_1b_2u-a_1b_2v-b_1a_2v)\\
+    &\qquad+i(a_1a_2v-b_1b_2v+a_1b_2u+b_1a_2u)\\
+    &=(a_1(a_2u-b_2v)-b_1(a_2v+b_2u))\\
+    &\qquad+i(a_1(a_2v+b_2u)+b_1(a_2u-b_2v))\\
+    &=(a_1+b_1i)((a_2u-b_2v)+i(a_2v+b_2u))\\
+    &=(a_1+b_1i)((a_2+b_2i)(u+iv))
+\end{align*}
+where the first, second, fifth, and sixth equalities come from the definition of complex scalar multiplication on $V_{\mathbf{C}}$; and the third and fourth equalities come from the \textbf{distributive properties} on $V$.
+
+\subsubsection*{additive identity}
+The \textbf{additive identity} is $0+i0$, which we can verify by writing
+\[(u+iv)+(0+i0)=(u+0)+i(v+0)=u+iv\]
+for all $u,v\in V$.
+
+\subsubsection*{additive inverse}
+For $u,v\in V$, the \textbf{additive inverse} of $u+iv$ is simply $-u-iv$, which we can verify by writing
+\[(u+iv)+(-u-iv)=(u-u)+i(v-v)=0+i0.\]
+
+\subsubsection*{multiplicative identity}
+The \textbf{multiplicative identity} is simply $1+0i$, which we can verify by writing
+\[(1+0i)(u+iv)=(1u-0(v))+i(1v+0(u))=u+iv\]
+for all $u,v\in V$.
+
+\subsubsection*{distributive properties}
+For $u_1,v_1,u_2,v_2\in V$ and $a,b\in\mathbf{R}$, we can write
+\begin{align*}
+    (a+bi)((u_1+iv_1)+(u_2+iv_2))&=(a+bi)((u_1+u_2)+i(v_1+v_2))\\
+    &=(a(u_1+u_2)-b(v_1+v_2))\\
+    &\qquad+i(a(v_1+v_2) + b(u_1+u_2))\\
+    &=(au_1+au_2-bv_1-bv_2))\\
+    &\qquad+i(av_1+av_2 + bu_1+bu_2))\\
+    &=(au_1-bv_1)+i(av_1+bu_1)\\
+    &\qquad+(au_2-bv_2)+i(av_2+bu_2)\\
+    &=(a+bi)(u_1+iv_1)+(a+bi)(u_2+iv_2).
+\end{align*}
+For $u,v\in V$ and $a_1,b_1,a_2,b_2\in\mathbf{R}$, we can write
+\begin{align*}
+    ((a_1+b_1i)+(a_2+b_2i))(u+iv)&=((a_1+a_2)+(b_1+b_2)i)(u+iv)\\
+    &=((a_1+a_2)u-(b_1+b_2)v)\\
+    &\qquad+i((a_1+a_2)v+(b_1+b_2)u)\\
+    &=(a_1u+a_2u-b_1v-b_2v)\\
+    &\qquad+i(a_1v+a_2v+b_1u+b_2u)\\
+    &=(a_1u-b_1v)+i(a_1v+b_1u)\\
+    &\qquad+(a_2u-b_2v)+i(a_2v+b_2u)\\
+    &=(a_1+b_1i)(u+iv)+(a_2+b_2i)(u+iv).
+\end{align*}
+
+\clearpage
+
+\section{If $T\in\mathcal{L}(V)$, then $T_{\mathbf{C}}\in\mathcal{L}(V_{\mathbf{C}})$}
+\subsection*{Problem statement}
+Verify that if $V$ is a real vector space and if $T\in\mathcal{L}(V)$, then $T_{\mathbf{C}}\in\mathcal{L}(V_{\mathbf{C}})$.
+
+\end{document}
