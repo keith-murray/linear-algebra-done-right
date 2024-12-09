@@ -100,4 +100,74 @@ For $u,v\in V$ and $a_1,b_1,a_2,b_2\in\mathbf{R}$, we can write
 \subsection*{Problem statement}
 Verify that if $V$ is a real vector space and if $T\in\mathcal{L}(V)$, then $T_{\mathbf{C}}\in\mathcal{L}(V_{\mathbf{C}})$.
 
+\clearpage
+
+\section{Linear independence in $V$ and $V_{\mathbf{C}}$}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space and $v_1,\ldots,v_m\in V$. 
+Prove that $v_1,\ldots,v_m\in V$ is linearly independent in $V_{\mathbf{C}}$ if and only if $v_1,\ldots,v_m\in V$ is linearly independent in $V$.
+
+\clearpage
+
+\section{Spanning list in $V$ and $V_{\mathbf{C}}$}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space and $v_1,\ldots,v_m\in V$. 
+Prove that $v_1,\ldots,v_m\in V$ spans $V_{\mathbf{C}}$ if and only if $v_1,\ldots,v_m\in V$ spans $V$.
+
+\clearpage
+
+\section{$\mathcal{L}(V_{\mathbf{C}})$ is a vector space over $\mathbf{R}$}
+\subsection*{Problem statement}
+Suppose that $V$ is a real vector space and $S,T\in\mathcal{L}(V)$. 
+Show that \newline
+$(S+T)_{\mathbf{C}}=S_{\mathbf{C}}+T_{\mathbf{C}}$ and that $(\lambda T)_{\mathbf{C}}=\lambda T_{\mathbf{C}}$ for every $\lambda\in\mathbf{R}$.
+
+\clearpage
+
+\section{Prove $T_{\mathbf{C}}$ is invertible iff $T$ is invertible}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space and $T\in\mathcal{L}(V)$. Prove that $T_{\mathbf{C}}$ is invertible if and only if $T$ is invertible.
+
+\clearpage
+
+\section{Prove $N_{\mathbf{C}}$ is nilpotent iff $N$ is nilpotent}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space and $N\in\mathcal{L}(V)$. Prove that $N_{\mathbf{C}}$ is nilpotent if and only if $N$ is nilpotent.
+
+\clearpage
+
+\section{Nonreal eigenvalues of $T_{\mathbf{C}}$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{R}^3)$ and $5,7$ are eigenvalues of $T$. Prove that $T_{\mathbf{C}}$ has no nonreal eigenvalues.
+
+\clearpage
+
+\section{$T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent}
+\subsection*{Problem statement}
+Prove there does not exist an operator $T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent.
+
+\subsection*{Solution}
+Suppose there exists some operator $T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent. Via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is $0$'), it follows that $(T^2+T+I)^7=0$ and for the polynomial $q(z)=(z^2+z+1)^7$ that $q(T)=0$. Via Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomial'), we can infer that $q$ is a polynomial multiple of the minimal polynomial of $T$. Via Theorem 9.19 (`Operator on odd-dimensional vector space has eigenvalue'), it follows that $T$ has a real eigenvalue, and via Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial'), that eigenvalue is a zero of the minimal polynomial of $T$.
+
+However, we can see that the polynomial $z^2+z+1$ has no real zeros\footnote{This follows from Theorem 4.16 (`Factorization of a quadratic polynomial') and the simple observation that $1^2\ngeq 4(1)$}. Thus, the polynomial $q(z)=(z^2+z+1)^7$ has no real zeros and cannot be a polynomial multiple of the minimal polynomial of $T$ since the minimal polynomial of $T$ is guaranteed to have a real zero. Therefore, we have a contradiction and it follows that no such operator $T\in\mathcal{L}(\mathbf{R}^7)$ exists such that $T^2+T+I$ is nilpotent.
+
+\clearpage
+
+\section{$T\in\mathcal{L}(\mathbf{C}^7)$ such that $T^2+T+I$ is nilpotent}
+\subsection*{Problem statement}
+Give an example of an operator $T\in\mathcal{L}(\mathbf{C}^7)$ such that $T^2+T+I$ is nilpotent.
+
+\subsection*{Solution}
+Let the operator $T\in\mathcal{L}(\mathbf{C}^7)$ be defined by
+\[Tv=\frac{-1+\sqrt{3}i}{2}v.\]
+For every $v\in\mathbf{C}^7$, we can write
+\begin{align*}
+    (T^2+T+I)v&=T^2v+Tv+Iv\\
+    &=(\frac{-1+\sqrt{3}i}{2})^2v+\frac{-1+\sqrt{3}i}{2}v+v\\
+    &=\frac{-2-2\sqrt{3}i}{4}v+\frac{-2+2\sqrt{3}i}{4}v+v\\
+    &=-v+v=0
+\end{align*}
+and hence, $T^2+T+I=0$. The $0$ operator is clearly nilpotent, so it follows that $T^2+T+I$ is nilpotent.
+
+
 \end{document}
