@@ -100,12 +100,58 @@ For $u,v\in V$ and $a_1,b_1,a_2,b_2\in\mathbf{R}$, we can write
 \subsection*{Problem statement}
 Verify that if $V$ is a real vector space and if $T\in\mathcal{L}(V)$, then $T_{\mathbf{C}}\in\mathcal{L}(V_{\mathbf{C}})$.
 
+\subsection*{Solution}
+To verify that $T_{\mathbf{C}}\in\mathcal{L}(V_{\mathbf{C}})$, we must demonstrate the properties of \textbf{additivity} and \textbf{homogeneity}.
+
+\subsubsection*{additivity}
+For $u_1,v_1,u_2,v_2\in V$, we can write
+\begin{align*}
+    T_{\mathbf{C}}((u_1+iv_1)+(u_2+iv_2))&=T_{\mathbf{C}}((u_1+u_2)+i(v_1+v_2))\\
+    &=T(u_1+u_2)+iT(v_1+v_2)\\
+    &=Tu_1+iTv_1+Tu_2+iTv_2\\
+    &=T_{\mathbf{C}}(u_1+iv_1)+T_{\mathbf{C}}(u_2+iv_2)
+\end{align*}
+where the first and fourth equalities come from the definition of $T_{\mathbf{C}}$ (Definition 9.5).
+
+\subsubsection*{homogeneity}
+For $a,b\in\mathbf{R}$ and $u,v\in V$, we can write
+\begin{align*}
+    T_{\mathbf{C}}((a+bi)(u+iv))&=T_{\mathbf{C}}((au-bv)+i(av+bu))\\
+    &=T(au-bv)+iT(av+bu)\\
+    &=aTu-bTv+aiTv+biTu\\
+    &=(a+bi)(Tu+iTv)\\
+    &=(a+bi)(T_{\mathbf{C}}(u+iv))
+\end{align*}
+where the first and fourth equality come from the definition of complex scalar multiplication on $V_{\mathbf{C}}$ (Definition 9.2), and the second and fifth equalities come from the definition of $T_{\mathbf{C}}$ (Definition 9.5).
+
 \clearpage
 
 \section{Linear independence in $V$ and $V_{\mathbf{C}}$}
 \subsection*{Problem statement}
 Suppose $V$ is a real vector space and $v_1,\ldots,v_m\in V$. 
 Prove that $v_1,\ldots,v_m\in V$ is linearly independent in $V_{\mathbf{C}}$ if and only if $v_1,\ldots,v_m\in V$ is linearly independent in $V$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $v_1,\ldots,v_m\in V$ is linearly independent in $V_{\mathbf{C}}$. 
+This implies that for $\lambda_1,\ldots,\lambda_m\in\mathbf{C}$ and 
+\[\lambda_1v_1+\cdots+\lambda_mv_m=0,\]
+then $\lambda_1=\cdots=\lambda_m=0+0i$. 
+Since any scalar $\lambda\in\mathbf{C}$ can be constructed from $a,b\in\mathbf{R}$ (Definition 1.1), it follows that for $a_1,\ldots,a_m\in\mathbf{R}$ and
+\[a_1v_1+\cdots+a_mv_m=0,\]
+then $a_1=\cdots=a_m=0$. 
+Hence, $v_1,\ldots,v_m$ is linearly independent in $V$.
+
+\subsubsection*{Second Direction}
+Suppose $v_1,\ldots,v_m\in V$ is linearly independent in $V$. 
+Suppose $\lambda_1,\ldots,\lambda_m\in\mathbf{C}$ and 
+\[\lambda_1v_1+\cdots+\lambda_mv_m=0.\]
+Then the equation above implies that
+\[(\operatorname{Re}\lambda_1)v_1+\cdots+(\operatorname{Re}\lambda_m)v_m=0\;\;\;\text{and}\;\;\;(\operatorname{Im}\lambda_1)v_1+\cdots+(\operatorname{Im}\lambda_m)v_m=0.\]
+Since $\operatorname{Re}\lambda_j,\operatorname{Im}\lambda_j\in\mathbf{R}$ (via Definition 4.2) and $v_1,\ldots,v_m$ is linearly independent in $V$, it follows that $\operatorname{Re}\lambda_1=\cdots=\operatorname{Re}\lambda_m=0$ and $\operatorname{Im}\lambda_1=\cdots=\operatorname{Im}\lambda_m=0$. 
+Thus we have $\lambda_1=\cdots=\lambda_m=0$. 
+Hence, $v_1,\ldots,v_m$ is linearly independent in $V_{\mathbf{C}}$.
+
 
 \clearpage
 
@@ -114,19 +160,101 @@ Prove that $v_1,\ldots,v_m\in V$ is linearly independent in $V_{\mathbf{C}}$ if 
 Suppose $V$ is a real vector space and $v_1,\ldots,v_m\in V$. 
 Prove that $v_1,\ldots,v_m\in V$ spans $V_{\mathbf{C}}$ if and only if $v_1,\ldots,v_m\in V$ spans $V$.
 
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $v_1,\ldots,v_m\in V$ spans $V_{\mathbf{C}}$. 
+Via Theorem 2.31 (`Spanning list contains a basis'), the list $v_1,\ldots,v_m$ can be reduced to a basis of $V_{\mathbf{C}}$. 
+Suppose that this reduced list is of length $n$, implying that $\operatorname{dim}V_{\mathbf{C}}=n$ and, following from Theorem 9.4(b) (`Basis of $V$ is a basis of $V_{\mathbf{C}}$'), $\operatorname{dim}V=n$.
+
+This basis of $V_{\mathbf{C}}$ is linearly independent and hence, following from Exercise 9.A(3), is linearly independent in $V$. 
+Since it is a linearly independent list of length $n=\operatorname{dim}V$, Theorem 2.39 (`Linearly independent list of the right length is a basis') implies that this list is a basis of $V$.
+
+Putting it all together, we have proven that $v_1,\ldots,v_m$ contains a list that is a basis of $V$. 
+Therefore, $v_1,\ldots,v_m$ spans $V$.
+
+\subsubsection*{Second Direction}
+Suppose $v_1,\ldots,v_m\in V$ spans $V$. 
+Theorem 2.31 implies that $v_1,\ldots,v_m$ can be reduced to a basis of $V$. 
+Following Theorem 9.4(a), this basis of $V$ is a basis of $V_{\mathbf{C}}$. 
+Hence, $v_1,\ldots,v_m$ contains a list that is a basis of $V_{\mathbf{C}}$. 
+Therefore, $v_1,\ldots,v_m$ spans $V_{\mathbf{C}}$. 
+
 \clearpage
 
-\section{$\mathcal{L}(V_{\mathbf{C}})$ is a vector space over $\mathbf{R}$}
+\section{Complexification is a linear map}
 \subsection*{Problem statement}
 Suppose that $V$ is a real vector space and $S,T\in\mathcal{L}(V)$. 
 Show that \newline
 $(S+T)_{\mathbf{C}}=S_{\mathbf{C}}+T_{\mathbf{C}}$ and that $(\lambda T)_{\mathbf{C}}=\lambda T_{\mathbf{C}}$ for every $\lambda\in\mathbf{R}$.
+
+\subsection*{Solution}
+\subsubsection*{additivity}
+To show that $(S+T)_{\mathbf{C}}=S_{\mathbf{C}}+T_{\mathbf{C}}$, we can write
+\begin{align*}
+    (S+T)_{\mathbf{C}}(u+iv)&=(S+T)(u)+i(S+T)(v)\\
+    &=Su+iSv+Tu+iTv\\
+    &=S_{\mathbf{C}}(u+iv)+T_{\mathbf{C}}(u+iv)\\
+    &=(S_{\mathbf{C}}+T_{\mathbf{C}})(u+iv)
+\end{align*}
+for $v,u\in\mathbf{R}$.
+
+\subsubsection*{homogeneity}
+To show that $(\lambda T)_{\mathbf{C}}=\lambda T_{\mathbf{C}}$ for every $\lambda\in\mathbf{R}$, we can write
+\begin{align*}
+    (\lambda T)_{\mathbf{C}}(u+iv)&=(\lambda T)(u)+i(\lambda T)(v)\\
+    &=\lambda (Tu)+\lambda(iTv)\\
+    &=\lambda(Tu+iTv)\\
+    &=\lambda T_{\mathbf{C}}(u+iv)
+\end{align*}
+for $v,u\in\mathbf{R}$.
+
+\subsection*{Notes}
+This result allows us to prove Lemma \ref{lemma:complexification_isomorphic} (`Complexification is isomorphism from $\mathcal{L}(V)$ to $\mathcal{L}(V_{\mathbf{C}})$').
 
 \clearpage
 
 \section{Prove $T_{\mathbf{C}}$ is invertible iff $T$ is invertible}
 \subsection*{Problem statement}
 Suppose $V$ is a real vector space and $T\in\mathcal{L}(V)$. Prove that $T_{\mathbf{C}}$ is invertible if and only if $T$ is invertible.
+
+\subsection*{Solution}
+\subsubsection{Lemma: Complexification is isomorphism from $\mathcal{L}(V)$ to $\mathcal{L}(V_{\mathbf{C}})$}\label{lemma:complexification_isomorphic}
+Via Theorem 9.4(b) (`Basis of $V$ is a basis of $V_{\mathbf{C}}$'), we know that $\operatorname{dim}V=\operatorname{dim}V_{\mathbf{C}}$. 
+Hence, Theorem 3.61 (`$\operatorname{dim}\mathcal{L}(V,W)=(\operatorname{dim}V)(\operatorname{dim}W)$') implies
+\begin{equation*}
+    \operatorname{dim}\mathcal{L}(V)=(\operatorname{dim}V)(\operatorname{dim}V)=(\operatorname{dim}V_{\mathbf{C}})(\operatorname{dim}V_{\mathbf{C}})=\operatorname{dim}\mathcal{L}(V_{\mathbf{C}}).
+\end{equation*}
+Thus, Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic') tells us that $\mathcal{L}(V)$ and $\mathcal{L}(V_{\mathbf{C}})$ are isomorphic since they have the same dimension.
+
+It is now clear to see that the \textbf{complexification} of $T$ is an isomorphism from $\mathcal{L}(V)$ to $\mathcal{L}(V_{\mathbf{C}})$. 
+This follows from the observation that the \textbf{complexification} of operators is injective, $T_{\mathbf{C}}=0$ iff $T=0$, and surjective, the \textbf{complexification} of a basis of operators in $\mathcal{L}(V)$ yields a linearly independent list of operators in $\mathcal{L}(V_{\mathbf{C}})$ of length $\operatorname{dim}\mathcal{L}(V_{\mathbf{C}})$\footnote{This could use a more rigorous proof, but that's a labor for another time}. Therefore, for every operator $S\in\mathcal{L}(V_{\mathbf{C}})$, there exists a unique operator $R\in\mathcal{L}(V)$ such that $R_{\mathbf{C}}=S$.
+
+\subsubsection*{First Direction}
+Suppose $T_{\mathbf{C}}$ is invertible. 
+Thus there exists a unique inverse $S\in\mathcal{L}(V_{\mathbf{C}})$ such that $ST_{\mathbf{C}}=I$ and $T_{\mathbf{C}}S=I$. 
+From Lemma \ref{lemma:complexification_isomorphic}, there exists $R\in\mathcal{L}(V)$ such that $R_{\mathbf{C}}=S$. 
+For $u,v\in V$, we can write
+\begin{align*}
+    u+iv&=I(u+iv)=ST_{\mathbf{C}}(u+iv)\\
+    &=R_{\mathbf{C}}(Tu+iTv)=RTu+iRTv
+\end{align*}
+implying that $RT=I$ for all vectors in $v$. 
+Since $R,T$ are operators, Exercise 3.D(10) (`$ST=I$ iff $TS=I$') allows us to state that $TR=I$. 
+Hence, $T$ has an inverse and $T$ is invertible.
+
+\subsubsection*{Second Direction}
+Suppose $T$ is invertible. Thus there exists a unique inverse $R\in V$ such that $RT=I$ and $TR=I$. 
+We will show that $R_{\mathbf{C}}$ is the inverse of $T_{\mathbf{C}}$. 
+
+For $u,v\in V$, we can write 
+\begin{equation*}
+    R_{\mathbf{C}}T_{\mathbf{C}}(u+iv)=R_{\mathbf{C}}(Tu+iTv)=RTu+iRTv=u+iv
+\end{equation*}
+and
+\begin{equation*}
+    T_{\mathbf{C}}R_{\mathbf{C}}(u+iv)=T_{\mathbf{C}}(Ru+iRv)=TRu+iTRv=u+iv.
+\end{equation*}
+Hence, $T_{\mathbf{C}}R_{\mathbf{C}}=I$ and $R_{\mathbf{C}}T_{\mathbf{C}}=I$. Therefore, $T_{\mathbf{C}}$ is invertible.
 
 \clearpage
 
@@ -139,6 +267,12 @@ Suppose $V$ is a real vector space and $N\in\mathcal{L}(V)$. Prove that $N_{\mat
 \section{Nonreal eigenvalues of $T_{\mathbf{C}}$}
 \subsection*{Problem statement}
 Suppose $T\in\mathcal{L}(\mathbf{R}^3)$ and $5,7$ are eigenvalues of $T$. Prove that $T_{\mathbf{C}}$ has no nonreal eigenvalues.
+
+\subsection*{Solution}
+Theorem 9.16 states that nonreal eigenvalues of $T_{\mathbf{C}}$ come in pairs. 
+Hence, if $T_{\mathbf{C}}$ had a nonreal eigenvalue $\lambda$, then it would also have the eigenvalue of $\bar{\lambda}$ (where $\lambda\neq\bar{\lambda}$). 
+However, this would imply that $T_{\mathbf{C}}$ has 4 distinct eigenvalues, more than $\operatorname{dim}\mathbf{C}^3=3$, which is a contradiction of Theorem 5.13 (`Number of eigenvalues'). 
+Therefore, if $T\in\mathcal{L}(\mathbf{R}^3)$ and $5,7$ are eigenvalues of $T$, then $T_{\mathbf{C}}$ has no nonreal eigenvalues.
 
 \clearpage
 
