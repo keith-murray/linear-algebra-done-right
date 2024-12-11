@@ -168,12 +168,43 @@ Thus, via the Complex Spectral Theorem, $V_{\textbf{C}}$ has an orthonormal basi
 If we can use $e_1,\ldots,e_n$ to construct an orthonormal basis of $V$ consisting of eigenvectors of $T$, then it follows that (b) holds.
 
 Theorem 7.13 (`Eigenvalues of self-adjoint operators are real') tells us that the eigenvector $e_j$ of $T_{\textbf{C}}$ has a corresponding eigenvalue of $\lambda_j$ such that $\lambda_j$ is real. 
-Hence we can write
-\[\lambda_j\operatorname{Re}e_j+\lambda_ji\operatorname{Im}e_j = \lambda_j(e_j) = T_{\textbf{C}}(e_j)=T(\operatorname{Re}e_j) + iT(\operatorname{Im}e_j)\]
-and it follows that $\lambda_j$ is an eigenvalue of $T$ with the corresponding eigenvectors of $\operatorname{Re}e_j,\operatorname{Im}e_j$.
+Now we can use Theorem 9.12 (`$T_{\textbf{C}}-\lambda I$ and $T_{\textbf{C}}-\bar{\lambda} I$') to claim that for eigenvector $e_j=u_j+iv_j$ of $T_{\textbf{C}}$ corresponding to eigenvalue $\lambda$, there exists another eigenvector $e_k=u_j-iv_j$ also corresponding to $\lambda$ since $\lambda=\bar{\lambda}$. 
+To construct an orthonormal basis of $V$ consisting of eigenvectors of $T$, there are three cases to consider: $\textbf{v=0}$, $\textbf{u=0}$, and $\textbf{u}\neq\textbf{v}\neq\textbf{0}$.
 
-Given that the list $e_1,\ldots,e_n$ is orthonormal, for $j\neq k$ we can write
-\[0=\innerprod{e_j,e_k}=\innerprod{\operatorname{Re}e_j+i\operatorname{Re}e_j,\operatorname{Re}e_k+i\operatorname{Re}e_k}\]
+\subsubsection*{$\textbf{v=0}$}
+Suppose $e_j=u_j+i0$. It follows that $e_j\in V$ and 
+\[\lambda_ju_j+i0=\lambda_j(e_j)=T_{\mathbf{C}}(e_j)=Tu_j+iT(0)=Tu_j+i0.\]
+Hence, $u_j$ is an eigenvector of $T$ corresponding to the eigenvalue $\lambda_j$. 
+This case tells us that if we can \textit{convert} eigenvectors in the list $e_1,\ldots,e_n$ to vectors in $V$, then the \textit{converted} vector is an eigenvector of $T$ with an eigenvalue of $\lambda_j$.
+
+\subsubsection*{$\textbf{u=0}$}
+Suppose $e_j=0+iv_j$. Since $e_1,\ldots,e_n$ is orthonormal, we can replace $e_j$ in the list with $-ie_j=v_j+i0$ without affecting the norm of $e_j$ since 
+\[\norm{-ie_j}=\abs{-i}\norm{e_j}=\norm{e_j}.\]
+The vector $e_j$ remains orthogonal to other vectors in $e_1,\ldots,e_n$ since
+\[\innerprod{-ie_j,e_k}=-i\innerprod{e_j,e_k}=-i(0)=0.\]
+Via the $\textbf{v=0}$ case, we know that $v_j$ is an eigenvector of $T$ with an eigenvalue of $\lambda_j$.
+
+\subsubsection*{$\textbf{u}\neq\textbf{v}\neq\textbf{0}$}
+First, let's show that for eigenvectors $e_j=u_j+iv_j$ and\newline 
+$e_k=u_j-iv_j$, it follows that if $u_j\neq 0$ and $v_j\neq0$, then $u_j\neq v_j$. 
+Since $e_j,e_k$ are in the orthonormal list $e_1,\ldots,e_n$, it follows that $\innerprod{e_j,e_k}=0$ and we can write
+\begin{align*}
+    0=\innerprod{e_j,e_k}&=\innerprod{u_j+iv_j,u_j-iv_j}\\
+    &=\innerprod{u_j,u_j} +\innerprod{v_j,-v_j} + (\innerprod{v_j,u_j} - \innerprod{u_j,-v_j})i\\
+    &=\innerprod{u_j,u_j} -\innerprod{v_j,v_j} + (2\innerprod{v_j,u_j})i.
+\end{align*}
+Hence it follows that $\norm{u_j}=\norm{v_j}$, $\innerprod{v_j,u_j}=0$, and, via the property of \textbf{definiteness}, $u_j\neq v_j$. 
+Happily, we've also shown that $u_j$ and $v_j$ are orthogonal. 
+Thus, to replace vectors $e_j=u_j+iv_j$ and $e_k=u_j-iv_j$ in the orthonormal list $e_1,\ldots,e_n$, we can use vectors $\frac{u_j}{\norm{u_j}}+i0$ and $\frac{v_j}{\norm{v_j}}+i0$. 
+These vectors are orthogonal to each other, have a norm of $1$, and, since they are a linear combination of $e_j$ and $e_k$, they are orthogonal to all other vectors in $e_1,\ldots,e_n$. To show that they are eigenvectors of $T$, for $e_j=u_j+iv_j$ we can write
+\[\lambda_ju_j+i(\lambda_jv_j)=\lambda_j(e_j)=T_{\mathbf{C}}(e_j)=Tu_j+iTv_j.\]
+Thus, $\frac{u_j}{\norm{u_j}}$ and $\frac{v_j}{\norm{v_j}}$ are eigenvectors of $T$ corresponding to eigenvalue $\lambda_j$.
+
+\subsubsection*{Putting it all together}
+Up to this point, we have shown that if (a) holds, then $V_{\textbf{C}}$ has an orthonormal basis $e_1,\ldots,e_n$ consisting of eigenvectors of $T_{\textbf{C}}$. 
+Through our cases $\textbf{v=0}$, $\textbf{u=0}$, and $\textbf{u}\neq\textbf{v}\neq\textbf{0}$, we have shown that every vector in $e_1,\ldots,e_n$ can be replaced with a vector in $V$ that is an eigenvector of $T$. 
+This new list is also orthonormal and of length $n$. 
+Therefore, via Theorem 9.4(b) (`Basis of $V$ is a basis of $V_{\textbf{C}}$'), this new list is a basis of $V$. Hence, $V$ has an orthonormal basis consisting of eigenvectors of $T$. 
 
 \clearpage
 
