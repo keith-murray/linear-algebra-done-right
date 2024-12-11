@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{mathdots}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 9.B}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclarePairedDelimiter{\innerprod}\langle\rangle
+\newcommand\conjinnerp[2][]{\:\overline{\mkern-4mu\innerprod[#1]{#2}\mkern-4mu}\:}
+
+\begin{document}
+
+\maketitle
+
+\section{For isometry $S\in\mathcal{L}(\mathbf{R}^3)$, there exists $S^2x=x$}
+\subsection*{Problem statement}
+Suppose $S\in\mathcal{L}(\mathbf{R}^3)$ is an isometry. 
+Prove that there exists a nonzero vector $x\in\mathbf{R}^3$ such that $S^2x=x$.
+
+\subsection*{Solution}
+Via Theorem 9.36 (`Description of isometries when $\mathbf{F}=\mathbf{R}$'), there exists an orthonormal basis of $\mathbf{R}^3$ with respect to which $S$ has a block diagonal matrix and each block in that matrix is either a 1-by-1 matrix containing $1$ or $-1$ or a 2-by-2 matrix of the form given in Theorem 9.36. 
+Since $\operatorname{dim}\mathbf{R}^3=3$, it follows that this block diagonal matrix either has one 2-by-2 matrix or does not have a 2-by-2 matrix. In both cases, there is at least one 1-by-1 matrix containing $1$ or $-1$ in the block diagonal matrix. 
+
+Suppose that the vector in the orthonormal basis of $\mathbf{R}^3$ corresponding to this 1-by-1 matrix is $e_j$. 
+If the entry in this 1-by-1 matrix is $1$, then 
+\[S^2e_j=S(1e_j)=Se_j=1e_j=e_j\]
+and $e_j$ is the vector we are looking for. 
+If the entry in this 1-by-1 matrix is $-1$, then
+\[S^2e_j=S(-1e_j)=-1Se_j=-1(-1e_j)=e_j\]
+and $e_j$ is, again, the vector we are looking for. 
+Thus, for all possible isometries in $\mathcal{L}(\mathbf{R}^3)$, there exists a nonzero vector $x\in\mathbf{R}^3$ such that $S^2x=x$.
+
+\clearpage
+
+\section{Eigenvalues for odd-dimensional isometries}
+\subsection*{Problem statement}
+Prove that every isometry on an odd-dimensional real inner product space has $1$ or $-1$ as an eigenvalue.
+
+\subsection*{Solution}
+Suppose $V$ is an odd-dimensional real inner product space with dimension $n$. 
+Suppose $S\in\mathcal{L}(V)$ is an isometry. 
+It follows from Theorem 9.36 (`Description of isometries when $\mathbf{F}=\mathbf{R}$') that $S$ has a block diagonal matrix with at most $\frac{n-1}{2}$ number\footnote{Since $n$ is odd, then $\frac{n-1}{2}$ is an integer} of 2-by-2 matrices on the diagonal. 
+Thus, every isometry on an odd-dimensional real inner product space has at least one 1-by-1 matrix containing $1$ or $-1$ on the diagonal of some block diagonal matrix. 
+
+Suppose $e_j$ is the orthonormal vector corresponding to this 1-by-1 matrix in the block diagonal matrix of $S$. 
+If the entry in this 1-by-1 matrix is $1$, then 
+\[Se_j=1e_j\]
+and $1$ is an eigenvalue of $S$. 
+If the entry in this 1-by-1 matrix is $-1$, then
+\[Se_j=-1e_j\]
+and $-1$ is an eigenvalue of $S$. 
+Therefore, every isometry on an odd-dimensional real inner product space has $1$ or $-1$ as an eigenvalue.
+
+\clearpage
+
+\section{Complex inner product on $V_{\mathbf{C}}$}
+\subsection*{Problem statement}
+Suppose $V$ is a real inner product space. 
+Show that 
+\[\langle u+iv,x+iy\rangle=\langle u,x\rangle +\langle v,y\rangle + (\langle v,x\rangle - \langle u,y\rangle)i\]
+for $u,v,x,y\in V$ defines a complex inner product on $V_{\mathbf{C}}$.
+
+\subsection*{Solution}
+To show that the inner product in the \textbf{Problem statement} defines a complex inner product, we have to show that it fulfills the properties in the definition of inner products (Definition 6.3).
+
+\subsubsection*{positivity}
+For $u,v\in V$, we can write
+\begin{align*}
+    \langle u+iv,u+iv\rangle&=\langle u,u\rangle +\langle v,v\rangle + (\langle v,u\rangle - \langle u,v\rangle)i\\
+    &=\langle u,u\rangle +\langle v,v\rangle + (\langle v,u\rangle - \langle v,u\rangle)i\\
+    &=\langle u,u\rangle +\langle v,v\rangle \geq 0
+\end{align*}
+where $\innerprod{u,v}=\conjinnerp{v,u}=\innerprod{v,u}$ since $\innerprod{u,v}\in\mathbf{R}$, and $\innerprod{u,u}\geq0$ and $\innerprod{v,v}\geq0$ follow from the property of \textbf{positivity} on the inner product associated with $V$.
+
+\subsubsection*{definiteness}
+Suppose there exist $u,v\in V$, such that
+\[\langle u+iv,u+iv\rangle=\langle u,u\rangle +\langle v,v\rangle + (\langle v,u\rangle - \langle u,v\rangle)i=\langle u,u\rangle +\langle v,v\rangle=0.\]
+Given the property of \textbf{positivity}, it follows that $\langle u,u\rangle=\langle v,v\rangle=0$ and we can use the property of \textbf{definiteness} on the inner product associated with $V$ to infer that $u=v=0$. 
+Hence, if $\langle u+iv,u+iv\rangle=0$, then $u=v=0$.
+
+It clearly follows that if $u=v=0$ then $\langle u+iv,u+iv\rangle=0$.
+
+\subsubsection*{additivity in first slot}
+For $u_1,v_1,u_2,v_2,x,y\in V$, we can write
+\begin{align*}
+    \langle (u_1+iv_2)+(u_2+iv_2),x+iy\rangle&=\innerprod{(u_1+u_2)+i(v_1+v_2),x+iy}\\
+    &=\langle (u_1+u_2),x\rangle +\langle (v_1+v_2),y\rangle\\
+    &\qquad+ (\langle (v_1+v_2),x\rangle - \langle (u_1+u_2),y\rangle)i\\
+    &=\innerprod{u_1,x}+\innerprod{v_1,y}+(\innerprod{v_1,x}-\innerprod{u_1,y})i\\
+    &\qquad +\innerprod{u_2,x}+\innerprod{v_2,y}+(\innerprod{v_2,x}-\innerprod{u_2,y})i\\
+    &=\innerprod{u_1+iv_1,x+iy}+\innerprod{u_2+iv_2,x+iy}
+\end{align*}
+where the first equality follows from Definition 9.2 (`complexification on $V_{\textbf{C}}$'), and the second and fourth equalities follow from the definition of the complex inner product on $V_{\textbf{C}}$.
+
+\subsubsection*{homogeneity in first slot}
+For $u,v,x,y\in V$ and $a,b\in\textbf{R}$, we can write
+\begin{align*}
+    \langle (a+bi)(u+iv),x+iy\rangle&=\innerprod{(au-bv)+i(av+bu),x+iy}\\
+    &=\innerprod{au-bv,x}+\innerprod{av+bu,y}\\
+    &\qquad +(\innerprod{av+bu,x}-\innerprod{au-bv,y})i\\
+    &=a\innerprod{u,x}-b\innerprod{v,x}+a\innerprod{v,y}+b\innerprod{u,y}\\
+    &\qquad +(a\innerprod{v,x}+b\innerprod{u,x}-a\innerprod{u,y}+b\innerprod{v,y})i\\
+    &=a(\innerprod{u,x}+\innerprod{v,y})-b(\innerprod{v,x}-\innerprod{u,y})\\
+    &\qquad +(a(\innerprod{v,x}-\innerprod{u,y})+b(\innerprod{u,x}+\innerprod{v,y}))i\\
+    &=(a+bi)(\innerprod{u,x}+\innerprod{v,y}+(\innerprod{v,x}-\innerprod{u,y})i)\\
+    &=(a+bi)\langle u+iv,x+iy\rangle
+\end{align*}
+where the first equality follows from Definition 9.2, the second and sixth equality follows from the definition of the complex inner product, and the fifth quality follows from Definition 1.1 (`complex numbers').
+
+\subsubsection*{conjugate symmetry}
+For $u,v,x,y\in V$, we can write
+\begin{align*}
+    \innerprod{u+iv,x+iy}&=\innerprod{u,x} +\innerprod{v,y} + (\innerprod{v,x} - \innerprod{u,y})i\\
+    &=\innerprod{x,u} +\innerprod{y,v} + (\innerprod{x,v} - \innerprod{y,u})i\\
+    &=\innerprod{y,v} + \innerprod{x,u} - (\innerprod{y,u} - \innerprod{x,v})i\\
+    &=\overline{\innerprod{y,v} + \innerprod{x,u} + (\innerprod{y,u} - \innerprod{x,v})i}\\
+    &=\conjinnerp{x+iy,u+iv}
+\end{align*}
+where $\innerprod{u,x}=\innerprod{x,u},\innerprod{v,y}=\innerprod{y,v},\dots$ since those inner products are real numbers and the fourth equality follows from the definition of the complex conjugate (Definition 4.3).
+
+\clearpage
+
+\section{If $T\in\mathcal{L}(V)$ is self-adjoint, then $T_{\textbf{C}}$ is too}
+\subsection*{Problem statement}
+Suppose $V$ is a real inner product space and $T\in\mathcal{L}(V)$ is self-adjoint. 
+Show that $T_{\textbf{C}}$ is a self-adjoint operator on the inner product space $V_{\textbf{C}}$ defined by the previous exercise.
+
+\subsection*{Solution}
+For $u,v,x,y\in V$, we can write
+\begin{align*}
+    \innerprod{u+iv,T^*_{\textbf{C}}(x+iy)}&=\innerprod{T_{\textbf{C}}(u+iv),x+iy}\\
+    &=\innerprod{Tu+iTv,x+iy}\\
+    &=\innerprod{Tu,x} +\innerprod{Tv,y} + (\innerprod{Tv,x} - \innerprod{Tu,y})i\\
+    &=\innerprod{u,Tx} +\innerprod{v,Ty} + (\innerprod{v,Tx} - \innerprod{u,Ty})i\\
+    &=\innerprod{u+iv,Tx+iTy}\\
+    &=\innerprod{u+iv,T_{\textbf{C}}(x+iy)}
+\end{align*}
+where the first equality comes from the definition of the adjoint (Definition 7.2), the second and sixth equality come from the definition of the complexification of $T$ (Definition 9.5), and the fourth equality comes from $T$ being self-adjoint. 
+Therefore, $T_{\textbf{C}}$ is a self-adjoint operator on the inner product space $V_{\textbf{C}}$ defined by Exercise 9.B(3).
+
+\clearpage
+
+\section{Prove Real Spectral Theorem via $T_{\textbf{C}}$}
+\subsection*{Problem statement}
+Use the previous exercise to give a proof of the Real Spectral Theorem (7.29) via complexification and the Complex Spectral Theorem (7.24).
+
+\subsection*{Solution}
+For completeness, the Real Spectral Theorem (Theorem 7.29) states that the following are equivalent for $\textbf{F}=\textbf{R}$ and $T\in\mathcal{L}(V)$:
+\begin{enumerate}
+  \item[(a)] $T$ is self-adjoint
+  \item[(b)] $V$ has an orthonormal basis consisting of eigenvectors of $T$.
+  \item[(c)] $T$ has a diagonal matrix with respect to some orthonormal basis of $V$.
+\end{enumerate}
+As given in Axler's original proof, (b) clearly implies (c) and (c) implies (a) since diagonal matrices are equal to their transpose. 
+Thus, in this solution, we need to prove that (a) implies (b) with complexification and the Complex Spectral Theorem (Theorem 7.24).
+
+Suppose (a) holds, so $T\in\mathcal{L}(V)$ is self-adjoint. 
+Via Exercise 9.B(4), it follows that $T_{\textbf{C}}\in\mathcal{L}(V_{\textbf{C}})$ is self-adjoint. 
+Thus, via the Complex Spectral Theorem, $V_{\textbf{C}}$ has an orthonormal basis consisting of eigenvectors of $T_{\textbf{C}}$. Suppose $e_1,\ldots,e_n$ is this orthonormal basis. 
+If we can use $e_1,\ldots,e_n$ to construct an orthonormal basis of $V$ consisting of eigenvectors of $T$, then it follows that (b) holds.
+
+Theorem 7.13 (`Eigenvalues of self-adjoint operators are real') tells us that the eigenvector $e_j$ of $T_{\textbf{C}}$ has a corresponding eigenvalue of $\lambda_j$ such that $\lambda_j$ is real. 
+Hence we can write
+\[\lambda_j\operatorname{Re}e_j+\lambda_ji\operatorname{Im}e_j = \lambda_j(e_j) = T_{\textbf{C}}(e_j)=T(\operatorname{Re}e_j) + iT(\operatorname{Im}e_j)\]
+and it follows that $\lambda_j$ is an eigenvalue of $T$ with the corresponding eigenvectors of $\operatorname{Re}e_j,\operatorname{Im}e_j$.
+
+Given that the list $e_1,\ldots,e_n$ is orthonormal, for $j\neq k$ we can write
+\[0=\innerprod{e_j,e_k}=\innerprod{\operatorname{Re}e_j+i\operatorname{Re}e_j,\operatorname{Re}e_k+i\operatorname{Re}e_k}\]
+
+\clearpage
+
+\section{If $T$ is not normal, then Theorem 9.30 fails}
+\subsection*{Problem statement}
+Give an example of an operator $T$ on an inner product space such that $T$ has an invariant subspace whose orthogonal complement is not invariant under $T$.
+
+\subsection*{Solution}
+Let $T\in\mathcal{L}(\textbf{R}^2)$ be defined by 
+\[T(x,y)=(x+y,0).\]
+The subspace $U=\operatorname{span}((1,0))$ is clearly invariant under $T$ (in fact, $(1,0)$ is an eigenvector of $T$). However, the orthogonal complement $U^\bot=\operatorname{span}((0,1))$ is not invariant under $T$ since $T(0,1)=(1,0)$ and thus, $T(0,1)\notin U^\bot$.
+
+\end{document}
