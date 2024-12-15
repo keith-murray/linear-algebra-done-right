@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 1.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Inverse of a complex number}
+\subsection*{Problem statement}
+Suppose $a$ and $b$ are real numbers, not both $0$. Find real numbers $c$ and $d$ such that 
+\[1/(a+bi)=c+di\]
+
+\subsection*{Solution}
+While we weren't given the definition of the complex conjugate\footnote{We'll have to wait for Chapter 4 to get Definition 4.3.} in Chapter 1.A, we can find $c$ and $d$ by multiplying $1/(a+bi)$ by its complex conjugate. 
+Hence we have
+\begin{equation*}
+    \frac{1}{a+bi}\frac{a-bi}{a-bi}=\frac{a-bi}{(a^2+b^2)+(-ab+ab)i}=\frac{a-bi}{a^2+b^2}=\frac{a}{a^2+b^2}+\frac{-b}{a^2+b^2}i
+\end{equation*}
+where the first equality comes from the definition of addition and multiplication on $\textbf{C}$ (Definition 1.1). Thus $c=a/(a^2+b^2)$ and $d=-b/(a^2+b^2)$.
+
+\clearpage
+
+\section{Cube root of $1$}
+\subsection*{Problem statement}
+Show that 
+\[\frac{-1+\sqrt{3}i}{2}\]
+is a cube root of $1$ (meaning that is cube equals $1$).
+
+\subsection*{Solution}
+\begin{align*}
+    \left( \frac{-1+\sqrt{3}i}{2}\right)^3&=\left( \frac{-1+\sqrt{3}i}{2}\right)\left( \frac{-1+\sqrt{3}i}{2}\right) \left( \frac{-1+\sqrt{3}i}{2} \right)\\
+    &=\frac{1}{8}(-1+\sqrt{3}i)(-1+\sqrt{3}i)(-1+\sqrt{3}i)\\
+    &=\frac{1}{8}((1-3)+(-2\sqrt{3})i)(-1+\sqrt{3}i)\\
+    &=\frac{1}{8}(-2-2\sqrt{3}i)(-1+\sqrt{3}i)\\
+    &=\frac{1}{8}((2+6)+(-2\sqrt{3}+2\sqrt{3})i)\\
+    &=\frac{1}{8}(8+0i)\\
+    &=1
+\end{align*}
+
+\clearpage
+
+\section{Square roots of $i$}
+\subsection*{Problem statement}
+Find two distinct square roots of $i$.
+
+\subsection*{Solution}
+The square roots of $i$ concern $\frac{1}{\sqrt{2}}$.
+
+\begin{align*}
+    (\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{2}}i)^2&=(\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{2}}i)(\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{2}}i)\\
+    &=(\frac{1}{2}-\frac{1}{2})+(\frac{1}{2}+\frac{1}{2})i\\
+    &=0+1i\\
+    &=i
+\end{align*}
+
+\begin{align*}
+    (-\frac{1}{\sqrt{2}}-\frac{1}{\sqrt{2}}i)^2&=(-\frac{1}{\sqrt{2}}-\frac{1}{\sqrt{2}}i)(-\frac{1}{\sqrt{2}}-\frac{1}{\sqrt{2}}i)\\
+    &=(\frac{1}{2}-\frac{1}{2})+(\frac{1}{2}+\frac{1}{2})i\\
+    &=0+1i\\
+    &=i
+\end{align*}
+
+
+\end{document}
