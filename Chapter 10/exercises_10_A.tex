@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 10.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{$\mathcal{M}(T)$ is invertible iff $T$ is invertible}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $v_1,\ldots,v_n$ is a basis of $V$. 
+Prove that the matrix $\mathcal{M}(T,(v_1,\ldots,v_n))$ is invertible if and only if $T$ is invertible. 
+
+\subsection*{Solution}
+\subsubsection{Lemma: A unique operator $T\in\mathcal{L}(V)$ exists such that $\mathcal{M}(T)=A$}\label{sec:M_isomorphism}
+Let's think back to Theorem 3.60 (`$\mathcal{L}(V,W)$ and $\mathbf{F}^{m,n}$ are isomorphic') where it was shown that $\mathcal{M}$ is an isomorphism between $\mathcal{L}(V,W)$ and $\mathbf{F}^{m,n}$. 
+Thus, for some matrix $A\in\mathbf{F}^{n,n}$, we can state that there exists a unique operator $T\in\mathcal{L}(V)$ such that $\mathcal{M}(T)=A$.
+
+\subsubsection*{First Direction}
+Suppose that the matrix $\mathcal{M}(T,(v_1,\ldots,v_n))$ is invertible. 
+Thus there exists a unique matrix $A$ such that $A\mathcal{M}(T)=\mathcal{M}(T)A=I$. 
+Following from Theorem 3.60 and lemma \ref{sec:M_isomorphism}, there exists a unique operator $S\in\mathcal{L}(V)$ such that $\mathcal{M}(S,(v_1,\ldots,v_n))=A$. 
+We can now write
+\[\mathcal{M}(I)=I=A\mathcal{M}(T)=\mathcal{M}(S)\mathcal{M}(T)=\mathcal{M}(ST)\]
+and 
+\[\mathcal{M}(I)=I=\mathcal{M}(T)A=\mathcal{M}(T)\mathcal{M}(S)=\mathcal{M}(TS)\]
+where the last equalities follows from Theorem 3.43 (`The matrix of the product of linear maps'). 
+Hence it follows that $ST=TS=I$ and $T$ is invertible.
+
+\subsubsection*{Second Direction}
+Suppose that $T$ is invertible. 
+Thus there exists a unique operator $S\in\mathcal{L}(V)$ such that $ST=TS=I$. 
+Applying the $\mathcal{M}(\cdot,(v_1,\ldots,v_n))$ isomorphism to $ST=TS=I$, we can write
+\[\mathcal{M}(ST)=\mathcal{M}(TS)=\mathcal{M}(I)=I.\]
+Via Theorem 3.43, it follows that
+\[\mathcal{M}(S)\mathcal{M}(T)=\mathcal{M}(T)\mathcal{M}(S)=I.\]
+Hence, we've shown that the matrix $\mathcal{M}(T,(v_1,\ldots,v_n))$ is invertible.
+
+\section{If $AB=I$ then $BA=I$}
+\subsection*{Problem statement}
+Suppose $A$ and $B$ are square matrices of the same size and $AB=I$. 
+Prove that $BA=I$.
+
+\subsection*{Solution}
+This Exercise bears a resemblance to Exercise 3.D(10) where we showed that $ST=I$ if and only if $TS=I$. 
+
+Following from Theorem 3.60 (`$\mathcal{L}(V,W)$ and $\mathbf{F}^{m,n}$ are isomorphic') and lemma \ref{sec:M_isomorphism}, we can state that there exist operators $S,T\in\mathcal{L}(V)$ such that $\mathcal{M}(S,(v_1,\ldots,v_n))=A$ and $\mathcal{M}(T,(v_1,\ldots,v_n))=B$ for some basis $v_1,\ldots,v_n$ of $V$. 
+Hence it follows that 
+\[\mathcal{M}(I)=I=AB=\mathcal{M}(S)\mathcal{M}(T)=\mathcal{M}(ST)\]
+where the fourth equality follows from Theorem 3.43 (`The matrix of the product of linear maps'). 
+Hence we have $ST=I$. 
+Via Exercise 3.D(10), it follows that $TS=I$. 
+
+Now we can apply the $\mathcal{M}(\cdot,(v_1,\ldots,v_n))$ isomorphism to $TS=I$ to get
+\[I=\mathcal{M}(I)=\mathcal{M}(TS)=\mathcal{M}(T)\mathcal{M}(S)=BA.\]
+Therefore, it follows that $BA=I$.
+
+\clearpage
+
+\section{$T$ is a scalar multiple of identity operator}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ has the same matrix with respect to every basis of $V$. 
+Prove that $T$ is a scalar multiple of the identity operator.
+
+\subsection*{Solution}
+Following from the problem statement, for any two bases $v_1,\ldots,v_n$ and $u_1,\ldots,u_n$ of $V$, we can write 
+\[\mathcal{M}(T,(v_1,\ldots,v_n))=\mathcal{M}(T,(u_1,\ldots,u_n))=B\]
+where $B=\mathcal{M}(T)$ for an arbitrary basis. 
+Following from Theorem 10.7 (`Change of basis formula'), we can write
+\begin{gather*}
+    \mathcal{M}(T,(v_1,\ldots,v_n))=A^{-1}\mathcal{M}(T,(u_1,\ldots,u_n))A\\
+    A\mathcal{M}(T,(v_1,\ldots,v_n))=\mathcal{M}(T,(u_1,\ldots,u_n))A\\
+    AB=BA
+\end{gather*}
+where $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$. Hence, $B$ commutes with all matrices of the form $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ for any bases $v_1,\ldots,v_n$ and $u_1,\ldots,u_n$ of $V$. 
+
+For any vector $u\in V$ such that $u\neq 0$, let's prove that $Bu$ is a scalar multiple of $u$. Suppose that $u$ and $Bu$ are not scalar multiples. Now consider the matrix
+\[A=\mathcal{M}(I,(u,Bu,u_3,\ldots,u_n),(u,Bu-u,u_3,\dots,u_n))\]
+where the bases $u,Bu,u_3,\ldots,u_n$ and $u,Bu-u,u_3,\dots,u_n$ are valid since $u,Bu$ and $u,Bu-u$ are linearly independent by our assumption. Since $A$ is of the form of a change of basis, we have $AB=BA$ and $(AB-BA)u=0$. However, it follows that
+\[ABu=Bu-u\;\;\;\text{and}\;\;\; BAu=Bu\]
+and $(AB-BA)u=-u$, which is a contradiction. Thus, $u$ and $Bu$ are scalar multiples.
+
+To prove that $B$ is a scalar multiple of the identity, we can show that for any two nonzero vectors $u,v\in V$, it follows that $Bu=cu$ and $Bv=cv$ where the scalar multiple of $u$ and $v$ is the same scalar. Let $c_1$ be the scalar such that $Bu=c_1u$. Let $c_2$ be the scalar such that $Bv=c_2v$. Now consider the matrix
+\[A=\mathcal{M}(I,(u,u_2,\ldots,u_n),(v,u_2\dots,u_n)).\]
+Since $A$ is of the form of a change of basis, we can write
+\[0=(AB-BA)u=ABu-BAu=c_1v-c_2v=(c_1-c_2)v\]
+and it follows that $c_1=c_2$. Hence, $B$ is a scalar multiple of the identity.
+
+
+\end{document}

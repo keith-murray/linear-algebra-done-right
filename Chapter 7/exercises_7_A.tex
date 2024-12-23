@@ -37,19 +37,34 @@ Thus,
 Suppose $T\in\mathcal{L}(V)$ and $\lambda\in\mathbf{F}$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\bar{\lambda}$ is an eigenvalue of $T^*$.
 
 \subsection*{Solution}
-\subsubsection*{First Direction}
-Suppose $\lambda$ is an eigenvalue of $T$ with $v\in V$ being the corresponding eigenvector. It follows that  
+First, let's write 
+\[\operatorname{null}(T^*-\bar{\lambda}I)=\operatorname{null}(T-\lambda I)^*=(\operatorname{range}(T-\lambda I))^\bot\]
+where the last equality comes from Theorem 7.7(a) (`Null space and range of $T^*$'). 
+Thus it follows that 
+\[\operatorname{dim}\operatorname{null}(T^*-\bar{\lambda}I)=\operatorname{dim}(\operatorname{range}(T-\lambda I))^\bot.\]
+To understand $\operatorname{dim}(\operatorname{range}(T-\lambda I))^\bot$, we can use the Fundamental Theorem of Linear Maps to write
+\[\operatorname{dim}\operatorname{range}(T-\lambda I)=\operatorname{dim}V-\operatorname{dim}\operatorname{null}(T-\lambda I)\]
+and it follows from Theorem 6.50 (`Dimension of the orthogonal complement') that
 \begin{align*}
-    \langle v, T^* w\rangle &= \langle Tv, w\rangle = \langle \lambda v, w\rangle = \lambda \langle v, w\rangle = \langle v, \bar{\lambda}w\rangle
+    \operatorname{dim}(\operatorname{range}(T-\lambda I))^\bot&=\operatorname{dim}V-(\operatorname{dim}V-\operatorname{dim}\operatorname{null}(T-\lambda I))\\
+    &=\operatorname{dim}\operatorname{null}(T-\lambda I).
 \end{align*}
-for some $w\in V$ such that $\langle v,w\rangle\neq 0$. Hence, $\bar{\lambda}$ is an eigenvalue of $T^*$.
+Hence, we have
+\begin{equation}\label{eq:dim_T_lambda}
+    \operatorname{dim}\operatorname{null}(T^*-\bar{\lambda}I)=\operatorname{dim}\operatorname{null}(T-\lambda I).
+\end{equation}
+
+\subsubsection*{First Direction}
+Suppose $\lambda$ is an eigenvalue of $T$. 
+Following from (\ref{eq:dim_T_lambda}), this implies that 
+\[\operatorname{dim}\operatorname{null}(T^*-\bar{\lambda}I)=\operatorname{dim}\operatorname{null}(T-\lambda I)>0\]
+and $\bar{\lambda}$ is an eigenvalue of $T^*$.
 
 \subsubsection*{Second Direction}
-Suppose $\bar{\lambda}$ is an eigenvalue of $T^*$ with $w\in V$ being the corresponding eigenvector. It follows that  
-\begin{align*}
-    \langle w, T v\rangle &= \langle T^*w, v\rangle = \langle \bar{\lambda} w, v\rangle = \bar{\lambda} \langle w, v\rangle = \langle w, \lambda v\rangle
-\end{align*}
-for some $w\in V$ such that $\langle v,w\rangle\neq 0$. Hence, $\lambda$ is an eigenvalue of $T$.
+Suppose $\bar{\lambda}$ is an eigenvalue of $T^*$. 
+Following from (\ref{eq:dim_T_lambda}), this implies that 
+\[\operatorname{dim}\operatorname{null}(T-\lambda I)=\operatorname{dim}\operatorname{null}(T^*-\bar{\lambda}I)>0\]
+and $\lambda$ is an eigenvalue of $T$.
 
 \clearpage
 
