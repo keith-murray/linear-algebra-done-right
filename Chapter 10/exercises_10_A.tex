@@ -94,5 +94,116 @@ Since $A$ is of the form of a change of basis, we can write
 \[0=(AB-BA)u=ABu-BAu=c_1v-c_2v=(c_1-c_2)v\]
 and it follows that $c_1=c_2$. Hence, $B$ is a scalar multiple of the identity.
 
+\clearpage
+
+\section{What is the "change of basis" matrix?}
+\subsection*{Problem statement}
+Suppose $u_1,\ldots,u_n$ and $v_1,\ldots,v_n$ are bases of $V$. 
+Let $T\in\mathcal{L}(V)$ be the operator such that $Tv_k=u_k$ for $k=1,\ldots,n$. 
+Prove that
+\[\mathcal{M}(T,(v_1,\ldots,v_n))=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n)).\]
+
+\subsection*{Solution}
+Let's first think about the $k^{\text{th}}$ column of $\mathcal{M}(T,(v_1,\ldots,v_n))$. 
+We have $Tv_k=u_k$, and since $\mathcal{M}(T,(v_1,\ldots,v_n))$ is in the $v_1,\ldots,v_n$ basis, it follows that
+\[Tv_k=A_{1,k}v_1+\cdots+A_{n,k}v_n\]
+where $A_{1,k},\ldots,A_{n,k}$ are the scalar entries in the $k^{\text{th}}$ column of $\mathcal{M}(T,(v_1,\ldots,v_n))$ and 
+\[u_k=A_{1,k}v_1+\cdots+A_{n,k}v_n.\]
+
+Turning to the matrix $\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$, the $k^{\text{th}}$ column of $\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ consists of the scalars needed to write $u_k$ as a linear combination of $v_1,\ldots,v_n$. 
+Since representations of vectors by bases are unique, it follows that the scalar entries in the $k^{\text{th}}$ column of \newline
+$\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ are also the scalar entries $A_{1,k},\ldots,A_{n,k}$ of the $k^{\text{th}}$ column of $\mathcal{M}(T,(v_1,\ldots,v_n))$.
+
+Hence, the columns of $\mathcal{M}(T,(v_1,\ldots,v_n))$ and \newline
+$\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ are the same. 
+Therefore, since the matrices are the same size, it follows that
+\[\mathcal{M}(T,(v_1,\ldots,v_n))=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n)).\]
+
+\clearpage
+
+\section{Schur's Theorem with change of bases}
+\subsection*{Problem statement}
+Suppose $B$ is a square matrix with complex entries. 
+Prove that there exists an invertible square matrix $A$ with complex entries such that $A^{-1}BA$ is an upper-triangular matrix.
+
+\subsection*{Solution}
+Note that $B$ must have an associated basis. 
+Let $v_1,\ldots,v_n$ be the basis of $B$. 
+Via our lemma \ref{sec:M_isomorphism}, there exists a unique operator $T\in\mathcal{L}(V)$ such that $\mathcal{M}(T, (v_1,\ldots,v_n))=B$. 
+Since $B$ has complex entries, $V$ is a complex vector space. 
+Via Schur's Theorem (Theorem 6.38), $T$ has an upper-triangular matrix with respect to some orthonormal basis of $V$. 
+Let $u_1,\ldots,u_n$ be this orthonormal basis and $\mathcal{M}(T,(u_1,\ldots,u_n))$ is the upper-triangular matrix of $T$. 
+Via Theorem 10.7 (`Change of basis formula'), we can write
+\[\mathcal{M}(T,(u_1,\ldots,u_n))=A^{-1}BA\]
+where $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$. 
+Via theorem 10.5 (`Matrix of the identity with respect to two bases'), $A$ is an invertible square matrix with complex entries. 
+Hence, there exists an invertible square matrix $A$ with complex entries such that $A^{-1}BA$ is an upper-triangular matrix.
+
+\clearpage
+
+\section{Example of $T$ such that $\operatorname{trace}(T^2)<0$}
+\subsection*{Problem statement}
+Give an example of a real vector space $V$ and $T\in\mathcal{L}(V)$ such that $\operatorname{trace}(T^2)<0$.
+
+\subsection*{Solution}
+Define $T\in\mathcal{L}(\mathbf{R}^2)$ by the matrix
+\begin{equation*}
+    \mathcal{M}(T)=
+    \begin{pmatrix}
+    1 & -10\\
+    1 & 0
+    \end{pmatrix}.
+\end{equation*}
+It follows that the matrix of $T^2$ is
+\begin{equation*}
+    \mathcal{M}(T^2)=
+    \begin{pmatrix}
+    -9 & -10\\
+    1 & -10
+    \end{pmatrix}.
+\end{equation*}
+Via Theorem 10.16 (`Trace of an operator equals trace of its matrix'), it follows that
+\[\operatorname{trace}(T^2)=\operatorname{trace}\mathcal{M}(T^2)=-19<0.\]
+Hence, $\operatorname{trace}(T^2)<0$.
+
+\clearpage
+
+\section{Trace of a squared diagonalizable matrix}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space, $T\in\mathcal{L}(V)$, and $V$ has a basis consisting of eigenvectors of $T$. 
+Prove that $\operatorname{trace}(T^2)\geq 0$.
+
+\subsection*{Solution}
+Via Theorem 5.41(a) and 5.41(b) (`Conditions equivalent to diagonalizability'), it follows that $T$ has a diagonal matrix with respect to some basis of $V$. 
+Let $A$ be this diagonal matrix. 
+It follows that $A^2$ is also a diagonal matrix where $A^2_{k,k}=A_{k,k}A_{k,k}\geq 0$ since $A_{k,k}\in\mathbf{R}$. 
+Hence, the trace of $T^2$ equals the trace of $A^2$ which is
+\[\operatorname{trace}(T^2)=\operatorname{trace}(A^2)=A^2_{1,1}+\cdots+A^2_{n,n}\geq 0\]
+since each entry is greater than or equal to $0$. 
+Therefore, $\operatorname{trace}(T^2)\geq 0$.
+
+\clearpage
+
+\section{Formula for trace of $Tu=\langle u,v\rangle w$}
+\subsection*{Problem statement}
+Suppose $V$ is an inner product space and $v,w\in V$. 
+Define $T\in\mathcal{L}(V)$ by $Tu=\langle u,v\rangle w$. 
+Find a formula for $\operatorname{trace}T$.
+
+\subsection*{Solution}
+Consider the subspace of $V$ defined by $U=\operatorname{span}(v)$. 
+It clearly follows that
+\[\operatorname{null}T=U^\bot.\]
+Hence, $0$ is an eigenvalue of $T$ with a multiplicity of $\operatorname{dim}U^\bot$.
+
+The vector $w$ is an eigenvector of $T$ since
+\[Tw=\langle w,v\rangle w\]
+with $\langle w,v\rangle$ being the corresponding eigenvalue.
+
+Suppose $\operatorname{dim}V=n$. 
+Notice that $\operatorname{dim}U=1$ and $\operatorname{dim}U^\bot=n-1$ via Theorem 6.50 (`Dimension of the orthogonal complement'). 
+Thus, the eigenvalue $0$ has a multiplicity of at least $n-1$ and the eigenvalue $\langle w,v\rangle$ has a multiplicity of at least $1$. 
+Via Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$'), it follows that the eigenvalue $0$ has a multiplicity of exactly $n-1$ and the eigenvalue $\langle w,v\rangle$ has a multiplicity of exactly $1$. Therefore, via the definition of trace of an operator (Definition 10.9), the formula for the trace of $T$ is
+\[\operatorname{trace}T=(n-1)0 + 1\langle w,v\rangle=\langle w,v\rangle.\]
 
 \end{document}
