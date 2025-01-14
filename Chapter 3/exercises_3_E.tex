@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 3.E}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\section{The graph of $T$}
+\subsection*{Problem statement}
+Suppose $T$ is a function from $V$ to $W$. 
+The \textbf{graph} of $T$ is the subset of $V\times W$ defined by
+\[\text{graph of }T=\{(v,Tv)\in V\times W : v\in V\}.\]
+Prove that $T$ is a linear map if and only if the graph of $T$ is a subspace of $V\times W$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $T$ is a linear map. 
+To show that the graph of $T$ is a subspace of $V\times W$, we need to show the properties of \textbf{additive identity}, \textbf{closed under addition}, and \textbf{closed under scalar multiplication}.
+
+\textbf{additive identity}: Clearly $0\in V$. 
+Thus, via Theorem 3.11 (`Linear maps take $0$ to $0$'), it follows that
+\[(0,0)=(0,T(0))\in \text{graph of }T\].
+
+\textbf{closed under addition}: Suppose $v,u\in V$. 
+Thus \newline $(v,Tv),(u,Tu)\in \text{graph of }T$. 
+Via the definition of addition on $V\times W$ (Definition 3.71), we have 
+\[(v,Tv)+(u,Tu)=(v+u,Tv+Tu)=(v+u,T(v+u))\in\text{graph of }T\]
+since $v+u\in V$. 
+Note that the second equality follows from the \textbf{additivity} of $T$.
+
+\textbf{closed under scalar multiplication}: Suppose $v\in V$ and $\lambda\in \textbf{F}$. 
+Via the definition of scalar multiplication on $V\times W$ (Definition 3.71), we have
+\[\lambda(v,Tv)=(\lambda v,\lambda Tv)=(\lambda v,T(\lambda v))\in\text{graph of }T\]
+since $\lambda v\in V$. 
+Note that the second equality follows from the \textbf{homogeneity} of $T$.
+
+\subsubsection*{Second Direction}
+Suppose the graph of $T$ is a subspace of $V\times W$. 
+To show that $T$ is a linear map, we need to show the properties of \textbf{additivity} and \textbf{homogeneity}.
+
+\textbf{additivity}: Suppose $v,u\in V$. 
+Given the graph of $T$ is \textbf{closed under addition}, it follows that $(v,Tv)+(u,Tu)=(v+u,Tv+Tu)\in \text{graph of }T$. 
+Following from $v+u\in V$, we also have $(v+u,T(v+u))\in \text{graph of }T$. 
+Hence, it necessarily follows that
+\[(v+u,Tv+Tu)=(v+u,T(v+u))\]
+and $Tv+Tu=T(v+u)$.
+
+\textbf{homogeneity}: Suppose $v\in V$ and $\lambda\in \textbf{F}$. 
+Given the graph of $T$ is \textbf{closed under scalar multiplication}, it follows that\newline $\lambda(v,Tv)=(v,\lambda Tv)\in \text{graph of }T$. 
+Following from $\lambda v\in V$, we also have $(\lambda v,T(\lambda v))\in \text{graph of }T$. 
+Hence, it necessarily follows that
+\[(v,\lambda Tv)=(\lambda v,T(\lambda v))\]
+and $\lambda Tv=T(\lambda v)$.
+
+
+\end{document}
