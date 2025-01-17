@@ -61,5 +61,225 @@ Hence, it necessarily follows that
 \[(v,\lambda Tv)=(\lambda v,T(\lambda v))\]
 and $\lambda Tv=T(\lambda v)$.
 
+\subsubsection*{Notes}
+It's kinda neat how the \textbf{graph} of $T$ allows us to connect the properties of subspaces with the properties of linear maps.
+
+\clearpage
+
+\section{The dimensionality of $V_1\times\cdots\times V_m$ and $V_j$}
+\subsection*{Problem statement}
+Suppose $V_1,\ldots,V_m$ are vector spaces such that $V_1\times\cdots\times V_m$ is finite-dimensional. 
+Prove that $V_j$ is finite-dimensional for each $j=1,\ldots,m$.
+
+\subsection*{Solution}
+Let $u_1,\ldots,u_n$ be a basis of $V_1\times\cdots\times V_m$. 
+For each vector $u_k$, it follows from the definition of the product of vector spaces (Definition 3.71) that we can express $u_k$ as
+\[u_k=(v_1,\ldots,v_m)\]
+where each $v_j\in V_j$. 
+Let $u_{k,j}$ be the a vector in the $j$-th slot of the $u_k$ basis vector. 
+Fix $j$ and construct the list $(u_{1,j},\ldots,u_{n,j})$. 
+If this list does not span $V_j$, then $u_1,\ldots,u_n$ is not a basis of $V_1\times\cdots\times V_m$. 
+Hence, the list $(u_{1,j},\ldots,u_{n,j})$ spans $V_j$ and $V_j$ is finite-dimensional.
+
+\clearpage
+
+\section{Isomorphic products don't imply direct sums}
+\subsection*{Problem statement}
+Give an example of a vector space $V$ and subspaces $U_1,U_2$ of $V$ such that $U_1\times U_2$ is isomorphic to $U_1+U_2$ but $U_1+U_2$ is not a direct sum.
+
+\subsection*{Solution}
+Let $V$ be the vector space $\mathbf{F}^\infty$, $U_1$ be the subspace defined by
+\[U_1=\{(x_1,x_2,0,0,\ldots):x_1,x_2\in\mathbf{F}\},\]
+and $U_2$ be the subspace defined by 
+\[U_2=\{(0,y_1,y_2,\ldots):y_j\in\mathbf{F}\text{ for }j=1,2,\ldots\}.\]
+Clearly $U_1+U_2$ is not a direct sum, but to show that $U_1\times U_2$ is isomorphic to $U_1+U_2$ we need to find an isomorphism. 
+Define $T\in\mathcal{L}(U_1\times U_2,U_1+U_2)$ by
+\[T((x_1,x_2,0,0,\ldots),(0,y_1,y_2,\ldots))=(x_1,x_2,y_1,y_2,\ldots)\]
+and define $S\in\mathcal{L}(U_1+U_2,U_1\times U_2)$
+\[S(x_1,x_2,x_3,x_4,\ldots)=((x_1,x_2,0,0,\ldots),(0,x_3,x_4,\ldots)).\]
+It follows that $ST=I$ on $U_1\times U_2$ and $TS=I$ on $U_1+U_2$. 
+Hence, $T$ is an isomorphism from $U_1\times U_2$ onto $U_1+U_2$.
+
+\clearpage
+
+\section{$\mathcal{L}(V_1\times\cdots\times V_m,W)$ and $\mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_m,W)$}
+\subsection*{Problem statement}
+Suppose $V_1,\ldots,V_m$ are vector spaces. 
+Prove that $\mathcal{L}(V_1\times\cdots\times V_m,W)$ and $\mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_m,W)$ are isomorphic vector spaces.
+
+\subsection*{Solution}
+Via Theorem 3.61 (`$\operatorname{dim}\mathcal{L}(V,W)=(\operatorname{dim}V)(\operatorname{dim}W)$') and Theorem 3.76 (`Dimension of a product is the sum of dimensions'), we can write the dimension of $\mathcal{L}(V_1\times\cdots\times V_m,W)$ as
+\begin{align*}
+    \operatorname{dim}\mathcal{L}(V_1\times\cdots\times V_m,W)&=(\operatorname{dim}V_1\times\cdots\times V_m)(\operatorname{dim}W)\\
+    &=(\operatorname{dim}V_1+\cdots+\operatorname{dim}V_m)(\operatorname{dim}W)\\
+    &=(\operatorname{dim}V_1)(\operatorname{dim}W)+\cdots+(\operatorname{dim}V_m)(\operatorname{dim}W)
+\end{align*}
+and the dimension of $\mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_m,W)$ as
+\begin{align*}
+    \mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_m,W)&=\operatorname{dim}\mathcal{L}(V_1,W)+\cdots+\operatorname{dim}\mathcal{L}(V_m,W)\\
+    &=(\operatorname{dim}V_1)(\operatorname{dim}W)+\cdots+(\operatorname{dim}V_m)(\operatorname{dim}W).
+\end{align*}
+Hence, $\mathcal{L}(V_1\times\cdots\times V_m,W)$ and $\mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_m,W)$ have the same dimension. Thus, via Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic'), they are isomorphic vector spaces. 
+
+\clearpage
+
+\section{$\mathcal{L}(V,W_1\times\cdots\times W_m)$ and $\mathcal{L}(V,W_1)\times\cdots\times\mathcal{L}(V,W_m)$}
+\subsection*{Problem statement}
+Suppose $W_1,\ldots,W_m$ are vector spaces. 
+Prove that $\mathcal{L}(V,W_1\times\cdots\times W_m)$ and $\mathcal{L}(V,W_1)\times\cdots\times\mathcal{L}(V,W_m)$ are isomorphic vector spaces.
+
+\subsection*{Solution}
+Via Theorem 3.61 (`$\operatorname{dim}\mathcal{L}(V,W)=(\operatorname{dim}V)(\operatorname{dim}W)$') and Theorem 3.76 (`Dimension of a product is the sum of dimensions'), we can write the dimension of $\mathcal{L}(V,W_1\times\cdots\times W_m)$ as
+\begin{align*}
+    \mathcal{L}(V,W_1\times\cdots\times W_m)&=(\operatorname{dim}V)(\operatorname{dim}W_1\times\cdots\times W_m)\\
+    &=(\operatorname{dim}V)(\operatorname{dim}W_1+\cdots+\operatorname{dim}W_m)\\
+    &=(\operatorname{dim}V)(\operatorname{dim}W_1)+\cdots+(\operatorname{dim}V)(\operatorname{dim}W_m)
+\end{align*}
+and the dimension of $\mathcal{L}(V,W_1)\times\cdots\times\mathcal{L}(V,W_m)$ as
+\begin{align*}
+    \mathcal{L}(V,W_1)\times\cdots\times\mathcal{L}(V,W_m)&=\operatorname{dim}\mathcal{L}(V,W_1)+\cdots+\operatorname{dim}\mathcal{L}(V,W_m)\\
+    &=(\operatorname{dim}V)(\operatorname{dim}W_1)+\cdots+(\operatorname{dim}V)(\operatorname{dim}W_m).
+\end{align*}
+Hence, $\mathcal{L}(V,W_1\times\cdots\times W_m)$ and $\mathcal{L}(V,W_1)\times\cdots\times\mathcal{L}(V,W_m)$ have the same dimension. 
+Thus, via Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic'), they are isomorphic vector spaces. 
+
+\clearpage
+
+\section{$V^n$ and $\mathcal{L}(\mathbf{F}^n,V)$ are isomorphic}
+\subsection*{Problem statement}
+For $n$ a positive integer, define $V^n$ by
+\[V^n=V\times\cdots\times V\Big\}(n\text{ times}).\]
+Prove that $V^n$ and $\mathcal{L}(\mathbf{F}^n,V)$ are isomorphic vector spaces.
+
+\subsection*{Solution}
+Via Theorem 3.76 (`Dimension of a product is the sum of dimensions'), the dimension of $V^n$ is
+\begin{align*}
+    \operatorname{dim}V^n&=\operatorname{dim}V+\cdots+\operatorname{dim}V\Big\}(n\text{ times})\\
+    &=n(\operatorname{dim}V).
+\end{align*}
+Via Theorem 3.61 (`$\operatorname{dim}\mathcal{L}(V,W)=(\operatorname{dim}V)(\operatorname{dim}W)$'), the dimension of $\mathcal{L}(\mathbf{F}^n,V)$ is
+\[\operatorname{dim}\mathcal{L}(\mathbf{F}^n,V)=(\operatorname{dim}\mathbf{F}^n)(\operatorname{dim}V)=n(\operatorname{dim}V).\]
+Hence, $V^n$ and $\mathcal{L}(\mathbf{F}^n,V)$ have the same dimension. 
+Thus, via Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic'), they are isomorphic vector spaces. 
+
+\clearpage
+
+\section{If $v+U=x+W$, then $U+W$}
+\subsection*{Problem statement}
+Suppose $v,x$ are vectors in $V$ and $U,W$ are subspaces of $V$ such that\newline $v+U=x+W$. 
+Prove that $U=W$.
+
+\subsection*{Solution}
+Given $W$ is a subspace, it follows that $0\in W$ and there exists some vector $u\in U$ such that
+\[v+u=x+0.\]
+Rearranging terms, we have $v-x=-u$ which implies $v-x\in U$. 
+Via theorem 3.85 (`Two affine subsets parallel to $U$ are equal or disjoint'), it follows that $v-x\in U$ is equivalent to $v+U=x+U$. 
+Hence, we have 
+\[x+W=v+U=x+U,\]
+which implies that $U=W$.
+
+\clearpage
+
+\section{A property of affine subsets}
+\subsection*{Problem statement}
+Prove that a nonempty subset $A$ of $V$ is an affine subset of $V$ if and only if $\lambda v+(1-\lambda)w\in A$ for all $v,w\in A$ and all $\lambda\in\mathbf{F}$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $A$ of $V$ is an affine subset. 
+It follows from Definition 3.79 (`$v+U$') and Definition 3.81 (`affine subset, parallel') that we can express $A$ as 
+\[A=u+U\]
+for some vector $u\in V$ and some subspace $U$ of $V$. 
+Consider two vectors $v,w\in A$. 
+We can represent these vectors as 
+\[v=u+u_1\;\;\;\text{and}\;\;\;w=u+u_2\]
+for some $u_1,u_2\in U$. 
+For all $\lambda\in\mathbf{F}$, we can write
+\begin{align*}
+    \lambda v+(1-\lambda)w &= \lambda u+\lambda u_1+u+u_2-\lambda u -\lambda u_2\\
+    &= u+\lambda u_1+(1-\lambda)u_2\in u+U=A
+\end{align*}
+where $\lambda u_1+(1-\lambda)u_2\in U$ since $U$ is a subspace and is \textbf{closed under addition}.
+
+\subsubsection*{Second Direction}
+Suppose $A$ is a nonempty subset of $V$ such that $\lambda v+(1-\lambda)w\in A$ for all $v,w\in A$ and all $\lambda\in\mathbf{F}$. 
+Given $A$ is nonempty, we can choose a vector $v\in A$ and construct the set
+\[U=\{u-v:u\in A\}.\]
+If we can show that $U$ is a subspace of $V$, then it follows that $A$ is an affine subset since $A=v+U$.
+
+\textbf{additive identity}: Clearly $0\in U$ since $0=v-v\in U$.
+
+\textbf{closed under addition}: Consider two vectors $u_1,u_2\in U$. 
+Our construction of $U$ implies there exist $w_1,w_2\in A$ such that
+\[u_1=w_1-v\;\;\;\text{and}\;\;\;u_2=w_2-v.\]
+To show that $u_1+u_2\in U$, we need to find a vector $u\in A$ such \newline that $u_1+u_2=u-v$. 
+It follows that
+\[u_1+u_2=w_1+w_2-v-v\]
+and we need to show $w_1+w_2-v\in A$.
+
+We have $\frac{1}{2}(w_1+w_2)\in A$ since it is of the for $\lambda w_1+(1-\lambda)w_2$ where $\lambda=\frac{1}{2}$. 
+Considering the vectors $\frac{1}{2}(w_1+w_2)$ and $v$ and the scalar $\lambda=2$, it follows that
+\[2(\frac{1}{2}(w_1+w_2))+(1-2)v=w_1+w_2-v\in A\]
+and $u_1+u_2=w_1+w_2-v-v\in U$. 
+Hence, $U$ is \textbf{closed under addition}.
+
+\textbf{closed under scalar multiplication}: Suppose $u\in U$ and $\lambda\in\mathbf{F}$. 
+Via our construction of $U$, there exists some $w\in A$ such that $u=w-v$. 
+To show that $\lambda u\in U$, we can write
+\[\lambda u=\lambda w - \lambda v=\lambda w - (\lambda -1)v-v=\lambda w+(1-\lambda)v-v\in U\]
+where $\lambda w+(1-\lambda)v\in A$. Hence, $U$ is \textbf{closed under scalar multiplication}.
+
+\clearpage
+
+\section{Intersection of two affine subsets}
+\subsection*{Problem statement}
+Suppose $A_1$ and $A_2$ are affine subsets of $V$. 
+Prove that the intersection $A_1\cap A_2$ is either an affine subset of $V$ or the empty set.
+
+\subsection*{Solution}
+Let's tackle each case separately.
+
+\subsubsection*{Intersection equals the empty set}
+To prove that the intersection $A_1\cap A_2$ could be the empty set, we can find an example. 
+Suppose $U=\{(x,2x)\in\mathbf{R}^2:x\in\mathbf{R}\}$, $A_1=(1,2)+U$, and $A_2=(-1,2)+U$. 
+Geometrically, $A_1$ and $A_2$ are parallel lines in $\mathbf{R}^2$. 
+Since these lines are parallel, it follows that $A_1\cap A_2=\emptyset$.
+
+\subsubsection*{Intersection does not equal the empty set}
+Suppose $A_1\cap A_2\neq\emptyset$. 
+Thus there exists a vector $v\in V$ such that $v\in A_1\cap A_2$. 
+Define the set $U$ by 
+\[U=\{u-v:u\in A_1\cap A_2\}\]
+In a similar manner as our solution to Exercise 3.E(8), if we can show that $U$ is a subspace of $V$, then it follows that $A_1\cap A_2$ is an affine subset. 
+
+\textbf{additive identity}: Clearly $0\in U$ since $0=v-v\in U$.
+
+\textbf{closed under addition}: Consider two vectors $u_1,u_2\in U$. 
+Our construction of $U$ implies there exist $w_1,w_2\in A_1\cap A_2$ such that
+\[u_1=w_1-v\;\;\;\text{and}\;\;\;u_2=w_2-v.\]
+To show that $u_1+u_2\in U$, we need to find a vector $u\in  A_1\cap A_2$ such \newline that $u_1+u_2=u-v$. 
+It follows that
+\[u_1+u_2=w_1+w_2-v-v\]
+and we need to show $w_1+w_2-v\in  A_1\cap A_2$. 
+Via our reasoning in our solution to Exercise 3.E(8), it follows that $w_1+w_2-v\in A_1$ and $w_1+w_2-v\in A_2$ since $A_1$ and $A_2$ are affine subsets. Hence, we have $w_1+w_2-v\in  A_1\cap A_2$ and $u_1+u_2\in U$. Therefore,  $U$ is \textbf{closed under addition}.
+
+\textbf{closed under scalar multiplication}: Suppose $u\in U$ and $\lambda\in\mathbf{F}$. 
+Via our construction of $U$, there exists some $w\in A_1\cap A_2$ such that $u=w-v$. 
+To show that $\lambda u\in U$, we can write
+\[\lambda u=\lambda w - \lambda v=\lambda w - (\lambda -1)v-v=\lambda w+(1-\lambda)v-v\in U\]
+where $\lambda w+(1-\lambda)v\in A_1\cap A_2$ via our reasoning in Exercise 3.E(8). 
+Hence, $U$ is \textbf{closed under scalar multiplication}.
+
+\clearpage
+
+\section{Intersection of any collection of affine subsets}
+\subsection*{Problem statement}
+Prove that the intersection of every collection of affine subsets of $V$ is either an affine subset of $V$ or the empty set.
+
+\subsection*{Solution}
+Suppose $A_1,A_2,\ldots,A_n$ is a collection of affine subsets. 
+By arranging the intersection of the collection as 
+\[\big(\ldots(A_1\cap A_2)\cap\ldots\big)\cap A_n\]
+we can iteratively apply our result from Exercise 3.E(9) to show that the intersection must be an affine subset of $V$ or the empty set.
 
 \end{document}
