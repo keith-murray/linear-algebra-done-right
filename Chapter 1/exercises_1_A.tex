@@ -67,5 +67,36 @@ The square roots of $i$ concern $\frac{1}{\sqrt{2}}$.
     &=i
 \end{align*}
 
+\clearpage
+
+\renewcommand{\thesection}{11}
+\section{System of equations to find $\lambda\in\textbf{C}$}
+\subsection*{Problem statement}
+Explain why there does not exist $\lambda\in\textbf{C}$ such that
+\[\lambda(2-3i,5+4i,-6+7i)=(12-5i,7+22i,-32-9i).\]
+
+\subsection*{Solution}
+We can write $\lambda\in\textbf{C}$ as $\lambda=a+bi$. 
+Now we can frame our problem into a series of linear equations. 
+We can write 
+\begin{gather*} 
+    (a+bi)(2-3i)=12-5i\\
+    (2a+3b)+(-3a+2b)i=12-5i\\
+    a=-\frac{3}{2}b+6\;\;\;\text{and}\;\;\;a=\frac{2}{3}b+\frac{5}{3}\\
+    -\frac{3}{2}b+6=\frac{2}{3}b+\frac{5}{3}\\
+    -\frac{3}{2}b-\frac{2}{3}b=\frac{5}{3}-6\\
+    -\frac{15}{6}b=-\frac{13}{3}\\
+    b=\frac{26}{15}
+\end{gather*}
+and
+\begin{gather*}
+    (a+bi)(5+4i)=7+22i\\
+    (5a-4b)+(4a+5b)i=7+22i\\
+    a=\frac{4}{5}b+\frac{7}{5}\;\;\;\text{and}\;\;\;a=-\frac{5}{4}b+\frac{11}{2}\\
+    \frac{4}{5}b+\frac{5}{4}b=-\frac{7}{5}+\frac{11}{2}\\
+    \frac{41}{20}b=\frac{41}{10}\\
+    b=2.
+\end{gather*}
+Hence, the systems of linear equations does not have a solution and no $\lambda\in\mathbf{C}$ exists.
 
 \end{document}
