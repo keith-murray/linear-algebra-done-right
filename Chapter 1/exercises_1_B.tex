@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 1.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Prove that $-(-v)=v$}
+\subsection*{Problem statement}
+Prove that $-(-v)=v$ for every $v\in V$.
+
+\subsection*{Solution}
+Via the properties of \textbf{additive inverse} and \textbf{commutativity} (Definition 1.19), we have
+\[-v+(-(-v))=0\;\;\;\text{and}\;\;\;v+(-v)=-v+v=0\]
+for every $v\in V$.
+But via Theorem 1.26 (`Unique additive inverse'), every element in a vector space has a unique additive inverse. 
+Hence, it necessarily follows that $-(-v)=v$ for every $v\in V$.
+
+\clearpage
+
+\renewcommand{\thesection}{4}
+\section{Why is the empty set not a vector space?}
+\subsection*{Problem statement}
+The empty set is not a vector space. 
+The empty set fails to satisfy only one of the requirements listed in 1.19. 
+Which one?
+
+\subsection*{Solution}
+The empty set fails to satisfy that property of \textbf{additive identity} (Definition 1.19). 
+The property stipulates that an element exists, but the empty set has no elements.
+
+\clearpage
+
+\renewcommand{\thesection}{5}
+\section{Replacing the additive inverse condition}
+\subsection*{Problem statement}
+Show that in the definition of a vector space (1.19), the additive inverse condition can be replaced with the condition that
+\[0v=0\text{ for all }v\in V.\]
+Here the $0$ on the left side is the number $0$, and the $0$ on the right side is the additive identity of $V$.
+
+\subsection*{Solution}
+We can replace the \textbf{additive inverse} condition for vector spaces (Definition 1.19) with the condition that 
+\[0v=0\text{ for all }v\in V,\]
+the \textbf{additive inverse} condition for fields (Theorem 1.3), and the \textbf{distributive properties} condition for vector spaces (Definition 1.19). 
+Via the \textbf{additive inverse} condition for fields (Theorem 1.3), we can state $1+(-1)=0$. 
+Via the condition that 
+\[0v=0\text{ for all }v\in V,\]
+we can substitute $0$ with $1+(-1)$ to get
+\[(1+(-1))v=0\text{ for all }v\in V.\]
+Via the the \textbf{distributive properties} condition for vector spaces (Definition 1.19), we now have 
+\[(v+(-1)v=0\text{ for all }v\in V.\]
+This result is identical to the \textbf{additive inverse} condition. 
+Hence, we have deduced the \textbf{additive inverse} condition from our condition that
+\[0v=0\text{ for all }v\in V.\]
+
+\clearpage
+
+\renewcommand{\thesection}{6}
+\section{Is $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ a vector space?}
+\subsection*{Problem statement}
+Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in $\mathbf{R}$. 
+Define an addition and scalar multiplication on $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ as you could guess from the notation. 
+Is $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ a vector space over $\mathbf{R}$? 
+Explain.
+
+\subsection*{Solution}
+No, $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ is not a vector space over $\mathbf{R}$ because it does not satisfy the \textbf{distributive properties} (Definition 1.19). 
+Consider the expression $(2-1)\infty$. 
+We can write 
+\[(2-1)\infty=2\infty+(-1)\infty=\infty+(-\infty)=0\]
+and
+\[(2-1)\infty=(1)\infty=\infty.\]
+Thus $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ is not a vector space over $\mathbf{R}$.
+
+\end{document}
