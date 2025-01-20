@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 1.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Set or subspace?}
+\subsection*{Problem statement}
+For each of the following subset of $\mathbf{F}^3$, determine whether it is a subspace of $\mathbf{F}^3$:
+\begin{itemize}
+  \item[(a)] $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$;
+  \item[(b)] $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=4\}$;
+  \item[(c)] $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1x_2x_3=0\}$;
+  \item[(d)] $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1=5x_3\}$.
+\end{itemize}
+
+\subsection*{Solution}
+\subsubsection*{a}
+To determine if the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$ is a subspace of $\mathbf{F}^3$, we can assess if the subset satisfies the properties of a subspace: \textbf{additive identity}, \textbf{closed under addition}, and \textbf{closed under scalar multiplication}.
+
+\textbf{additive identity}: Given that $0+2\cdot0+3\cdot0=0$, we have \newline $(0,0,0)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$.
+
+\textbf{closed under scalar multiplication}: Suppose\newline $(y_1,y_2,y_3)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$ and $\lambda\in\mathbf{F}$. 
+It follows that 
+\begin{align*}
+    y_1+2y_2+3y_3&=0=\frac{1}{\lambda}\cdot0\\
+    \lambda(y_1+2y_2+3y_3)&=0\\
+    \lambda y_1+2(\lambda y_2)+3(\lambda y_3)&=0.
+\end{align*}
+Hence, we have $\lambda(y_1,y_2,y_3)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$.
+
+\textbf{closed under addition}: Suppose\newline $(x_1,x_2,x_3),(y_1,y_2,y_3)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$. 
+It follows that 
+\[x_1+2x_2+3x_3=0\;\;\;\text{and}\;\;\;y_1+2y_2+3y_3=0.\]
+Adding the two equations above, we have
+\begin{align*}
+    x_1+2x_2+3x_3+y_1+2y_2+3y_3&=0\\
+    (x_1+y_1)+2(x_2+y_2)+3(x_3+y_3)&=0.
+\end{align*}
+Hence, we have\newline $(x_1,x_2,x_3)+(y_1,y_2,y_3)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$.
+
+\end{document}
