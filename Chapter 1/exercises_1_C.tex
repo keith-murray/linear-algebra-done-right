@@ -4,7 +4,7 @@
 \usepackage{hyperref}
 \usepackage{epigraph} 
 
-\title{Linear Algebra Done Right\\Solutions to Exercises 1.B}
+\title{Linear Algebra Done Right\\Solutions to Exercises 1.C}
 \author{}
 \date{}
 
@@ -46,5 +46,113 @@ Adding the two equations above, we have
     (x_1+y_1)+2(x_2+y_2)+3(x_3+y_3)&=0.
 \end{align*}
 Hence, we have\newline $(x_1,x_2,x_3)+(y_1,y_2,y_3)\in\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$.
+
+Since the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$ satisfies all the conditions of a subspace, via Theorem 1.34 (`Conditions of a subspace'), it is a subspace of $\mathbf{F}^3$.
+
+\subsubsection*{b}
+No, the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=4\}$  is not a subspace of $\textbf{F}^3$ because it does not contain the \textbf{additive identity}. 
+This follows from the observation that
+\[0+2\cdot 0 + 3\cdot 0\neq 4.\]
+
+\subsubsection*{c}
+No, the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1x_2x_3=0\}$ is not a subspace of $\textbf{F}^3$ because it is not \textbf{closed under addition}. 
+We can show this by noting that the vectors $(0,1,1)$ and $(1,0,1)$ are members of the subset, but $(0,1,1)+(1,0,1)$ is not a member since
+\[(0,1,1)+(1,0,1)=(1,1,2)\;\;\;\text{and}\;\;\;1\cdot1\cdot2\neq0.\]
+
+\subsubsection*{d}
+Yes, the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1=5x_3\}$ is a subspace of $\textbf{F}^3$. 
+This follows from the observation that the following set 
+\[\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+0x_2-5x_3=0\}\]
+is an equivalent formulation of $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1=5x_3\}$ is a subspace of $\textbf{F}^3$ and is of a similar form to the subspace $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+2x_2+3x_3=0\}$, which we showed was a subspace of $\textbf{F}^3$. 
+A verification that the subset $\{(x_1,x_2,x_3)\in\mathbf{F}^3:x_1+0x_2-5x_3=0\}$ satisfies all the conditions of a subspace is near identical to the reasoning in part \textbf{a}.
+
+\clearpage
+
+\renewcommand{\thesection}{8}
+\section{Set closed under multiplication not subspace}
+\subsection*{Problem statement}
+Give an example of a nonempty subset $U$ of $\mathbf{R}^2$ such that $U$ is closed under scalar multiplication, but $U$ is not a subspace of $\mathbf{R}^2$.
+
+\subsection*{Solution}
+The subset 
+\[U=\{(x_1,x_2)\in\textbf{R}^2:x_1x_2=0\}\]
+is \textbf{closed under scalar multiplication} but is not \textbf{closed under addition}; thus, it is not a subspace. 
+
+To verify that $U$ is \textbf{closed under scalar multiplication}, for $\lambda\in\textbf{R}$ and $(x_1,x_2)\in U$, it follows that for $\lambda(x_1,x_2)=(\lambda x_1,\lambda x_2)$ and we can write
+\[(\lambda x_1)(\lambda x_2)=\lambda^2(x_1x_2)=\lambda^2(0)=0\]
+since $x_1x_2=0$.
+
+To verify that $U$ is not \textbf{closed under addition}, it follows that $(1,0),(0,1)\in U$ but $(1,0)+(0,1)=(1,1)$ and $(1,1)\notin U$.
+
+\clearpage
+
+\renewcommand{\thesection}{10}
+\section{Intersection of subspaces is a subspace}
+\subsection*{Problem statement}
+Suppose $U_1$ and $U_2$ are subspaces of $V$. 
+Prove that the intersection $U_1\cap U_2$ is a subspace of $V$.
+
+\subsection*{Solution}
+Via Theorem 1.34 (‘Conditions of a subspace’), we need to show that $U_1\cap U_2$ satisfies the conditions of \textbf{additive identity}, \textbf{closed under scalar multiplication}, and \textbf{closed under addition}.
+
+\textbf{additive identity}: Given $U_1$ and $U_2$ are subspaces, it follows that $0\in U_1$ and $0\in U_2$. 
+Hence, we have $0\in U_1\cap U_2$.
+
+\textbf{closed under scalar multiplication}: Suppose $v\in U_1\cap U_2$ and $\lambda\in\mathbf{F}$. 
+Since $U_1$ and $U_2$ are \textbf{closed under scalar multiplication}, it follows that $\lambda v\in U_1$ and $\lambda v\in U2$. 
+Hence, we have $\lambda v\in U_1\cap U_2$.
+
+\textbf{closed under addition}: Suppose $v,u\in U_1\cap U_2$. 
+Since $U_1$ and $U_2$ are \textbf{closed under addition}, it follows that $v+u\in U_1$ and $v+u\in U2$. 
+Hence, we have $v+u\in U_1\cap U_2$.
+
+Therefore, since $U_1\cap U_2$ satisfies all the conditions of a subspace, it follows that $ U_1\cap U_2$ is a subspace $V$.
+
+\clearpage
+
+\renewcommand{\thesection}{11}
+\section{Intersection of every collection of subspaces}
+\subsection*{Problem statement}
+Prove that the intersection of every collection of subspaces of $V$ is a subspace of $V$.
+
+\subsection*{Solution}
+Suppose $U_1,U_2,\ldots,U_n$ is a collection of subspaces of $V$. 
+By arranging the intersection of the collection as 
+\[\big(\ldots(U_1\cap U_2)\cap\ldots\big)\cap U_n\]
+we can iteratively apply our result from Exercise 1.C(10) to show that the intersection is a subspace of $V$.
+
+\clearpage
+
+\renewcommand{\thesection}{21}
+\section{Find $W$ such that $\mathbf{F}^5=U\oplus W$}
+\subsection*{Problem statement}
+Suppose 
+\[U=\{ (x,y,x+y,x-y,2x)\in \mathbf{F}^5:x,y\in\mathbf{F}\}.\]
+Find a subspace $W$ of $\mathbf{F}^5$ such that $\mathbf{F}^5=U\oplus W$.
+
+\subsection*{Solution}
+Define the subset $W$ of $\mathbf{F}^5$ as
+\[W=\{(0,0,z,u,v)\in\mathbf{F}^5:z,u,v\in\mathbf{F}\}.\]
+To prove that $\mathbf{F}^5=U\oplus W$, we need to show that $W$ is a subspace of $\mathbf{F}^5$, $\mathbf{F}^5=U + W$, and $U+W$ is a direct sum.
+
+It obviously follows from the construction of $W$ that $W$ is a subspace of $\mathbf{F}^5$.
+
+To prove $\mathbf{F}^5=U + W$, we need to show $U + W\subset \mathbf{F}^5$ and $\mathbf{F}^5\subset U+W$. 
+Suppose $(x,y,x+y,x-y,2x)\in U$ and $(0,0,z,u,v)\in W$. 
+It follows that
+\begin{multline*}
+(x,y,x+y,x-y,2x)+(0,0,z,u,v)\\
+=(x,y,x+y+z,x-y+u,2x+v)\in\mathbf{F}^5,
+\end{multline*}
+showing $U + W\subset \mathbf{F}^5$. 
+Suppose $(x,y,z,u,v)\in\mathbf{F}^5$. 
+We can construct $(x,y,z,u,v)$ from $U+W$ by choosing vectors $(x,y,x+y,x-y,2x)\in U$ and $(0,0,z-x-y,u-x+y,v-2x)\in W$ and writing
+\[(x,y,x+y,x-y,2x)+(0,0,z-x-y,u-x+y,v-2x)=(x,y,z,u,v).\]
+Hence, we've shown $U + W\subset \mathbf{F}^5$,[] and it follows that $\mathbf{F}^5=U + W$.
+
+To prove $U+W$ is a direct sum, it follows from Theorem 1.45 (`Direct sum of two subspaces') that we need only show $U\cap W=\{0\}$. 
+This result follows from the observation that all vectors in $W$ have a $0$ in the $1^{\text{st}}$ and $2^{\text{nd}}$ coordinates. 
+Hence, only vectors with a $0$ in the $1^{\text{st}}$ and $2^{\text{nd}}$ coordinates in $U$ can be members of $U\cap W$. 
+Only one vector in $U$ has a $0$ in the $1^{\text{st}}$ and $2^{\text{nd}}$ coordinates, namely the $0$ vector. Thus, it follows that $U\cap W=\{0\}$.
 
 \end{document}
