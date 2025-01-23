@@ -1,2 +1,9 @@
-# linear-algebra-done-right
-Solutions to Linear Algebra Done Right, Third Edition
+# Linear Algebra Done Right, Third Edition
+
+> Algebra is but written geometry and geometry is but figured algebra.
+>
+> - Sophie Germain
+
+This repository contains my solutions to exercises in the third edition of Sheldon Axler's *Linear Algebra Done Right* textbook.
+
+I do not claim that all of my solutions are correct or elegant, but I do hope that someone finds them useful.
