@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 1.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{$v_1-v_2,v_2-v_3,v_3-v_4,v_4$ spans $v$}
+\subsection*{Problem statement}
+Suppose $v_1,v_2,v_3,v_4$ spans $V$. 
+Prove that the list
+\[v_1-v_2,v_2-v_3,v_3-v_4,v_4\]
+also spans $V$.
+
+\subsection*{Solution}
+Given $v_1,v_2,v_3,v_4$ spans $V$, every vector $v\in V$ can be written as 
+\[v=a_1v_1+a_2v_2+a_3v_3+a_4v_4\]
+for some $a_1,a_2,a_3,a_4\in\mathbf{F}$. 
+We can write a vector\newline $u\in\operatorname{span}(v_1-v_2,v_2-v_3,v_3-v_4,v_4)$ as
+\begin{align*}
+    u&=b_1(v_1-v_2)+b_2(v_2-v_3)+b_3(v_3-v_4)+b_4v_4\\
+    &=b_1v_1+(b_2-b_1)v_2+(b_3-b_2)v_3+(b_4-b_3)v_4
+\end{align*}
+for some $b_1,b_2,b_3,b_4\in\mathbf{F}$. 
+To show that $v\in\operatorname{span}(v_1-v_2,v_2-v_3,v_3-v_4,v_4)$, we can set $b_1=a_1,b_2=a_2+a_1,b_3=a_3+a_2+a_1,b_4=a_4+a_3+a_2+a_1$ to write
+\begin{align*}
+    b_1v_1+&(b_2-b_1)v_2+(b_3-b_2)v_3+(b_4-b_3)v_4=a_1v_1+(a_2+a_1-a_1)v_2\\
+    &+(a_3+a_2+a_1-a_2-a_1)v_3+(a_4+a_3+a_2+a_1-a_3-a_2-a_1)v_4\\
+    &=a_1v_1+a_2v_2+a_3v_3+a_4v_4\\
+    &=v.
+\end{align*}
+Hence, for any vector $v\in V$, it follows that $v\in\operatorname{span}(v_1-v_2,v_2-v_3,v_3-v_4,v_4)$. 
+Therefore, the list
+\[v_1-v_2,v_2-v_3,v_3-v_4,v_4\]
+spans $V$. 
+
+\clearpage
+
+\renewcommand{\thesection}{5}
+\section{Sometimes what $\mathbf{F}$ is matters}
+\subsection*{Problem statement}
+\begin{enumerate}
+    \item[(a)] Show that if we think of $\mathbf{C}$ as a vector space over $\mathbf{R}$, then the list $(1+i,1-i)$ is linearly independent.
+    \item[(b)] Show that if we think of $\mathbf{C}$ as a vector space over $\mathbf{C}$, then the list $(1+i,1-i)$ is linearly dependent.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+Via Definition 2.17 (`linearly independent'), we need to show that for
+\[\lambda_1(1+i)+\lambda(1-i)=0,\]
+then $\lambda_1=\lambda_2=0$. 
+Our equation above becomes the two separate equations
+\[\lambda_1+\lambda_2=0\;\;\;\text{and}\;\;\;\lambda_1i+\lambda_2(-i)=0\]
+that imply $\lambda_1=-\lambda_2$ and $\lambda_1=\lambda_2$. 
+Hence, it follows that $\lambda_1=\lambda_2=0$ and $(1+i,1-i)$ is linearly independent (if we restrict $\lambda_1,\lambda_2\in\mathbf{R}$).
+
+\subsubsection*{b}
+For the constant $\lambda=0-i\in\mathbf{C}$, we can write
+\[\lambda(1+i)=-i-i^2=-i-(-1)=1-i.\]
+Therefore, $1-i$ is a scalar multiple of $1+i$ and the list $(1+i,1-i)$ is linearly dependent. 
+
+\clearpage
+
+\renewcommand{\thesection}{6}
+\section{$v_1-v_2,v_2-v_3,v_3-v_4,v_4$ is linearly independent}
+\subsection*{Problem statement}
+Suppose $v_1,v_2,v_3,v_4$ is linearly independent in $V$. 
+Prove that the list
+\[v_1-v_2,v_2-v_3,v_3-v_4,v_4\]
+is also linearly independent.
+
+\subsection*{Solution}
+Following our reasoning from Exercise 2.A(1), we can write vectors $v\in\operatorname{span}(v_1-v_2,v_2-v_3,v_3-v_4,v_4)$ as
+\begin{align*}
+    v&=b_1(v_1-v_2)+b_2(v_2-v_3)+b_3(v_3-v_4)+b_4v_4\\
+    &=b_1v_1+(b_2-b_1)v_2+(b_3-b_2)v_3+(b_4-b_3)v_4.
+\end{align*}
+If we set $v=0$, then we can write
+\[0=b_1v_1+(b_2-b_1)v_2+(b_3-b_2)v_3+(b_4-b_3)v_4.\]
+Given $v_1,v_2,v_3,v_4$ is linearly independent, it follows that\newline $b_1=0,b_2-b_1=0,b_3-b_2=0,b_4-b_3=0$ and thus, $b_1=b_2=b_3=b_4=0$. 
+Therefore, the list
+\[v_1-v_2,v_2-v_3,v_3-v_4,v_4\]
+is also linearly independent.
+
+\clearpage
+
+\renewcommand{\thesection}{8}
+\section{Scaled vectors are linearly independent}
+\subsection*{Problem statement}
+Prove or give a counterexample: 
+If $v_1,v_2,\ldots,v_m$ is a linearly independent list of vectors in $V$ and $\lambda\in\mathbf{F}$ with $\lambda\neq 0$, then $\lambda v_1,\lambda v_2,\ldots,\lambda v_m$ is linearly independent.
+
+\subsection*{Solution}
+Let's prove it. 
+Given $v_1,v_2,\ldots,v_m$ is linearly independent, then for the equation
+\[0=a_1v_1+a_2v_2+\cdots+a_m v_m,\]
+we have $a_1=a_2=\cdots=a_m=0$ via Definition 2.17 (`linearly independent'). 
+In a similar manner, we can show that the list $\lambda v_1,\lambda v_2,\ldots,\lambda v_m$, where $\lambda\in\mathbf{F}$ with $\lambda\neq 0$, is linearly independent by writing
+\[0=a_1(\lambda v_1)+a_2(\lambda v_2)+\cdots+a_m(\lambda v_m0))=\lambda(a_1v_1+a_2v_2+\cdots+a_m v_m)\]
+and dividing either side of the equation by $\lambda$ (since $\lambda\neq 0$). 
+Hence, the proof that $\lambda v_1,\lambda v_2,\ldots,\lambda v_m$ is linearly independent reduces to $v_1,v_2,\ldots,v_m$ being linearly independent.
+
+\clearpage
+
+\renewcommand{\thesection}{9}
+\section{Adding linearly independent lists}
+\subsection*{Problem statement}
+Prove or give a counterexample: 
+If $v_1,\ldots,v_m$ and $w_1,\ldots,w_m$ are linearly independent lists of vectors in $V$, then $v_1+w_1,\ldots,v_m+w_m$ is linearly independent.
+
+\subsection*{Solution}
+Let's give a counterexample. 
+The lists $(1,0),(0,1)$ and $(0,1),(1,0)$ are both linearly independent. 
+But the list $(1,0)+(0,1),(0,1)+(1,0)$ equals $(1,1),(1,1)$, which is clearly linearly dependent.
+
+\clearpage
+
+\renewcommand{\thesection}{11}
+\section{Appending vectors to linear independence}
+\subsection*{Problem statement}
+Suppose $v_1,\ldots,v_m$ is linearly independent in $V$ and $w\in V$. 
+Show that $v_1,\ldots,v_m,w$ is linearly independent if and only if 
+\[w\notin \operatorname{span}(v_1,\ldots,v_m).\]
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $v_1,\ldots,v_m,w$ is linearly independent. 
+If $w\in\operatorname{span}(v_1,\ldots,v_m)$, then there exist $a_1,\ldots,a_m\in\mathbf{F}$, that are not all zero, such that
+\[w=a_1v_1+\cdots+a_mv_m\;\;\;\text{and}\;\;\;0=a_1v_1+\cdots+a_mv_m-w.\]
+However, the second equation implies that $v_1,\ldots,v_m,w$ is linearly dependent, which is a contradiction. 
+Thus, it follows that 
+\[w\notin \operatorname{span}(v_1,\ldots,v_m).\]
+
+\subsubsection*{Second Direction}
+Suppose $w\notin \operatorname{span}(v_1,\ldots,v_m)$. 
+If $v_1,\ldots,v_m,w$ is linearly dependent, then there exist $a_1,\ldots,a_m,a_{m+1}\in\mathbf{F}$, that are not all zero, such that\footnote{Note that $a_{m+1}\neq 0$ since $v_1,\ldots,v_m,w$ is linearly independent.}
+\[0=a_1v_1+\cdots+a_mv_m+a_{m+1}w\;\;\;\text{and}\;\;\;w=-\frac{1}{a_{m+1}}(a_1v_1+\cdots+a_mv_m).\]
+However, the second equation implies that $w\in \operatorname{span}(v_1,\ldots,v_m)$, which is a contradiction. 
+Thus it follows that $v_1,\ldots,v_m,w$ is linearly independent.
+
+\subsubsection*{Thoughts}
+The result in this exercise is a restatement of the linear dependence lemma (Theorem 2.21).
+
+\clearpage
+
+\renewcommand{\thesection}{12}
+\section{Six polynomials in $\mathcal{P}_4(\mathbf{F})$}
+\subsection*{Problem statement}
+Explain why there does not exist a list of six polynomials that is linearly independent in $\mathcal{P}_4(\mathbf{F})$.
+
+\subsection*{Solution}
+The list of polynomials $1,x,x^2,x^3,x^5$ spans $\mathcal{P}_4(\mathbf{F})$ but is of length five. 
+Hence, via Theorem 2.23 (`Length of linearly independent list $\leq$ length of spanning list'), there cannot exist a list of six polynomials that is linearly independent in $\mathcal{P}_4(\mathbf{F})$.
+
+\clearpage
+
+\renewcommand{\thesection}{13}
+\section{Four polynomials in $\mathcal{P}_4(\mathbf{F})$}
+\subsection*{Problem statement}
+Explain why no list of four polynomials spans $\mathcal{P}_4(\mathbf{F})$.
+
+\subsection*{Solution}
+The list of polynomials $1,x,x^2,x^3,x^5$ spans $\mathcal{P}_4(\mathbf{F})$ but is of length five. 
+Hence, via Theorem 2.23 (`Length of linearly independent list $\leq$ length of spanning list'), there cannot exist a list of four polynomials that spans in $\mathcal{P}_4(\mathbf{F})$.
+
+\clearpage
+
+\renewcommand{\thesection}{17}
+\section{A list of linearly dependent polynomials}
+\subsection*{Problem statement}
+Suppose $p_0,p_1,\ldots,p_m$ are polynomials in $\mathcal{P}_m(\mathbf{F})$ such that $p_j(2)=0$ for each $j$. 
+Prove that $p_0,p_1,\ldots,p_m$ is not linearly independent in $\mathcal{P}_m(\mathbf{F})$.
+
+\subsection*{Solution}
+First, let's prove that $p_0,p_1,\ldots,p_m$ does not span $\mathcal{P}_m(\mathbf{F})$. 
+Consider the polynomial $1$. 
+Clearly $1\in\mathcal{P}_m(\mathbf{F})$, yet $1(2)=1$. 
+It follows that $1\notin\operatorname{span}(p_0,p_1,\ldots,p_m)$ since $p_j(2)=0$ for each $j$. 
+Thus, $p_0,p_1,\ldots,p_m$ does not span $\mathcal{P}_m(\mathbf{F})$. 
+
+Clearly, the list $p_0,p_1,\ldots,p_m$ has a length of $m+1$. 
+We must also note that the list $1,z,\ldots,z^m$ spans $\mathcal{P}_m(\mathbf{F})$ and has a length of $m+1$.
+
+Let's perform a proof by contradiction and use the result from Exercise 2.A(11). 
+Suppose $p_0,p_1,\ldots,p_m$ is linearly independent. 
+Since\newline $1\notin\operatorname{span}(p_0,p_1,\ldots,p_m)$, we can append $1$ to the list to get $1,p_0,p_1,\ldots,p_m$, a list of length $m+2$ that is linearly independent. 
+However, via Theorem 2.23 (`Length of linearly independent list $\leq$ length of spanning list'), the list $1,p_0,p_1,\ldots,p_m$ cannot be linearly independent since its length is greater than the list $1,z,\ldots,z^m$, which spans $\mathcal{P}_m(\mathbf{F})$. 
+Therefore, $p_0,p_1,\ldots,p_m$ is not linearly independent in $\mathcal{P}_m(\mathbf{F})$.
+
+\end{document}
