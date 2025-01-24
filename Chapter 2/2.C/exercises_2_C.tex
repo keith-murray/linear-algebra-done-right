@@ -59,5 +59,46 @@ Therefore, all the lines in $\mathbf{R}^2$ through the origin are subspaces of $
 Suppose $U$ is a subspace of $\mathbf{R}^2$ with a dimension of $2$. 
 Via Exercise 2.C(1), given $\operatorname{dim}\mathbf{R}^2=\operatorname{dim}U$, it follows that $U=\mathbf{R}^2$.
 
+\clearpage
+
+\renewcommand{\thesection}{4}
+\section{Explorations on $U=\{p\in\mathcal{P}_4(\mathbf{F}):p(6)=0\}$}
+\subsection*{Problem statement}
+\begin{enumerate}
+    \item[(a)] Let $U=\{p\in\mathcal{P}_4(\mathbf{F}):p(6)=0\}$. Find a basis of $U$.
+    \item[(b)] Extend the basis in part (a) to a basis of $\mathcal{P}_4(\mathbf{F})$.
+    \item[(c)] Find a subspace $W$ of $\mathcal{P}_4(\mathbf{F})$ such that $\mathcal{P}_4(\mathbf{F})=U\oplus W$.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+Via Theorem 2.38 (`Dimension of a subspace'), it follows that\newline $\operatorname{dim}U\leq\operatorname{dim}\mathcal{P}_4(\mathbf{F})$.
+Given $U$ does not contain all the vectors in $\mathcal{P}_4(\mathbf{F})$, for example $1$ since $1(6)\neq 0$, then a basis of $U$ would not span $\mathcal{P}_4(\mathbf{F})$ and it necessarily follows that $\operatorname{dim}U<\operatorname{dim}\mathcal{P}_4(\mathbf{F})$. 
+Hence the dimension of $U$ must be $0,1,2,3,4$ but not $5$.
+
+Consider the list of polynomials $(x-6),(x-6)^2,(x-6)^3,(x-6)^4$. 
+The list is clearly linearly independent and each polynomial satisfies the condition that $p(6)=0$. 
+Thus, we can state $(x-6),(x-6)^2,(x-6)^3,(x-6)^4\in U$. 
+Since the list is length $4$ and linearly independent, Theorem 2.39 (`Linearly independent list of the right length is a basis') tells us the list is a basis of $U$. 
+
+\subsubsection*{b}
+We have already noted that $1\notin U$. 
+Therefore, via Exercise 2.A(11), the list $(x-6),(x-6)^2,(x-6)^3,(x-6)^4,1$ is linearly independent. 
+Via Theorem 2.39, it follows that this list is a basis of $\mathcal{P}_4(\mathbf{F})$.
+
+\subsubsection*{c}
+The obvious choice of $W$ is 
+\[W=\operatorname{span}(1).\]
+Given our reasoning in part (b) concerning our basis of $\mathcal{P}_4(\mathbf{F})$, it follows that $\mathcal{P}_4(\mathbf{F})=U + W$. 
+Given our reasoning in part (a), namely that $1\notin U$, it follows that $U\cap W=\{0\}$. 
+Thus, via Theorem 1.45 (`Direct sum of two subspaces'), it follows that $\mathcal{P}_4(\mathbf{F})=U\oplus W$.
+
+\clearpage
+
+\renewcommand{\thesection}{9}
+\section{}
+\subsection*{Problem statement}
+
+
 
 \end{document}
