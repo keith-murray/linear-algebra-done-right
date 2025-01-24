@@ -17,9 +17,14 @@
 Find all vector spaces that have exactly one basis.
 
 \subsection*{Solution}
-The vector space $\{0\}$ has exactly one basis, namely $0$ because $0\in\{0\}$, the list $0$ is linearly independent, and the list $0$ spans $\{0\}$. 
-Note that $0$ could be a scalar, a list of all zeros, or a function that maps all inputs to zero. 
-More broadly, the vector space that only contains the \textbf{additive identity}, whatever that may be, has exactly one basis. 
+The vector space $\{0\}$ has exactly one basis, namely $()$, the empty list, because we defined $()$ to be linearly independent (Definition 2.17) and we defined the span of the empty list to be $\{0\}$ (Definition 2.5). 
+Hence, $()$ is linear independent and spans $\{0\}$; thus, since the empty list is unique, it is the only basis of $\{0\}$.
+Note that the list $0$ cannot be a basis of $\{0\}$ since $0$ is not linearly independent. 
+In other words, any scalar $\lambda\in\mathbf{F}$ satisfies the equation
+\[\lambda\cdot0=0.\]
+Also note that the $0$ in $\{0\}$ need not be a scalar. 
+The $0$ could be a scalar, list of zeros, or the function that maps all inputs to zero. 
+Also note that the $0$ in $\{0\}$ need only be the \textbf{additive identity} of any vector space.
 
 Suppose that a vector space $V$ has at least one element $v\in V$ that is not the \textbf{additive identity} $v\neq0$. 
 Via Theorem 2.33 (`Linearly independent list extends to a basis'), we can extend $v$ to be a basis of $V$. 

@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 2.C}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{$\operatorname{dim}U=\operatorname{dim}V$ implies $U=V$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$ such that\newline $\operatorname{dim}U=\operatorname{dim}V$. 
+Prove that $U=V$.
+
+\subsection*{Solution}
+By virtue of $U$ being a subspace of $V$, we have $U\subset V$. 
+We need to show $V\subset U$. 
+Suppose $u_1,\ldots,u_m$ is a basis of $U$. 
+It follows that\newline $u_1,\ldots,u_m\in V$ and $u_1,\ldots,u_m$ is linearly independent in $V$. 
+Via Theorem 2.39 (`Linearly independent list of the right length is a basis'), $u_1,\ldots,u_m$ is a basis of $V$ given that the list is linearly independent and the right length ($m=\operatorname{dim}U=\operatorname{dim}V$. 
+Hence, any vector $v\in V$ can be written as
+\[v=a_1u_1+\cdots+a_mu_m\]
+for some $a_1,\ldots,a_m\in\mathbf{F}$. 
+Thus, $v\in U$ and $V\subset U$. 
+Therefore, we have $U=V$.
+
+\clearpage
+
+\section{Possible subspaces of $\mathbf{R}^2$}
+\subsection*{Problem statement}
+Show that the subspaces of $\mathbf{R}^2$ are precisely $\{0\},\mathbf{R}^2,$ and all the lines in $\mathbf{R}^2$ through the origin.
+
+\subsection*{Solution}
+Since $(1,0),(0,1)$ is a basis of $\mathbf{R}^2$, via Definition 2.36 (`dimension'),\newline $\operatorname{dim}\mathbf{R}^2=2$. 
+Via Theorem 2.38 (`Dimension of a subspace'), the possible dimensions of subspaces of $\mathbf{R}^2$ are $0,1,2$. 
+Let's handle each of these cases separately.
+
+For subspaces of $\mathbf{R}^2$ with a dimension of $0$, the only possible subspace is $\{0\}$. 
+Remembering Exercise 2.B(1), the empty list $()$ is a basis of $\{0\}$. 
+Thus, $\operatorname{dim}\{0\}=0$.
+
+For subspaces of $\mathbf{R}^2$ with a dimension of $1$, we know that the subspace, let's call it $U$, must contain a vector $v\in\mathbf{R}^2$ such that $v\neq0$. 
+Given $U$ is closed under scalar multiplication, all vectors $\lambda v$ where $\lambda\in\mathbf{R}$ are in the subspace, $\lambda v\in U$. 
+The collection of these vectors $\{\lambda v:\lambda\in\mathbf{R}\}$ can be geometrically represented as a line through the origin. 
+The list $v$ is linearly independent and of length $1$. 
+Therefore, $v$ is a basis of $U$ and
+\[\{\lambda v:\lambda\in\mathbf{R}\}=\operatorname{span}(v)=U.\]
+Hence, all subspaces of $\mathbf{R}^2$ with a dimension of $1$ are lines through the origin. 
+Furthermore, all lines in $\mathbf{R}^2$ through the origin can be represented as 
+\[\{\lambda v:\lambda\in\mathbf{R}\}\]
+for some $v\in V$. 
+Therefore, all the lines in $\mathbf{R}^2$ through the origin are subspaces of $\mathbf{R}^2$.
+
+Suppose $U$ is a subspace of $\mathbf{R}^2$ with a dimension of $2$. 
+Via Exercise 2.C(1), given $\operatorname{dim}\mathbf{R}^2=\operatorname{dim}U$, it follows that $U=\mathbf{R}^2$.
+
+
+\end{document}
