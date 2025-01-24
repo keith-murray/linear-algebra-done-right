@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 2.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Vector spaces with one basis}
+\subsection*{Problem statement}
+Find all vector spaces that have exactly one basis.
+
+\subsection*{Solution}
+The vector space $\{0\}$ has exactly one basis, namely $0$ because $0\in\{0\}$, the list $0$ is linearly independent, and the list $0$ spans $\{0\}$. 
+Note that $0$ could be a scalar, a list of all zeros, or a function that maps all inputs to zero. 
+More broadly, the vector space that only contains the \textbf{additive identity}, whatever that may be, has exactly one basis. 
+
+Suppose that a vector space $V$ has at least one element $v\in V$ that is not the \textbf{additive identity} $v\neq0$. 
+Via Theorem 2.33 (`Linearly independent list extends to a basis'), we can extend $v$ to be a basis of $V$. 
+However, for any $\lambda\in\mathbf{F}$ such that $\lambda\neq 0$, we could also extend $\lambda v$ to be a basis of $V$, creating a different basis than before. 
+Hence, vector spaces that have at least one element that is not the \textbf{additive identity} can have more than one basis.
+
+\clearpage
+
+\section{Explorations on the subspace $U$ of $\mathbf{R}^5$}
+\subsection*{Problem statement}
+\begin{enumerate}
+    \item[(a)] Let $U$ be the subspace of $\mathbf{R}^5$ defined by \[U=\{(x_1,x_2,x_3,x_4,x_5)\in\mathbf{R}^5:x_1=3x_2\text{ and }x_3=7x_4\}.\] Find a basis of $U$.
+    \item[(b)] Extend the basis in part (a) to a basis of $\mathbf{R}^5$.
+    \item[(c)] Find a subspace $W$ of $\mathbf{R}^5$ such that $\mathbf{R}^5=U\oplus W$.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+For some vector $(x_1,x_2,x_3,x_4,x_5)\in U$, via the construction of $U$, we can write $(x_1,x_2,x_3,x_4,x_5)$ as 
+\[(x_1,x_2,x_3,x_4,x_5)=(3x_2,x_2,7x_4,x_4,x_5).\]
+The obvious basis of $U$ is the list $(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1)$. The list is clearly linearly independent and we can show that it spans $U$ by writing
+\[x_2(3,1,0,0,0)+x_4(0,0,7,1,0)+x_5(0,0,0,0,1)=(3x_2,x_2,7x_4,x_4,x_5)\]
+for $x_2,x_4,x_5\in\mathbf{R}$.
+
+\subsubsection*{b}
+To extend our basis of $U$ to a basis of $\mathbf{R}^5$, we can follow a similar procedure as outlined in Theorem 2.31 (`Spanning list contains a basis') and Theorem 2.33 (`Linearly independent list extends to a basis'). 
+Let the list $e_1,e_2,e_3,e_4,e_5$ denote the standard basis of $\mathbf{R}^5$. 
+Appending the standard basis to our basis of $U$, we have
+\[(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1,e_2,e_3,e_4,e_5.\]
+Now let's see which of the standard basis vectors we can remove to produce a basis of $\mathbf{R}^5$.
+
+$e_1$: The basis vector $e_1$, also represented as $(1,0,0,0,0)$, is not in\newline $\operatorname{span}((3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1))$, so we can leave it.
+
+$e_2$: The basis vector $e_2$, also represented as $(0,1,0,0,0)$, is indeed in\newline $\operatorname{span}((3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1)$, since 
+\[(3,1,0,0,0)-3e_1=(0,1,0,0,0)=e_2.\]
+Thus, we can delete $e_2$.
+
+$e_3$: The basis vector $e_3$, also represented as $(0,0,1,0,0)$, is not in\newline $\operatorname{span}((3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1)$, so we can leave it.
+
+$e_4$: The basis vector $e_4$, also represented as $(0,0,0,1,0)$, is indeed in\newline $\operatorname{span}((3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1,e_3)$, since 
+\[(0,0,7,1,0)-7e_3=(0,0,0,1,0)=e_4.\]
+Thus, we can delete $e_4$. 
+
+$e_5$: The basis vector $e_4$, also represented as $(0,0,0,0,1)$, is obviously already in $\operatorname{span}((3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1,e_3)$, so we can delete it.
+
+Now that we've finished our procedure, we can confidently claim that the list 
+\[(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1,e_3\]
+is a basis of $\mathbf{R}^5$.
+
+\subsubsection*{c}
+The obvious subspace $W$ of $\mathbf{R}^5$ such that $\mathbf{R}^5=U\oplus W$ is the subspace defined by
+\[W=\operatorname{span}(e_1,e_3)\]
+where $e_1$ and $e_3$ are the standard basis vectors we identified in part (b). 
+To prove that $\mathbf{R}^5=U\oplus W$, we must show $\mathbf{R}^5=U+W$ and, via Theorem 1.45 (`Direct sum of two subspaces'), $U\cap W=\{0\}$. 
+
+The proof that $\mathbf{R}^5=U+W$ follows from the work done in part (b). 
+Explicitly, every vector $v\in U+W$ can be written as
+\[v=a_1(3,1,0,0,0)+a_2(0,0,7,1,0)+a_3(0,0,0,0,1)+a_4e_1+a_5e_3\]
+where $a_1,a_2,a_3,a_4,a_5\in\mathbf{R}$. 
+Since the list\newline $(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1),e_1,e_3$ also spans $\mathbf{R}^5$, every vector $v\in\mathbf{R}^5$ can be written in a similar manner. 
+Thus, it follows that $\mathbf{R}^5=U+W$.
+
+To show $U\cap W=\{0\}$, for $v\in U\cap W$, we can write
+\[v=a_1(3,1,0,0,0)+a_2(0,0,7,1,0)+a_3(0,0,0,0,1)=b_4e_1+b_5e_3.\]
+Rearranging terms, we have
+\[0=b_4e_1+b_5e_3-a_1(3,1,0,0,0)-a_2(0,0,7,1,0)-a_3(0,0,0,0,1),\]
+but via our proof of linear independence from part (b), it necessarily follows that $a_1=a_2=a_3=b_4=b_5=0$ and $v=0$.
+
+\clearpage
+
+\renewcommand{\thesection}{5}
+\section{Another basis of $\mathcal{P}_3(\mathbf{F})$}
+\subsection*{Problem statement}
+Prove or disprove: there exists a basis $p_0,p_1,p_2,p_3$ of $\mathcal{P}_3(\mathbf{F})$ such that none of the polynomials $p_0,p_1,p_2,p_3$ has degree $2$.
+
+\subsection*{Solution}
+Consider the polynomials
+\begin{gather*}
+    p_0(z)=1,\\
+    p_1(z)=z,\\
+    p_2(z)=z^2+z^3,\\
+    p_3(z)=z^3.
+\end{gather*}
+None of the polynomials are of degree $2$, yet $z^2\in\operatorname{span}(p_0,p_1,p_2,p_3)$ since
+\[p_2-p_3=z^2+z^3-z^3=z^2.\]
+Hence, $\operatorname{span}(p_0,p_1,p_2,p_3)=\mathcal{P}_3(\mathbf{F})$. Clearly, $p_0,p_1,p_2,p_3$ is linearly independent, thus $p_0,p_1,p_2,p_3$ is a basis of $\mathcal{P}_3(\mathbf{F})$.
+
+\clearpage
+
+\renewcommand{\thesection}{6}
+\section{$v_1+v_2,v_2+v_3,v_3+v_4,v_4$ is also a basis of $v$}
+\subsection*{Problem statement}
+Suppose $v_1,v_2,v_3,v_4$ is a basis of $V$. 
+Prove that
+\[v_1+v_2,v_2+v_3,v_3+v_4,v_4\]
+is also a basis of V.
+
+\subsection*{Solution}
+We must show that $v_1+v_2,v_2+v_3,v_3+v_4,v_4$ is linearly independent and spans $V$.
+
+To show the list is linearly independent, we can write
+\begin{align*}
+    0&=a_1(v_1+v_2)+a_2(v_2+v_3)+a_3(v_3+v_4)+a_4v_4\\
+    &=a_1v_1+(a_2+a_1)v_2+(a_3+a_2)v_3+(a_4+a_3)v_4.
+\end{align*}
+The last equality shows that $v_1+v_2,v_2+v_3,v_3+v_4,v_4$ is linearly independent if and only if $v_1,v_2,v_3,v_4$ is linearly independent. 
+Since $v_1,v_2,v_3,v_4$ is a basis of $V$, then $v_1+v_2,v_2+v_3,v_3+v_4,v_4$ is linearly independent.
+
+To show that the list spans $V$, we must first note that any vector $v\in V$ can be written as
+\[v=a_1v_1+a_2v_2+a_3v_3,\]
+where $a_1,a_2,a_3,a_4\in\mathbf{F}$, and any vector $u\in\operatorname{span}(v_1+v_2,v_2+v_3,v_3+v_4,v_4)$ can be written as
+\begin{align*}
+    u&=b_1(v_1+v_2)+b_2(v_2+v_3)+b_3(v_3+v_4)+b_4v_4\\
+    &=b_1v_1+(b_2+b_1)v_2+(b_3+b_2)v_3+(b_4+b_3)v_4,
+\end{align*}
+where $a_1,a_2,a_3,a_4\in\mathbf{F}$.
+It clearly follows that $u\in V$. 
+To show that\newline $v\in\operatorname{span}(v_1+v_2,v_2+v_3,v_3+v_4,v_4)$, we can set $b_1=a_1,b_2=a_2-a_1,b_3=a_3-a_2+a_1,$ and $b_4=a_4-a_3+a_2-a_1$ and write
+\begin{align*}
+    u&=b_1v_1+(b_2+b_1)v_2+(b_3+b_2)v_3+(b_4+b_3)v_4\\
+    &=a_1v_1+(a_2-a_1+a_1)v_2+(a_3-a_2+a_1+a_2-a_1)v_3\\
+    &\;\;\;\;\,+(a_4-a_3+a_2-a_1+a_3-a_2+a_1)v_4\\
+    &=a_1v_1+a_2v_2+a_3v_3=v.
+\end{align*}
+Hence, the list $v_1+v_2,v_2+v_3,v_3+v_4,v_4$ spans $V$.
+
+\clearpage
+
+\renewcommand{\thesection}{7}
+\section{$v_3,v_4\notin U$ but $v_1,v_2$ is not a basis of $U$}
+\subsection*{Problem statement}
+Prove or give a counterexample: 
+If $v_1,v_2,v_3,v_4$ is a basis of $V$ and $U$ is a subspace of $V$ such that $v_1,v_2\in U$ and $v_3\notin U$ and $v_4\notin U$, then $v_1,v_2$ is a basis of $U$.
+
+\subsection*{Solution}
+Let's give a counterexample. 
+Suppose $V=\mathbf{R}^4$ and $U=\{(x,y,z,z)\in\mathbf{R}^4:x,y,z\in\mathbf{R}\}$. 
+Let $v_1,v_2,v_3,v_4$ be the standard basis vectors of $\mathbf{R}^4$. 
+It follows that $v_1,v2\in U$ and $v_3,v_4\notin U$, but $v_1,v_2$ is not a basis of $U$. 
+However, $v_1,v_2,v_3+v_4$ is a basis of $U$.
+
+\end{document}
