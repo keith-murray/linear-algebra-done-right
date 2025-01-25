@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{mathtools}
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 10.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{If $T$ has no eigenvalues, then $\det T>0$}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space. 
+Suppose $T\in\mathcal{L}(V)$ has no eigenvalues. 
+Prove that $\det T>0$.
+
+\subsection*{Solution}
+$T$ having no eigenvalues in $V$ implies all eigenvalues of $T_{\mathbf{C}}$ are nonreal because real eigenvalues of $T_{\mathbf{C}}$ would correspond to real eigenvalues of $T$. 
+Suppose $\lambda_1,\ldots,\lambda_m$ are the nonreal eigenvalues of $T_{\mathbf{C}}$ and the determinant is, via Definition 10.20 (`determinant of an operator'), 
+\[\det T=\lambda_1\cdots\lambda_m.\] 
+Following from Theorem 9.16 (`Nonreal eigenvalues of $T_{\mathbf{C}}$ come in pairs') and Theorem 9.17 (`Multiplicity of $\lambda$ equals multiplicity of $\bar{\lambda}$'), all eigenvalues of $T_{\mathbf{C}}$ can be paired with its complex conjugate and we can rearrange the terms in the determinant of $T$ to be\footnote{
+Note the change of $m$ to $n$. 
+$T$ having no eigenvalues and Theorem 9.19 imply that $m$ is even and $m=2n$.}
+\[\det T=\lambda_1\bar{\lambda_1}\cdots\lambda_n\bar{\lambda_n}.\]
+Finally, since Theorem 4.5 (`Properties of complex numbers') states $z\bar{z}=|z|^2$, we can write
+\[\det T=|\lambda_1|^2\cdots|\lambda_n|^2.\]
+Since all of the terms in $\det T$ are positive, it follows that $\det T>0$.
+
+Note that $\det T\neq0$ since that would require $0$ to be an eigenvalue of $T_{\mathbf{C}}$, which would imply $T$ to have an eigenvalue.
+
+\clearpage
+
+\section{$\det T<0$ implies $T$ has two eigenvalues}
+\subsection*{Problem statement}
+Suppose $V$ is a real vector space with even dimension and $T\in\mathcal{L}(V)$. 
+Suppose $\det T<0$. 
+Prove that $T$ has at least two distinct eigenvalues.
+
+\subsection*{Solution}
+Following from Exercise 10.B(1), if $T$ has no eigenvalues, then $\det T>0$. 
+This contradicts the assumption that $\det T<0$. 
+Hence, $T$ must have eigenvalues. 
+
+Now we have two cases to consider: one in which $T_{\mathbf{C}}$ has no nonreal eigenvalues and one in which $T_{\mathbf{C}}$ has some nonreal eigenvalues.
+
+\subsubsection*{All eigenvalues of $T_{\mathbf{C}}$ are real}
+Suppose all eigenvalues of $T_{\mathbf{C}}$ are real. 
+If there is only one distinct real eigenvalue $\lambda$, then its multiplicity equals the dimension of $V$, which is even and implies that
+\[\det T=\lambda^{\dim V}>0.\]
+Hence, there must be at least two distinct eigenvalues where the combined multiplicities of the negative eigenvalues is odd.
+
+\subsubsection*{Some eigenvalues of $T_{\mathbf{C}}$ are nonreal}
+Following from Theorem 9.16 (`Nonreal eigenvalues of $T_{\mathbf{C}}$ come in pairs') and Theorem 9.17 (`Multiplicity of $\lambda$ equals multiplicity of $\bar{\lambda}$'), nonreal eigenvalues of $T_{\mathbf{C}}$ come in pairs with equal multiplicity. 
+Thus, the combined multiplicities of the real eigenvalues must be even. 
+
+Following the logic from the first case, there must be at least two distinct eigenvalues where the combined multiplicities of the negative eigenvalues is odd.
+
+\subsubsection*{Conclusion}
+Therefore, in all cases, $T$ has at least two distinct eigenvalues.
+
+
+\end{document}
