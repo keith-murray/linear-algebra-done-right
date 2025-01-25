@@ -96,9 +96,128 @@ Thus, via Theorem 1.45 (`Direct sum of two subspaces'), it follows that $\mathca
 \clearpage
 
 \renewcommand{\thesection}{9}
-\section{}
+\section{Dimension of $v_1+w,\ldots,v_m+w$}
 \subsection*{Problem statement}
+Suppose $v_1,\dots,v_m$ is linearly independent in $V$ and $w\in V$. 
+Prove that 
+\[\operatorname{dim}\operatorname{span}(v_1+w,\ldots,v_m+w)\geq m-1.\]
 
+\subsection*{Solution}
+We can show $v_j-v_1\in\operatorname{span}(v_1+w,\ldots,v_m+w)$ for $j\in\{2,\ldots,m\}$ since $v_j+w-(v_1+w)=v_j-v_1$. Thus, we have 
+\[v_2-v_1,\ldots,v_m-v_1\in\operatorname{span}(v_1+w,\ldots,v_m+w)\]
+and it follows that
+\[\operatorname{span}(v_2-v_1,\ldots,v_m-v_1)\subset\operatorname{span}(v_1+w,\ldots,v_m+w)\]
+which implies
+\[\operatorname{dim}\operatorname{span}(v_1+w,\ldots,v_m+w)\geq\operatorname{dim}\operatorname{span}(v_2-v_1,\ldots,v_m-v_1).\]
+If we can show that $\operatorname{dim}\operatorname{span}(v_2-v_1,\ldots,v_m-v_1)=m-1$, then the desired result follows.
 
+Clearly, 
+\[\operatorname{span}(v_1,\dots,v_m)=\operatorname{span}(v_1,v_2-v_1,\ldots,v_m-v_1)\]
+since all $v_j$ can be written as $v_j=v_j-v_1+v_1$. 
+Thus, we have
+\[m=\operatorname{dim}\operatorname{span}(v_1,\dots,v_m)=\operatorname{dim}\operatorname{span}(v_1,v_2-v_1,\ldots,v_m-v_1)\]
+and it follows that the list the list $v_1,v_2-v_1,\ldots,v_m-v_1$ is linearly independent via Theorem 2.42 (`Spanning list of the right length is a basis'). 
+Therefore, the list $v_2-v_1,\ldots,v_m-v_1$ is also linearly independent and
+\[\operatorname{dim}\operatorname{span}(v_2-v_1,\ldots,v_m-v_1)=m-1,\]
+implying 
+\[\operatorname{dim}\operatorname{span}(v_1+w,\ldots,v_m+w)\geq m-1,\]
+which was to be shown.
+
+\clearpage
+
+\renewcommand{\thesection}{11}
+\section{Proving $\mathbf{R}^8=U\oplus W$ with Theorem 2.43}
+\subsection*{Problem statement}
+Suppose that $U$ and $W$ are subspaces of $\mathbf{R}^8$ such that $\operatorname{dim}U=3$, $\operatorname{dim}W=5$, and $U+W=\mathbf{R}^8$. 
+Prove that $\mathbf{R}^8=U\oplus W$.
+
+\subsection*{Solution}
+Given $U+W=\mathbf{R}^8$, it follows that 
+\[\operatorname{dim}(U+W)=\operatorname{dim}\mathbf{R}^8=8.\]
+Via Theorem 2.43 (`Dimension of a sum'), we can write
+\[\operatorname{dim}(U\cap W)=\operatorname{dim}U+\operatorname{dim}W-\operatorname{dim}(U+W)=3+5-8=0,\]
+which implies $U\cap W=\{0\}$. 
+Therefore, via Theorem 1.45 (`Direct sum of two subspaces'), we can state $\mathbf{R}^8=U\oplus W$.
+
+\clearpage
+
+\renewcommand{\thesection}{12}
+\section{Proving $U\cap W\neq\{0\}$ with Theorem 2.43}
+\subsection*{Problem statement}
+Suppose $U$ and $W$ are both five-dimensional subspaces of $\mathbf{R}^9$. 
+Prove that\newline $U\cap W\neq\{0\}$.
+
+\subsection*{Solution}
+Given $U$ and $W$ are subspaces of $\mathbf{R}^9$, then it necessarily follows that $U+W\subset\mathbf{R}^9$ and
+\[9=\dim\mathbf{R}^9\geq \dim(U+W).\]
+Via Theorem 2.43 (`Dimension of a sum'), we can write
+\[9\geq\operatorname{dim}U+\operatorname{dim}W-\operatorname{dim}(U\cap W)=5+5-\operatorname{dim}(U\cap W)\]
+and by rearranging terms, we get
+\[\operatorname{dim}(U\cap W)\geq 1.\]
+This implies that $U\cap W\neq\{0\}$.
+
+\clearpage
+
+\renewcommand{\thesection}{16}
+\section{$\dim U_1\oplus\cdots\oplus U_m = \dim U_1 +\cdots+ \dim U_m$}
+\subsection*{Problem statement}
+Suppose $U_1,\ldots,U_m$ are finite-dimensional subspaces of $V$ such that $U_1+\cdots + U_m$ is a direct sum. 
+Prove that $U_1\oplus\cdots\oplus U_m$ is finite-dimensional and 
+\[\dim U_1\oplus\cdots\oplus U_m = \dim U_1 +\cdots+ \dim U_m.\]
+
+\subsection*{Solution}
+Let's prove this via an algorithm. 
+
+\subsubsection*{Step 1}
+Given $U_1+\cdots + U_m$ is a direct sum, it necessarily follows that $U_1+U_2$ is a direct sum and $U_1\cap U_2=\{0\}$. 
+Hence, via Theorem 2.43 (`Dimension of a sum'), we have
+\[\dim(U_1\oplus U_2)=\dim U_1+\dim U_2.\]
+
+\subsubsection*{Step j}
+Given $U_1+\cdots + U_m$ is a direct sum, it necessarily follows that\newline $(U_1+\cdots+U_j)+U_{j+1}$ is a direct sum and $(U_1+\cdots+U_j)\cap U_{j+1}=\{0\}$. 
+Hence, via Theorem 2.43, we have
+\begin{align*}
+    \dim((U_1\oplus\cdots\oplus U_j)\oplus U_{j+1})&=\dim (U_1\oplus\cdots\oplus U_j) +\dim U_{j+1}\\
+    &=(\dim U_1+\cdots+\dim U_j)+\dim U_{j+1}\\
+    &=\dim U_1+\cdots+\dim U_{j+1}.
+\end{align*}
+
+\subsubsection*{Step m-1}
+The algorithm terminates at this step with the desired result
+\[\dim(U_1\oplus U_2)=\dim U_1+\dim U_2,\]
+which further implies that $U_1\oplus\cdots\oplus U_m$ is finite-dimensional.
+
+\clearpage
+
+\renewcommand{\thesection}{17}
+\section{Theorem 2.43 fails for three subspaces}
+\subsection*{Problem statement}
+You might guess, by analogy with the formula for the number of elements in the union of three subset of a finite set, that if $U_1,U_2,U_3$ are subspaces of a finite-dimensional vector space then
+\begin{align*}
+    \dim(U_1+&U_2+U_3)\\
+    &=\dim U_1+\dim U_2 + \dim U_3\\
+    &\;\;\;\;-\dim(U_1\cap U_2)-\dim(U_1\cap U_3)-\dim(U_2\cap U_3)\\
+    &\;\;\;\;+\dim(U_1\cap U_2\cap U_3).
+\end{align*}
+Prove this or give a counterexample.
+
+\subsection*{Solution}
+Let's give a counterexample. 
+
+For subspaces $U_1,U_2,U_3$ of $\mathbf{R}^2$, let's define them as
+\begin{align*}
+    U_1&=\{ (x,0)\in\mathbf{R}^2 :x\in\mathbf{R} \},\\
+    U_2&=\{ (y,y)\in\mathbf{R}^2 :y\in\mathbf{R} \},\\
+    U_3&=\{ (0,z)\in\mathbf{R}^2 :z\in\mathbf{R} \}.
+\end{align*}
+Clearly, their individual dimensions are
+\[\dim U_1=\dim U_2=\dim U_3=1,\]
+the dimensions of their sum is
+\[\dim(U_1+U_2+U_3)=\dim \mathbf{R}^2=2,\]
+and the dimensions of their intersections are
+\[\dim(U_1\cap U_2)=\dim(U_1\cap U_3)=\dim(U_2\cap U_3)=\dim(U_1\cap U_2\cap U_3)=0.\]
+Hence, substituting all our values into the formula from the \textbf{problem statement}, we have
+\[2=1+1+1-0-0-0+0=3,\]
+which is a contradiction.
 
 \end{document}
