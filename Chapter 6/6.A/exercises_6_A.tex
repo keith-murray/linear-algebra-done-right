@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 6.A}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\renewcommand{\thesection}{3}
+\section{Replacing the positivity condition}
+\subsection*{Problem statement}
+Suppose $\mathbf{F}=\mathbf{R}$ and $V\neq \{0\}$. 
+Replace the positivity condition (which states that $\langle v, v\rangle\geq 0$ and for all $v\in V$) in the definition of an inner product (6.3) with the condition that $\langle v, v\rangle > 0$ for some $v\in V$. 
+Show that this change in the definition does not change the set of functions from $V\times V$ to $\mathbf{R}$ that are inner products on $V$.
+
+\subsection*{Solution}
+The set of functions from $V\times V$ to $\mathbf{R}$ that are inner products on $V$ clearly does not grow smaller. 
+Thus we must show that the set does not grow larger.
+
+Suppose $v\in V$ is such that it satisfies the ``new'' condition that $\langle v, v\rangle > 0$. 
+There are two cases to consider: $V=\operatorname{span}(v)$ and $V\neq\operatorname{span}(v)$.
+\\
+\\
+$\mathbf{{V=\operatorname{\textbf{span}}(v)}}$: For any vector $u\in V$ there exists $\lambda\in\mathbf{R}$ such that $u=\lambda v$. 
+Hence 
+\[\langle u, u\rangle =\langle \lambda v, \lambda v \rangle = \abs{\lambda}^2\langle v, v\rangle \]
+Given $\langle v, v\rangle > 0$ and $|\lambda|^2\geq 0$ for all $\lambda\in\mathbf{R}$, it follows that 
+\[\langle u, u\rangle = |\lambda|^2\langle v, v\rangle \geq 0\]
+Thus we've shown that the positivity condition is fulfilled and the set of function that are inner products on $V$ clearly does not grow larger.
+\\
+\\
+$\mathbf{V\neq\operatorname{\textbf{span}}(v)}$: Since $V\neq \{0\}$ and $V\neq\operatorname{span}(v)$, there exists $u\in V$ that is not a scalar multiple of $v$. 
+Theorem 6.14 (`An orthogonal decomposition') allows us to decompose $u$ into $u=cv+w$ where $v$ and $w$ are orthogonal. 
+From the Pythagorean theorem, it follows
+\[\norm{v+w}^2=\norm{v}^2+\norm{w}^2\]
+
+Let's assume that $||w||^2 < 0$. 
+Now consider the vector $\lambda w$ where $\lambda=\frac{\norm{v}}{\norm{w}}$\footnote{
+The $\abs{\frac{\norm{v}}{\norm{w}}}^2 \norm{w}^2$ term is quite harry, but note that $\norm{w}^2 < 0$ and $\abs{\norm{w}}^2 > 0$, therefore $\frac{\norm{w}^2}{\abs{\norm{w}}^2} = -1 $. Also note $\abs{\norm{v}}^2 = \norm{v}^2$ since $\langle v, v\rangle > 0$.
+}
+\[\norm{v+\lambda w}^2=\norm{v}^2+\norm{\lambda w}^2 = \norm{v}^2+\abs{\frac{\norm{v}}{\norm{w}}}^2 \norm{w}^2 = \norm{v}^2 - \norm{v}^2 = 0 \]
+Thus we have a contradiction since $v+\lambda w\neq0$ yet $||v+\lambda w||^2=0$, defying the condition of definiteness (definition 6.3). Therefore $||w||^2 > 0$.
+
+It then follows that 
+\[||u||^2 = ||v+w||^2=||v||^2+||w||^2 \geq 0\]
+showing that the positivity condition is fulfilled and the set of function that are inner products on $V$ clearly does not grow larger.
+
+\end{document}
