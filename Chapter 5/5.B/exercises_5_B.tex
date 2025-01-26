@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 5.B}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\renewcommand{\thesection}{9}
+\section{Zeros of $p$ are eigenvalues of $T$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional, $T\in \mathcal{L}(V)$, and $v\in V$ with $v\neq 0$. 
+Let $p$ be a nonzero polynomial of smallest degree such that $p(T)v=0$. 
+Prove that every zero of $p$ is an eigenvalue of $T$.
+
+\subsection*{Solution}
+Suppose $\lambda$ is a zero of $p$. 
+We can use theorem 4.11 to write $p$ as 
+\[p(z)=(z-\lambda)q(z).\] 
+It follows that $p(T)=(T-\lambda I)q(T)$. 
+Given that $p$ is the smallest degree polynomial such that $p(T)v=0$ and $\operatorname{deg}p>\operatorname{deg}q$, it follows that $q(T)v\neq 0$. 
+
+Hence, we have
+\[p(T)v=(T-\lambda I)q(T)v=0\]
+which implies $T(q(T)v)=\lambda q(T)v$. 
+Therefore $\lambda$ is an eigenvalue of $T$ with $q(T)v$ as the corresponding eigenvector.\footnote{
+]Answer came from \href{https://math.stackexchange.com/questions/4695496/linear-algebra-done-right-exercise-5-b-9-solution-verification}{math.stackexchang.com}.
+}
+
+\end{document}

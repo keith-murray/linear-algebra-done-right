@@ -12,3 +12,4 @@ This repository contains my solutions to exercises in the third edition of Sheld
 - Chapter 2: 22/42
 - Chapter 3: 10/137
 - Chapter 4: 6/11
+- Chapter 5: 1/72
