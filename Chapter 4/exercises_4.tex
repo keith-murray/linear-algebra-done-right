@@ -1,0 +1,223 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 4}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\section{Verify the properties of complex numbers}
+\subsection*{Problem statement}
+Verify all the assertions in 4.5 except the last one.
+
+\subsection*{Solution}
+\subsubsection*{sum of $z$ and $\bar{z}$}
+For $z\in\mathbf{C}$, we can write $z$ and $\bar{z}$ as
+\[z=\operatorname{Re}z+(\operatorname{Im}z)i\;\;\;\text{and}\;\;\;\bar{z}=\operatorname{Re}z-(\operatorname{Im}z)i.\]
+Hence, it follows that
+\[z+\bar{z}=\operatorname{Re}z+(\operatorname{Im}z)i+\operatorname{Re}z-(\operatorname{Im}z)i=2\operatorname{Re}z,\]
+giving the desired result.
+
+\subsubsection*{difference of $z$ and $\bar{z}$}
+Following our notation for $z$ and $\bar{z}$, we can write
+\begin{align*}
+    z-\bar{z}&=\operatorname{Re}z+(\operatorname{Im}z)i-(\operatorname{Re}z-(\operatorname{Im}z)i)\\
+    &=\operatorname{Re}z+(\operatorname{Im}z)i-\operatorname{Re}z+(\operatorname{Im}z)i\\
+    &=2(\operatorname{Im}z)i,
+\end{align*}
+giving the desired result.
+
+\subsubsection*{product of $z$ and $\bar{z}$}
+Following our notation for $z$ and $\bar{z}$, we can write
+\begin{align*}
+    z\bar{z}&=(\operatorname{Re}z+(\operatorname{Im}z)i)(\operatorname{Re}z-(\operatorname{Im}z)i)\\
+    &=((\operatorname{Re}z)^2+(\operatorname{Im}z)^2)+((\operatorname{Re}z)(\operatorname{Im}z)-(\operatorname{Re}z)(\operatorname{Im}z))i\\
+    &=(\operatorname{Re}z)^2+(\operatorname{Im}z)^2\\
+    &=|z|^2,
+\end{align*}
+giving the desired result.
+
+\subsubsection*{additivity and multiplicativity of complex conjugate}
+For additivity, we can write
+\begin{align*}
+    \overline{w+z}&=(\operatorname{Re}w+\operatorname{Re}z)-(\operatorname{Im}w+\operatorname{Im}z)i\\
+    &=\operatorname{Re}w-(\operatorname{Im}w)i+\operatorname{Re}z-(\operatorname{Im}z)i\\
+    &=\bar{w}+\bar{z},
+\end{align*}
+giving the desired result.
+
+For multiplicativity, we can write
+\begin{align*}
+    \bar{w}\bar{z}&=(\operatorname{Re}w-(\operatorname{Im}w)i)(\operatorname{Re}z-(\operatorname{Im}z)i)\\
+    &=((\operatorname{Re}w)(\operatorname{Re}z)-(\operatorname{Im}w)(\operatorname{Im}z))+(-(\operatorname{Re}w)(\operatorname{Im}z)-(\operatorname{Im}w)(\operatorname{Re}z))i\\
+    &=((\operatorname{Re}w)(\operatorname{Re}z)-(\operatorname{Im}w)(\operatorname{Im}z))-((\operatorname{Re}w)(\operatorname{Re}z)+(\operatorname{Im}w)(\operatorname{Im}z))i\\
+    &=\overline{wz},
+\end{align*}
+where the last equality comes from the observation that
+\[wz=((\operatorname{Re}w)(\operatorname{Re}z)-(\operatorname{Im}w)(\operatorname{Im}z))+((\operatorname{Re}w)(\operatorname{Im}z)+(\operatorname{Im}w)(\operatorname{Re}z))i.\]
+
+\subsubsection*{conjugate of conjugate}
+Following our notation for $z$ and $\bar{z}$, we can write
+\begin{align*}
+    \overline{\bar{z}}=\overline{\operatorname{Re}z-(\operatorname{Im}z)i}=\operatorname{Re}z+(\operatorname{Im}z)i=z,
+\end{align*}
+giving the desired result.
+
+\subsubsection*{real and imaginary parts are bounded by $|z|$}
+Via the definition of the absolute value of a complex number (Definition 4.3), we can write
+\[|z|^2=(\operatorname{Re}z)^2+(\operatorname{Im}z)^2.\]
+Given the nonnegativity of squares, it follows that 
+\[(\operatorname{Re}z)^2\geq 0\;\;\;\text{and}\;\;\;(\operatorname{Im}z)^2\geq 0.\]
+Hence, we can write
+\[(\operatorname{Re}z)^2\leq |z|^2 \;\;\;\text{and}\;\;\;(\operatorname{Im}z)^2\leq |z|^2\]
+and taking the square root of all terms gives the desired results.
+
+\subsubsection*{absolute value of the complex conjugate}
+Via the definition of the complex conjugate and the definition of the absolute value of a complex number (Definition 4.3), we can write
+\[|\bar{z}|=\sqrt{(\operatorname{Re}z)^2+(-\operatorname{Im}z)^2}=\sqrt{(\operatorname{Re}z)^2+(\operatorname{Im}z)^2}=|z|,\]
+giving the desired result.
+
+\subsubsection*{multiplicativity of absolute value}
+Thinking back to the \textbf{additivity and multiplicativity of complex conjugate} and our expression for $wz$, we can write
+\begin{align*}
+    |wz|&=\sqrt{((\operatorname{Re}w)(\operatorname{Re}z)-(\operatorname{Im}w)(\operatorname{Im}z))^2+((\operatorname{Re}w)(\operatorname{Im}z)+(\operatorname{Im}w)(\operatorname{Re}z))^2}\\
+    &=\sqrt{(\operatorname{Re}w)^2(\operatorname{Re}z)^2+(\operatorname{Im}w)^2(\operatorname{Im}z)^2-2(\operatorname{Re}w)(\operatorname{Re}z)(\operatorname{Im}w)(\operatorname{Im}z)}\\
+    &\;\;\;\;\;\;\;\;\,\overline{+(\operatorname{Re}w)^2(\operatorname{Im}z)^2+(\operatorname{Im}w)^2(\operatorname{Re}z)^2+2(\operatorname{Re}w)(\operatorname{Im}z)(\operatorname{Im}w)(\operatorname{Re}z)}\\
+    &=\sqrt{(\operatorname{Re}w)^2(\operatorname{Re}z)^2+(\operatorname{Re}w)^2(\operatorname{Im}z)^2+(\operatorname{Im}w)^2(\operatorname{Re}z)^2+(\operatorname{Im}w)^2(\operatorname{Im}z)^2}\\
+    &=\sqrt{((\operatorname{Re}w)^2+(\operatorname{Im}w)^2)((\operatorname{Re}z)^2+(\operatorname{Im}z)^2)}\\
+    &=\sqrt{(\operatorname{Re}w)^2+(\operatorname{Im}w)^2}\sqrt{(\operatorname{Re}z)^2+(\operatorname{Im}z)^2}\\
+    &=|w||z|,
+\end{align*}
+giving the desired result.
+
+\clearpage
+
+\section{$\{0\}\cup\{p\in\mathcal{P}(\mathbf{F}):\deg p=m\}$ is not a subspace}
+\subsection*{Problem statement}
+Suppose $m$ is a positive integer. 
+Is the set
+\[\{0\}\cup\{p\in\mathcal{P}(\mathbf{F}):\deg p=m\}\]
+a subspace of $\mathcal{P}(\mathbf{F})$?
+
+\subsection*{Solution}
+No and we can show it's not a subspace with a counterexample. 
+
+Suppose $m=2$. 
+It follows that the polynomials $p_0(z)=1+z+z^2$ and $p_1(z)=2-z^2$ are members of the set, but 
+\[(p_0+p_1)(z)=1+z+z^2+2-z^2=3+z,\]
+which has a degree of $1$. 
+Thus the set is not closed under addition and is not a subspace. 
+
+A similar counterexample could be constructed for a set with arbitrary $m$. 
+Therefore, no sets of that form are subspaces of $\mathcal{P}(\mathbf{F})$.
+
+\clearpage
+
+\section{$\{0\}\cup\{p\in\mathcal{P}(\mathbf{F}):\deg p \text{ is even}\}$ is not a subspace}
+\subsection*{Problem statement}
+Suppose $m$ is a positive integer. 
+Is the set
+\[\{0\}\cup\{p\in\mathcal{P}(\mathbf{F}):\deg p \text{ is even}\}\]
+a subspace of $\mathcal{P}(\mathbf{F})$?
+
+\subsection*{Solution}
+No and we can use our counterexample from Exercise 4(2) as a counterexample for this set. 
+A similar counterexample could be constructed for a set with arbitrary $m$. 
+Therefore, no sets of that form are subspaces of $\mathcal{P}(\mathbf{F})$.
+
+\clearpage
+
+\section{Existence of polynomials with specific roots}
+\subsection*{Problem statement}
+Suppose $m$ and $n$ are positive integers with $m\leq n$, and suppose\newline $\lambda_1,\ldots,\lambda_m\in\mathbf{F}$. 
+Prove that there exists a polynomial $p\in\mathcal{P}(\mathbf{F})$ with $\deg p=n$ such that $0=p(\lambda_1)=\cdots=p(\lambda_m)$ and such that $p$ has no other zeros.
+
+\subsection*{Solution}
+A first attempt would be to construct the polynomial $q\in\mathcal{P}(\mathbf{F})$ such that
+\[q(z)=(z-\lambda_1)\cdots(z-\lambda_m).\]
+However, we have $\deg q=m$ which is not necessarily equivalent to $n$. 
+As a simple fix, if $m<n$, we can construct $p\in\mathcal{P}(\mathbf{F})$ such that
+\[p(z)=q(z)(z-\lambda_m)^{n-m}.\]
+Thus, we can compute the degree of $p$ as
+\[\deg p=\deg q+n-m=m+n-m=n.\]
+
+To show that our polynomial $p$ has no other zeros, we can use Theorem 4.14 (`Factorization of a polynomial over $\mathbf{C}$') to claim that the following factorization of $p$
+\[p(z)=(z-\lambda_1)\cdots(z-\lambda_m)(z-\lambda_m)^{n-m}\]
+is unique.
+Therefore, it follows that $p$ has no other zeros besides $\lambda_1,\ldots,\lambda_m$.
+
+\clearpage
+
+\section{Using linear maps to find unique polynomials}
+\subsection*{Problem statement}
+Suppose $m$ is a nonnegative integer, $z_1,\ldots,z_{m+1}$ are distinct elements of $\mathbf{F}$, and $w_1,\ldots,w_{m+1}\in\mathbf{F}$. 
+Prove that there exists a unique polynomial $p\in\mathcal{P}_m(\mathbf{F})$ such that
+\[p(z_j)=w_j\]
+for $j=1,\ldots,m+1$.
+
+\subsection*{Solution}
+To show existence and uniqueness of the polynomial $p\in\mathcal{P}_m(\mathbf{F})$ that satisfies our condition in the problem statement, we can find a linear map that is injective and surjective. 
+Define the linear map $T\in\mathcal{L}(\mathcal{P}_m(\mathbf{F}),\mathbf{F}^{m+1})$ by
+\[Tp=(p(z_1),\ldots,p(z_{m+1})).\]
+To show \textbf{additivity}, suppose $p,q\in\mathcal{P}_m(\mathbf{F})$. 
+Thus, we can write
+\begin{align*}
+    T(p+q)&=((p+q)(z_1),\ldots,(p+q)(z_{m+1}))\\
+    &=(p(z_1)+q(z_1),\ldots,p(z_{m+1})+q(z_{m+1}))\\
+    &=(p(z_1),\ldots,p(z_{m+1}))+(q(z_1),\ldots,q(z_{m+1}))\\
+    &=Tp+Tq,
+\end{align*}
+which shows \textbf{additivity}. 
+To show \textbf{homogeneity}, suppose $p\in\mathcal{P}_m(\mathbf{F})$ and $\lambda\in\mathbf{F}$. 
+Thus, we can write
+\begin{align*}
+    T(\lambda p)&=(\lambda p(z_1),\ldots,\lambda p(z_{m+1}))\\
+    &=\lambda(p(z_1),\ldots,p(z_{m+1}))\\
+    &=\lambda Tp
+\end{align*}
+which shows \textbf{homogeneity}. 
+Now let's show that $T$ is in injective and surjective. 
+
+For injectivity, we need to prove $\operatorname{null}T=\{0\}$. 
+Our only worry is that the distinct scalars $z_1,\ldots,z_{m+1}$ could be the roots for some polynomial $p\in\mathcal{P}_m(\mathbf{F})$. 
+However, following from Theorem 4.12 (`A polynomial has at most as many zeros as its degree'), polynomials $p\in\mathcal{P}_m(\mathbf{F})$ can have at most $m$ roots. 
+Hence, there is no polynomial $p\in\mathcal{P}_m(\mathbf{F})$ with the distinct scalars $z_1,\ldots,z_{m+1}$ as roots. 
+Therefore, it follows that $\operatorname{null}T=\{0\}$.
+
+For surjectivity, we can note that injectivity implies $\dim \operatorname{null}T=0$. 
+Hence, via the Fundamental Theorem of Linear Maps (Theorem 3.22), we can write
+\[\dim \mathcal{P}_m(\mathbf{F})=\dim \operatorname{null}T+\dim \operatorname{range}T=\dim \operatorname{range}T.\]
+Since $\dim \mathcal{P}_m(\mathbf{F})=\dim \mathbf{F}^{m+1}$, it follows that 
+\[\dim \mathbf{F}^{m+1}=\dim \operatorname{range}T,\]
+and $T$ is surjective.
+
+Putting all our results together, we've shown that there exists a surjective and injective linear map from $\mathcal{P}_m(\mathbf{F})$ to $\mathbf{F}^{m+1}$. 
+Therefore, it follows that there exists a unique polynomial $p\in\mathcal{P}_m(\mathbf{F})$ such that
+\[p(z_j)=w_j\]
+for $j=1,\ldots,m+1$.
+
+\subsubsection*{Thoughts}
+This exercise is a good example of how powerful linear algebra can be. 
+Simply by finding a linear map, we can prove a lot of useful properties.
+
+\clearpage
+
+\renewcommand{\thesection}{7}
+\section{Odd polynomials with have a real zero}
+\subsection*{Problem statement}
+Prove that every polynomial of odd degree with real coefficients has a real zero.
+
+\subsection*{Solution}
+Via Theorem 4.17 (`Factorization of a polynomial over $\mathbf{R}$'), polynomials can be factored into a series of $(x-\lambda)$ and $(x^2+bx+c)$ terms where $\lambda,b,c\in\mathbf{R}$ and $x^2+bx+c$ has no real roots. 
+Odd polynomials cannot solely be factored into a series of $(x^2+bx+x)$ terms since they reduce the factored polynomial by a degree of $2$. 
+Thus, an odd polynomial must contain at least one $(x-\lambda)$ factor, implying the polynomial has a real zero.
+
+\end{document}
