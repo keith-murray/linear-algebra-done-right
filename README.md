@@ -17,3 +17,4 @@ This repository contains my solutions to exercises in the third edition of Sheld
 - Chapter 7: 27/70
 - Chapter 8: 28/60
 - Chapter 9: 16/27
+- Chapter 10: 10/33

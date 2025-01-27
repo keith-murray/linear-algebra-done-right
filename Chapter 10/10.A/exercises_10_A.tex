@@ -82,19 +82,26 @@ Following from Theorem 10.7 (`Change of basis formula'), we can write
     A\mathcal{M}(T,(v_1,\ldots,v_n))=\mathcal{M}(T,(u_1,\ldots,u_n))A\\
     AB=BA
 \end{gather*}
-where $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$. Hence, $B$ commutes with all matrices of the form $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ for any bases $v_1,\ldots,v_n$ and $u_1,\ldots,u_n$ of $V$. 
+where $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$. 
+Hence, $B$ commutes with all matrices of the form $A=\mathcal{M}(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ for any bases $v_1,\ldots,v_n$ and $u_1,\ldots,u_n$ of $V$. 
 
-For any vector $u\in V$ such that $u\neq 0$, let's prove that $Bu$ is a scalar multiple of $u$. Suppose that $u$ and $Bu$ are not scalar multiples. Now consider the matrix
+For any vector $u\in V$ such that $u\neq 0$, let's prove that $Bu$ is a scalar multiple of $u$. Suppose that $u$ and $Bu$ are not scalar multiples. 
+Now consider the matrix
 \[A=\mathcal{M}(I,(u,Bu,u_3,\ldots,u_n),(u,Bu-u,u_3,\dots,u_n))\]
-where the bases $u,Bu,u_3,\ldots,u_n$ and $u,Bu-u,u_3,\dots,u_n$ are valid since $u,Bu$ and $u,Bu-u$ are linearly independent by our assumption. Since $A$ is of the form of a change of basis, we have $AB=BA$ and $(AB-BA)u=0$. However, it follows that
+where the bases $u,Bu,u_3,\ldots,u_n$ and $u,Bu-u,u_3,\dots,u_n$ are valid since $u,Bu$ and $u,Bu-u$ are linearly independent by our assumption. 
+Since $A$ is of the form of a change of basis, we have $AB=BA$ and $(AB-BA)u=0$. However, it follows that
 \[ABu=Bu-u\;\;\;\text{and}\;\;\; BAu=Bu\]
-and $(AB-BA)u=-u$, which is a contradiction. Thus, $u$ and $Bu$ are scalar multiples.
+and $(AB-BA)u=-u$, which is a contradiction. 
+Thus, $u$ and $Bu$ are scalar multiples.
 
-To prove that $B$ is a scalar multiple of the identity, we can show that for any two nonzero vectors $u,v\in V$, it follows that $Bu=cu$ and $Bv=cv$ where the scalar multiple of $u$ and $v$ is the same scalar. Let $c_1$ be the scalar such that $Bu=c_1u$. Let $c_2$ be the scalar such that $Bv=c_2v$. Now consider the matrix
+To prove that $B$ is a scalar multiple of the identity, we can show that for any two nonzero vectors $u,v\in V$, it follows that $Bu=cu$ and $Bv=cv$ where the scalar multiple of $u$ and $v$ is the same scalar. 
+Let $c_1$ be the scalar such that $Bu=c_1u$. Let $c_2$ be the scalar such that $Bv=c_2v$. 
+Now consider the matrix
 \[A=\mathcal{M}(I,(u,u_2,\ldots,u_n),(v,u_2\dots,u_n)).\]
 Since $A$ is of the form of a change of basis, we can write
 \[0=(AB-BA)u=ABu-BAu=c_1v-c_2v=(c_1-c_2)v\]
-and it follows that $c_1=c_2$. Hence, $B$ is a scalar multiple of the identity.
+and it follows that $c_1=c_2$. 
+Hence, $B$ is a scalar multiple of the identity.
 
 \clearpage
 
@@ -205,7 +212,8 @@ with $\langle w,v\rangle$ being the corresponding eigenvalue.
 Suppose $\operatorname{dim}V=n$. 
 Notice that $\operatorname{dim}U=1$ and $\operatorname{dim}U^\bot=n-1$ via Theorem 6.50 (`Dimension of the orthogonal complement'). 
 Thus, the eigenvalue $0$ has a multiplicity of at least $n-1$ and the eigenvalue $\langle w,v\rangle$ has a multiplicity of at least $1$. 
-Via Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$'), it follows that the eigenvalue $0$ has a multiplicity of exactly $n-1$ and the eigenvalue $\langle w,v\rangle$ has a multiplicity of exactly $1$. Therefore, via the definition of trace of an operator (Definition 10.9), the formula for the trace of $T$ is
+Via Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$'), it follows that the eigenvalue $0$ has a multiplicity of exactly $n-1$ and the eigenvalue $\langle w,v\rangle$ has a multiplicity of exactly $1$. 
+Therefore, via the definition of trace of an operator (Definition 10.9), the formula for the trace of $T$ is
 \[\operatorname{trace}T=(n-1)0 + 1\langle w,v\rangle=\langle w,v\rangle.\]
 
 \end{document}
