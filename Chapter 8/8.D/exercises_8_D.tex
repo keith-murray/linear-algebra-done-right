@@ -47,7 +47,8 @@ For the sake of completeness, the operator $N\in\mathcal{L}(\mathbf{F}^6)$ is de
 Via Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), $N$ only has an eigenvalue of $0$, and by Theorem 8.26 (`Sum of the multiplicities equals $\operatorname{dim}V$'), it follows that the multiplicity of $0$ is $6$. 
 Hence, the characteristic polynomial is $z^6$.
 
-To find the minimal polynomial, let's compute $N^6$, and we can stop when $N^m=0$ for $m\in\{1,2,3,4,5,6\}$. For $(z_1,z_2,z_3,z_4,z_5,z_6)\in\mathbf{F}^6$ we can write
+To find the minimal polynomial, let's compute $N^6$, and we can stop when $N^m=0$ for $m\in\{1,2,3,4,5,6\}$. 
+For $(z_1,z_2,z_3,z_4,z_5,z_6)\in\mathbf{F}^6$ we can write
 \begin{align*}
     N^6(z_1,z_2,z_3,z_4,z_5,z_6)&=N^5(0,z_1,z_2,0,z_4,0)\\
     &=N^4(0,0,z_1,0,0,0)\\
@@ -88,7 +89,9 @@ Applying $N^{m_k+1}$ to our linear combination, it follows that
 \[N^{m_k+1}v=N^{m_k+1}v_k=0\]
 for all $v\in V$.
 
-Hence, we've shown that $N^{m_k}\neq0$ and $N^{m_k+1}=0$, implying that $z^{m_k+1}$ is the minimal polynomial. In the second paragraph, we showed that $m_k$ is the length of a consecutive string of $1$'s appearing above the diagonal in the matrix of $N$ with respect to the Jordan basis for $N$. Thus, $m_k > m_j$ implies that the consecutive string of $1$'s corresponding to length $m_k$ is the longest consecutive string of $1$'s, which was to be shown.
+Hence, we've shown that $N^{m_k}\neq0$ and $N^{m_k+1}=0$, implying that $z^{m_k+1}$ is the minimal polynomial. 
+In the second paragraph, we showed that $m_k$ is the length of a consecutive string of $1$'s appearing above the diagonal in the matrix of $N$ with respect to the Jordan basis for $N$. 
+Thus, $m_k > m_j$ implies that the consecutive string of $1$'s corresponding to length $m_k$ is the longest consecutive string of $1$'s, which was to be shown.
 
 \clearpage
 
@@ -107,7 +110,8 @@ Suppose $v_1,\dots,v_n$ is a basis of $V$ that is a Jordan basis for $T$. The ma
 A_m & & 0
 \end{pmatrix}
 \end{equation*}
-where $A_1,\ldots,A_m$ are square matrices lying along the line from upper right corner to the bottom left corner and all the other entries of the matrix equal $0$. Each $A_j$ is a matrix of the form
+where $A_1,\ldots,A_m$ are square matrices lying along the line from upper right corner to the bottom left corner and all the other entries of the matrix equal $0$. 
+Each $A_j$ is a matrix of the form
 \begin{equation*}
 \begin{pmatrix}
 0 & & 1 &\lambda_j\\
@@ -122,7 +126,8 @@ where the $\lambda_j$'s lie along the line from upper right corner to the bottom
 
 \section{Matrix of $T^2$ respect to Jordan basis of $T$}
 \subsection*{Problem statement}
-Suppose $T\in\mathcal{L}(V)$ and $v_1,\ldots,v_n$ is a basis of $V$ that is a Jordan basis for $T$. Describe the matrix of $T^2$ with respect to this basis.
+Suppose $T\in\mathcal{L}(V)$ and $v_1,\ldots,v_n$ is a basis of $V$ that is a Jordan basis for $T$. 
+Describe the matrix of $T^2$ with respect to this basis.
 
 \subsection*{Solution}
 Following from the definition of the Jordan basis (Definition 8.59), the matrix of $T^2$ with respect to the Jordan basis of $T$ is the block diagonal matrix
@@ -147,7 +152,8 @@ A_j^2=\begin{pmatrix}
 
 \section{$N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\operatorname{null}N$}
 \subsection*{Problem statement}
-Suppose $N\in\mathcal{L}(V)$ is nilpotent and $v_1,\ldots,v_n$ and $m_1,\ldots,m_n$ are as in 8.55. Prove that $N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\operatorname{null}N$.
+Suppose $N\in\mathcal{L}(V)$ is nilpotent and $v_1,\ldots,v_n$ and $m_1,\ldots,m_n$ are as in 8.55. 
+Prove that $N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\operatorname{null}N$.
 
 \subsection*{Solution}
 By Theorem 8.55 (`Basis corresponding to a nilpotent operator'), the list of vectors $N^{m_1}v_1,\ldots,N^{m_n}v_n$ are linearly independent and
@@ -157,7 +163,6 @@ Applying $N$ to both sides, we have $Nv=0$, $N(N^{{m_1}}v_1)=\cdots=N(N^{{m_n}}v
 Since vectors \newline
 $N(N^{{m_1-1}}v_1),\ldots,N(Nv_1),Nv_1,\ldots,N(N^{m_n-1}v_n),\ldots,N(Nv_n),N(v_n)$ are linearly independent, their coefficients in the linear combination equal to $v$ are $0$, implying that $v\in\operatorname{span}(N^{m_1}v_1,\ldots,N^{m_n}v_n)$.
 
-Hence, $N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\operatorname{null}N$
-
+Hence, $N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\operatorname{null}N$.
 
 \end{document}

@@ -21,18 +21,23 @@ Define $T\in\mathcal{L}(\mathbf{C}^2)$ by
 Find all generalized eigenvectors of $T$.
 
 \subsection*{Solution}
-First, let's find the eigenvalues. We have
+First, let's find the eigenvalues. 
+We have
 \begin{align*}
     (z,0)&=T(w,z)\\
     &=\lambda (w,z)
 \end{align*}
-implying $z=0$ and $\lambda=0$. Hence our only eigenvalue is $\lambda=0$.
+implying $z=0$ and $\lambda=0$. 
+Hence our only eigenvalue is $\lambda=0$.
 
-To find the generalized eigenvectors, we can use Theorem 8.11 (`Description of generalized eigenspaces') and find a basis of $\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}$. We have
+To find the generalized eigenvectors, we can use Theorem 8.11 (`Description of generalized eigenspaces') and find a basis of $\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}$. 
+We have
 \[(T-0I)^2(w,z)=T^2(w,z)=(0,0).\]
-Hence $(1,0),(0,1)\in\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}=G(\lambda,T)$ where $\lambda=0$. Therefore $(1,0),(0,1)$ are all the generalized eigenvetors of $T$.
+Hence $(1,0),(0,1)\in\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}=G(\lambda,T)$ where $\lambda=0$. 
+Therefore $(1,0),(0,1)$ are all the generalized eigenvetors of $T$.
 
-If we want to be pedantic, we could use Theorem 8.23 (`A basis of generalized eigenvectors') to say that $T$ has exactly two generalized eigenvectors. Since we found two eigenvectors, then we know that we've found all of them.
+If we want to be pedantic, we could use Theorem 8.23 (`A basis of generalized eigenvectors') to say that $T$ has exactly two generalized eigenvectors. 
+Since we found two eigenvectors, then we know that we've found all of them.
 
 \clearpage
 
@@ -43,12 +48,16 @@ Define $T\in\mathcal{L}(\mathbf{C}^2)$ by
 Find the generalized eigenspaces corresponding to the distinct eigenvalues of $T$.
 
 \subsection*{Solution}
-First, let's find the eigenvalues of $T$. Note that $T$ is the same operator in Example 5.8. But for the sake of completeness, we have
+First, let's find the eigenvalues of $T$. 
+Note that $T$ is the same operator in Example 5.8. 
+But for the sake of completeness, we have
 \begin{align*}
     (-z,w)&=T(w,z)\\
     &=\lambda (w,z)
 \end{align*}
-with $-z=\lambda w$ and $w=\lambda z$. Hence it follows that $-z=\lambda^2z$ and $-1=\lambda^2$. Therefore the eigenvalues of $T$ are $\lambda=i$ and $\lambda=-i$.
+with $-z=\lambda w$ and $w=\lambda z$. 
+Hence it follows that $-z=\lambda^2z$ and $-1=\lambda^2$. 
+Therefore the eigenvalues of $T$ are $\lambda=i$ and $\lambda=-i$.
 
 To find the generalized eigenspaces of $T$, we can use Theorem 8.11 (`Description of generalized eigenspaces') to find $G(\lambda,T)=\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}$.
 
@@ -76,18 +85,23 @@ Hence, we have $G(-i,T)=\{(x,ix):x\in\mathbf{C}\}$.
 
 \section{$T$ is invertible. Prove $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$.}
 \subsection*{Problem statement}
-Suppose $T\in\mathcal{L}(V)$ is invertible. Prove that $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$.
+Suppose $T\in\mathcal{L}(V)$ is invertible. 
+Prove that $G(\lambda,T)=G(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$.
 
 \subsection*{Solution}
-Let's consider two separate cases: $\lambda$ is an eigenvalue and $\lambda$ is not an eigenvalue.\footnote{My proof for ``$\lambda$ is an eigenvalue'' also applies to ``$\lambda$ is not an eigenvalue'', but I'm including it to use in Exercise 5.C(4).}
+Let's consider two separate cases: $\lambda$ is an eigenvalue and $\lambda$ is not an eigenvalue.\footnote{
+My proof for ``$\lambda$ is an eigenvalue'' also applies to ``$\lambda$ is not an eigenvalue'', but I'm including it to use in Exercise 5.C(4).
+}
 
 \subsubsection*{$\lambda$ is not an eigenvalue}
-If $\lambda$ is not an eigenvalue, then via Theorem 5.6 (`Equivalent conditions to be an eigenvalue'), $T-\lambda I$ is in injective. Hence, we have
+If $\lambda$ is not an eigenvalue, then via Theorem 5.6 (`Equivalent conditions to be an eigenvalue'), $T-\lambda I$ is in injective. 
+Hence, we have
 \[\{0\}=\operatorname{null}(T-\lambda I)^0=\operatorname{null}(T-\lambda I)^1\]
 and via Theorem 8.3 (`Equality in the sequence of null spaces') and Theorem 8.11 (`Description of generalized eigenspaces'), we also have
 \[\{0\}=\operatorname{null}(T-\lambda I)^1=\operatorname{null}(T-\lambda I)^{\operatorname{dim}V}=G(\lambda,T).\]
 
-Note that Exercise 5.C(9) allows us to state that if $T$ is invertible, then $E(\lambda,T)=E(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$. It now follows that 
+Note that Exercise 5.C(9) allows us to state that if $T$ is invertible, then $E(\lambda,T)=E(\frac{1}{\lambda},T^{-1})$ for every $\lambda\in\mathbf{F}$ with $\lambda\neq 0$. 
+It now follows that 
 \[\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^0=\{0\}=\operatorname{null}(T-\lambda I)^1=\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^1\]
 and, like before, Theorem 8.3 and Theorem 8.11, we have
 \[\{0\}=\operatorname{null}(T^{-1}-\lambda I)^1=\operatorname{null}(T^{-1}-\lambda I)^{\operatorname{dim}V}=G(\frac{1}{\lambda},T^{-1}).\]
@@ -102,7 +116,9 @@ Applying $(-\frac{T^{-1}}{\lambda})^{j}$ to both sides, we have
     (-\frac{T^{-1}}{\lambda}T+\lambda\frac{T^{-1}}{\lambda}I)^jv&=0\\
     (T^{-1}-\frac{1}{\lambda}I)^jv&=0
 \end{align*}
-where $T^{-1}T=I$ via the definition of invertible operators. Hence, $v\in\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^j$ and $v\in G(\frac{1}{\lambda},T^{-1})$. It follows that $G(\lambda,T)\subset G(\frac{1}{\lambda},T^{-1})$.
+where $T^{-1}T=I$ via the definition of invertible operators. 
+Hence, $v\in\operatorname{null}(T^{-1}-\frac{1}{\lambda}I)^j$ and $v\in G(\frac{1}{\lambda},T^{-1})$. 
+It follows that $G(\lambda,T)\subset G(\frac{1}{\lambda},T^{-1})$.
 
 To complete the equality and show $G(\frac{1}{\lambda},T^{-1})\subset G(\lambda,T)$, we can repeat the process above and instead apply $(-\lambda T)^j$ to both sides.
 
@@ -114,19 +130,26 @@ Suppose $T\in\mathcal{L}(V)$ and $\alpha,\beta\in\mathbf{F}$ with $\alpha\neq\be
 \[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
 
 \subsection*{Solution}
-Following our proof for \textbf{$\lambda$ is not an eigenvalue} in Exercise 8.A(3), if $\lambda$ is not an eigenvalue of $T$, then $G(\lambda,T)=\{0\}$. Hence, if either $\alpha$ or $\beta$ is not an eigenvalue, then
+Following our proof for \textbf{$\lambda$ is not an eigenvalue} in Exercise 8.A(3), if $\lambda$ is not an eigenvalue of $T$, then $G(\lambda,T)=\{0\}$. 
+Hence, if either $\alpha$ or $\beta$ is not an eigenvalue, then
 \[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
 
 Things only get interesting if both $\alpha$ and $\beta$ are eigenvalues. 
 
-Suppose $\alpha$ and $\beta$ are distinct eigenvalues of $T$ and $v\in G(\alpha,T)\cap G(\beta,T)$. Now let's do a simple proof by contradiction. Suppose $v\neq 0$. It follows that $v$ is a generalized eigenvector corresponding to both $\alpha$ and $\beta$. Hence, the list $v,v$ of generalized eigenvectors corresponding to the list $\alpha,\beta$ of eigenvalues of $T$ is linearly dependent. This is a contradiction of Theorem 8.13 (`Linearly independent generalized eigenvectors'); thus, $v=0$. Therefore, we have
+Suppose $\alpha$ and $\beta$ are distinct eigenvalues of $T$ and $v\in G(\alpha,T)\cap G(\beta,T)$. 
+Now let's do a simple proof by contradiction. 
+Suppose $v\neq 0$. 
+It follows that $v$ is a generalized eigenvector corresponding to both $\alpha$ and $\beta$. 
+Hence, the list $v,v$ of generalized eigenvectors corresponding to the list $\alpha,\beta$ of eigenvalues of $T$ is linearly dependent. 
+This is a contradiction of Theorem 8.13 (`Linearly independent generalized eigenvectors'); thus, $v=0$. Therefore, we have
 \[G(\alpha,T)\cap G(\beta,T)=\{0\}.\]
 
 \clearpage
 
 \section{If $v\in\operatorname{null}T^m$, then $v,Tv,T^2v,\ldots,T^{m-1}v$ is l.i.}
 \subsection*{Problem statement}
-Suppose $T\in\mathcal{L}(V)$, $m$ is a positive integer, and $v\in V$ is such that $T^{m-1}v\neq 0$ but $T^mv=0$. Prove that
+Suppose $T\in\mathcal{L}(V)$, $m$ is a positive integer, and $v\in V$ is such that $T^{m-1}v\neq 0$ but $T^mv=0$. 
+Prove that
 \[v,Tv,T^2v,\ldots,T^{m-1}v\]
 is linearly independent.
 
@@ -142,22 +165,28 @@ Now apply $T^{m-1}$ to both sides to get
 \end{align*}
 Since $T^{m-1}v\neq 0$, it follows that $a_0=0$.
 
-Applying $T^{m-2}$ to both sides, the logic above, and our conclusion that $a_0=0$, allows us to deduce $a_1=0$. Continuing in this fashion, $a_j=0$ for each $j\in\{0,1,\ldots,m-1\}$, which implies $v,Tv,T^2v,\ldots,T^{m-1}v$ is linearly independent.
+Applying $T^{m-2}$ to both sides, the logic above, and our conclusion that $a_0=0$, allows us to deduce $a_1=0$. 
+Continuing in this fashion, $a_j=0$ for each $j\in\{0,1,\ldots,m-1\}$, which implies $v,Tv,T^2v,\ldots,T^{m-1}v$ is linearly independent.
 
 \clearpage
 
 \section{No square root for $T(z_1,z_2,z_3)=(z_2,z_3,0)$}
 \subsection*{Problem statement}
-Suppose $T\in\mathcal{L}(\mathbf{C}^3)$ is defined by $T(z_1,z_2,z_3)=(z_2,z_3,0)$. Prove that $T$ has no square root. More precisely, prove that there does not exist $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$.
+Suppose $T\in\mathcal{L}(\mathbf{C}^3)$ is defined by $T(z_1,z_2,z_3)=(z_2,z_3,0)$. 
+Prove that $T$ has no square root. 
+More precisely, prove that there does not exist $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$.
 
 \subsection*{Solution}
 Let's first note that $T$ is nilpotent since 
 \[T^3(z_1,z_2,z_3)=(0,0,0).\]
 To prove that $T$ has no square root, we can do a proof by contradiction.
 
-Suppose there exists $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$. It follows that since $T$ is nilpotent, $T^3=(S^2)^3=0$ and $S$ is nilpotent. However, Theorem 8.18 (`Nilpotent operator raised to dimension of domain is 0') implies that $S^3=0$, and since 
+Suppose there exists $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$. 
+It follows that since $T$ is nilpotent, $T^3=(S^2)^3=0$ and $S$ is nilpotent. 
+However, Theorem 8.18 (`Nilpotent operator raised to dimension of domain is 0') implies that $S^3=0$, and since 
 \[S^4(z_1,z_2,z_3)=T^2(z_1,z_2,z_3)=(z_3,0,0),\] 
-we have a contradiction. Hence, there does not exist $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$.
+we have a contradiction. 
+Hence, there does not exist $S\in\mathcal{L}(\mathbf{C}^3)$ such that $S^2=T$.
 
 \subsection*{Notes}
 This result implies that for nilpotent operators $N\in\mathcal{L}(V)$ such that 
@@ -168,7 +197,8 @@ there does not exist $S\in\mathcal{L}(V)$ such that $S^2=N$.
 
 \section{For nilpotent $N\in\mathcal{L}(V)$, $0$ is only eigenvalue}
 \subsection*{Problem statement}
-Suppose $N\in\mathcal{L}(V)$ is nilpotent. Prove that $0$ is the only eigenvalue of $N$.
+Suppose $N\in\mathcal{L}(V)$ is nilpotent. 
+Prove that $0$ is the only eigenvalue of $N$.
 
 \subsection*{Solution}
 The proof follows immediately from Theorem 8.19 (`Matrix of a nilpotent operator'), whereby all nilpotent operators have an upper-triangular matrix with only $0$'s on the diagonal, and Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), whereby the eigenvalues of an operator are precisely the entries on the diagonal of the upper-triangular matrix of that operator.
@@ -178,7 +208,8 @@ The proof follows immediately from Theorem 8.19 (`Matrix of a nilpotent operator
 
 \section{Set of nilpotent operators is not a subspace}
 \subsection*{Problem statement}
-Prove or give a counterexample: The set of nilpotent operators on $V$ is a subspace of $\mathcal{L}(V)$.
+Prove or give a counterexample: 
+The set of nilpotent operators on $V$ is a subspace of $\mathcal{L}(V)$.
 
 \subsection*{Solution}
 Define the operators $T_1,T_2\in\mathcal{L}(\mathbf{C}^2)$ as 
@@ -191,7 +222,8 @@ Clearly $T_1$ and $T_2$ are both nilpotent, but we can show $T_1+T_2$ is not nil
     &=(z_1,0)+(0,z_2)\\
     &=(z_1,z_2).
 \end{align*}
-Hence, via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is 0'), $T_1+T_2$ is not nilpotent. Thus, the set of nilpotent operators is not a subspace.
+Hence, via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is 0'), $T_1+T_2$ is not nilpotent. 
+Thus, the set of nilpotent operators is not a subspace.
 
 
 \end{document}

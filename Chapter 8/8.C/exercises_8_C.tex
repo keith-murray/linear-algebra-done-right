@@ -39,7 +39,8 @@ Thus, Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomia
 \section{Prove $(T-5I)^{n-1}(T-6I)^{n-1}=0$}
 \subsection*{Problem statement}
 Suppose $V$ is a complex vector space. 
-Suppose $T\in\mathcal{L}(V)$ is such that $5$ and $6$ are eigenvalues of $T$ and that $T$ has no other eigenvalues. Prove that 
+Suppose $T\in\mathcal{L}(V)$ is such that $5$ and $6$ are eigenvalues of $T$ and that $T$ has no other eigenvalues. 
+Prove that 
 \newline
 $(T-5I)^{n-1}(T-6I)^{n-1}=0$, where $n=\operatorname{dim}V$.
 
@@ -74,7 +75,8 @@ The eigenvalues of $T$ are clearly $7$ and $8$, where $7$ has eigenvectors $(1,0
 These eigenvectors form a basis of $\mathbf{C}^4$, therefore, by Exercise 8.B(5), every generalized eigenvector of $T$ is an eigenvector of $T$. 
 It follows that
 \[\operatorname{dim}G(7,T)=\operatorname{dim}G (8, T) = 2\]
-and the multiplicities of the eigenvalues $7$ and $8$ are 2. Hence, the characteristic polynomial of $T$ is $(z-7)^2(z-8)^2$.
+and the multiplicities of the eigenvalues $7$ and $8$ are 2. 
+Hence, the characteristic polynomial of $T$ is $(z-7)^2(z-8)^2$.
 
 \clearpage
 
@@ -101,9 +103,11 @@ To assess their multiplicities, let's note that $(1,0,0,0)$ is an eigenvector co
 
 To show that the multiplicity of the eigenvalue $1$ is $1$ and $5$ is $3$, we can show that $(0,0,1,0)$ is a generalized eigenvector via
 \[(T-5I)^2(0,0,1,0)=(T-5I)(0,1,0,0)=(0,5,0,0)-(0,5,0,0)=0.\]
-Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(1,T)=1$ and $\operatorname{dim}G(5,T)=3$. Thus, by the definition of characteristic polynomials (Definition 8.34), $(z-1)(z-5)^3$ is the characteristic polynomial of $T$.
+Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(1,T)=1$ and $\operatorname{dim}G(5,T)=3$. 
+Thus, by the definition of characteristic polynomials (Definition 8.34), $(z-1)(z-5)^3$ is the characteristic polynomial of $T$.
 
-To show that the minimal polynomial of $T$ equals $(z-1)(z-5)^2$, we can use a similar method as used in Example 8.50 and Example 8.51 to compute both $(T-I)(T-5I)$ and $(T-1)(T-5)^2$. Focusing on $(T-I)(T-5I)$ first, for $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
+To show that the minimal polynomial of $T$ equals $(z-1)(z-5)^2$, we can use a similar method as used in Example 8.50 and Example 8.51 to compute both $(T-I)(T-5I)$ and $(T-1)(T-5)^2$. 
+Focusing on $(T-I)(T-5I)$ first, for $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
 \begin{align*}
     (T-I)(T-5I)(z_1,z_2,z_3,z_4)=(T-I)(-4z_1,z_3,0,0)=(0,4z_3,0,0)
 \end{align*}
@@ -141,7 +145,8 @@ To assess their multiplicities, let's note that $(1,0,0,0)$ is an eigenvector co
 
 To show that the multiplicity of the eigenvalue $1$ is $2$, we can show that $(0,0,1,0)$ is a generalized eigenvector via
 \[(T-I)^2(0,0,1,0)=(T-I)(0,1,0,0)=(0,1,0,0)-(0,1,0,0)=0.\]
-Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(0,T)=1$, $\operatorname{dim}G(1,T)=2$, and $\operatorname{dim}G(1,T)=1$. Thus, by the definition of characteristic polynomials (Definition 8.34), $z(z-1)^2(z-3)$ is the characteristic polynomial of $T$.
+Hence, via Theorem 8.21 (`Description of operators on complex vector spaces'), it follows that $\operatorname{dim}G(0,T)=1$, $\operatorname{dim}G(1,T)=2$, and $\operatorname{dim}G(1,T)=1$. 
+Thus, by the definition of characteristic polynomials (Definition 8.34), $z(z-1)^2(z-3)$ is the characteristic polynomial of $T$.
 
 To show that $z(z-1)^2(z-3)$ is also the minimal polynomial, we need only show that $T(T-I)(T-3I)\neq 0$, since it is the only polynomial with degree less than the characteristic polynomial and with only zeros of the eigenvalues of $T$ (following from Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial')). 
 For $(z_1,z_2,z_3,z_4)\in\mathbf{C}^4$ we can write
@@ -197,7 +202,8 @@ Prove that the characteristic polynomial of $P$ is $z^m(z-1)^n$, where \newline
 $m=\operatorname{dim}\operatorname{null}P$ and $n=\operatorname{dim}\operatorname{range}P$.
 
 \subsection*{Solution}
-First, let's show that $0$ and $1$ are the only possible eigenvalues. Suppose $\lambda$ is an eigenvalue of $P$. It follows that there exists an eigenvector $v\in V$ such that $P=\lambda v$. Given that $P^2=P$, we can write
+First, let's show that $0$ and $1$ are the only possible eigenvalues. Suppose $\lambda$ is an eigenvalue of $P$. 
+It follows that there exists an eigenvector $v\in V$ such that $P=\lambda v$. Given that $P^2=P$, we can write
 \begin{equation}
     \lambda v=Pv=P^2v=\lambda^2v
 \end{equation}
@@ -210,7 +216,8 @@ This implies $\operatorname{null}P^2\neq\operatorname{null}P$, hence there exist
 However, since $v\in\operatorname{range}P$, there must exists $u\in V$ such that $Pu=v$ and we obtain a contradiction since $Pu=v$ and $P^2u=0$. 
 Thus, it follows that $\operatorname{dim}G(0,P)=\operatorname{dim}\operatorname{null}P$.
 
-Therefore, the multiplicity of $\lambda=0$ is $m=\operatorname{dim}\operatorname{null}P$ and the multiplicity of $\lambda=1$ is $n=\operatorname{dim}\operatorname{range}P$. Hence the characteristic polynomial of $P$ is $z^m(z-1)^n$.
+Therefore, the multiplicity of $\lambda=0$ is $m=\operatorname{dim}\operatorname{null}P$ and the multiplicity of $\lambda=1$ is $n=\operatorname{dim}\operatorname{range}P$. 
+Hence the characteristic polynomial of $P$ is $z^m(z-1)^n$.
 
 \clearpage
 
@@ -222,10 +229,13 @@ Suppose $T\in\mathcal{L(V)}$. Prove that $T$ is invertible if an only if the con
 Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial') implies that $0$ is an eigenvalue if and only if $z$ is a factor of the minimal polynomial.
 
 \subsubsection{First Direction}
-Suppose $T$ is invertible. It follows that $0$ is not an eigenvalue because $Tv=0(v)$ only for $v=0$. Hence $z$ is not a factor of the minimal polynomial and the constant term of the minimal polynomial is nonzero.
+Suppose $T$ is invertible. 
+It follows that $0$ is not an eigenvalue because $Tv=0(v)$ only for $v=0$. 
+Hence $z$ is not a factor of the minimal polynomial and the constant term of the minimal polynomial is nonzero.
 
 \subsubsection{Second Direction}
-Suppose the constant term in the minimal polynomial of $T$ is nonzero. It follows that $z$ is not a factor of the minimal polynomial. Hence $0$ is not an eigenvalue and $\operatorname{null}T=E(0,T)=\{0\}$. Thus $T$ is invertible.
+Suppose the constant term in the minimal polynomial of $T$ is nonzero. It follows that $z$ is not a factor of the minimal polynomial. Hence $0$ is not an eigenvalue and $\operatorname{null}T=E(0,T)=\{0\}$. 
+Thus $T$ is invertible.
 
 
 \end{document}
