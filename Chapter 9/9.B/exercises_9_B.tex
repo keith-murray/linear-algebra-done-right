@@ -27,7 +27,8 @@ Prove that there exists a nonzero vector $x\in\mathbf{R}^3$ such that $S^2x=x$.
 
 \subsection*{Solution}
 Via Theorem 9.36 (`Description of isometries when $\mathbf{F}=\mathbf{R}$'), there exists an orthonormal basis of $\mathbf{R}^3$ with respect to which $S$ has a block diagonal matrix and each block in that matrix is either a 1-by-1 matrix containing $1$ or $-1$ or a 2-by-2 matrix of the form given in Theorem 9.36. 
-Since $\operatorname{dim}\mathbf{R}^3=3$, it follows that this block diagonal matrix either has one 2-by-2 matrix or does not have a 2-by-2 matrix. In both cases, there is at least one 1-by-1 matrix containing $1$ or $-1$ in the block diagonal matrix. 
+Since $\operatorname{dim}\mathbf{R}^3=3$, it follows that this block diagonal matrix either has one 2-by-2 matrix or does not have a 2-by-2 matrix. 
+In both cases, there is at least one 1-by-1 matrix containing $1$ or $-1$ in the block diagonal matrix. 
 
 Suppose that the vector in the orthonormal basis of $\mathbf{R}^3$ corresponding to this 1-by-1 matrix is $e_j$. 
 If the entry in this 1-by-1 matrix is $1$, then 
@@ -47,7 +48,9 @@ Prove that every isometry on an odd-dimensional real inner product space has $1$
 \subsection*{Solution}
 Suppose $V$ is an odd-dimensional real inner product space with dimension $n$. 
 Suppose $S\in\mathcal{L}(V)$ is an isometry. 
-It follows from Theorem 9.36 (`Description of isometries when $\mathbf{F}=\mathbf{R}$') that $S$ has a block diagonal matrix with at most $\frac{n-1}{2}$ number\footnote{Since $n$ is odd, then $\frac{n-1}{2}$ is an integer} of 2-by-2 matrices on the diagonal. 
+It follows from Theorem 9.36 (`Description of isometries when $\mathbf{F}=\mathbf{R}$') that $S$ has a block diagonal matrix with at most $\frac{n-1}{2}$ number\footnote{
+Since $n$ is odd, then $\frac{n-1}{2}$ is an integer
+} of 2-by-2 matrices on the diagonal. 
 Thus, every isometry on an odd-dimensional real inner product space has at least one 1-by-1 matrix containing $1$ or $-1$ on the diagonal of some block diagonal matrix. 
 
 Suppose $e_j$ is the orthonormal vector corresponding to this 1-by-1 matrix in the block diagonal matrix of $S$. 
@@ -164,7 +167,8 @@ Thus, in this solution, we need to prove that (a) implies (b) with complexificat
 
 Suppose (a) holds, so $T\in\mathcal{L}(V)$ is self-adjoint. 
 Via Exercise 9.B(4), it follows that $T_{\textbf{C}}\in\mathcal{L}(V_{\textbf{C}})$ is self-adjoint. 
-Thus, via the Complex Spectral Theorem, $V_{\textbf{C}}$ has an orthonormal basis consisting of eigenvectors of $T_{\textbf{C}}$. Suppose $e_1,\ldots,e_n$ is this orthonormal basis. 
+Thus, via the Complex Spectral Theorem, $V_{\textbf{C}}$ has an orthonormal basis consisting of eigenvectors of $T_{\textbf{C}}$. 
+Suppose $e_1,\ldots,e_n$ is this orthonormal basis. 
 If we can use $e_1,\ldots,e_n$ to construct an orthonormal basis of $V$ consisting of eigenvectors of $T$, then it follows that (b) holds.
 
 Theorem 7.13 (`Eigenvalues of self-adjoint operators are real') tells us that the eigenvector $e_j$ of $T_{\textbf{C}}$ has a corresponding eigenvalue of $\lambda_j$ such that $\lambda_j$ is real. 
@@ -196,7 +200,8 @@ Since $e_j,e_k$ are in the orthonormal list $e_1,\ldots,e_n$, it follows that $\
 Hence it follows that $\norm{u_j}=\norm{v_j}$, $\innerprod{v_j,u_j}=0$, and, via the property of \textbf{definiteness}, $u_j\neq v_j$. 
 Happily, we've also shown that $u_j$ and $v_j$ are orthogonal. 
 Thus, to replace vectors $e_j=u_j+iv_j$ and $e_k=u_j-iv_j$ in the orthonormal list $e_1,\ldots,e_n$, we can use vectors $\frac{u_j}{\norm{u_j}}+i0$ and $\frac{v_j}{\norm{v_j}}+i0$. 
-These vectors are orthogonal to each other, have a norm of $1$, and, since they are a linear combination of $e_j$ and $e_k$, they are orthogonal to all other vectors in $e_1,\ldots,e_n$. To show that they are eigenvectors of $T$, for $e_j=u_j+iv_j$ we can write
+These vectors are orthogonal to each other, have a norm of $1$, and, since they are a linear combination of $e_j$ and $e_k$, they are orthogonal to all other vectors in $e_1,\ldots,e_n$. 
+To show that they are eigenvectors of $T$, for $e_j=u_j+iv_j$ we can write
 \[\lambda_ju_j+i(\lambda_jv_j)=\lambda_j(e_j)=T_{\mathbf{C}}(e_j)=Tu_j+iTv_j.\]
 Thus, $\frac{u_j}{\norm{u_j}}$ and $\frac{v_j}{\norm{v_j}}$ are eigenvectors of $T$ corresponding to eigenvalue $\lambda_j$.
 
@@ -215,6 +220,7 @@ Give an example of an operator $T$ on an inner product space such that $T$ has a
 \subsection*{Solution}
 Let $T\in\mathcal{L}(\textbf{R}^2)$ be defined by 
 \[T(x,y)=(x+y,0).\]
-The subspace $U=\operatorname{span}((1,0))$ is clearly invariant under $T$ (in fact, $(1,0)$ is an eigenvector of $T$). However, the orthogonal complement $U^\bot=\operatorname{span}((0,1))$ is not invariant under $T$ since $T(0,1)=(1,0)$ and thus, $T(0,1)\notin U^\bot$.
+The subspace $U=\operatorname{span}((1,0))$ is clearly invariant under $T$ (in fact, $(1,0)$ is an eigenvector of $T$). 
+However, the orthogonal complement $U^\bot=\operatorname{span}((0,1))$ is not invariant under $T$ since $T(0,1)=(1,0)$ and thus, $T(0,1)\notin U^\bot$.
 
 \end{document}

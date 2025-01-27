@@ -227,7 +227,10 @@ Hence, Theorem 3.61 (`$\operatorname{dim}\mathcal{L}(V,W)=(\operatorname{dim}V)(
 Thus, Theorem 3.59 (`Dimension shows whether vector spaces are isomorphic') tells us that $\mathcal{L}(V)$ and $\mathcal{L}(V_{\mathbf{C}})$ are isomorphic since they have the same dimension.
 
 It is now clear to see that the \textbf{complexification} of $T$ is an isomorphism from $\mathcal{L}(V)$ to $\mathcal{L}(V_{\mathbf{C}})$. 
-This follows from the observation that the \textbf{complexification} of operators is injective, $T_{\mathbf{C}}=0$ iff $T=0$, and surjective, the \textbf{complexification} of a basis of operators in $\mathcal{L}(V)$ yields a linearly independent list of operators in $\mathcal{L}(V_{\mathbf{C}})$ of length $\operatorname{dim}\mathcal{L}(V_{\mathbf{C}})$\footnote{This could use a more rigorous proof, but that's a labor for another time}. Therefore, for every operator $S\in\mathcal{L}(V_{\mathbf{C}})$, there exists a unique operator $R\in\mathcal{L}(V)$ such that $R_{\mathbf{C}}=S$.
+This follows from the observation that the \textbf{complexification} of operators is injective, $T_{\mathbf{C}}=0$ iff $T=0$, and surjective, the \textbf{complexification} of a basis of operators in $\mathcal{L}(V)$ yields a linearly independent list of operators in $\mathcal{L}(V_{\mathbf{C}})$ of length $\operatorname{dim}\mathcal{L}(V_{\mathbf{C}})$\footnote{
+This could use a more rigorous proof, but that's a labor for another time
+}. 
+Therefore, for every operator $S\in\mathcal{L}(V_{\mathbf{C}})$, there exists a unique operator $R\in\mathcal{L}(V)$ such that $R_{\mathbf{C}}=S$.
 
 \subsubsection*{First Direction}
 Suppose $T_{\mathbf{C}}$ is invertible. 
@@ -262,6 +265,27 @@ Hence, $T_{\mathbf{C}}R_{\mathbf{C}}=I$ and $R_{\mathbf{C}}T_{\mathbf{C}}=I$. Th
 \subsection*{Problem statement}
 Suppose $V$ is a real vector space and $N\in\mathcal{L}(V)$. Prove that $N_{\mathbf{C}}$ is nilpotent if and only if $N$ is nilpotent.
 
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $N_{\mathbf{C}}$ is nilpotent. 
+This implies that $N_{\mathbf{C}}^{\dim V}=0$. 
+Via Definition 9.5 (`complexification of $T$'), we can express $N_{\mathbf{C}}^{\dim V}$ as
+\[N_{\mathbf{C}}^{\dim V}(u+iv)=N^{\dim V}u+iN^{\dim V}v\]
+for all $u,v\in V$. 
+Since the left side of our expression above equals zero, it follows that
+\[N^{\dim V}u+iN^{\dim V}v=0+i0\]
+for all $u,v\in V$, implying that $N$ is nilpotent.
+
+\subsubsection*{Second Direction}
+Suppose $N$ is nilpotent. 
+This implies that $N^{\dim V}=0$. 
+Via Definition 9.5, we can express $N_{\mathbf{C}}^{\dim V}$ as
+\[N_{\mathbf{C}}^{\dim V}(u+iv)=N^{\dim V}u+iN^{\dim V}v\]
+for all $u,v\in V$. 
+Since the right side of our expression above equals zero, it follows that
+\[N_{\mathbf{C}}^{\dim V}(u+iv)=0+i0\]
+for all $u,v\in V$, implying that $N_{\mathbf{C}}$ is nilpotent.
+
 \clearpage
 
 \section{Nonreal eigenvalues of $T_{\mathbf{C}}$}
@@ -281,9 +305,16 @@ Therefore, if $T\in\mathcal{L}(\mathbf{R}^3)$ and $5,7$ are eigenvalues of $T$, 
 Prove there does not exist an operator $T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent.
 
 \subsection*{Solution}
-Suppose there exists some operator $T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent. Via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is $0$'), it follows that $(T^2+T+I)^7=0$ and for the polynomial $q(z)=(z^2+z+1)^7$ that $q(T)=0$. Via Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomial'), we can infer that $q$ is a polynomial multiple of the minimal polynomial of $T$. Via Theorem 9.19 (`Operator on odd-dimensional vector space has eigenvalue'), it follows that $T$ has a real eigenvalue, and via Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial'), that eigenvalue is a zero of the minimal polynomial of $T$.
+Suppose there exists some operator $T\in\mathcal{L}(\mathbf{R}^7)$ such that $T^2+T+I$ is nilpotent. 
+Via Theorem 8.18 (`Nilpotent operator raised to dimension of domain is $0$'), it follows that $(T^2+T+I)^7=0$ and for the polynomial $q(z)=(z^2+z+1)^7$ that $q(T)=0$. 
+Via Theorem 8.46 (`$q(T)=0$ implies $q$ is a multiple of the minimal polynomial'), we can infer that $q$ is a polynomial multiple of the minimal polynomial of $T$. 
+Via Theorem 9.19 (`Operator on odd-dimensional vector space has eigenvalue'), it follows that $T$ has a real eigenvalue, and via Theorem 8.49 (`Eigenvalues are the zeros of the minimal polynomial'), that eigenvalue is a zero of the minimal polynomial of $T$.
 
-However, we can see that the polynomial $z^2+z+1$ has no real zeros\footnote{This follows from Theorem 4.16 (`Factorization of a quadratic polynomial') and the simple observation that $1^2\ngeq 4(1)$}. Thus, the polynomial $q(z)=(z^2+z+1)^7$ has no real zeros and cannot be a polynomial multiple of the minimal polynomial of $T$ since the minimal polynomial of $T$ is guaranteed to have a real zero. Therefore, we have a contradiction and it follows that no such operator $T\in\mathcal{L}(\mathbf{R}^7)$ exists such that $T^2+T+I$ is nilpotent.
+However, we can see that the polynomial $z^2+z+1$ has no real zeros\footnote{
+This follows from Theorem 4.16 (`Factorization of a quadratic polynomial') and the simple observation that $1^2\ngeq 4(1)$
+}. 
+Thus, the polynomial $q(z)=(z^2+z+1)^7$ has no real zeros and cannot be a polynomial multiple of the minimal polynomial of $T$ since the minimal polynomial of $T$ is guaranteed to have a real zero. 
+Therefore, we have a contradiction and it follows that no such operator $T\in\mathcal{L}(\mathbf{R}^7)$ exists such that $T^2+T+I$ is nilpotent.
 
 \clearpage
 
