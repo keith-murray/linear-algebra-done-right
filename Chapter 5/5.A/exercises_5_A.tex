@@ -1,0 +1,345 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 5.A}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Subspaces invariant under $T$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $U$ is a subspace of $V$.
+\begin{enumerate}
+    \item[(a)] Prove that if $U\subset\operatorname{null}T$, then $U$ is invariant under $T$.
+    \item[(b)] Prove that if $\operatorname{range}T\subset U$, then $U$ is invariant under $T$.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+If $u\in U$, then $u\in\operatorname{null}T$ and $Tu=0$. 
+Since $U$ is a subspace, it follows that
+\[Tu=0\in U\]
+and $Tu\in U$. 
+Hence, via Definition 5.2 (`invariant subspaces'), $U$ is invariant under $T$.
+
+\subsubsection*{b}
+If $u\in U$, then clearly $Tu\in\operatorname{range}T$. 
+Since $\operatorname{range}T\subset U$, it follows that $Tu\in U$. 
+Hence, via Definition 5.2 (`invariant subspaces'), $U$ is invariant under $T$.
+
+\clearpage
+
+\section{$ST=TS$ implies $\operatorname{null}S$ is invariant under $T$}
+\subsection*{Problem statement}
+Suppose $S,T\in\mathcal{L}(V)$ are such that $ST=TS$. 
+Prove that $\operatorname{null}S$ is invariant under $T$.
+
+\subsection*{Solution}
+Suppose $v\in\operatorname{null}S$. 
+This implies
+\[TSv=T(0)=0\]
+and thus, 
+\[S(Tv)=TSv=0.\]
+Hence, we have $Tv\in\operatorname{null}S$ and $\operatorname{null}S$ is invariant under $T$.
+
+\clearpage
+
+\section{$ST=TS$ implies $\operatorname{range}S$ is invariant under $T$}
+\subsection*{Problem statement}
+Suppose $S,T\in\mathcal{L}(V)$ are such that $ST=TS$. 
+Prove that $\operatorname{range}S$ is invariant under $T$.
+
+\subsection*{Solution}
+Suppose $v\in\operatorname{range}S$. 
+This implies there exists $u\in V$ such that $Su=v$. 
+Hence, given $ST=TS$, we can write
+\[STu=TSu=Tv\]
+and $Tv\in\operatorname{range}S$. 
+Therefore, $\operatorname{range}S$ is invariant under $T$.
+
+\clearpage
+
+\section{Prove $U_1+\cdots+U_m$ is invariant under $T$}
+\subsection*{Problem statement}
+Suppose that $T\in\mathcal{L}(V)$ and $U_1,\ldots,U_m$ are subspaces of $V$ invariant under $T$. 
+Prove that $U_1+\cdots+U_m$ is invariant under $T$.
+
+\subsection*{Solution}
+Suppose $u\in U_1+\cdots+U_m$. 
+Thus there exists $u_1\in U_1,\ldots,u_m\in U_m$ such that
+\[u=u_1+\cdots+u_m.\]
+Given $U_1,\ldots,U_m$ are subspaces of $V$ invariant under $T$, it follows that\newline $Tu_1\in U_1,\ldots,Tu_m\in U_m$ and we can write
+\[Tu=T(u_1+\cdots+u_m)=Tu_1+\cdots+Tu_m\]
+implying that $Tu\in U_1+\cdots+U_m$.
+Therefore, $U_1+\cdots+U_m$ is invariant under $T$.
+
+\clearpage
+
+\section{When intersection of subspaces is invariant}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$. 
+Prove that the intersection of every collection of subspaces of $V$ invariant under $T$ is invariant under $T$.
+
+\subsection*{Solution}
+Suppose $U_1,\ldots,U_m$ is a collection of subspaces of $V$ invariant under $T$. 
+Suppose 
+\[u\in U_1\cap\cdots\cap U_m.\]
+It follows that $Tu\in U_j$ for $j=1,\ldots,m$ since $U_j$ is invariant under $T$. 
+Therefore, we have 
+\[Tu\in U_1\cap\cdots\cap U_m\]
+and $U_1\cap\cdots\cap U_m$ is invariant under $T$.
+
+\clearpage
+
+\section{$\{0\}$ and $V$ are invariant under all operators}
+\subsection*{Problem statement}
+Prove or give a counterexample: if $V$ is finite-dimensional and $U$ is a subspace of $V$ that is invariant under every operator on $V$, then $U=\{0\}$ or $U=V$.
+
+\subsection*{Solution}
+Let's prove it.
+
+Obviously $\{0\}$ and $V$ are invariant under every operator on $V$. 
+Thus, suppose $U$ contains at least one vector $v\in V$ such that $v\neq 0$ and $U\neq V$. 
+Suppose $u_1,\ldots,u_m$ is a basis of $U$. 
+Let's extend this basis to $u_1,\ldots,u_m,v_1,\ldots,v_n$ to be a basis of $V$. 
+Note that we must append at least one vector $v_1\in V$ to our basis of $U$ since $U\neq V$. 
+
+Consider the list 
+\[v_1,\ldots(n+p\text{ times})\ldots,v_1.\]
+Via Theorem 3.5 (`Linear maps and basis of domain'), we can construct a unique operator $T\in\mathcal{L}(V)$ such that 
+\[Tu_j=v_1\;\;\;\text{and}\;\;\;Tv_k=v_1\]
+for all $j=1,\ldots,m$ and $k=1,\ldots,n$. 
+It clearly follows that $U$ is not invariant under $T$ since $u_1\in U$ but $Tu_1\notin U$. 
+
+Therefore, the only two subspaces of $V$ invariant under every operator on $V$ are $U=\{0\}$ and $U=V$.
+
+\clearpage
+
+\section{$T(x,y)=(-3y,x)$ has no eigenvalues}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{R}^2)$ is defined by $T(x,y)=(-3y,x)$. 
+Find the eigenvalues of $T$.
+
+\subsection*{Solution}
+To find the eigenvalues of $T$, we write $-3y=\lambda x$ and $x=\lambda y$. 
+Substituting one equation into the other, we have $-3y=\lambda^2 y$ and $\lambda=\pm\sqrt{-3}$, which is not a `real number'. 
+Therefore, $T$ has no eigenvalues.
+
+\clearpage
+
+\section{Eigenvalues of $T(w,z)=(z,w)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathbf{F}^2)$ by
+\[T(w,z)=(z,w).\]
+Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+To find the eigenvalues of $T$, we write $z=\lambda w$ and $w=\lambda z$. 
+Substituting one equation into the other, we have $z=\lambda^2 z$ and $\lambda=\pm 1$. 
+Via Theorem 5.13 (`Number of eigenvalues'), $1$ and $-1$ are all the eigenvalues of $T$.
+
+By observation and a quick check, the vector $(1,1)$ is an eigenvector corresponding to $\lambda=1$ and the vector $(-1,1)$ is an eigenvector corresponding to $\lambda=-1$.
+
+\clearpage
+
+\section{Eigenvalues of $T(z_1,z_2,z_3)=(2z_2,0,5z_3)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathbf{F}^3)$ by
+\[T(z_1,z_2,z_3)=(2z_2,0,5z_3).\]
+Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+To find the eigenvalues of $T$, we write $2z_2=\lambda z_1$, $0=\lambda z_2$, and $5z_3=\lambda z_3$. 
+From $0=\lambda z_2$ it follows that $\lambda=0$ is an eigenvalue. 
+From $5z_3=\lambda z_3$, it follows that $\lambda=5$ is an eigenvalue. 
+
+By observation and a quick check, the vector $(1,0,0)$ is an eigenvector corresponding to $\lambda=0$ and the vector $(0,0,1)$ is an eigenvector corresponding to $\lambda=5$.
+
+\clearpage
+
+\section{$T(x_1,x_2,x_3,\ldots,x_n)=(x_1,2x_2,3x_3,\ldots,nx_n)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathbf{F}^n)$ by
+\[T(x_1,x_2,x_3,\ldots,x_n)=(x_1,2x_2,3x_3,\ldots,nx_n).\]
+\begin{enumerate}
+    \item[(a)] Find all eigenvalues and eigenvectors of $T$.
+    \item[(b)] Find all invariant subspaces of $T$.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+For a vector $(x_1,\ldots,x_n)\in\mathbf{F}^n$, we can think of $T$ as stretching each coordinate $x_j$ by a scalar multiplication of $j$. 
+Therefore, it clearly follows that the integers $1,2,\ldots,n$ are eigenvalues with the standard basis vectors as the corresponding eigenvectors.
+
+\subsubsection*{b}
+Via Exercise 5.A(6), we know $\{0\}$ and $\mathbf{F}^n$ are invariant subspaces of $T$. 
+Suppose $e_1,\ldots,e_k$ is some list of standard basis vectors. 
+Since all standard basis vectors are eigenvectors, it follows that $\operatorname{span}(e_1,\ldots,e_k)$ is an invariant subspace of $T$.
+
+\clearpage
+
+\section{Eigenvalues of differentiation}
+\subsection*{Problem statement}
+Define $T:\mathcal{P}(\mathbf{R})\rightarrow\mathcal{P}(\mathbf{R})$ by $Tp=p'$. 
+Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+Differentiation takes any constant polynomial to zero. 
+Thus, $0$ is an eigenvalue of $T$ with $p(z)=1$ as the corresponding eigenvector. 
+
+No other eigenvalues or eigenvectors exist for $T$ since for $q\in\mathcal{P}(\mathbf{R})$ such that $\deg q\geq 1$, we have 
+\[\deg q\neq \deg q'= \deg Tq\]
+and no constant $\lambda$ exists such that $(Tq)(x)=\lambda q(x)$.
+
+\clearpage
+
+\section{Eigenvalues of $(Tp)(x)=xp'(x)$}
+\subsection*{Problem statement}
+Define $T\in\mathcal{L}(\mathcal{P}_4(\mathbf{R}))$ by
+\[(Tp)(x)=xp'(x)\]
+for all $x\in\mathbf{R}$. 
+Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+To understand the behavior of $T$, let's apply $T$ to the polynomial\newline $p(x)=1+x+x^2+x^3+x^4$. We can write
+\[(Tp)(x)=x(1+2x+3x^2+4x^3)=x+2x^2+3x^3+4x^4\]
+and it follows that $T$ resembles the operator in Exercise 5.A(10). 
+Thus, the eigenvalues of $T$ are $0,1,2,3,4$ and the corresponding eigenvectors are the standard basis vectors of $\mathcal{P}_4(\mathbf{R})$, which are $1,x,x^2,x^3,x^4$.
+
+\clearpage
+
+\section{Eigenvalues are fragile}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional, $T\in\mathcal{L}(V)$, and $\lambda\in\mathbf{F}$. 
+Prove that there exists $\alpha\in\mathbf{F}$ such that $|\alpha-\lambda|<\frac{1}{1000}$ and $T-\alpha I$ is invertible.
+
+\subsection*{Solution}
+Via Theorem 5.6 (`Equivalent conditions to be an eigenvalue'), the phrase\newline ``$T-\alpha I$ is invertible'' is equivalent to $\alpha$ not being an eigenvalue of $T$. 
+The obvious choice of $\alpha$ is $\alpha=\lambda$ since $|\lambda-\lambda|=0$, but $\lambda$ could itself be an eigenvalue. 
+Thus, suppose $\dim V=n$ and consider the following list of scalars:
+\[\lambda,\lambda+(\frac{1}{10000}),\lambda+(\frac{1}{10000})^2,\ldots,\lambda+(\frac{1}{10000})^n.\]
+Note that all of these scalars satisfy $|\alpha-\lambda|<\frac{1}{1000}$ and via Theorem 5.13 (`Number of eigenvalues'), at least one of the scalars is not an eigenvalue since $T$ can have a maximum of $n$ distinct eigenvalues.
+
+\clearpage
+
+\section{Eigenvalues of a projection operator}
+\subsection*{Problem statement}
+Suppose $V=U\oplus W$, where $U$ and $W$ are nonzero subspaces of $V$. 
+Define $P\in\mathcal{L}(V)$ by $P(u+w)=u$ for $u\in U$ and $w\in W$. 
+Find all eigenvalues and eigenvectors of $P$.
+
+\subsection*{Solution}
+For $u\in U$ and $0\in W$, we have 
+\[P(u)=P(u+0)=u,\]
+showing that $1$ is an eigenvalue of $P$. 
+For $0\in U$ and $w\in W$, we have
+\[P(w)=P(0+w)=0,\]
+showing that $0$ is an eigenvalue of $P$. 
+Hence, $0$ and $1$ are eigenvalues of $P$.
+
+Let $u_1,\ldots,u_n$ be a basis of $U$ and $w_1,\ldots,w_m$ be a basis of $W$. 
+Via our reasoning in the first paragraph, it follows that $u_1,\ldots,u_n$ are eigenvectors corresponding to the eigenvalue $1$ and $w_1,\ldots,w_m$ are eigenvectors corresponding to the eigenvalue $0$. 
+Given $V=U\oplus W$ and Theorem 5.10 (`Linearly independent eigenvectors'), there can be no other eigenvectors or eigenvalues of $P$ since the list $u_1,\ldots,u_n,w_1,\ldots,w_m$ is a list of eigenvectors of $P$ that span $V$.
+
+\clearpage
+
+\section{Eigenvalues of $T$ and $S^{-1}TS$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$. 
+Suppose $S\in\mathcal{L}(V)$ is invertible.
+\begin{enumerate}
+    \item[(a)] Prove that $T$ and $S^{-1}TS$ have the same eigenvalues.
+    \item[(b)] What is the relationship between the eigenvectors of $T$ and the eigenvectors of $S^{-1}TS$?
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+Suppose $\lambda$ is an eigenvalue of $T$. 
+Thus, there exists a corresponding eigenvector $v\in V$ such that $Tv=\lambda v$. 
+Given $S$ is invertible, $v\in\operatorname{range}S$ and there exists $u\in V$ such that $Su=v$ and $S^{-1}v=u$. 
+Hence, we can write
+\[S^{-1}TSu=S^{-1}Tv=S^{-1}(\lambda v)=\lambda S^{-1}v=\lambda u\]
+which shows $\lambda$ is an eigenvalue of $S^{-1}TS$.
+
+Now let's show the other direction. 
+Suppose $\lambda$ is an eigenvalue of $S^{-1}TS$. 
+Thus, there exists a corresponding eigenvector $v\in V$ such that 
+\[S^{-1}TSv=\lambda v.\]
+Applying $S$ to both sides of the equation above, we have
+\[TSv=\lambda(Sv)\]
+which shows $\lambda$ is an eigenvalue of $T$.
+
+\subsubsection*{b}
+Following our answer in part (a), we can state that $v$ is an eigenvector of $S^{-1}TS$ if and only if $Sv$ is an eigenvector of $T$.
+
+\clearpage
+
+\section{Eigenvalues for real matrices come in pairs}
+\subsection*{Problem statement}
+Suppose $V$ is a complex vector space, $T\in\mathcal{L}(V)$, and the matrix of $T$ with respect to some basis of $V$ contains only real entries. 
+Show that if $\lambda$ is an eigenvalue of $T$, then so is $\bar{\lambda}$.
+
+\subsection*{Solution}
+Suppose $\lambda\in\mathbf{C}$ is an eigenvalue of $T$ with a corresponding eigenvector $v\in V$. 
+Thus, we can write
+\[Tv=\lambda v\]
+and by taking the \textbf{matrix of} both sides, we have
+\[\mathcal{M}(Tv)=\mathcal{M}(\lambda v)\]
+where the basis of $V$ used is $v_1,\ldots,v_n$ such that $\mathcal{M}(T,(v_1,\ldots,v_n),(v_1,\ldots,v_n))$ only contains real entries. 
+We can write $v$ as $v=c_1v_1+\cdots+c_nv_n$, where $c_1,\ldots,c_n\in\mathbf{C}$, and it follows from Definition 3.62 (`matrix of a vector') that 
+\[\mathcal{M}(v)=\begin{pmatrix}c_1\\\vdots\\c_n\end{pmatrix}\;\;\;\text{and}\;\;\;\mathcal{M}(\lambda v)=\begin{pmatrix}\lambda c_1\\\vdots\\\lambda c_n\end{pmatrix}.\]
+Via Theorem 3.65 (`Linear maps act like matrix multiplication'), we can write
+\[\mathcal{M}(T)\mathcal{M}(v)=\mathcal{M}(\lambda v).\]
+
+Consider the entry $\mathcal{M}(\lambda v)_{k,1}$, which we can express as
+\[\sum^{n}_{j=1}c_{j}\mathcal{M}(T)_{k,j}=\sum^{n}_{j=1}\mathcal{M}(T)_{k,j}\mathcal{M}(v)_{j,1}=\mathcal{M}(\lambda v)_{k,1}=\lambda c_k.\]
+Let's focus on $\sum^{n}_{j=1}c_{j}\mathcal{M}(T)_{k,j}=\lambda c_k$. 
+Taking the complex conjugate of both sides and using the \textbf{additivity and multiplicativity} properties of complex conjugates (Theorem 4.5), it follows that
+\[\sum^{n}_{j=1}\overline{c_{j}}\mathcal{M}(T)_{k,j}=\bar{\lambda}\overline{c_k}\]
+where $\overline{\mathcal{M}(T)_{k,j}}=\mathcal{M}(T)_{k,j}$ given $\mathcal{M}(T)$ has real entries. 
+Therefore, $\bar{\lambda}$ is an eigenvalue of $T$ with the corresponding eigenvector of 
+\[w=\overline{c_1}v_1+\cdots+\overline{c_n}v_n\]
+so that $Tw=\bar{\lambda}w$.
+
+\clearpage
+
+\section{Example of $T\in\mathcal{L}(\mathbf{R}^4)$ with no eigenvalues}
+\subsection*{Problem statement}
+Give an example of an operator $T\in\mathcal{L}(\mathbf{R}^4)$ such that $T$ has no (real) eigenvalues.
+
+\subsection*{Solution}
+Define $T\in\mathcal{L}(\mathbf{R}^4)$ by
+\[T(w,x,y,z)=(z,-w,x,y).\]
+To find the eigenvalues of $T$, we can write
+\[z=\lambda w, \;\; -w=\lambda x, \;\; x=\lambda y, \;\; y=\lambda z.\]
+Combining all our equations together, we get
+\[-w=\lambda^4  w\]
+and thus,
+\[\lambda^4=-1\]
+which has no real solutions. 
+Therefore, $T$ has no (real) eigenvalues.
+
+\clearpage
+
+\section{Forward shift operator has no eigenvalues}
+\subsection*{Problem statement}
+Show that the operator $T\in\mathcal{L}(\mathbf{C}^{\infty})$ defined by
+\[T(z_1,z_2,\ldots)=(0,z_1,z_2,\ldots)\]
+has no eigenvalues.
+
+\subsection*{Solution}
+To find the eigenvalues of $T$, we can write
+\[0=\lambda z_1, \;\; z_1=\lambda z_2, \;\; \ldots\]
+The $0=\lambda z_1$ equation would cause any combination of equations above to have $\lambda=0$. 
+Thus $0$ is our only candidate eigenvalue with all the possible corresponding eigenvectors being members of $\operatorname{null}T$. 
+Yet, it clearly follows that $\operatorname{null}T=\{0\}$, and via Definition 5.5 (`eigenvalue'), $0$ cannot be an eigenvector, implying that $0$ is not an eigenvalue of $T$. 
+Therefore, $T$ has no eigenvalues.
+
+
+\end{document}
