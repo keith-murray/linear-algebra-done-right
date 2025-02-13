@@ -12,7 +12,176 @@
 
 \maketitle
 
-\renewcommand{\thesection}{9}
+\section{If $T^n=0$, then $I-T$ invertible}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and there exists a positive integer $n$ such that $T^n=0$.
+\begin{enumerate}
+    \item[(a)] Prove that $I-T$ is invertible and that \[(I-T)^{-1}=I+T+\cdots+T^{n-1}.\]
+    \item[(b)] Explain how you would guess the formula above.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+Following Definition 3.5 (`invertible, inverse'), $I-T$ is invertible if there exists $S\in\mathcal{L}(V)$ such that $S(I-T)=I$ and $(I-T)S=I$. 
+We are given a possible inverse of $I-T$, so we need only show that it satisfies the $S(I-T)=I$ and $(I-T)S=I$. 
+For $S(I-T)=I$, we can write
+\begin{align*}
+    (I+T+\cdots+T^{n-1})(I-T)&=I(I-T)+T(I-T)+\cdots+T^{n-1}(I-T)\\
+    &= I^2-T+T-T^2+T^2+\cdots+T^{n-1}-T^n\\
+    &=I^2-T^n\\
+    &=I
+\end{align*}
+where the third equality follows because $T^j$ can be matched with $-T^j$ and the last equality follows because $T^n=0$.
+For $(I-T)S=I$, the prove is similar to $S(I-T)=I$.
+
+\subsubsection*{b}
+To guess the formula for $(I-T)^{-1}$, you could have guessed that $T^n=0$ needed to be leveraged in some way. 
+By making a creative leap, you could infer that terms in between $T^0$ and $T^n$ could be `telescoped' such that they disappear.
+Thus, only $T^0=I$ and $T^n=0$ are left.
+
+\clearpage
+
+\section{Eigenvalues of $T$ for $(T-2I)(T-3I)(T-4I)=0$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $(T-2I)(T-3I)(T-4I)=0$. 
+Suppose $\lambda$ is an eigenvalue of $T$. 
+Prove that $\lambda=2$ or $\lambda=3$ or $\lambda=4$.
+
+\subsection*{Solution}
+Suppose $v$ is an eigenvector\footnote{This implies that $v\neq 0$.} associated with $\lambda$ and $Tv=\lambda v$. 
+Hence, it follows that 
+\[(T-\alpha I)v=Tv-\alpha I v=(\lambda-\alpha)v.\]
+Since $(T-2I)(T-3I)(T-4I)=0$, we have
+\[(T-2I)(T-3I)(T-4I)v=0\]
+and can replace each factor with $(\lambda-\alpha)$ to write
+\[(\lambda-2)(\lambda-3)(\lambda-4)v=0.\]
+This implies that $\lambda$ must equal $2,3,$ or $4$.
+
+\clearpage
+
+\section{If $T^2=I$ and $-1$ is not eigenvalue, then $T=I$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $T^2=I$ and $-1$ is not an eigenvalue of $T$. 
+Prove that $T=I$.
+
+\subsection*{Solution}
+For $v,w\in V$, suppose $w=Tv-v$ where we can interpret $w$ as the residual of $Tv-v$. 
+We can also write the residual as $Tv=w+v$. 
+Applying $T$ to both sides of $w=Tv-v$, we have 
+\[Tw=T^2v-Tv.\]
+Substituting $T^v=v$ and $Tv=w+v$, it follows that
+\[Tw=v-(w+v)\]
+and $Tw=-w$. 
+However, $-1$ is not an eigenvalue of $T$. 
+Therefore, $w=0$ and $Tv-v=0$, which implies $Tv=v$ and $T=I$.
+
+\clearpage
+
+\section{If $P^2=P$, then $V=\operatorname{null}P\oplus\operatorname{range}P$}
+\subsection*{Problem statement}
+Suppose $P\in\mathcal{L}(V)$ and $P^2=P$. 
+Prove that $V=\operatorname{null}P\oplus\operatorname{range}P$.
+
+\subsection*{Solution}
+To prove the direct sum, we need to show $V=\operatorname{null}P + \operatorname{range}P$ and $\operatorname{null}P \cap \operatorname{range}P=\{0\}$.
+
+Suppose $v\in V$ and $v-Pv=w$ for some $w\in V$. 
+Applying $P$ to both sides, we have $Pv-P^2v=Pw$. 
+Since $P^2v=Pv$, it follows that $Pw=0$ and $w\in\operatorname{null}P$. 
+Hence, we can write
+\[v=Pv+w\]
+where $Pv\in\operatorname{range}P$ and $w\in\operatorname{null}P$. 
+Thus, we have $V=\operatorname{null}P + \operatorname{range}P$.
+
+Suppose $v\in\operatorname{null}P\cap\operatorname{range}P$. 
+This implies $Pv=0$ and there exists $w\in V$ such that $Pw=v$. 
+Applying $P$ to both sides, we have $P^2w=Pv=0$. 
+However, we also have $P^2w=Pw$. 
+Hence, we can write
+\[v=Pw=P^2w=Pv=0\]
+showing that $\operatorname{null}P \cap \operatorname{range}P=\{0\}$.
+
+\clearpage
+
+\section{If $S$ is invertible, then $p(STS^{-1})=Sp(T)S^{-1}$}
+\subsection*{Problem statement}
+Suppose $S,T\in\mathcal{L}(V)$ and $S$ is invertible. 
+Suppose $p\in\mathcal{P}(\mathbf{F})$ is a polynomial. 
+Prove that
+\[p(STS^{-1})=Sp(T)S^{-1}.\]
+
+\subsection*{Solution}
+Let's first examine $(STS^{-1})^n$. 
+We can expand this expression to
+\[(STS^{-1})^n=ST\mathbf{S^{-1}S}TS^{-1}\cdots STS^{-1}\]
+and noticing that $S^{-1}S=I$, it follows that
+\[(STS^{-1})^n=ST\mathbf{S^{-1}S}TS^{-1}\cdots STS^{-1}=ST^nS^{-1}.\]
+Now we can write $p(STS^{-1})$ as
+\begin{align*}
+    p(STS^{-1})&=a_0I+a_1STS^{-1}+a_2(STS^{-1})^2+\cdots+a_m(STS^{-1})^m\\
+    &=a_0SIS^{-1}+a_1STS^{-1}+a_2ST^2S^{-1}+\cdots+a_mST^mS^{-1}\\
+    &=S(a_0I+a_1T+a_2T^2+\cdots+a_mT^m)S^{-1}\\
+    &=Sp(T)S^{-1}
+\end{align*}
+where the second equality is justified via our reasoning that $(STS^{-1})^n=ST^nS^{-1}$.
+
+\clearpage
+
+\section{Prove $U$ invariant under $p(T)$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $U$ is a subspace of $V$ invariant under $T$. 
+Prove that $U$ is invariant under $p(T)$ for every polynomial $p\in\mathcal{P}(\mathbf{F})$.
+
+\subsection*{Solution}
+First, let's show that $U$ is invariant under $T^n$. 
+For $T^0=I$, clearly every subspace of $V$ is invariant under $I$. 
+For $T^1$, we already know $U$ is invariant under $T$. 
+Thus, we can use induction and assume that $U$ is invariant under $T^{n-1}$. 
+It follows that for $u\in U$, we can write
+\[T^nu=T^{n-1}(Tu)\]
+and given $Tu\in U$ and our induction hypothesis, it follows that $T^nu\in U$.
+
+Suppose $p\in\mathcal{P}(\mathbf{F})$ and $u\in U$. 
+We can write
+\[p(T)u=a_0u+a_1Tu+a_2T^2u+\cdots+a_mT^mu.\]
+Given $u,Tu,T^2u,\ldots,T^mu\in U$ and $U$ is closed under scalar multiplication and addition, it follows that $p(T)u\in U$. 
+Hence, U is invariant under $p(T)$.
+
+\clearpage
+
+\section{$9$ eigenvalue of $T^2$ iff $\pm 3$ eigenvalue of $T$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$. 
+Prove that $9$ is an eigenvalue of $T^2$ if and only if $3$ or $-3$ is an eigenvalue of $T$.
+
+\subsection*{Solution}
+\subsubsection*{First direction}
+Suppose $9$ is an eigenvalue of $T^2$. 
+This implies there exists $v\in V$ such that $(T^2-9I)v=0$. 
+We can expand $(T^2-9I)$ to $(T-3I)(T+3I)$ to write
+\[(T-3I)(T+3I)v=0.\]
+This implies that either $T-3I$ or $T+3I$ are not injective and either $3$ or $-3$ is an eigenvalue of $T$.
+
+\subsubsection*{Second direction}
+Suppose $3$ is an eigenvalue of $T$. 
+This implies there exists $v\in V$ such that $Tv=3v$. 
+Applying $T$ to both sides, we have
+\[T^2v=T(3v)=3Tv=3(3v)=9v\]
+and $9$ is an eigenvalue of $T^2$. 
+The same logic works if $-3$ is an eigenvalue of $T$.
+
+\clearpage
+
+\section{Example of $T\in\mathcal{L}(\mathbf{R}^2)$ s.t. $T^4=-1$}
+\subsection*{Problem statement}
+Give an example of $T\in\mathcal{L}(\mathbf{R}^2)$ such that $T^4=-1$.
+
+\subsection*{Solution}
+Suppose $T$ is a counterclockwise rotation by $45\deg$. 
+The operator $T^4$ corresponds to a counterclockwise rotation by $180\deg$, which is effectively a scalar multiplication of the vector by $-1$.
+
+\clearpage
+
 \section{Zeros of $p$ are eigenvalues of $T$}
 \subsection*{Problem statement}
 Suppose $V$ is finite-dimensional, $T\in \mathcal{L}(V)$, and $v\in V$ with $v\neq 0$. 
@@ -32,5 +201,67 @@ which implies $T(q(T)v)=\lambda q(T)v$.
 Therefore $\lambda$ is an eigenvalue of $T$ with $q(T)v$ as the corresponding eigenvector.\footnote{
 ]Answer came from \href{https://math.stackexchange.com/questions/4695496/linear-algebra-done-right-exercise-5-b-9-solution-verification}{math.stackexchang.com}.
 }
+
+\clearpage
+
+\section{For eigenvector $v$, $p(T)v=p(\lambda)v$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ and $v$ is an eigenvector of $T$ with eigenvalue $\lambda$. 
+Suppose $p\in\mathcal{P}(\mathbf{F})$. 
+Prove that $p(T)v=p(\lambda)v$.
+
+\subsection*{Solution}
+Notice that for \( T^n v \), we have
+\[T^n v = T^{n-1} Tv = T^{n-1} \lambda v = \lambda T^{n-1} v = \lambda^2 T^{n-2} v = \dots = \lambda^n v.\]
+Thus, for \( p(T) v \), we can write
+\begin{align*}
+    p(T) v &= a_0 v + a_1 T v + a_2 T^2 v + \dots + a_m T^m v\\
+    &=a_0 v + a_1 \lambda v + a_2 \lambda^2 v + \dots + a_m \lambda^m v\\
+    &=(a_0 + a_1 \lambda + a_2 \lambda^2 + \dots + a_m \lambda^m) v\\
+    &=p(\lambda)v.
+\end{align*}
+
+\clearpage
+
+\section{$\alpha$ is eigenvalue of $p(T)$ iff $\alpha=p(\lambda)$}
+\subsection*{Problem statement}  
+Suppose $\mathbf{F}=\mathbf{C}$, $T\in \mathcal{L}(V)$, $p\in\mathcal{P}(\mathbf{C})$ is a polynomial, and $\alpha \in \mathbf{C}$. 
+Prove that $\alpha$ is an eigenvalue of $p(T)$ if and only if $\alpha=p(\lambda)$ for some eigenvalue $\lambda$ of $T$.
+
+\subsection*{Solution}
+\subsubsection*{First direction}  
+Suppose $\alpha$ is an eigenvalue of $p(T)$. 
+Then there exists $v\in V$ such that 
+\[(p(T)-\alpha I)v=0.\]
+Given $p\in\mathcal{P}(\mathbf{C})$, there exists a factorization of $p(z)-\alpha$ such that 
+\[p(z)-\alpha=c(z-\lambda_1)\cdots(z-\lambda_n).\]
+For any $z=\lambda_j$, we have $p(\lambda_j)-\alpha=0$ and $p(\lambda_j)=\alpha$. 
+If we can show that some $\lambda_j$ is an eigenvalue of of $T$, then the desired result follows.
+
+By substituting $T$ into our factorization $p(z)-\alpha$, we have
+\[(p(T)-\alpha I)v=c(T-\lambda_1 I)\cdots(T-\lambda_n I)v=0\]
+which implies that $T-\lambda_j I$ is not injective for at least one $j$. 
+Thus, there exists an eigenvalue $\lambda_j$ of $T$ and $\alpha=p(\lambda_j)$.
+
+\subsubsection*{Second direction}  
+Suppose $\lambda$ is an eigenvalue of $T$ and $\alpha = p(\lambda)$. 
+Then there exists $v \neq 0$ such that $Tv=\lambda v$.
+Following from Exercise 5.B(10), we know that $p(T)v=p(\lambda)v$. 
+Hence, we have $p(T)v=\alpha v$ and $\alpha$ is an eigenvalue of $p(T)$.
+
+\clearpage
+
+\section{Exercise 5.B(11) fails if $\mathbf{F}=\mathbf{R}$}
+\subsection*{Problem statement}  
+Show that the result in the previous exercise does not hold if $\mathbf{C}$ is replaced with $\mathbf{R}$.
+
+\subsection*{Solution}
+Suppose $T\in\mathcal{L}(\mathbf{R}^2)$ is defined by a $90\deg$ counterclockwise rotation. 
+From Example 5.8 we know that $T$ has no (real) eigenvalues. 
+Suppose $p\in\mathcal{P}(\mathbf{R})$ is defined by
+\[p(z)=z^3-z.\]
+It follows that $T^3$ is a $270\deg$ rotation and $p(T)$ is a $270\deg$ rotated vector subtracted by a $90\deg$ rotated vector. 
+Thus, $p(T)=0$ and $0$ is an eigenvalue of $p(T)$. 
+However, there is no associated eigenvalue $\lambda$ of $T$ for the expression $0=p(\lambda)$ to hold.
 
 \end{document}
