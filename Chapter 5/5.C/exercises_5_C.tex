@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 5.C}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Diagonalizability implies $V=\operatorname{null}T\oplus\operatorname{range}T$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ is diagonalizable. 
+Prove that $V=\operatorname{null}T\oplus\operatorname{range}T$.
+
+\subsection*{Solution}
+Suppose $v\in\operatorname{range}T$. 
+This implies there exists $u\in V$ such that $Tu=v$. 
+Via Theorem 5.41 (`Conditions equivalent to diagonalizability'), it follows that $V$ has a basis consisting of eigenvectors of $T$. 
+Suppose $v_1,\ldots,v_n$ is this basis and we can write $u$ as
+\[u=a_1v_1 +\cdots +a_nv_n.\]
+Applying $T$ to both sides, we have
+\[v=a_1Tv_1 +\cdots +a_nTv_n=a_1\lambda_1v_1 +\cdots + a_n\lambda_n v_n.\]
+However, some eigenvalues may equal $0$.
+Suppose the first $k$ eigenvectors correspond to an eigenvalue of $0$. 
+Thus, we can write
+\[v=a_{k+1}\lambda_{k+1}v_{k+1}+\cdots+a_n\lambda_n v_n\]
+and $\operatorname{range}T$ is a subset of the direct sum of all eigenspaces corresponding to nonzero eigenvalues. 
+It clearly follows that the direct sum of all eigenspaces corresponding to nonzero eigenvalues is a subset of $\operatorname{range}T$, implying that $\operatorname{range}T$ is equal to the direct sum of all eigenspaces corresponding to nonzero eigenvalues.
+Since $\operatorname{null}T=E(0,T)$ and Theorem 5.41 implies 
+\[V=E(\lambda_1,T)\oplus\cdots\oplus E(\lambda_m,T),\]
+it immediately follows that $V=\operatorname{null}T\oplus\operatorname{range}T$\footnote{I'm not entirely satisfied with the structure of this proof.}.
+
+\clearpage
+
+\section{$V=\operatorname{null}T\oplus\operatorname{range}T$ does not imply diagonal $T$}
+\subsection*{Problem statement}
+Prove the converse of the statement in the exercise above or give a counterexample to the converse.
+
+\subsection*{Solution}
+Like all counterexamples in Chapter 5, rotations are our friend.
+Suppose $T\in\mathcal{L}(\mathbf{R}^2)$ is defined by
+\[T(w,z)=(-z,w).\]
+Clearly $\operatorname{null}T=\{0\}$. 
+Therefore, via the Fundamental Theorem of Linear Maps (Theorem 3.22), $\operatorname{dim}\operatorname{range}T=2$ and $\mathbf{R}^2=\operatorname{range}T$. 
+Thus, we have 
+\[\mathbf{R}^2=\operatorname{null}T\oplus\operatorname{range}T.\]
+However, it was shown in Example 5.8 that $T$ has no eigenvalues. 
+Hence $T$ is not diagonalizable and the converse of Exercise 5.C(1) does not hold.
+
+\clearpage
+
+\section{Conditions equivalent to $V=\operatorname{null}T\oplus\operatorname{range}T$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional and $T\in\mathcal{L}(V)$. 
+Prove that the following are equivalent:
+\begin{itemize}
+    \item[(a)] $V=\operatorname{null}T\oplus\operatorname{range}T$
+    \item[(b)] $V=\operatorname{null}T+\operatorname{range}T$
+    \item[(c)] $\operatorname{null}T\cap \operatorname{range}T=\{0\}$
+\end{itemize}
+
+\subsection*{Solution}
+Clearly (a) implies (b). 
+
+Suppose (b). 
+Via Theorem 2.43 (`Dimension of a sum'), we can write
+\[\dim(\operatorname{null}T+\operatorname{range}T)=\dim\operatorname{null}T+\dim\operatorname{range}T-\dim(\operatorname{null}T\cap \operatorname{range}T),\]
+and via the Fundamental Theorem of Linear Maps (Theorem 3.22), we can also write
+\[\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T.\]
+Combining our two expressions, it follows that $\dim(\operatorname{null}T\cap \operatorname{range}T)=0$ and $\operatorname{null}T\cap \operatorname{range}T=\{0\}$. Hence (b) implies (c).
+
+Suppose (c). 
+Theorem 1.45 (`Direct sum of two subspaces') tells us that $\operatorname{null}T\oplus\operatorname{range}T$. 
+To show that this direct sum equals $V$, via Theorem 2.43, we can write
+\[\dim(\operatorname{null}T+\operatorname{range}T)=\dim\operatorname{null}T+\dim\operatorname{range}T-\dim(\operatorname{null}T\cap \operatorname{range}T),\]
+and by using the Fundamental Theorem of Linear Maps, it follows that
+\[\dim(\operatorname{null}T+\operatorname{range}T)=\dim(V)-\dim(\operatorname{null}T\cap \operatorname{range}T).\]
+Hence, we have $\dim(V)=\dim(\operatorname{null}T+\operatorname{range}T)$ and it follows that 
+\[V=\operatorname{null}T\oplus\operatorname{range}T.\]
+Therefore, (c) implies (a).
+
+\clearpage
+
+\section{Exercise 5.C(3) with infinite dimensions}
+\subsection*{Problem statement}
+Given an example to show that the exercise above is false with the hypothesis that $V$ is finite-dimensional.
+
+\subsection*{Solution}
+Infinite-dimensional counterexamples are usually the shift operators. 
+This exercise is no exception.
+
+Define $T\in\mathcal{L}(\mathbf{F}^\infty)$ by
+\[T(x_1,x_2,x_3,\ldots)=(x_2,x_3,\ldots).\]
+Clearly $\operatorname{range}T=\mathbf{F}^\infty$ but $(1,0,0,\ldots)\in\operatorname{null}T$. 
+Hence we have
+\[\mathbf{F}^\infty=\operatorname{null}T+\operatorname{range}T,\]
+but $\operatorname{null}T\cap \operatorname{range}T\neq \{0\}.$
+
+\end{document}
