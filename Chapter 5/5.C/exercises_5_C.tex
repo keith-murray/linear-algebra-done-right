@@ -29,7 +29,7 @@ However, some eigenvalues may equal $0$.
 Suppose the first $k$ eigenvectors correspond to an eigenvalue of $0$. 
 Thus, we can write
 \[v=a_{k+1}\lambda_{k+1}v_{k+1}+\cdots+a_n\lambda_n v_n\]
-and $\operatorname{range}T$ is a subset of the direct sum of all eigenspaces corresponding to nonzero eigenvalues. 
+showing that $\operatorname{range}T$ is a subset of the direct sum of all eigenspaces corresponding to nonzero eigenvalues. 
 It clearly follows that the direct sum of all eigenspaces corresponding to nonzero eigenvalues is a subset of $\operatorname{range}T$, implying that $\operatorname{range}T$ is equal to the direct sum of all eigenspaces corresponding to nonzero eigenvalues.
 Since $\operatorname{null}T=E(0,T)$ and Theorem 5.41 implies 
 \[V=E(\lambda_1,T)\oplus\cdots\oplus E(\lambda_m,T),\]
@@ -100,5 +100,80 @@ Clearly $\operatorname{range}T=\mathbf{F}^\infty$ but $(1,0,0,\ldots)\in\operato
 Hence we have
 \[\mathbf{F}^\infty=\operatorname{null}T+\operatorname{range}T,\]
 but $\operatorname{null}T\cap \operatorname{range}T\neq \{0\}.$
+
+\clearpage
+
+\section{Conditions for diagonalizability in $\mathbf{C}$}
+\subsection*{Problem statement}
+Suppose $V$ is a finite-dimensional complex vector space and $T\in\mathcal{L}(V)$. 
+Prove that $T$ is diagonalizable if and only if 
+\[V=\operatorname{null}(T-\lambda I)\oplus\operatorname{range}(T-\lambda I)\]
+for every $\lambda\in\mathbf{C}$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $T$ is diagonalizable. 
+Suppose the diagonal matrix of $T$ is given by
+\[\mathcal{M}(T)=\begin{pmatrix}\lambda_1 & & 0\\ & \ddots & \\0 & & \lambda_n\end{pmatrix}.\]
+Let $\lambda\in\mathbf{C}$. Then
+\[\mathcal{M}(T-\lambda I)=\begin{pmatrix}\lambda_1-\lambda & & 0\\ & \ddots & \\0 & & \lambda_n-\lambda\end{pmatrix}.\]
+implying that $T-\lambda I$ is diagonalizable regardless of whether $\lambda$ is an eigenvalue of $T$.
+Hence, via our result in Exercise 5.C(1), it follows that 
+\[V=\operatorname{null}(T-\lambda I)\oplus\operatorname{range}(T-\lambda I).\] 
+
+\subsubsection*{Second Direction}
+Notice that if $\dim V=1$, than this direction is trivially true. 
+More specifically, via Theorem 5.21 (`Operators on complex vector space have an eigenvalue'), $T$ has an eigenvalue $\lambda_0$, and by setting $\lambda=\lambda_0$, we can write
+\[V=\operatorname{null}(T-\lambda_0 I)\oplus\operatorname{range}(T-\lambda_0I)=E(\lambda_0,T)\oplus \operatorname{range}(T-\lambda_0I).\]
+Since $E(\lambda_0,T)$ is a subspace of $V$ and $\operatorname{dim}E(\lambda_0,T)\geq 1$, then $\operatorname{dim}E(\lambda_0,T)=1$ and $\dim \operatorname{range}(T-\lambda_0I)=0$. 
+Therefore, $\operatorname{range}(T-\lambda_0I)=\{0\}$ and we have
+\[V=E(\lambda_0,T),\]
+implying that $T$ is diagonalizable via Theorem 5.41 (`Conditions equibvalent to diagonalizability').
+
+Hence, we can prove this direction via induction. 
+
+Suppose that 
+\[V=\operatorname{null}(T-\lambda I)\oplus\operatorname{range}(T-\lambda I)\]
+for every $\lambda\in\mathbf{C}$ and the desired result holds for all complex vector spaces whose dimension is $\dim V-1$ or less. 
+Via Theorem 5.41, $T$ has an eigenvalue $\lambda_0$ and we can write
+\[V=E(\lambda_0,T)\oplus \operatorname{range}(T-\lambda_0 I).\]
+Notice that $\operatorname{range}(T-\lambda_0 I)$ is invariant under $T$. 
+To see this, let\newline $w\in \operatorname{range}(T-\lambda_0 I)$. 
+Then by definition there exists $v\in V$ such that
+\[w=(T-\lambda_0 I)(v).\]
+Applying T to both sides, we have
+\[T(w)=T((T-\lambda_0 I)(v))=(T-\lambda_0 I)(T(v)),\]
+showing that $T(w)\in \operatorname{range}(T-\lambda_0 I)$. 
+Now here comes the fun part. 
+
+It clearly follows that $\dim \operatorname{range}(T-\lambda_0 I)\leq \dim V$. 
+Hence, via our induction hypothesis, $T|_{\operatorname{range}(T-\lambda_0 I)}$ is diagonalizable and there exist a basis of\newline $\operatorname{range}(T-\lambda_0 I)$ consisting of eigenvectors of $T$. 
+Appending the eigenvectors of $\lambda_0$ to the basis of $\operatorname{range}(T-\lambda_0 I)$, we have a basis of $V$ consisting of eigenvectors of $T$. 
+Therefore, via Theorem 5.41, $T$ is diagonalizable.
+
+\clearpage
+
+\section{If $S,T$ share eigenvectors, then $ST=TS$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional, $T\in\mathcal{L}(V)$ has $\dim V$ distinct eigenvalues, and $S\in\mathcal{L}(V)$ has the same eigenvectors as $T$ (not necessarily with same eigenvalues).
+Prove that $ST=TS$.
+
+\subsection*{Solution}
+Via Theorem 5.44 (`Enough eigenvalues implies diagonalizability'), we know that $T$ is diagonalizable. 
+Given Theorem 5.41 (`Conditions equivalent to diagonalizability'), it follows that $V$ has a basis consisting of eigenvectors of $T$. 
+Since $S$ has the same eigenvectors as $T$, it follows that $S$ is also diagonalizable. 
+Hence, $S$ and $T$ have diagonalizable matrices with respect to the same basis.
+
+For the next part of the proof, we are making use of the fact that the product of two diagonal matrices commutes, an observation that is easily verified. 
+Thus, we can write
+\[\mathcal{M}(S)\mathcal{M}(T)=\mathcal{M}(T)\mathcal{M}(S),\]
+and following from Theorem 3.43 (`The matrix of the product of linear maps'), we have
+\[\mathcal{M}(ST)=\mathcal{M}(TS),\]
+which, given $\mathcal{M}$ is an isomorphism (Theorem 3.60), implies that
+\[ST=TS.\]
+
+\clearpage
+
+
 
 \end{document}
