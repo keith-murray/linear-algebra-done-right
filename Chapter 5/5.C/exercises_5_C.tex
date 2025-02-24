@@ -174,6 +174,135 @@ which, given $\mathcal{M}$ is an isomorphism (Theorem 3.60), implies that
 
 \clearpage
 
+\section{$\lambda$'s appearance on the diagonal of $A$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(V)$ has a diagonal matrix $A$ with respect to some basis of $V$ and that $\lambda\in\mathbf{F}$.
+Prove that $\lambda$ appears on the diagonal of $A$ precisely $\dim E(\lambda,T)$ times.
+
+\subsection*{Solution}
+If $\lambda$ is not an eigenvalue, then $\dim E(\lambda,T)=0$. 
+Via Theorem 5.32 (`Determination of eigenvalues from upper-triangular matrix'), only the eigenvalues of $T$ appear on the diagonal of $A$. 
+Hence, $\lambda$ will appear on the diagonal of $A$ precisely $0=\dim E(\lambda,T)$ times.
+
+If $\lambda$ is an eigenvalue, then $\dim E(\lambda,T)>0$. 
+Suppose $v_1,\ldots,v_n$ is the basis of $V$ with which $A$ is a diagonal matrix. 
+It follows that each vector in $v_1,\ldots,v_n$ is an eigenvector of $T$. 
+Precisely $\dim E(\lambda,T)$ of these vectors correspond to the eigenvalue $\lambda$. 
+Hence, $\lambda$ will appear on the diagonal of $A$ precisely $\dim E(\lambda,T)$ times.
+
+\clearpage
+
+\section{Eigenvalues when $\dim E(8,T)=4$}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{F}^5)$ and $\dim E(8,T)=4$. 
+Prove that $T-2I$ or $T-6I$ is invertible.
+
+\subsection*{Solution}
+Via Theorem 5.6 (`Equivalent conditions to be an eigenvalue'), $T-2I$ or $T-6I$ being invertible correspond to either $2$ or $6$ not being eigenvalues. 
+
+Suppose $2$ and $6$ are both eigenvalues of $T$. 
+It follows that 
+\[\dim E(2,T)\geq 1\qquad\text{and}\qquad\dim E(6,T)\geq 1.\]
+Given Theorem 5.38 (`Sum of eigenspaces is a direct sum'), it follows that
+\begin{align*}
+    5=\dim \mathbf{F}^5 &\geq \dim E(8,T)+\dim E(2,T)+\dim E(6,T)\\
+    &=4+\dim E(2,T)+\dim E(6,T)
+\end{align*}
+and by rearranging terms, we have
+\[1\geq\dim E(2,T) + \dim E(6,T).\]
+Hence, we have a contradiction and $2$ and $6$ cannot both be eigenvalues of $T$. 
+Therefore, it must be the case that $T-2I$ or $T-6I$ is invertible.
+
+\clearpage
+
+\renewcommand{\thesection}{10}
+\section{Eigenspaces with nonzero eigenvalues}
+\subsection*{Problem statement}
+Suppose that $V$ is finite-dimensional and $T\in\mathcal{L}(V)$. 
+Let $\lambda_1,\ldots,\lambda_m$ denote the distinct nonzero eigenvalues of $T$. 
+Prove that
+\[\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\leq \dim\operatorname{range}T.\]
+
+\subsection*{Solution}
+Via Example 5.3, we know that $\operatorname{range}T$ is invariant under $T$. 
+Hence, let's examine the operator $T|_{\operatorname{range}T}$. If we can show that $E(\lambda_j,T|_{\operatorname{range}T})$ is well-defined and
+\[E(\lambda_j,T)=E(\lambda,T|_{\operatorname{range}T})\]
+for $j=1,\ldots,m$, then the desired result follows as a consequence of Theorem 5.38 (`Sum of eigenspaces is a direct sum').
+
+Suppose $v\in E(\lambda_j,T)$ and $Tv=\lambda_j v$. 
+Hence, $\lambda_jv\in \operatorname{range}T$. 
+By noting that\footnote{This is possible since $\lambda_j$ is a nonzero eigenvalue.}
+\[T(\frac{1}{\lambda_j}v)=v,\]
+it follows that $v\in\operatorname{range}T$ and
+\[E(\lambda_j,T)\subset \operatorname{range}T.\]
+Therefore, $E(\lambda_j,T|_{\operatorname{range}T})$ is well-defined.
+
+To show $E(\lambda_j,T)=E(\lambda,T|_{\operatorname{range}T})$, first note that our reasoning in the previous paragraph implies
+\[E(\lambda_j,T)\subset E(\lambda,T|_{\operatorname{range}T}).\]
+To show the other direction, suppose $v\in E(\lambda,T|_{\operatorname{range}T})$. 
+We can write
+\[T|_{\operatorname{range}T}(v)=Tv=\lambda_j v.\]
+Hence, it follows that $v\in E(\lambda_j,T)$.
+
+At this point, we've shown $E(\lambda_j,T|_{\operatorname{range}T})$ is well-defined and\newline $E(\lambda,T|_{\operatorname{range}T})=E(\lambda_j,T)$. 
+Via Theorem 5.38, we can write
+\[E(\lambda_1,T|_{\operatorname{range}T})+\cdots+E(\lambda_m,T|_{\operatorname{range}T})\leq \dim\operatorname{range}T,\]
+and it immediately follows that
+\[\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\leq \dim\operatorname{range}T.\]
+
+\clearpage
+
+\renewcommand{\thesection}{12}
+\section{$R=S^{-1}TS$ if $R,T$ share eigenvalues}
+\subsection*{Problem statement}
+Suppose $R,T\in\mathcal{L}(\mathbf{F}^3)$ each have $2,6,7$ as eigenvalues. 
+Prove that there exists an invertible operator $S\in\mathcal{L}(\mathbf{F}^3)$ such that $R=S^{-1}TS$.
+
+\subsection*{Solution}
+The idea is to use Theorem 3.5 (`Linear maps and basis of domain') to convert eigenvectors of $R$ to eigenvectors of $T$.
+
+Following from Theorem 5.44 (`Enough eigenvalues implies diagonalizability'), we know that $R$ and $T$ are diagonalizable. Thus, via Theorem 5.41 (`Conditions equivalent to diagonalizability'), $V$ has a basis consisting of eigenvectors of $R$ and a basis consisting of eigenvectors of $T$. 
+Suppose $v_1,v_2,v_3$ are a basis of $V$ consisting of eigenvectors of $R$ such that $Rv_1=2v_1$, $Rv_2=6v_2$, and $Rv_3=7v_3$. 
+Suppose $u_1,u_2,u_3$ are a basis of $V$ consisting of eigenvectors of $T$ such that $Tv_1=2v_1$, $Tv_2=6v_2$, and $Tv_3=7v_3$. 
+
+Via Theorem 3.5, there exists an operator $S\in\mathcal{L}(\mathbf{F}^3)$ such that $Sv_j=u_j$ for $j=1,2,3$. 
+This operator $S$ is clearly invertible with $S^{-1}u_j=v_j$.
+Now we are ready for the magic. 
+Since $v_1,v_2,v_3$ is a basis of $\mathbf{F}^3$, we can write any vector $v\in\mathbf{F}^3$ as a linear combination
+\[v=a_1v_1+a_2v_2+a_3v_3\]
+for some constants $a_1,a_2,a_3\in\mathbf{F}$. 
+Hence, we can write
+\begin{align*}
+    S^{-1}TS(v)&=S^{-1}TS(a_1v_1+a_2v_2+a_3v_3)\\
+    &=S^{-1}T(a_1u_1+a_2u_2+a_3u_3)\\
+    &=S^{-1}(a_12u_1+a_26u_2+a_37u_3)\\
+    &=a_12v_1+a_26v_2+a_37v_3\\
+    &=a_1Rv_1+a_2Rv_2+a_3Rv_3\\
+    &=R(a_1v_1+a_2v_2+a_3v_3)\\
+    &=Rv.
+\end{align*}
+Therefore, if follows that $R=S^{-1}TS$.
+
+\clearpage
+
+\renewcommand{\thesection}{16}
+\section{Computing the Fibonacci sequence}
+\subsection*{Problem statement}
+The \textbf{\textit{Fibonacci sequence}} $F_1,F_2,\ldots$ is defined by
+\[F_1=1,\;\;F_2=1,\quad\text{and}\quad F_n=F_{n-2}+F_{n-1}\text{ for }n\geq3.\]
+Define $T\in\mathcal{L}(\mathbf{R}^2)$ by $T(x,y)=(y,x+y)$.
+
+\begin{itemize}
+    \item[(a)] Show that $T^n(0,1)=(F_n,F_{n+1})$ for each positive integer $n$.
+    \item[(b)] Find the eigenvalues of $T$.
+    \item[(c)] Find a basis of $\mathbf{R}^2$ consisting of eigenvectors of $T$.
+    \item[(d)] Use the solution to part (c) to compute $T^n(0,1)$. Conclude that \[F_n=\frac{1}{\sqrt{5}}\Big[\Big(\frac{1+\sqrt{5}}{2}\Big)^n-\Big(\frac{1-\sqrt{5}}{2}\Big)^n\Big]\] for each positive integer $n$.
+    \item[(e)] Use part (d) to conclude that for each positive integer $n$, the Fibonacci number $F_n$ is the integer that is closest to \[\frac{1}{\sqrt{5}}\Big(\frac{1+\sqrt{5}}{2}\Big)^n.\]
+\end{itemize}
+
+\subsection*{Solution}
+This is an outstanding problem and I recommend that you solve it on your own. 
+You can find my solution in my \href{https://github.com/keith-murray/math-oddities}{keith-murray/math-oddities} GitHub repo.
 
 
 \end{document}
