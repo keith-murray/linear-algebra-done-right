@@ -14,7 +14,33 @@
 
 \maketitle
 
-\renewcommand{\thesection}{3}
+\section{Inhomogeneous inner products}
+\subsection*{Problem statement}
+Show that the function that takes $\big((x_1,x_2),(y_1,y_2)\big)\in \mathbf{R}^2\times\mathbf{R}^2$ to $|x_1y_1|+|x_2y_2|$ is not an inner product on $\mathbf{R}^2$.
+
+\subsection*{Solution}
+The inner product is not homogeneous (Definition 6.3). 
+Consider $\lambda=-2$. 
+\begin{align*} 
+\langle(-2x_1,-2x_2),(y_1,y_2)\rangle &= |-2x_1y_1|+|-2x_2y_2| \\ 
+ &= 2|x_1y_1| + 2|x_2y_2|\\
+ &= 2\langle(x_1,x_2),(y_1,y_2)\rangle\\
+ &\neq -2\langle(x_1,x_2),(y_1,y_2)\rangle
+\end{align*}
+
+\clearpage
+
+\section{Indefinite inner products}
+\subsection*{Problem statement}
+Show that the function that takes $\big((x_1,x_2,x_3),(y_1,y_2,y_3)\big)\in \mathbf{R}^3\times\mathbf{R}^3$\newline to $x_1y_1+x_3y_3$ is not an inner product on $\mathbf{R}^3$.
+
+\subsection*{Solution}
+The inner product does not obey definiteness (Definition 6.3). 
+Consider\newline $(x_1,x_2,x_3)=(y_1,y_2,y_3)=(0,1,0)$.
+\[\langle(x_1,x_2,x_3),(y_1,y_2,y_3)\rangle=\langle(0,1,0),(0,1,0)\rangle=0(0)+0(0)=0\]
+
+\clearpage
+
 \section{Replacing the positivity condition}
 \subsection*{Problem statement}
 Suppose $\mathbf{F}=\mathbf{R}$ and $V\neq \{0\}$. 
@@ -52,5 +78,38 @@ Thus we have a contradiction since $v+\lambda w\neq0$ yet $||v+\lambda w||^2=0$,
 It then follows that 
 \[||u||^2 = ||v+w||^2=||v||^2+||w||^2 \geq 0\]
 showing that the positivity condition is fulfilled and the set of function that are inner products on $V$ clearly does not grow larger.
+
+\clearpage
+
+\section{Diagonals of a rhombus are perpendicular}
+\subsection*{Problem statement}
+Suppose $V$ is a real inner product space.
+\begin{itemize}
+    \item[(a)] Show that $\langle u+v,u-v\rangle=\norm{u}^2 - \norm{v}^2$ for every $u,v\in V$.
+    \item[(b)] Show that if $u,v\in V$ have the same norm, then $u+v$ is orthogonal to $u-v$.
+    \item[(c)] Use part (b) to show that the diagonals of a rhombus are perpendicular to each other.
+\end{itemize}
+
+\subsection*{Solution}
+
+\subsubsection*{a}
+Via the definition of the inner product (Definition 6.3) and Theorem 6.7 (`Basic properties of an inner product'), we can expand $\langle u+v,u-v\rangle$ to
+\[\langle u+v,u-v\rangle=\langle u,u\rangle+\langle v,u\rangle + \langle u,-v\rangle + \langle v,-v\rangle.\]
+
+Since $V$ is a real inner product space, we have
+\[\langle u,-v\rangle=-1\langle u,v\rangle \;\;\;\text{and}\;\;\; \langle v,-v\rangle=-\norm{v}^2\]
+and since $\langle u,v\rangle=\overline{\langle v,u\rangle}=\langle v,u \rangle$ for reals, we can write
+\[\langle u+v,u-v\rangle=\norm{u}^2+\langle v,u\rangle -\langle v,u \rangle - \norm{v}^2=\norm{u}^2 - \norm{v}^2.\]
+
+\subsubsection*{b}
+If $\norm{u} = \norm{v}$, then $\norm{u}^2 = \norm{v}^2$. 
+Hence, via part (a), we can write
+\[\langle u+v,u-v\rangle=\norm{u}^2 - \norm{v}^2=\norm{u}^2 -\norm{u}^2=0\]
+and $u+v$ is orthogonal to $u-v$.
+
+\subsubsection*{c}
+In a rhombus, all sides are the same length, and hence, have the same norm. 
+Suppose $u,v\in V$ are the sides of the rhombus and $\norm{u} = \norm{v}$. 
+We can directly apply our result from part (b) to state $\langle u+v,u-v\rangle=0$, implying that the diagonals of the rhombus are orthogonal, and thus, perpendicular to each other.
 
 \end{document}
