@@ -37,7 +37,7 @@ Show that the function that takes $\big((x_1,x_2,x_3),(y_1,y_2,y_3)\big)\in \mat
 \subsection*{Solution}
 The inner product does not obey definiteness (Definition 6.3). 
 Consider\newline $(x_1,x_2,x_3)=(y_1,y_2,y_3)=(0,1,0)$.
-\[\langle(x_1,x_2,x_3),(y_1,y_2,y_3)\rangle=\langle(0,1,0),(0,1,0)\rangle=0(0)+0(0)=0\]
+\[\langle(x_1,x_2,x_3),(y_1,y_2,y_3)\rangle=\langle(0,1,0),(0,1,0)\rangle=0\cdot 0+0\cdot 0=0\]
 
 \clearpage
 
@@ -73,11 +73,11 @@ Now consider the vector $\lambda w$ where $\lambda=\frac{\norm{v}}{\norm{w}}$\fo
 The $\abs{\frac{\norm{v}}{\norm{w}}}^2 \norm{w}^2$ term is quite harry, but note that $\norm{w}^2 < 0$ and $\abs{\norm{w}}^2 > 0$, therefore $\frac{\norm{w}^2}{\abs{\norm{w}}^2} = -1 $. Also note $\abs{\norm{v}}^2 = \norm{v}^2$ since $\langle v, v\rangle > 0$.
 }
 \[\norm{v+\lambda w}^2=\norm{v}^2+\norm{\lambda w}^2 = \norm{v}^2+\abs{\frac{\norm{v}}{\norm{w}}}^2 \norm{w}^2 = \norm{v}^2 - \norm{v}^2 = 0 \]
-Thus we have a contradiction since $v+\lambda w\neq0$ yet $||v+\lambda w||^2=0$, defying the condition of definiteness (definition 6.3). Therefore $||w||^2 > 0$.
+Thus we have a contradiction since $v+\lambda w\neq0$ yet $||v+\lambda w||^2=0$, defying the property of definiteness (Definition 6.3). Therefore $||w||^2 \geq 0$.
 
 It then follows that 
 \[||u||^2 = ||v+w||^2=||v||^2+||w||^2 \geq 0\]
-showing that the positivity condition is fulfilled and the set of function that are inner products on $V$ clearly does not grow larger.
+showing that the positivity condition is fulfilled and the set of function that are inner products on $V$ does not grow larger.
 
 \clearpage
 
@@ -111,5 +111,158 @@ and $u+v$ is orthogonal to $u-v$.
 In a rhombus, all sides are the same length, and hence, have the same norm. 
 Suppose $u,v\in V$ are the sides of the rhombus and $\norm{u} = \norm{v}$. 
 We can directly apply our result from part (b) to state $\langle u+v,u-v\rangle=0$, implying that the diagonals of the rhombus are orthogonal, and thus, perpendicular to each other.
+
+\clearpage
+
+\section{No eigenvalues greater than 1}
+\subsection*{Problem statement}
+Suppose $T\in \mathcal{L}(V)$ is such that $\norm{Tv}\leq\norm{v}$ for every $v\in V$. 
+Prove that $T-\sqrt{2}I$ is invertible.
+
+\subsection*{Solution}
+Theorem 5.6 (`Equivalent conditions to be an eigenvalue') implies that ``$T-\sqrt{2}I$ is invertible'' means that $\sqrt{2}$ is not an eigenvalue of $T$. 
+Let's first note that $1<\sqrt{2}$. 
+
+Suppose $v$ is an eigenvector of $T$. 
+The condition that $\norm{Tv}\leq\norm{v}$ implies that the eigenvalue corresponding to $v$, let's say $\lambda$, we have
+\[\abs{\lambda}\norm{v}\leq\norm{v},\]
+and thus
+\[\lambda\leq 1.\]
+Hence, $\sqrt{2}$ cannot be an eigenvalue and $T-\sqrt{2}I$ is invertible.
+
+\clearpage
+
+\section{Condition equivalent to orthogonality}
+\subsection*{Problem statement}
+Suppose $u,v\in V$. 
+Prove that $\langle u,v\rangle=0$ if and only if
+\[\norm{u}\leq\norm{u+av}\]
+for all $a\in\mathbf{F}$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $\langle u,v\rangle=0$. 
+It follows that for all $a\in\mathbf{F}$, we have
+\[\langle u,av\rangle=0.\]
+Via the Pythagorean Theorem (Theorem 6.13), we can write
+\[\norm{u}^2+\norm{av}^2=\norm{u+av}^2.\]
+Given the positivity condition of inner products (Definition 6.3), it follows that
+\[\norm{u}^2\leq\norm{u+av}^2.\]
+
+\subsubsection*{Second Direction}
+Suppose $\norm{u}\leq\norm{u+av}$ for all $a\in\mathbf{F}$. 
+Via Theorem 6.14 (`An orthogonal decomposition'), we can decompose $u$ into $cv$ and $w$ where $c=\frac{\langle u,v\rangle}{\norm{v}^2}$, $w=u-cv$, and $\langle cv,w\rangle=0$. 
+Invoking the Pythagorean Theorem (Theorem 6.13), we can write
+\[\norm{u}^2=\norm{cv+w}^2=\norm{cv}^2+\norm{w}^2=\norm{cv}^2+\norm{u-cv}^2,\]
+and via the positivity condition of inner products (Definition 6.3), it follows that
+\[\norm{u}^2\geq\norm{u-cv}^2\]
+and by taking the square root of both sides
+\[\norm{u}\geq\norm{u-cv}.\]
+In order to avoid a contradiction with our hypothesis, the expression above must be an equality. 
+The expression above can only be an equality if $c=0$ or $v=0$. 
+Both cases imply that $\langle u,v\rangle=0$.
+
+\clearpage
+
+\section{$\norm{au+bv}=\norm{bu+av}$ iff $\norm{u}=\norm{v}$}
+\subsection*{Problem statement}
+Suppose $u,v\in V$. 
+Prove that $\norm{au+bv}=\norm{bu+av}$ for all $a,b\in \mathbf{R}$ if and only if $\norm{u}=\norm{v}$.
+
+\subsection*{Solution}
+As an organizational note, it's easier to work with squared norms, and the results directly translate to norms. 
+
+\subsubsection*{First Direction}
+Suppose $\norm{au+bv}^2=\norm{bu+av}^2$ for all $a,b\in \mathbf{R}$. 
+Expanding out $\norm{au+bv}^2=\norm{bu+av}^2$, we have
+\[\langle au,au\rangle+\langle bv,au\rangle + \langle au,bv\rangle + \langle bv,bv\rangle=\langle bu,bu\rangle+\langle av,bu\rangle + \langle bu,av\rangle + \langle av,av\rangle.\]
+Since $a,b\in\mathbf{R}$, it follows that
+\[\langle bv,au\rangle=b\bar{a}\langle v,u\rangle=ab\langle v,u\rangle,\]
+and a similar result follows for $\langle au,bv\rangle,\langle av,bu\rangle,\langle bu,av\rangle$.
+Hence, we can write
+\[a^2\norm{v}^2+ab\langle v,u\rangle + ab\langle u,v\rangle + b^2\norm{u}^2=b^2\norm{v}^2+ab\langle v,u\rangle + ab\langle u,v\rangle + a^2\norm{u}^2,\]
+and by subtracting out the similar terms, we have
+\[a^2\norm{v}^2 + b^2\norm{u}^2=b^2\norm{v}^2 + a^2\norm{u}^2,\]
+By setting $b=0$, it follows that
+\[a^2\norm{v}^2=a^2\norm{u}^2,\]
+which implies $\norm{u}^2=\norm{v}^2$ and $\norm{u}=\norm{v}$.
+
+\subsubsection*{First Direction}
+Suppose $\norm{u}^2=\norm{v}^2$. 
+It follows that for all $a,b\in \mathbf{R}$, 
+\[a^2\norm{v}^2=a^2\norm{u}^2 \;\;\;\text{and}\;\;\; b^2\norm{v}^2=b^2\norm{u}^2.\]
+By adding the two expressions together, we have
+\[a^2\norm{v}^2 + b^2\norm{u}^2=b^2\norm{v}^2 + a^2\norm{u}^2.\]
+To construct $\norm{au+bv}^2=\norm{bu+av}^2$, one only needs to reverse our work in the \textbf{First Direction}.
+
+\clearpage
+
+\section{Properties of $u=v$}
+\subsection*{Problem statement}
+Suppose $u,v\in V$ and $\norm{u}=\norm{v}=1$ and $\langle u,v\rangle=1$. 
+Prove that $u=v$.
+
+\subsection*{Solution}
+Via the Cauchy-Schwarz Inequality (Theorem 6.15), we know that
+\[\abs{\langle u,v\rangle}\leq\norm{u}\norm{v},\]
+where the inequality is an equality if and only if one of $u,v$ is a scalar multiple of the other. 
+In our case, we have
+\[1=\langle u,v\rangle = \norm{u}\norm{v}=1\cdot 1=1,\]
+hence, we have an equality and $u=cv$ for some $c\in\mathbf{F}$. 
+To compute the exact $c$, Theorem 6.14 (`An orthogonal decomposition') tells us that 
+\[c=\frac{\langle u,v\rangle}{\norm{v}^2}=\frac{1}{1^2}=1.\]
+Therefore, $u=v$.
+
+\clearpage
+
+\section{When $\norm{u}\leq 1$ and $\norm{v}\leq 1$}
+\subsection*{Problem statement}
+Suppose $u,v\in V$ and $\norm{u}\leq 1$ and $\norm{v}\leq 1$. 
+Prove that
+\[\sqrt{1-\norm{u}^2}\sqrt{1-\norm{v}^2}\leq 1-\abs{\langle u,v \rangle}.\]
+
+\subsection*{Solution}
+Via the Cauchy-Schwarz Inequality (Theorem 6.15) and the problem statement, we have
+\[\abs{\langle u,v\rangle}\leq \norm{u}\norm{v}\leq 1.\]
+By subtracting by $1$ and multiplying by $-1$, we have
+\[0\leq 1-\norm{u}\norm{v}\leq 1- \abs{\langle u,v\rangle}.\]
+Thus, if we can show that $\sqrt{1-\norm{u}^2}\sqrt{1-\norm{v}^2}\leq1-\norm{u}\norm{v}$, then our desired result immediately follows.
+
+By squaring the expression $\sqrt{1-\norm{u}^2}\sqrt{1-\norm{v}^2}\leq 1-\norm{u}\norm{v}$ on both sides (which is allowed since both terms are real and greater than or equal to $0$), we have
+\[(1-\norm{u}^2)(1-\norm{v}^2)\leq (1-\norm{u}\norm{v})^2\]
+which can be expanded to
+\[1-\norm{u}^2-\norm{v}^2+\norm{u}^2\norm{v}^2\leq 1-2\norm{u}\norm{v}+\norm{u}^2\norm{v}^2\]
+and then reduced to
+\[-\norm{u}^2-\norm{v}^2 \leq -2\norm{u}\norm{v}.\]
+By rearranging terms, we can write
+\[0\leq \norm{u}^2 - 2\norm{u}\norm{v} + \norm{v}^2,\]
+and it follows that
+\[0\leq (\norm{u} - \norm{v})^2\]
+which, given the positivity property of inner products (Definition 6.3), is clearly true. 
+Therefore, we can state that 
+\[\sqrt{1-\norm{u}^2}\sqrt{1-\norm{v}^2}\leq 1-\norm{u}\norm{v}\]
+and our desired result immediately follows.
+
+\clearpage
+
+\section{Searching for vectors in $\mathbf{R}^2$}
+\subsection*{Problem statement}
+Find vectors $u,v\in \mathbf{R}^2$ such that $u$ is a scalar multiple of $(1,3)$, $v$ is orthogonal to $(1,3)$, and $(1,2)=u+v$.
+
+\subsection*{Solution}
+First, let's find a vector orthogonal to $(1,3)$. 
+By inspection, the vector $(-3,1)$ will work. 
+Now we need to find $a,b\in\mathbf{R}$ such that $u=a(1,3)$, $v=b(-3,1)$, and $(1,2)=u+v$. 
+Using the constraint $(1,2)=u+v$, we get the following equations
+\begin{align*} 
+1=a-3b &\Rightarrow 3a=9b+3, \\ 
+2=3a+b &\Rightarrow 3a=2-b,
+\end{align*}
+and through combining them, we have
+\[9b+3=2-b\]
+and $b=-\frac{1}{10}$. 
+Plugging in $b$, we have $a=\frac{7}{10}$. 
+Hence, our vectors are
+\[u=(\frac{7}{10},\frac{21}{10}) \;\;\;\text{and}\;\;\; v=(\frac{3}{10},-\frac{1}{10}).\]
 
 \end{document}
