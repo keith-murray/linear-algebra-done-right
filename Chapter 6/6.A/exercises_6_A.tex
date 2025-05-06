@@ -265,4 +265,125 @@ Plugging in $b$, we have $a=\frac{7}{10}$.
 Hence, our vectors are
 \[u=(\frac{7}{10},\frac{21}{10}) \;\;\;\text{and}\;\;\; v=(\frac{3}{10},-\frac{1}{10}).\]
 
+\clearpage
+
+\section{Using the Cauchy-Schwarz Inequality: Act 1}
+\subsection*{Problem statement}
+Prove that
+\[16\leq (a+b+c+d)(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d})\]
+for all positive numbers $a,b,c,d$.
+
+\subsection*{Solution}
+First notice that for \textit{positive} numbers $a,b,c,d$ there exist positive numbers $x,y,z,w$ such that
+\[x^2=a,\quad y^2=b,\quad z^2=c,\quad w^2=d.\]
+Now we can use Example 6.17(a) of Cauchy-Schwarz Inequalities that states if $x_1,\ldots,x_n,y_1,\ldots,y_n\in\mathbf{R}$, then
+\[\abs{x_1y_1+\cdots+x_ny_n}^2\leq (x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2).\]
+Given the expression above, we can write
+\[\abs{x(\frac{1}{x})+y(\frac{1}{y})+z(\frac{1}{z})+w(\frac{1}{w})}^2\leq (x^2+y^2+z^2+w^2)(\frac{1}{x^2}+\frac{1}{y^2}+\frac{1}{z^2}+\frac{1}{w^2})\]
+where $\frac{1}{x},\frac{1}{y},\frac{1}{z},\frac{1}{w}$ are well defined since $a,b,c,d$ are \textit{positive} numbers\footnote{0 is not a positive number.}. Applying our substitution and reducing the left-hand side of the equation, we have
+\[\abs{1+1+1+1}^2=16\leq (a+b+c+d)(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}),\]
+which was to be shown.
+
+\clearpage
+
+\section{Using the Cauchy-Schwarz Inequality: Act 2}
+\subsection*{Problem statement}
+Prove that
+\[(x_1+\cdots+x_n)^2\leq n(x_1^{\:2}+\cdots+x_n^{\:2})\]
+for all positive integers $n$ and all real numbers $x_1,\ldots,x_n$.
+
+\subsection*{Solution}
+Let's prove this by using the Cauchy-Schwarz inequality on the Euclidean inner product as specified by Example 6.4(a). 
+Therefore, if $x_1,\ldots,x_n,y_1,\ldots,y_n\in\mathbf{R}$, then
+\[\abs{x_1y_1+\cdots+x_ny_n}^2\leq (x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2).\]
+Now, suppose $(y_1,\ldots,y_n)=(1,\ldots,1)$. 
+Then we have
+\[\abs{x_1(1)+\cdots+x_n(1)}^2\leq (x_1^2+\cdots+x_n^2)(1^2+\cdots+1^2),\]
+which is equivalently expressed as
+\[(x_1+\cdots+x_n)^2\leq n(x_1^2+\cdots+x_n^2),\]
+which was to be shown.
+
+\clearpage
+
+\section{Law of cosines computes inner products}
+\subsection*{Problem statement}
+Suppose $u,v$ are nonzero vectors in $\mathbf{R}^2$.
+Prove that
+\[\langle u,v\rangle=\norm{u}\norm{v}\cos\theta,\]
+where $\theta$ is the angle between $u$ and $v$ (thinking of $u$ and $v$ as arrows with initial point at the origin).
+
+\subsection*{Solution}
+Via the law of cosines, we can write
+\begin{equation}\label{eq:law_cosines}
+    \norm{u-v}^2=\norm{u}^2+\norm{v}^2-2\norm{u}\norm{v}\cos\theta.
+\end{equation}
+By expanding the left-hand side of the above expression, we have
+\[\norm{u-v}^2=\langle u-v,u-v \rangle=\norm{u}^2+\langle-v,u\rangle + \langle u,-v \rangle +\norm{v}^2,\]
+and since $u,v\in\mathbf{R}^2$, it follows that
+\begin{equation}\label{eq:inner_prod_relation}
+    \norm{u-v}^2=\norm{u}^2-2\langle u,v \rangle +\norm{v}^2.
+\end{equation}
+Combining (\ref{eq:law_cosines}) and (\ref{eq:inner_prod_relation}), we have
+\[\norm{u}^2-2\langle u,v \rangle +\norm{v}^2=\norm{u}^2+\norm{v}^2-2\norm{u}\norm{v}\cos\theta,\]
+and through rearranging terms, we can write
+\[\langle u,v\rangle=\norm{u}\norm{v}\cos\theta,\]
+which was to be shown.
+
+\clearpage
+
+\section{Angles and the Cauchy-Schwarz Inequality}
+\subsection*{Problem statement}
+The angle between two vectors (thought of as arrows with initial point at the origin) in $\mathbf{R}^2$ or $\mathbf{R}^3$ can be defined geometrically. 
+However, geometry is not as clear in $\mathbf{R}^n$ for $n>3$. 
+Thus the angle between two nonzero vectors $x,y\in\mathbf{R}^n$ is defined to be
+\[\arccos\frac{\langle x,y\rangle}{\norm{x}\norm{y}},\]
+where the motivation for this definition comes from the previous exercise. 
+Explain why the Cauchy-Schwarz Inequality is needed to show that this definition makes sense.
+
+\subsection*{Solution}
+The $\arccos$ function is only defined for inputs in the range $[-1,1]$. 
+With the Cauchy-Schwarz Inequality, the fraction $\frac{\langle x,y\rangle}{\norm{x}\norm{y}}$ is guaranteed to be within $[-1,1]$ since
+\[\abs{\langle x,y\rangle} \leq \norm{x}\norm{y}\]
+implies
+\[\frac{\abs{\langle x,y\rangle}}{\norm{x}\norm{y}}\leq 1,\]
+and thus,
+\[-1\leq \frac{\langle x,y\rangle}{\norm{x}\norm{y}} \leq 1.\]
+
+\clearpage
+
+\section{Using the Cauchy-Schwarz Inequality: Act 3}
+\subsection*{Problem statement}
+Prove that
+\[(\sum^{n}_{j=1}a_jb_j)^2\leq (\sum^{n}_{j=1}ja_j^{\:2})(\sum^{n}_{j=1}\frac{b_j^{\:2}}{j})\]
+for all real numbers $a_1,\ldots,a_n$ and $b_1,\ldots,b_n$.
+
+\subsection*{Solution}
+Following from Example 6.17(a), we know that the expression
+\[(\sum^{n}_{j=1}x_jy_j)^2\leq (\sum^{n}_{j=1}x_j^{\:2})(\sum^{n}_{j=1}y_j^{\:2})\]
+is a valid instance of the Cauchy-Schwarz Inequality (Theorem 6.15) for real numbers $x_1,\ldots,x_n,y_1,\ldots,y_n$. 
+By defining $x_j=\sqrt{j}a_j$ and $y_j=\frac{b_j}{\sqrt{j}}$, we get
+\[x_jy_j=\sqrt{j}a_j\frac{b_j}{\sqrt{j}}=a_jb_j,\quad x_j^{\:2}=ja_j^{\:2},\quad y_j^{\:2}=\frac{b_j}{j}.\]
+Substituting our expressions above into Example 6.17(a), we can write
+\[(\sum^{n}_{j=1}a_jb_j)^2\leq (\sum^{n}_{j=1}ja_j^{\:2})(\sum^{n}_{j=1}\frac{b_j^{\:2}}{j})\]
+which was to be shown.
+
+\clearpage
+
+\section{Employing the parallelogram equality}
+\subsection*{Problem statement}
+Suppose $u,v\in V$ are such that 
+\[\norm{u}=3,\quad \norm{u+v}=4,\quad \norm{u-v}=6.\]
+What number does $\norm{v}$ equal?
+
+\subsection*{Solution}
+Via the parallelogram equality (Theorem 6.22), we have
+\[\norm{u+v}^2+\norm{u-v}^2=2(\norm{u}^2+\norm{v}^2),\]
+and by plugging in numbers, it follows that
+\begin{gather*}
+    4^2+6^2=2(3^2+\norm{v}^2)\\
+    16+36=18+2\norm{v}^2\\
+    17=\norm{v}^2
+\end{gather*}
+and $\norm{v}=\sqrt{17}$.
+
 \end{document}
