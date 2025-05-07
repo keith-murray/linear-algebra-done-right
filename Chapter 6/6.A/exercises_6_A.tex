@@ -386,4 +386,216 @@ and by plugging in numbers, it follows that
 \end{gather*}
 and $\norm{v}=\sqrt{17}$.
 
+\clearpage
+
+\section{The $\max$ function isn't a norm}
+\subsection*{Problem statement}
+Prove or disprove: there is an inner product on $\mathbf{R}^2$ such that the associated norm is given by
+\[\norm{(x,y)}=\max\{x,y\}\]
+for all $(x,y)\in\mathbf{R}^2$.
+
+\subsection*{Solution}
+Let's disprove that such an inner product exists. 
+Suppose $(x,y)=(-1,0)$. 
+The associated norm is
+\[\norm{(-1,0)}=\max\{-1,0\}=0\]
+which violates Theorem 6.10 (`Basic properties of the norm') since only the zero vector can have a norm of $0$. 
+Thus, $\norm{(x,y)}=\max\{x,y\}$ is not an inner product.
+
+\clearpage
+
+\section{$L^p$-norm is tricky in $\mathbf{R}^2$}
+\subsection*{Problem statement}
+Suppose $p>0$. 
+Prove that there is an inner product on $\mathbf{R}^2$ such that the associated norm is given by
+\[\norm{(x,y)}=(x^p+y^p)^{1/p}\]
+for all $(x,y)\in \mathbf{R}^2$ if and only if $p=2$.
+
+\subsection*{Solution}
+I'll provide two proofs. 
+One explicit and correct, and one slick and presumptuous.
+\subsubsection*{First Direction (Explicit)}
+There are two cases to consider: \textbf{$p$ is odd} and \textbf{$p$ is even}.
+
+\textbf{$p$ is odd}: 
+If $p$ is odd, then there does not exist a norm given by
+\[\norm{(x,y)}=(x^p+y^p)^{1/p}\]
+for all $(x,y)\in \mathbf{R}^2$ because it would violate Theorem 6.10(b) (`Basic properties of the norm') which states
+\[\norm{\lambda v}=\abs{\lambda}\norm{v}\]
+for all $\lambda\in\mathbf{F}$. 
+More explicitly, if $\lambda<0$ and $p$ is odd, then it follows that
+\begin{align*}
+    \norm{\lambda(x,y)}&=\norm{(\lambda x,\lambda y)}\\
+    &=((\lambda x)^p+(\lambda y)^p)^{1/p}\\
+    &=((\lambda)^p(x^p+ y^p))^{1/p}\\
+    &=\lambda(x^p+y^p)^{1/p}\\
+    &=\lambda\norm{(x,y)}\neq\abs{\lambda}\norm{(x,y)}.
+\end{align*}
+
+\textbf{$p$ is even}: 
+Suppose $p$ is even. 
+The squared norm is given by
+\[\norm{(x,y)}^2=(x^p+y^p)^{2/p}.\]
+Now suppose $u=(1,0)$ and $v=(0,1)$. 
+The associated squared norms of $u,v,u+v,u-v$ are
+\begin{gather*}
+    \norm{u}^2=(1^p+0^p)^{2/p}=1^{2/p}=1,\\
+    \norm{v}^2=(0^p+1^p)^{2/p}=1^{2/p}=1,\\
+    \norm{u+v}^2=(1^p+1^p)^{2/p}=2^{2/p},\\
+    \norm{u-v}^2=(1^p+(-1)^p)^{2/p}=(1^p+1^p)^{2/p}=2^{2/p},
+\end{gather*}
+where $(-1)^p=1^p$ because $p$ is even. 
+Here comes the fun part. 
+
+The squared norms must obey the Parallelogram Equality (Theorem 6.22) which states
+\[\norm{u+v}^2+\norm{u-v}^2=2(\norm{u}^2+\norm{v}^2).\]
+Plugging in the associated squared norms, we have
+\begin{gather*}
+    2^{2/p}+2^{2/p}=2(1+1),\\
+    2(2^{2/p})=2\cdot 2,\\
+    2^1\cdot 2^{2/p}=4,\\
+    2^{1+2/p}=2^2.
+\end{gather*}
+Since the bases are equal and positive, the exponents must also be equal. 
+Hence, to solve for $p$, we can write
+\begin{gather*}
+    1+\frac{2}{p}=2,\\
+    \frac{2}{p}=1,\\
+    2=p.
+\end{gather*}
+Therefore, it must be the case that $p=2$.
+
+\subsubsection*{Second Direction (Explicit)}
+If $p=2$, then the associated norm 
+\[\norm{(x,y)}=(x^2+y^2)^{1/2}\]
+is simply an instance of the norm associated with the Euclidean inner product.
+
+\subsubsection*{Slick City}
+The squared norm is given by 
+\[\norm{(x,y)}^2=(x^p+y^p)^{2/p}.\]
+Suppose $u=(1,0)$, $v=(0,1)$, and $u+v=(1,1)$. 
+The associated squared norms are
+\begin{gather*}
+    \norm{u}^2=(1^p+0^p)^{2/p}=1^{2/p}=1,\\
+    \norm{v}^2=(0^p+1^p)^{2/p}=1^{2/p}=1,\\
+    \norm{u+v}^2=(1^p+1^p)^{2/p}=2^{2/p}.
+\end{gather*}
+These squared norms must obey the Pythagorean Theorem (Theorem 6.13) which states that for orthogonal vectors, we can write
+\[\norm{u+v}^2=\norm{u}^2+\norm{v}^2.\]
+Plugging in our values for the associated squared norms, we have
+\begin{gather*}
+    2^{2/p}=1+1,\\
+    2^{2/p}=2,\\
+    2^{2/p}=2^1.
+\end{gather*}
+Since the bases are equal and positive, the exponents must also be equal. 
+Therefore, it must be the case that $p=2$.
+
+\textbf{Note}: While this is a ``slick proof'', it assumes that $u$ and $v$ are orthogonal, which we would have to justify. 
+We could use Exercise 6.A(19), but then we'd have to calculate $\norm{u-v}^2$, which requires that we specify whether $p$ is positive or negative. 
+In that case, we're better off sticking with our explicit proof and using the Parallelogram Equality. 
+Interestingly, the Parallelogram Equality is quite powerful because it's a necessary and sufficient condition for norms to have associated inner products (Jordan–von Neumann theorem).
+
+\clearpage
+
+\renewcommand{\thesection}{24}
+\section{Injective operators in inner products}
+\subsection*{Problem statement}
+Suppose $S\in\mathcal{L}(V)$ is an injective operator on $V$. 
+Define $\langle\cdot,\cdot\rangle_1$ by
+\[\langle u,v\rangle_1=\langle Su,Sv\rangle\]
+for $u,v\in V$. 
+Show that $\langle\cdot,\cdot\rangle_1$ is an inner product on $V$.
+
+\subsection*{Solution}
+Following the definition of an inner product (Definition 6.3), we need to show that $\langle\cdot,\cdot\rangle_1$ satisfies \textbf{positivity}, \textbf{definiteness}, \textbf{additivity in first slot}, \textbf{homogeneity in first slot}, and \textbf{conjugate symmetry}.
+
+\subsubsection*{Positivity}
+Positivity of $\langle\cdot,\cdot\rangle_1$ follows from positivity of $\langle Su,Sv\rangle$.
+
+\subsubsection*{Definiteness}
+Given the definiteness of $\langle \cdot,\cdot\rangle$,
+\[\langle v,v\rangle_1=\langle Sv,Sv\rangle=0,\]
+if and only if $Sv=0$. 
+Given $S$ is an injective operator, $Sv=0$ if and only if $v=0$. 
+Hence, $\langle\cdot,\cdot\rangle_1$ obeys definiteness.
+
+\subsubsection*{Additivity in first slot}
+For $u,v,w\in V$, we have
+\begin{align*}
+    \langle u+v,w\rangle_1&=\langle S(u+v),Sw\rangle\\
+    &=\langle Su+Sv,Sw\rangle\\
+    &=\langle Su,Sw\rangle+\langle Sv,Sw\rangle\\
+    &=\langle u,w\rangle_1 + \langle v,w\rangle_1.
+\end{align*}
+
+\subsubsection*{Homogeneity in first slot}
+For $\lambda\in\mathbf{F}$ and $u,v\in V$, we have
+\begin{align*}
+    \langle \lambda v,w\rangle_1&=\langle S( \lambda u),Sw\rangle\\
+    &=\langle \lambda Sv,Sw\rangle\\
+    &=\lambda \langle Sv,Sw\rangle\\
+    &=\lambda\langle u,w\rangle_1.
+\end{align*}
+
+\subsubsection*{Conjugate symmetry}
+For $u,v\in V$, we have
+\begin{align*}
+    \langle v,w\rangle_1&=\langle Su,Sw\rangle\\
+    &=\overline{\langle Sw,Su\rangle}\\
+    &=\overline{\langle w,u\rangle}_1.
+\end{align*}
+
+\clearpage
+
+\renewcommand{\thesection}{25}
+\section{Non-injective operators in inner products}
+\subsection*{Problem statement}
+Suppose $S\in\mathcal{L}(V)$ is not injective. 
+Define $\langle\cdot,\cdot\rangle_1$ as in the exercise above. 
+Explain why $\langle\cdot,\cdot\rangle_1$ is not an inner product on $V$.
+
+\subsection*{Solution}
+Since $S$ is not injective, there exists some vector $v\in V$ such that $v\neq0$ and $Sv=0$. 
+Hence, it follows that
+\[\langle v,v\rangle_1=\langle Sv,Sv\rangle=0,\]
+meaning that $\langle\cdot,\cdot\rangle_1$ does not obey the property of definiteness (Definition 6.3) and $\langle\cdot,\cdot\rangle_1$ is not an inner product.
+
+\clearpage
+
+\renewcommand{\thesection}{31}
+\section{Apollonius's Identity}
+\subsection*{Problem statement}
+Use inner products to prove Apollonius's Identity: In a triangle with sides of length $a$, $b$, and $c$, let $d$ be the length of the line segment from the midpoint of the side of length $c$ to the opposite vertex. 
+Then
+\[a^2+b^2=\frac{1}{2}c^2+2d^2.\]
+
+\subsection*{Solution}
+First, we can write the squared norms of $a$ and $b$ as
+\[\norm{a}^2=\norm{\frac{1}{2}c+d}^2\quad\text{and}\quad\norm{b}^2=\norm{-\frac{1}{2}c+d}^2.\]
+Summing our expressions together, we have
+\begin{align*}
+    \norm{a}^2+\norm{b}^2&=\norm{\frac{1}{2}c+d}^2+\norm{-\frac{1}{2}c+d}^2\\
+    &=\norm{\frac{1}{2}c}^2+\langle \frac{1}{2}c,d\rangle +\langle d,\frac{1}{2}c\rangle+\norm{d}^2\\
+    &+\norm{-\frac{1}{2}c}^2+\langle -\frac{1}{2}c,d\rangle +\langle d,-\frac{1}{2}c\rangle+\norm{d}^2.
+\end{align*}
+Via Theorem 6.7 (`Basic properties of an inner product'), it follows that
+\begin{gather*}
+    \langle \frac{1}{2}c,d\rangle+\langle -\frac{1}{2}c,d\rangle=\langle\frac{1}{2}c-\frac{1}{2}c,d\rangle=\langle 0,d\rangle=0,\\
+    \langle d,\frac{1}{2}c\rangle+\langle d,-\frac{1}{2}c\rangle=\langle d,\frac{1}{2}c-\frac{1}{2}c\rangle=\langle d,0\rangle=0.
+\end{gather*}
+Via Theorem 6.10(b) (`Basic properties of the norm'), we can write
+\begin{gather*}
+    \norm{\frac{1}{2}c}^2=\abs{\frac{1}{2}}^2\norm{c}^2=\frac{1}{4}\norm{c}^2,\\
+    \norm{-\frac{1}{2}c}^2=\abs{-\frac{1}{2}}^2\norm{c}^2=\frac{1}{4}\norm{c}^2.
+\end{gather*}
+Hence, putting everything all together, we have
+\begin{align*}
+    \norm{a}^2+\norm{b}^2&=\norm{\frac{1}{2}c}^2+\langle \frac{1}{2}c,d\rangle +\langle d,\frac{1}{2}c\rangle+\norm{d}^2\\
+    &\qquad +\norm{-\frac{1}{2}c}^2+\langle -\frac{1}{2}c,d\rangle +\langle d,-\frac{1}{2}c\rangle+\norm{d}^2\\
+    &=\frac{1}{4}\norm{c}^2+ 0 + 0 +\norm{d}^2\\
+    &\qquad +\frac{1}{4}\norm{c}^2+ 0 + 0 +\norm{d}^2\\
+    &=\frac{1}{2}\norm{c}^2 + 2\norm{d}^2.
+\end{align*}
+
 \end{document}
