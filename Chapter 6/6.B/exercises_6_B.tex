@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 6.B}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\section{Unit vectors in $\mathbf{R}^2$}
+\subsection*{Problem statement}
+\begin{itemize}
+    \item[(a)] Suppose $\theta\in\mathbf{R}$. Show that $(\cos\theta,\sin\theta),(-\sin\theta,\cos\theta)$ and \newline$(\cos\theta,\sin\theta),(\sin\theta,-\cos\theta)$ are orthonormal bases of $\mathbf{R}^2$.
+    \item[(b)] Show that each orthonormal basis of $\mathbf{R}^2$ is of the form given by one of the two possibilities of part (a).
+\end{itemize}
+
+\subsection*{Solution}
+\subsubsection*{Part (a)}
+Suppose the inner product is the Euclidean dot product (Example 6.4(a)). 
+We can write
+\[\langle (\cos\theta,\sin\theta), (-\sin\theta,\cos\theta)\rangle=-(\cos\theta)(\sin\theta)+(\sin\theta)(\cos\theta)=0\]
+to show that $(\cos\theta,\sin\theta),(-\sin\theta,\cos\theta)$ are orthogonal. 
+To show that \newline$\norm{(\cos\theta,\sin\theta)}=1$, we can write
+\[\langle (\cos\theta,\sin\theta), (\cos\theta,\sin\theta)\rangle=\cos^2\theta+\sin^2\theta=1\]
+and to show that $\norm{(-\sin\theta,\cos\theta)}=1$, we can write
+\[\langle (-\sin\theta,\cos\theta), (-\sin\theta,\cos\theta)\rangle=\sin^2\theta+\cos^2\theta=1.\]
+The same reasoning can be applied for $(\cos\theta,\sin\theta),(\sin\theta,-\cos\theta)$.
+
+\subsubsection*{Part (b)}
+If we think of vectors in $\mathbf{R}^2$ as arrows, then for $v\in\mathbf{R}^2$, the vector $v/\norm{v}$ is a vector on the unit circle and can be expressed as $(\cos\theta,\sin\theta)$ for some $\theta\in\mathbf{R}$. 
+The space of vectors orthogonal to $(\cos\theta,\sin\theta)$ is the line expressed by $\operatorname{span}((-\sin\theta,\cos\theta))$, where the vector $(-\sin\theta,\cos\theta)$ was shown to be orthogonal to $(\cos\theta,\sin\theta)$ in part (a). 
+This line intersects with the unit circle at two and only two points, namely $(\cos\theta,\sin\theta)$ and $(\sin\theta,-\cos\theta)$.
+
+\clearpage
+
+\section{Properties of vectors $v\in\operatorname{span}(e_1,\ldots,e_m)$}
+\subsection*{Problem statement}
+Suppose $e_1,\ldots,e_m$ is an orthonormal list of vectors in $V$. 
+
+
+\end{document}
