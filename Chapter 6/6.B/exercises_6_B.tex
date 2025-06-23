@@ -43,6 +43,82 @@ This line intersects with the unit circle at two and only two points, namely $(\
 \section{Properties of vectors $v\in\operatorname{span}(e_1,\ldots,e_m)$}
 \subsection*{Problem statement}
 Suppose $e_1,\ldots,e_m$ is an orthonormal list of vectors in $V$. 
+Let $v\in V$. 
+Prove that
+\[\norm{v}^2=\abs{\langle v,e_1\rangle}^2+\cdots+\abs{\langle v,e_m\rangle}^2\]
+if and only if $v\in\operatorname{span}(e_1,\ldots,e_m)$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Proving the contrapositive is much easier, so let's do that. 
+
+Suppose $v\notin\operatorname{span}(e_1,\ldots,e_m)$. 
+For the list $e_1,\ldots,e_m,v$, we can apply the Gram-Schmidt Procedure (Theorem 6.31) to get $e_1,\ldots,e_m,f$. 
+Obviously \newline$v\in\operatorname{span}(e_1,\ldots,e_m,f)$ since 
+\[\operatorname{span}(e_1,\ldots,e_m,v)=\operatorname{span}(e_1,\ldots,e_m,f).\]
+
+Following from Theorem 6.30 (`Writing a vector as linear combination of orthonormal basis'), we can write
+\[\norm{v}^2=\abs{\langle v,e_1\rangle}^2+\cdots+\abs{\langle v,e_m\rangle}^2+\abs{\langle v,f\rangle}^2.\]
+If follows that $\abs{\langle v,f\rangle}^2\neq0$ since $\abs{\langle v,f\rangle}^2=0$ implies that $v\in\operatorname{span}(e_1,\ldots,e_m)$, violating our hypothesis. 
+Hence, we can write
+\[\norm{v}^2\neq \abs{\langle v,e_1\rangle}^2+\cdots+\abs{\langle v,e_m\rangle}^2.\]
+
+\subsubsection*{Second Direction}
+Suppose $v\in\operatorname{span}(e_1,\ldots,e_m)$. 
+Thus, given $e_1,\ldots,e_m$ is an orthonormal basis of $\operatorname{span}(e_1,\ldots,e_m)$, Theorem 6.30 implies
+\[\norm{v}^2 = \abs{\langle v,e_1\rangle}^2+\cdots+\abs{\langle v,e_m\rangle}^2.\]
+
+\clearpage
+
+\section{Applying Gram-Schmidt part 1}
+\subsection*{Problem statement}
+Suppose $T\in\mathcal{L}(\mathbf{R}^3)$ has an upper-triangular matrix with respect to the basis $(1,0,0),(1,1,1),(1,1,2)$. 
+Find an orthonormal basis of $\mathbf{R}^3$ (use the usual inner product on $\mathbf{R}^3$) with respect to which $T$ has an upper-triangular matrix.
+
+\subsection*{Solution}
+Theorem 6.37 (`Upper-triangular matrix with respect to orthonormal basis') implies that we can simply apply the Gram-Schmidt Procedure (Theorem 6.31) to find our desired orthonormal basis. 
+This result takes advantage of 
+\[\operatorname{span}(v_1,\ldots,v_j)=\operatorname{span}(e_1,\ldots,e_j)\]
+to show that $\operatorname{span}(e_1,\ldots,e_j)$ is invariant under $T$. 
+Thus, by Theorem 5.26 (`Conditions for upper-triangular matrix'), $T$ has an upper-triangular matrix with respect to $e_1,\ldots,e_n$.
+
+\paragraph{$e_1$}
+With $v_1=(1,0,0)$, then $\norm{v_1}=1$ implies $e_1=(1,0,0)$.
+
+\paragraph{$e_2$}
+With $v_2=(1,1,1)$, let's first compute $v_2-\langle v_2,e_1\rangle e_1$:
+\[(1,1,1)-\langle (1,1,1),(1,0,0)\rangle (1,0,0)=(1,1,1)-(1,0,0)=(0,1,1).\]
+Hence, we have
+\[e_2=\frac{(0,1,1)}{\norm{(0,1,1)}}=\frac{(0,1,1)}{\sqrt{2}}=(0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}).\]
+
+\paragraph{$e_3$}
+With $v_3=(1,1,2)$, let's first compute $v_3-\langle v_3,e_1\rangle e_1-\langle v_3,e_2\rangle e_2$:
+\begin{align*}
+    (1,1,2)-\langle (1,1,2),(1,0,0)\rangle (1,0,0)&-\langle (1,1,2),(0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\rangle (0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) \\
+    &=(1,1,2)-(1,0,0)-\frac{3}{\sqrt{2}}(0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) \\
+    &=(0,1,2)-(0,\frac{3}{2},\frac{3}{2})=(0,-\frac{1}{2},\frac{1}{2}).
+\end{align*}
+Hence, we have
+\[e_3=\frac{(0,-\frac{1}{2},\frac{1}{2})}{\norm{(0,-\frac{1}{2},\frac{1}{2})}}=\sqrt{2}(0,-\frac{1}{2},\frac{1}{2})=(0,-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}).\]
+
+Therefore, our orthonormal basis is $((1,0,0),(0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),(0,-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}))$.
+
+\clearpage
+
+\renewcommand{\thesection}{5}
+\section{Applying Gram-Schmidt part 2}
+\subsection*{Problem statement}
+On $\mathcal{P}_2(\mathbf{R})$, consider the inner product given by
+\[\langle p,q\rangle=\int_0^1 p(x)q(x)dx.\]
+Apply the Gram-Schmidt Procedure to the basis $1,x,x^2$ to produce an orthonormal basis of $\mathcal{P}_2(\mathbf{R})$.
+
+\subsection*{Solution}
+\paragraph{$e_1$}
+Clearly $e_1=1$ since 
+\[\langle 1,1\rangle=\int_0^1 1\cdot 1\ dx=1.\]
+
+\paragraph{$e_2$}
+
 
 
 \end{document}
