@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{epigraph} 
 
@@ -105,7 +106,111 @@ Therefore, our orthonormal basis is $((1,0,0),(0,\frac{1}{\sqrt{2}},\frac{1}{\sq
 
 \clearpage
 
-\renewcommand{\thesection}{5}
+\section{An orthonormal Fourier series}
+\subsection*{Problem statement}
+Suppose $n$ is a positive integer. 
+Prove that
+\[\frac{1}{\sqrt{2\pi}},\frac{\cos x}{\sqrt{\pi}},\frac{\cos 2x}{\sqrt{\pi}},\cdots,\frac{\cos nx}{\sqrt{\pi}},\frac{\sin x}{\sqrt{\pi}},\frac{\sin 2x}{\sqrt{\pi}},\cdots,\frac{\sin nx}{\sqrt{\pi}}\]
+is an orthonormal list of vectors in $C[-\pi,\pi]$, the vector space of continuous real-valued functions on $[-\pi,\pi]$ with inner product
+\[\langle f,g\rangle=\int_{-\pi}^{\pi}f(x)g(x)\ dx.\]
+
+\subsection*{Preliminary}
+At the heart of this exercise is solving the integral
+\[\int_{-\pi}^{\pi}\frac{\cos nx}{\sqrt{\pi}}\frac{\sin mx}{\sqrt{\pi}}\ dx\]
+and other similar looking integrals. 
+To do so, we need the so-called product-to-sum trigonometric identities:
+\begin{align*}
+    \cos\theta \cos\phi&=\frac{1}{2}\big( \cos(\theta-\phi)+\cos(\theta+\phi)\big),\\
+    \sin\theta \sin\phi&=\frac{1}{2}\big( \cos(\theta-\phi)+\cos(\theta+\phi)\big),\\
+    \sin\theta \cos\phi&=\frac{1}{2}\big( \sin(\theta+\phi)+\sin(\theta-\phi)\big),\\
+    \cos\theta \sin\phi&=\frac{1}{2}\big( \sin(\theta+\phi)+\sin(\theta-\phi)\big).\\
+\end{align*}
+
+\subsection*{Solution}
+Let's prove that our list of vectors is orthonormal by computing the inner products between pairs of functions in the list and showing that
+\begin{itemize}
+    \item each function has norm 1,
+    \item any pair of distinct functions is orthogonal.
+\end{itemize}
+
+\subsubsection*{Norms of the functions}
+
+Let's start by computing the norm of each function in the list.
+
+\paragraph{Constant function:}
+\[
+\left\langle \frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{2\pi}} \right\rangle 
+= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx 
+= \frac{1}{2\pi} \cdot 2\pi = 1.
+\]
+
+\paragraph{Cosine functions:}
+\[
+\left\langle \frac{\cos(kx)}{\sqrt{\pi}}, \frac{\cos(kx)}{\sqrt{\pi}} \right\rangle 
+= \frac{1}{\pi} \int_{-\pi}^{\pi} \cos^2(kx) \, dx 
+= \frac{1}{\pi} \cdot \pi = 1,
+\]
+since $\int_{-\pi}^{\pi} \cos^2(kx) \, dx = \pi$ for $k\in\mathbb{N}$.
+
+\paragraph{Sine functions:}
+\[
+\left\langle \frac{\sin(kx)}{\sqrt{\pi}}, \frac{\sin(kx)}{\sqrt{\pi}} \right\rangle 
+= \frac{1}{\pi} \int_{-\pi}^{\pi} \sin^2(kx) \, dx 
+= \frac{1}{\pi} \cdot \pi = 1.
+\]
+
+\subsubsection*{Orthogonality of distinct functions}
+
+Let's now check that each function in the list is orthogonal to all other functions.
+
+\paragraph{Constant with sine or cosine:}
+\[
+\left\langle \frac{1}{\sqrt{2\pi}}, \frac{\cos(kx)}{\sqrt{\pi}} \right\rangle 
+= \frac{1}{\sqrt{2\pi\pi}} \int_{-\pi}^{\pi} \cos(kx) \, dx = 0,
+\]
+since $\cos(kx)$ integrates to zero over $[-\pi, \pi]$ for $k\neq 0$. 
+Similarly,
+\[
+\left\langle \frac{1}{\sqrt{2\pi}}, \frac{\sin(kx)}{\sqrt{\pi}} \right\rangle 
+= \frac{1}{\sqrt{2\pi\pi}} \int_{-\pi}^{\pi} \sin(kx) \, dx = 0,
+\]
+since $\sin(kx)$ is odd and integrates to zero over symmetric interval.
+
+\paragraph{Cosines with different frequencies:}
+
+Using the identity
+\[\cos(mx)\cos(nx) = \frac{1}{2}[\cos((m-n)x) + \cos((m+n)x)],\]
+we get
+\[\int_{-\pi}^{\pi} \cos(mx)\cos(nx)\, dx = 0 \quad \text{for } m \ne n,\]
+and so,
+\[\left\langle \frac{\cos(mx)}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}} \right\rangle = 0 \quad \text{for } m \ne n.\]
+
+\paragraph{Sines with different frequencies:}
+
+Using the identity
+\[\sin(mx)\sin(nx) = \frac{1}{2}[\cos((m-n)x) - \cos((m+n)x)],\]
+we get
+\[\int_{-\pi}^{\pi} \sin(mx)\sin(nx)\, dx = 0 \quad \text{for } m \ne n,\]
+and so
+\[\left\langle \frac{\sin(mx)}{\sqrt{\pi}}, \frac{\sin(nx)}{\sqrt{\pi}} \right\rangle = 0 \quad \text{for } m \ne n.\]
+
+\paragraph{Sine and cosine:}
+
+Using the identity:
+\[\sin(mx)\cos(nx) = \frac{1}{2}[\sin((m+n)x) + \sin((m-n)x)],\]
+and noting that all sine integrals over \( [-\pi, \pi] \) vanish,
+\[\int_{-\pi}^{\pi} \sin(mx)\cos(nx)\, dx = 0,\]
+so,
+\[\left\langle \frac{\sin(mx)}{\sqrt{\pi}}, \frac{\cos(nx)}{\sqrt{\pi}} \right\rangle = 0.\]
+
+\subsubsection*{Conclusion}
+
+We have shown that all functions in the list have unit norm and are orthogonal to each other. Therefore, the list
+\[\frac{1}{\sqrt{2\pi}},\ \frac{\cos x}{\sqrt{\pi}},\ \ldots,\ \frac{\cos nx}{\sqrt{\pi}},\ \frac{\sin x}{\sqrt{\pi}},\ \ldots,\ \frac{\sin nx}{\sqrt{\pi}}\]
+is an orthonormal list in $C[-\pi, \pi]$ with respect to the inner product \newline$\langle f, g \rangle = \int_{-\pi}^{\pi} f(x) g(x)\, dx$.
+
+\clearpage
+
 \section{Applying Gram-Schmidt part 2}
 \subsection*{Problem statement}
 On $\mathcal{P}_2(\mathbf{R})$, consider the inner product given by
@@ -118,7 +223,175 @@ Clearly $e_1=1$ since
 \[\langle 1,1\rangle=\int_0^1 1\cdot 1\ dx=1.\]
 
 \paragraph{$e_2$}
+With $v_2=x$,  let's first compute $v_2-\langle v_2,e_1\rangle e_1$:
+\begin{align*}
+    x-\langle x,1\rangle1&=x-\int_0^1x\ dx\\
+    &=x -\Big[\frac{1}{2}x^2 \Big]_0^1\\
+    &=x-\frac{1}{2}.
+\end{align*}
+To normalize $x-\frac{1}{2}$, we need to evaluate $\norm{x-\frac{1}{2}}$. 
+We can write
+\begin{align*}
+    \langle x-\frac{1}{2},x-\frac{1}{2}\rangle1&=\int_0^1(x-\frac{1}{2})(x-\frac{1}{2})\ dx\\
+    &= \int_0^1(x^2-x+\frac{1}{4})\ dx\\
+    &=\frac{1}{3}x^3-\frac{1}{2}x^2+\frac{1}{4}x\Big|_0^1\\
+    &=\frac{1}{3}-\frac{1}{2}+\frac{1}{4}=\frac{1}{12}.
+\end{align*}
+Hence, it follows that
+\[e_2=\sqrt{12}(x-\frac{1}{2}).\]
 
+\paragraph{$e_3$}
+With $v_3=x^2$, let's first compute $v_3-\langle v_3,e_1\rangle e_1-\langle v_3,e_2\rangle e_2$:
+\begin{align*}
+    x^2-&\langle x^2,1\rangle 1-\langle x^2,\sqrt{12}(x-\frac{1}{2})\rangle\big(\sqrt{12}(x-\frac{1}{2})\big)\\
+    &=x^2-\int_0^1x^2\ dx-12\int_0^1(x^3-\frac{1}{2}x^2)\ dx\ (x-\frac{1}{2})\\
+    &=x^2-\Big[ \frac{1}{3}x^3 \Big]_0^1-12\Big[ \frac{1}{4}x^4-\frac{1}{6}x^3 \Big]_0^1(x-\frac{1}{2})\\
+    &=x^2-\frac{1}{3}-12(\frac{1}{4}-\frac{1}{6})(x-\frac{1}{2})\\
+    &=x^2-\frac{1}{3}-x+\frac{1}{2}=x^2-x+\frac{1}{6}.
+\end{align*}
+To normalize $x^2-x+\frac{1}{6}$, we need to evaluate $\norm{x^2-x+\frac{1}{6}}$. 
+We can write\footnote{I got a bit lazy here.}
+\[\langle x^2-x+\frac{1}{6},x^2-x+\frac{1}{6}\rangle=\int_0^1(x^2-x+\frac{1}{6})^2\ dx=\frac{1}{180}.\]
+Hence, if follows that
+\[e_3=\sqrt{180}(x^2-x+\frac{1}{6}).\]
+Therefore, our orthonormal basis is $(1,\sqrt{12}(x-\frac{1}{2}),\sqrt{180}(x^2-x+\frac{1}{6}))$.
 
+\clearpage
+
+\section{Upper-triangular matrix for differentiation}
+\subsection*{Problem statement}
+Find an orthonormal basis of $\mathcal{P}_2(\mathbf{R})$ (with inner product as in Exercise 5) such that the differentiation operator (the operator that takes $p$ to $p'$) on $\mathcal{P}_2(\mathbf{R})$ has an upper-triangular matrix with respect to this basis.
+
+\subsection*{Solution}
+Following Theorem 5.26 (`Conditions for upper-triangular matrix'), all we need to show is that an orthonormal list $e_1,e_2,e_3$ is such that $\operatorname{span}(e_1)$, $\operatorname{span}(e_1,e_2)$, and $\operatorname{span}(e_1,e_2,e_3)$ are invariant under the differentiation operator. 
+Conveniently, the orthonormal basis from Exercise 6.B(5) works. 
+This basis is 
+\[(e_1,e_2,e_3)=(1,\sqrt{12}(x-\frac{1}{2}),\sqrt{180}(x^2-x+\frac{1}{6})).\]
+Let's call the differentiation operator $D\in\mathcal{L}(\mathcal{P}_2(\mathbf{R}))$.
+
+$D$ maps $\mathcal{P}_0(\mathbf{R})$ to $0$, thus $\operatorname{span}(e_1)$ is invariant under $D$ given $0\subset \operatorname{span}(e_1)$. 
+$D$ maps $\mathcal{P}_1(\mathbf{R})$ to $\mathcal{P}_0(\mathbf{R})$, thus $\operatorname{span}(e_1,e_2)$ is invariant under $D$ given \newline$\mathcal{P}_0(\mathbf{R})\subset\operatorname{span}(e_1,e_2)$. 
+Finally, $D$ maps $\mathcal{P}_2(\mathbf{R})$ to $\mathcal{P}_1(\mathbf{R})$, thus $\operatorname{span}(e_1,e_2,e_3)$ is invariant under $D$ $\mathcal{P}_1(\mathbf{R})\subset\operatorname{span}(e_1,e_2,e_3)$. 
+Thus, $D$ has an upper-triangular matrix with respect to our orthonormal basis $e_1,e_2,e_3$. 
+
+\clearpage
+
+\section{Applying the Riesz Representation Theorem}
+\subsection*{Problem statement}
+Find a polynomial $q\in\mathcal{P}_2(\mathbf{R})$ such that
+\[p(\frac{1}{2})=\int_0^1p(x)q(x)\ dx\]
+for every $p\in\mathcal{P}_2(\mathbf{R})$.
+
+\subsection*{Preliminary}
+This exercise is a simple application of the Riesz Representation Theorem (Theorem 6.42), but is tricky since one needs to understand how $p(\frac{1}{2})$ is a linear functional. 
+Let's first note that $p(\frac{1}{2})$ is a map from $\mathcal{P}_2(\mathbf{R})$ to $\mathbf{R}$. 
+To see why $p(\frac{1}{2})$ is linear, we can test of additivity and homogeneity. 
+For some $p\in\mathcal{P}_2(\mathbf{R})$, we have $p(x)=ax^2+bx+c$ for $a,b,c\in\mathbf{R}$ and can write
+\[(\lambda p)(\frac{1}{2})=\lambda a(\frac{1}{2})^2+\lambda b(\frac{1}{2})+\lambda c=\lambda(a(\frac{1}{2})^2+ b(\frac{1}{2})+ c)=\lambda(p(\frac{1}{2})).\]
+For some $p,q\in\mathcal{P}_2(\mathbf{R})$, we have $p(x)=a_1x^2+b_1x+c_1$ for $a_1,b_1,c_1\in\mathbf{R}$, $q(x)=a_2x^2+b_2x+c_2$ for $a_2,b_2,c_2\in\mathbf{R}$, and can write
+\[(p+q)(x)=(a_1+a_2)x^2+(b_1+b_2)x+(c_1+c_2)\]
+and it follows that
+\begin{align*}
+    (p+q)(\frac{1}{2})&=(a_1+a_2)(\frac{1}{2})^2+(b_1+b_2)(\frac{1}{2})+(c_1+c_2)\\
+    &=a_1(\frac{1}{2})^2+b_1(\frac{1}{2})+c_1+a_2(\frac{1}{2})^2+b_2(\frac{1}{2})+c_2\\
+    &=p(\frac{1}{2})+q(\frac{1}{2}).
+\end{align*}
+
+But let's note that while $p(\frac{1}{2})$ is a linear functional from $\mathcal{P}_2(\mathbf{R})$ to $\mathbf{R}$, the polynomial $p(x)$ is not a linear functional from $\mathbf{R}$ to $\mathbf{R}$. 
+Polynomials can be manipulated as mathematical objects in a vector space, but polynomials themselves are not linear functions.
+
+\subsection*{Solution}
+To find our desired $q\in\mathcal{P}_2(\mathbf{R})$, we can use the formula
+\[u=\overline{\phi(e_1)}e_1+\cdots+\overline{\phi(e_n)}e_n\]
+and the orthonormal basis from Exercise 6.B(5)
+\[(e_1,e_2,e_3)=(1,\sqrt{12}(x-\frac{1}{2}),\sqrt{180}(x^2-x+\frac{1}{6})).\]
+First, let's evaluate $\overline{\phi(e_1)},\overline{\phi(e_2)},\overline{\phi(e_3)}$:
+\begin{gather*}
+    \overline{\phi(e_1)}=\overline{1}=1\\
+    \overline{\phi(e_2)}=\overline{\sqrt{12}(1/2-1/2)}=0\\
+    \overline{\phi(e_3)}=\overline{\sqrt{180}((\frac{1}{2})^2-\frac{1}{2}+\frac{1}{6}))}=-\frac{\sqrt{180}}{12}
+\end{gather*}
+Plugging the everything together, we can write
+\begin{align*}
+    u&=1 \cdot 1+0\cdot\Big(\sqrt{12}(x-\frac{1}{2})\Big)-\frac{\sqrt{180}}{12}\Big( \sqrt{180}(x^2-x+\frac{1}{6})\Big)\\
+    &=1-\frac{180}{12}(x^2-x+\frac{1}{6})\\
+    &=1-15(x^2-x+\frac{1}{6})\\
+    &=-15x^2+15x-\frac{3}{2}.
+\end{align*}
+
+\clearpage
+
+\renewcommand{\thesection}{9}
+\section{The numerator in Gram-Schmidt Procedure}
+\subsection*{Problem statement}
+What happens if the Gram-Schmidt Procedure is applied to a list of vectors that is not linearly independent?
+
+\subsection*{Solution}
+Suppose we have a list of linearly dependent vectors $v_1,\ldots,v_n$. 
+Via the Linear Dependence Lemma (Theorem 2.21), there exist 
+\[v_j\in\operatorname{span}(v_1,\ldots,v_{j-1})\]
+for the smallest $j$. 
+Hence, if we apply the Gram-Schmidt Procedure on the list $v_1,\ldots,v_{j-1}$, it follows that 
+\[v_j\in\operatorname{span}(e_1,\ldots,e_{j-1})\]
+since $\operatorname{span}(v_1,\ldots,v_{j-1})=\operatorname{span}(e_1,\ldots,e_{j-1})$.
+Via Theorem 6.30 (`Writing a vectors as linear combination of orthonormal basis'), we have
+\[v_j=\langle v_j,e_1\rangle e_1+\cdots+\langle v_j,e_{j-1}\rangle e_{j-1},\]
+which implies 
+\[\norm{v_j-\langle v_j,e_1\rangle e_1-\cdots-\langle v_j,e_{j-1}\rangle e_{j-1}}=\norm{0}=0.\]
+Hence, the numerator of $e_j$ is $0$ and $e_j$ can't be constructed.
+
+\clearpage
+
+\renewcommand{\thesection}{17}
+\section{Proving Riesz Representation Theorem}
+\subsection*{Problem statement}
+For $u\in V$, let $\Phi u$ denote the linear functional on $V$ defined by
+\[(\Phi u)(v)=\langle v,u \rangle\]
+for $v\in V$.
+\begin{enumerate}
+    \item[(a)] Show that if $\mathbf{F}=\mathbf{R}$, then $\Phi$ is a linear map from $V$ to $V'$.
+    \item[(b)] Show that if $\mathbf{F}=\mathbf{C}$ and $V\neq \{0\}$, then $\Phi$ is not a linear map.
+    \item[(c)] Show that $\Phi$ is injective.
+    \item[(d)] Suppose $\mathbf{F}=\mathbf{R}$ and $V$ is finite-dimensional. Use parts (a) and (c) and a dimension-counting argument to show that $\Phi$ is an isomorphism from $V$ onto $V'$.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsubsection*{a}
+We first need to show that $\Phi$ obeys additivity and homogeneity.
+
+\paragraph{Additivity:}
+For $u,v,w\in V$, we can write
+\[(\Phi(u+w))(v)=\langle v,u+w\rangle=\langle v,u\rangle+\langle v,w\rangle=(\Phi u)(v)+(\Phi w)(v)\]
+where the second equality is valid given $\mathbf{F}=\mathbf{R}$.
+
+\paragraph{Homogeneity:}
+For $u,v\in V$ and $\lambda\in\mathbf{R}$, we can write
+\[(\Phi(\lambda u))(v)=\langle v,\lambda u\rangle=\lambda\langle v, u\rangle=\lambda(\Phi u)(v) \]
+where the second equality is valid given $\mathbf{F}=\mathbf{R}$.
+
+\subsubsection*{b}
+For homogeneity in part (a), $\mathbf{F}=\mathbf{R}$ implies $\bar{\lambda}=\lambda$. 
+For $\mathbf{F}=\mathbf{C}$, if $\lambda=1+i$, then
+\[(\Phi((1+i) u))(v)=\langle v,(1+i) u\rangle=(1-i)\langle v, u\rangle\neq \lambda(\Phi u)(v). \]
+Hence, $\Phi$ is not a linear map if $\mathbf{F}=\mathbf{C}$.
+
+\subsubsection*{c}
+Note that $0\in V$ is the zero vector while $0\in V'$ is the zero linear functional. 
+
+Suppose $u\in\operatorname{null}\Phi$. 
+Then $\langle v,u\rangle=0$ for all $v\in V$. 
+If $v=u$, then $\langle u,u\rangle=0$. 
+Therefore, via the property of definiteness for inner products (Definition 6.3), it follows $u=0$ and $\operatorname{null}\Phi=\{0\}$. 
+Hence, $\Phi$ is injective.
+
+\subsubsection*{d}
+Via the Fundamental Theorem of Linear Maps
+\[\operatorname{dim}V=\operatorname{dim}\operatorname{null}\Phi+\operatorname{dim}\operatorname{range}\Phi.\]
+Via part (c), $\operatorname{dim}\operatorname{null}\Phi=0$ and thus $\operatorname{dim}V=\operatorname{dim}\operatorname{range}\Phi$. 
+From Theorem 3.95, it follows that $\dim V'=\dim V$. 
+Hence, we can write
+\[\operatorname{dim}\operatorname{range}\Phi=\dim V=\dim V',\]
+showing $\Phi$ is surjective. 
+Therefore, $\Phi$ is invertible and an isomorphism from $V$ onto $V'$.
 
 \end{document}
