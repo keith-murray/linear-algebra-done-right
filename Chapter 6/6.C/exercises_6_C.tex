@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{epigraph} 
+
+\title{Linear Algebra Done Right\\Solutions to Exercises 6.C}
+\author{}
+\date{}
+
+\providecommand{\abs}[1]{\lvert#1\rvert} \providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\maketitle
+
+\section{Orthogonal complement of subset}
+\subsection*{Problem statement}
+Suppose $v_1,\ldots,v_m\in V$. 
+Prove that 
+\[\{v_1,\ldots,v_m\}^\bot = \big( \operatorname{span}(v_1,\ldots,v_m) \big)^\bot.\]
+
+\subsection*{Solution}
+To prove our desired result, let's first show $\{v_1,\ldots,v_m\}^\bot \subset \big( \operatorname{span}(v_1,\ldots,v_m) \big)^\bot$, and then $\big( \operatorname{span}(v_1,\ldots,v_m) \big)^\bot \subset \{v_1,\ldots,v_m\}^\bot$.
+
+\subsubsection*{First Direction}
+Suppose $u\in \{v_1,\ldots,v_m\}^\bot$. 
+This implies $\langle u, v_j\rangle=0$ for $j=1,\ldots,m$. 
+We can write every $v\in\operatorname{span}(v_1,\ldots,v_m)$ as
+\[v=a_1 v_1+\cdots + a_m v_m\]
+for $a_1,\ldots,a_m\in\mathbf{F}$.
+It follows that
+\[\langle u,v\rangle = \bar{a}_1\langle u,v_1\rangle+\cdots+ \bar{a}_m\langle u,v_m\rangle=0.\]
+Hence, $u\in \big( \operatorname{span}(v_1,\ldots,v_m) \big)^\bot$.
+
+\subsubsection*{Second Direction}
+Suppose $u\in \big( \operatorname{span}(v_1,\ldots,v_m) \big)^\bot$. 
+Since $v_1,\ldots,v_m\in \operatorname{span}(v_1,\ldots,v_m)$, it follows that $\langle u,v_j\rangle = 0$ for $j=1,\ldots,m$. 
+Hence, $u\in \{v_1,\ldots,v_m\}^\bot$.
+
+\clearpage
+
+\section{$U^\bot=\{0\}$ iff $U=V$}
+\subsection*{Problem statement}
+Suppose $U$ is a finite-dimensional subspace of $V$. 
+Prove that $U^\bot=\{0\}$ if and only if $U=V$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $U^\bot=\{0\}$. 
+Via Theorem 6.51 (`The orthogonal complement of the orthogonal complement') and Theorem 6.46(b) (`Basic properties of orthogonal complement'), we can write
+\[U=(U^\bot)^\bot=\{0\}^\bot=V.\]
+Hence, $U=V$.
+
+\subsubsection*{Second Direction}
+Suppose $U=V$. 
+Via Theorem 6.46(c) (`Basic properties of orthogonal complement'), we can write
+\[U^\bot=V^\bot=\{0\}.\]
+Hence, $U^\bot=\{0\}$.
+
+\clearpage
+
+\section{$U^\bot=\{0\}$ iff $U=V$}
+\subsection*{Problem statement}
+Suppose $U$ is a subspace of $V$ with basis $u_1,\ldots,u_m$ and
+\[u_1,\ldots,u_m,w_1,\ldots,w_n\]
+is a basis of $V$. 
+Prove that if the Gram-Schmidt Procedure is applied to the basis of $V$ above, producing a list $e_1,\ldots,e_m,f_1,\ldots,f_n$, then $e_1,\ldots,e_m$ is an orthonormal basis of $U$ and $f_1,\ldots,f_n$ is an orthonormal basis of $U^\bot$.
+
+\subsection*{Solution}
+Via the Gram-Schmidt Procedure (Theorem 6.31), we can state
+\[\operatorname{span}(u_1,\ldots,u_m)=\operatorname{span}(e_1,\ldots,e_m).\]
+Thus, $e_1,\ldots,e_m$ is an orthonormal basis of $U$. 
+
+Via Theorem 6.50 (`Dimension of the orthogonal complement'), we have 
+\[\dim V= \dim U+\dim U^\bot\]
+which implies $\dim U^\bot=n$. 
+Given $e_1,\ldots,e_m,f_1,\ldots,f_n$ is an orthonormal list, it follows that $\langle e_j, f_k\rangle=0$ for $j=1,\ldots,m$ and $k=1,\ldots,n$. 
+Hence, \newline$f_j\in\{ e_1,\ldots, e_m\}^\bot$ and, via Exercise 6.C(1), $f_j\in\big(\operatorname{span}(e_1,\ldots,e_m)\big)^\bot$.
+Therefore, $f_j\in U^\bot$ for $j=1,\ldots,n$.
+
+Given $\dim U^\bot=n$ and $f_1,\ldots,f_n$ is an orthonormal list of length $n$ in $U^\bot$, it follows that $f_1,\ldots,f_n$ is an orthonormal basis of $U^\bot$.
+
+
+\end{document}
