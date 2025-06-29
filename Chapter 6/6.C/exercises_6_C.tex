@@ -82,5 +82,106 @@ Therefore, $f_j\in U^\bot$ for $j=1,\ldots,n$.
 
 Given $\dim U^\bot=n$ and $f_1,\ldots,f_n$ is an orthonormal list of length $n$ in $U^\bot$, it follows that $f_1,\ldots,f_n$ is an orthonormal basis of $U^\bot$.
 
+\clearpage
+
+\section{Finding orthonormal bases of $U,U^\bot$}
+\subsection*{Problem statement}
+Suppose $U$ is the subspace of $\mathbf{R}^4$ defined by
+\[U=\operatorname{span}\big( (1,2,3,-4),(-5,4,3,2)\big).\]
+Find an orthonormal basis of $U$ and an orthonormal basis of $U^\bot$.
+
+\subsection*{Solution}
+Following exercise 6.C(3), we need to expand $(1,2,3,-4),(-5,4,3,2)$ to be a basis of $\mathbf{R}^4$, and then apply the Gram-Schmidt Procedure (Theorem 6.31). 
+
+A reasonable guess at two vectors to make a basis of $\mathbf{R}^4$ is \newline$(1,0,0,0),(0,1,0,0)$. 
+To check if $(1,2,3,-4),(-5,4,3,2),(1,0,0,0),(0,1,0,0)$ is linearly independent, we can solve the following system of linear equations
+\begin{align*}
+    x-5y+z+0w&=0\\
+    2x+4y+0z+w&=0\\
+    3x+3y+0z+0w&=0\\
+    -4x+2y+0z+0w&=0.
+\end{align*}
+The bottom two equations can be reduced to $x=-y$ and $2x=y$, which implies $x=0$ and $y=0$. 
+Substituting $x=0$ and $y=0$ into the top two equations, we get $z=0$ and $w=0$, confirming that our list is linearly independent. 
+
+By applying the Gram-Schmidt Procedure to our list\footnote{This is lazy, but the computation is heinously messy.}, we obtain $e_1,e_2,e_3,e_4$ where $e_1,e_2$ is an orthonormal basis of $U$ and $e_3,e_4$ is an orthonormal basis of $U^\bot$.
+
+\clearpage
+
+\section{Proving $P_{U^\bot}=I-P_{U}$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$. 
+Show that $P_{U^\bot}=I-P_{U}$, where $I$ is the identity operator on $V$.
+
+\subsection*{Solution}
+First, let's describe $P_{U^\bot}$. 
+Following from Theorem 6.47 (`Direct sum of a subspace and its orthogonal complement'), for $v\in V$ we can write $v=u+w$ where $u\in U^\bot$ and $w\in (U^\bot)^\bot$. 
+Given $V$ is finite-dimensional and Theorem 6.51 (`The orthogonal complement of the orthogonal complement'), $(U^\bot)^\bot=U$ and $w\in U$. 
+Therefore $P_{U^\bot}v=u$ and $P_{U}v=w$, and we can write
+\[P_{U^\bot}v=Iv-P_{U}v.\]
+Hence, it follows that $P_{U^\bot}=I-P_{U}$.
+
+\clearpage
+
+\section{$P_U P_W=0$ iff $\langle u,w\rangle=0$}
+\subsection*{Problem statement}
+Suppose $U$ and $W$ are finite-dimensional subspaces of $V$. 
+Prove that $P_U P_W=0$ if and only if $\langle u,w\rangle=0$ for all $u\in U$ and all $w\in W$.
+
+\subsection*{Solution}
+\subsubsection*{First Direction}
+Suppose $P_U P_W=0$. 
+This implies $\operatorname{range}P_W \subset \operatorname{null} P_U$. 
+Via Theorems 6.55(d) and 6.55(e) (`Properties of the orthogonal projection $P_U$'), it follows that \newline$W\subset U^\bot$. 
+Hence, $\langle u,w\rangle=0$ for all $u\in U$ and all $w\in W$ since $w\in U^\bot$. 
+
+\subsubsection*{Second Direction}
+Suppose $\langle u,w\rangle=0$ for all $u\in U$ and all $w\in W$. 
+This implies $W\subset U^\bot$, and via Theorems 6.55(d) and 6.55(e), it follows that $\operatorname{range}P_W \subset \operatorname{null} P_U$. 
+Hence, $P_U P_W=0$. 
+
+\clearpage
+
+\section{Prove $\exists U$ such that $P=P_U$}
+\subsection*{Problem statement}
+Suppose $V$ is finite-dimensional and $P\in\mathcal{L}(V)$ is such that $P^2=P$ and every vector in $\operatorname{null}P$ is orthogonal to every vector in $\operatorname{range}P$. 
+Prove that there exists a subspace $U$ of $V$ such that $P=P_U$. 
+
+\subsection*{Solution}
+Let's first think about $\operatorname{null}P\cap\operatorname{range}P$. 
+Suppose $v\in \operatorname{null}P\cap\operatorname{range}P$. 
+Given every vector in $\operatorname{null}P$ is orthogonal to every vector in $\operatorname{range}P$, it follows that $\langle v,v\rangle=0$ and $v=0$ via the property of definiteness (Definition 6.3). 
+Thus $\operatorname{null}P\cap\operatorname{range}P=\{0\}$. 
+We can write
+\[\dim(\operatorname{null}P+\operatorname{range}P)=\dim\operatorname{null}P+\dim\operatorname{range}P-\dim(\operatorname{null}P\cap\operatorname{range}P)\]
+via Theorem 2.43 (`Dimension of a sum') and 
+\[\dim V=\dim\operatorname{null}P+\dim\operatorname{range}P\]
+via the Fundamental Theorem of Linear Maps. 
+Since $\dim(\operatorname{null}P\cap\operatorname{range}P)=0$, it follows that 
+\[\dim(\operatorname{null}P+\operatorname{range}P)=\dim\operatorname{null}P+\dim\operatorname{range}P=\dim V,\]
+and thus
+\[V=\operatorname{null}P\oplus\operatorname{range}P.\]
+Via Theorem 6.47 (`Direct sum of a subspace and its orthogonal complement'), we can write
+\[\operatorname{range}P\oplus\operatorname{null}P=V=\operatorname{range}P\oplus(\operatorname{range}P)^\bot\]
+implying that $\operatorname{null}P=(\operatorname{range}P)^\bot$.
+
+A reasonable guess at our desired subspace $U$ is $\operatorname{range}P$. 
+To show this, suppose $v\in V$. 
+We can write $v$ as $v=u+w$ where $u\in \operatorname{range}P$ and \newline$w\in(\operatorname{range}P)^\bot=\operatorname{null}P$. 
+It follows that
+\[Pv=P(u+w)=Pu+Pw=Pu\]
+and
+\[P_{\operatorname{range}P}v=u\]
+where $u$ is the orthogonal projection of $v$ onto $\operatorname{range}P$. 
+
+To complete the proof, we need to show that $Pu=u$. 
+Since $u\in\operatorname{range}P$, there exists $x\in V$ such that $Px=u$. 
+Applying $P$ to both sides, we have $P^2x=Pu$. 
+Given $P^2=P$, we can write
+\[Pu=P^2x=Px=u.\]
+Hence, $Pv=Pu=u$ and $P_{\operatorname{range}P}v=u$ for $v\in V$.
+
+
+
 
 \end{document}
