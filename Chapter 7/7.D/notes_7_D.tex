@@ -73,9 +73,9 @@ The linear map $S_1$ can be a bit tricky to dissect at first, so we can think ab
 \begin{enumerate}
     \item Write $S_1(u)$
     \item This implies $u\in\operatorname{range}\sqrt{T^*T}$
-    \item Therefore, there exists $v$ such that $v = \sqrt{T^*T}u$
-    \item Thus $S_1(u)=S_1(\sqrt{T^*T}u)$
-    \item Following from (\ref{eq:s_one}), $S_1(\sqrt{T^*T}u)=Tv$ and $S_1(u)=Tv$
+    \item Therefore, there exists $v\in V$ such that $u = \sqrt{T^*T}v$
+    \item Thus $S_1(u)=S_1(\sqrt{T^*T}v)$
+    \item Following from (\ref{eq:s_one}), $S_1(\sqrt{T^*T}v)=Tv$ and $S_1(u)=Tv$
 \end{enumerate}
 We eventually want to show that $S_1$ is an isometry and can be extended to an isometry on $V$. But first, we must understand if $S_1$ is well-defined. By well-defined, we want $\sqrt{T^*T}v_1=\sqrt{T^*T}v_2$ to imply that $Tv_1=Tv_2$. In other words, the same input should lead to the same output. We can use (\ref{eq:norm_relationship}) to write
 \begin{align*}
